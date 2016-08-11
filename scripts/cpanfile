@@ -1,0 +1,3 @@
+requires 'JSON';
+requires 'Git';
+requires 'File::Slurp::Tiny';
