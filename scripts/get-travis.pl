@@ -17,7 +17,7 @@ my %commits;
 say "Build Commit";
 for my $i (1..$num_builds) {
   my $this_status = `travis show $i`;
-  if ( $this_status =~ /Type:\s+push/) {
+  if ( $this_status =~ /Type:\s+push/ &&  $this_status =~ /Branch:\s+master/) {
       my ($state,$commit) = ($this_status =~ /State:\s+(\w+).+\.\.\.(\w+)/s);
       if ( $state ne 'errored' ) {
 	  say "$i $commit";
