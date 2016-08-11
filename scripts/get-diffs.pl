@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use v5.22;
+use v5.20;
 
 use JSON;
 use Git;
@@ -18,7 +18,8 @@ my @filespec = split(/ /,$filespec);
 my @revs = $repo->command('rev-list', '--all', '--', @filespec);
 my @data = ("Lines changed");
 
-my $prev_commit = shift @revs;
+my $prev_commit = pop @revs; #Throwaway first commit
+$prev_commit = pop @revs;
 for my $commit ( reverse @revs ) {
   my $file_contents = $repo->command('diff','--shortstat',  "$commit..$prev_commit", "--", @filespec );
   my ($insertions) = ($file_contents =~ /(\d+)\s+insertion\S+/s);
@@ -31,7 +32,7 @@ for my $commit ( reverse @revs ) {
   $prev_commit = $commit;
 }
 
-my ($last_dir_name)  = ($dir =~ m{/([^/]+)/$} );
+my ($last_dir_name)  = ($dir =~ m{/([^/]+)/?$} );
 my $flat_file_name = $filespec;
 
 $flat_file_name =~ s/\*/ALL/g;
