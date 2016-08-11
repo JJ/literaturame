@@ -38,5 +38,5 @@ $flat_file_name =~ s/\./_/g;
 $flat_file_name =~ s/\//_/g;
 
 
-write_file("lines_$last_dir_name"."_$flat_file_name", join("\n", @data));
+write_file("lines_$last_dir_name"."_$flat_file_name.csv", join("\n", @data));
 
