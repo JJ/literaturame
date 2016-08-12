@@ -1,6 +1,6 @@
 library(ggplot2)
 library("ggfortify")
-lines <- read.csv("../data/lines_hoborg_text_text_md.csv")
+lines <- read.csv("../data/books/lines_hoborg_text_text_md.csv")
 summary(lines)
 ggplot()+geom_point(data=lines,aes(x=row.names(lines),y=Lines.changed))
 ggplot()+geom_line(data=lines,aes(x=row.names(lines),y=Lines.changed,group=1))
