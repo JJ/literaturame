@@ -26,13 +26,17 @@ data.files <- c('../data/books/lines_curso-git_texto_ALL_md.csv',
 '../data/software/lines_tweepy_ALL_py_ALL_ALL_py_ALL_ALL_ALL_py.csv')
 
 # for each type of car in the data create a report
-  # these reports are saved in output_dir with the name specified by output_file
+                                        # these reports are saved in output_dir with the name specified by output_file
+
 for (file in data.files){
-    report.file <- sub('lines','report',file)
-    report.file <- sub('csv','pdf',report.file)
+    print(file)
+    report.file <- gsub('lines','report',file)
+    report.file <- gsub('csv','pdf',report.file)
+    report.file <- gsub('../data','.',report.file)
     print(report.file)
-    rmarkdown::render(input = file, 
+    rmarkdown::render(input = 'creativity.Rmd', 
                       output_format = "pdf_document",
                       output_file = report.file,
                       output_dir = '.')
 }
+

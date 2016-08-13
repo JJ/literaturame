@@ -12,7 +12,7 @@ abstract: |
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
-lines <- read.csv("../data/software/lines_Algorithm-Evolutionary_ALL_PL_ALL_ALL_pm_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_pm_ALL_ALL_t.csv")
+lines <- read.csv(file)
 ```
 
 ## Summary
