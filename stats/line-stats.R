@@ -1,5 +1,6 @@
 library(ggplot2)
 library("ggfortify")
+library(dplyr)
 lines <- read.csv("../data/books/lines_hoborg_text_text_md.csv")
 summary(lines)
 gg.lines = ggplot(lines)
