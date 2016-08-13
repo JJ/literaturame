@@ -2,7 +2,7 @@
 title: "Quantifying creativity through repository mining"
 author: "J. J. Merelo"
 date: "13 de agosto de 2016"
-output: html_document
+output: pdf_document
 abstract: |
   This is a template for reporting on the characteristics of the changes in a project from using the number of lines changed in every commit that affects those files. Our intention, by analyzing repositories that hold projects of different type such as books, research papers or simply software, is to show that they present remarkably similar characteristics, main diferences based on the fact that they are collaborative or not and the number of commits present.
   In this report we will visualize change size in different ways.
@@ -12,7 +12,7 @@ abstract: |
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
-lines <- read.csv("../data/books/lines_hoborg_text_text_md.csv")
+lines <- read.csv("../data/software/lines_Algorithm-Evolutionary_ALL_PL_ALL_ALL_pm_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_pm_ALL_ALL_t.csv")
 ```
 
 ## Summary
