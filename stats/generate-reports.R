@@ -25,8 +25,8 @@ data.files <- c('../data/books/lines_curso-git_texto_ALL_md.csv',
 '../data/software/lines_polleitor_ALL_js_app_ALL_js_public_ALL_html_public_js_ALL_js_test_ALL_js.csv',
 '../data/software/lines_tweepy_ALL_py_ALL_ALL_py_ALL_ALL_ALL_py.csv')
 
-# for each type of car in the data create a report
-                                        # these reports are saved in output_dir with the name specified by output_file
+# for each file create a report
+# these reports are saved in output_dir with the name specified by output_file
 
 for (file in data.files){
     print(file)
