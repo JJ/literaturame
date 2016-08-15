@@ -53,6 +53,8 @@ ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))
 ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
 ```
 
+The Zipf exponent for this graph is... TODO
+
 Finally, these scale distributions hints at the possibility of long-scale correlations. The partial autocorrelation is plotted in the next figure.
 
 ```{r autocorrelation, echo=FALSE}
