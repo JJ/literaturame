@@ -4,3 +4,4 @@
 
 * [ ] Check correspondence between commits and lines changed
 * [ ] Plot words vs. lines changed
+* [ ] Process logs for words.
