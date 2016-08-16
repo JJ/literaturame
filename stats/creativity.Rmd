@@ -12,6 +12,7 @@ abstract: |
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
+#use line <- ../data/books/lines_curso-git_texto_ALL_md.csv for testing here
 lines <- read.csv(file) # File should be established from an R script
 ```
 
@@ -29,11 +30,12 @@ summary(lines)
 The timeline of the commit sizes is represented next, in different ways, with logarithmic or decimal *y* scale. The serrated characteristics is the same, as well as the big changes in scale. *x* axis is simply the temporal sequence of commits, while the *y* axis is the absolute size. 
 
 ```{r timeline, echo=FALSE}
+lines$x = as.numeric(row.names(lines))
 gg.lines = ggplot(lines)
-gg.lines+geom_point(aes(x=row.names(lines),y=Lines.changed))
-gg.lines+geom_line(aes(x=row.names(lines),y=Lines.changed,group=1))
-gg.lines+geom_point(aes(x=row.names(lines),y=Lines.changed))+scale_y_log10()
-gg.lines+geom_line(aes(x=row.names(lines),y=Lines.changed,group=1))+scale_y_log10()
+gg.lines+geom_point(aes(x=x,y=Lines.changed))
+gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))
+gg.lines+geom_point(aes(x=x,y=Lines.changed))+scale_y_log10()
+gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))+scale_y_log10()
 ```
 
 The change in scale might mean that it is distributed using a Pareto distribution. Next we represent the number of changes of a particular size in a log-log scale.
@@ -48,12 +50,14 @@ This distribution also appears as a Zipf distribution, with the commit sizes ran
 
 ```{r powerlaw, echo=FALSE}
 ggplot(data=lines, aes(lines$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10()
-sorted.lines <- data.frame(x=1:length(lines$Lines.changed),Lines.changed=as.numeric(lines[order(-lines$Lines.changed),]))
+sorted.lines <- data.frame(x=1:length(lines$Lines.changed),Lines.changed=as.numeric(lines[order(-lines$Lines.changed),]$Lines.changed))
 ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))
 ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
+sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
+zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
 ```
 
-The Zipf exponent for this graph is... TODO
+The Zipf exponent for this graph is `r zipf.fit$coefficients`
 
 Finally, these scale distributions hints at the possibility of long-scale correlations. The partial autocorrelation is plotted in the next figure.
 
