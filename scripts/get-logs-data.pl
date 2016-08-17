@@ -9,20 +9,22 @@ use v5.14;
 my $dir = shift || ".";
 my @logs = glob("$dir/log*.log");
 
-my @tests;
+my @data;
 for my $l ( @logs ) {
   my ($number) = ( $l =~ /(\d+)/);
   my $file_content = read_file ($l );
   if ( $file_content =~ /Tests=(\d+)/ ) {
-    $tests[$number] = $1;
+    $data[$number] = $1;
   }
 }
 
 
-say "Tests";
-for (my $i = 0; $i <=$#tests; $i ++ ) {
-  if ( $tests[$i] ) {
-    say $tests[$i];
+say "Words,Delta";
+my $old_number_of_words = 0;
+for (my $i = 0; $i <=$#data; $i ++ ) {
+  if ( $data[$i] ) {
+    say "$i, $data[$i], ", $data[$i]- $old_number_of_words;
+    $old_number_of_words = $data[$i];
   }
 }
   
