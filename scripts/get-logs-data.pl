@@ -11,7 +11,7 @@ my @logs = glob("$dir/log*.log");
 
 my @data;
 for my $l ( @logs ) {
-  my ($number) = ( $l =~ /(\d+)/);
+  my ($number) = ( $l =~ /log-(\d+)/);
   my $file_content = read_file ($l );
   if ( $file_content =~ /Tests=(\d+)/ ) {
     $data[$number] = $1;
