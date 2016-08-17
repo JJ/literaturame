@@ -19,7 +19,7 @@ for my $l ( @logs ) {
 }
 
 
-say "Words,Delta";
+say "Commit,Words,Delta";
 my $old_number_of_words = 0;
 for (my $i = 0; $i <=$#data; $i ++ ) {
   if ( $data[$i] ) {
