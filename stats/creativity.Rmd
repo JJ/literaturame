@@ -12,7 +12,9 @@ abstract: |
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
-#use line <- ../data/books/lines_curso-git_texto_ALL_md.csv for testing here
+#use 
+# line <- read.csv(../data/books/lines_curso-git_texto_ALL_md.csv)
+# for testing here
 lines <- read.csv(file) # File should be established from an R script
 ```
 
@@ -63,6 +65,12 @@ Finally, these scale distributions hints at the possibility of long-scale correl
 
 ```{r autocorrelation, echo=FALSE}
 autoplot(pacf(lines$Lines.changed, plot=FALSE) )
+```
+
+These possible long range autocorrelations point also to a state of self-organized criticality. One of the characteristics of this state is the presence of *pink* noise, as measured by the power spectral density, shown below
+
+```{r spectrum, echo=FALSE}
+autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
 ```
 
 ##Conclusion
