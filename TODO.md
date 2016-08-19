@@ -7,5 +7,6 @@
 * [x] Process logs for words.
 * [ ] Zipf coefficient when the work is proceeding?
 * [ ] Evolution of the number of new words?
-* [ ] Write a howto use this
+* [x] Write a howto use this
+  * [ ] Publish it and tell people to use it.
 
