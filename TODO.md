@@ -4,6 +4,8 @@
 
 * [ ] Check correspondence between commits and lines changed
 * [ ] Plot words vs. lines changed
-* [ ] Process logs for words.
+* [x] Process logs for words.
 * [ ] Zipf coefficient when the work is proceeding?
 * [ ] Evolution of the number of new words?
+* [ ] Write a howto use this
+
