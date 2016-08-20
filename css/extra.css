@@ -1,0 +1,40 @@
+.bkg { 
+       background-color:rgba(86,20,32,0.9);
+       padding: 50px;
+       margin: 20px;
+       border-radius: 30px
+}
+
+.reveal li { font-size:1.75em }
+.reveal li.credits { font-size:0.75em }
+
+
+.chart div {
+  font: 30px sans-serif;
+  background-color: orange;
+  text-align: right;
+  padding: 5px;
+  margin: 3px;
+  color: white;
+}
+
+.fija div {
+            font: 14px "Fira Mono";
+            background-color: blue;
+            text-align: right;
+            padding: 2px;
+            margin: 1px;
+            color:  #ff2c2d;
+}
+
+/* Posición fija */
+
+#fija { 
+        position: fixed;
+        border: 3px solid orange;
+        top: 0;
+        right: 0;
+        width: 200px;
+        z-index: 1;
+           
+}
