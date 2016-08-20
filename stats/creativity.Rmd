@@ -12,10 +12,13 @@ abstract: |
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
+library(TTR)
 #use 
-lines <- read.csv('../data/books/lines_curso-git_texto_ALL_md.csv')
+#file <- '/home/jmerelo/proyectos/literaturame/data/books/lines_curso-git_texto_ALL_md.csv'
 # for testing here
-#lines <- read.csv(file) # File should be established from an R script
+lines <- read.csv(file) # File should be established from an R script
+lines$SMA5 <- SMA(lines$Lines.changed,n=5)
+lines$SMA10 <- SMA(lines$Lines.changed,n=10)
 ```
 
 This is a report for a particular repository whose data is contained in the file `r file`. This file contains a sequence of change sizes for every commit that affects those parcitular files. Since changes include insertion and deletion of files, the biggest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of the sizes of all files.
@@ -38,6 +41,12 @@ gg.lines+geom_point(aes(x=x,y=Lines.changed))
 gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))
 gg.lines+geom_point(aes(x=x,y=Lines.changed))+scale_y_log10()
 gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))+scale_y_log10()
+```
+
+
+Probably it will be a bit more visible if we do a order 5 and then an order 10 smoothing
+```{r smoothie, echo=FALSE}
+gg.lines+geom_line(aes(x=x,y=SMA5,color='SMA5'))+geom_line(aes(x=x,y=SMA10,color='SMA10'))+scale_y_log10()
 ```
 
 The change in scale might mean that it is distributed using a Pareto distribution. Next we represent the number of changes of a particular size in a log-log scale.
