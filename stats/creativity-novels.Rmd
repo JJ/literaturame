@@ -2,7 +2,7 @@
 title: "Quantifying creativity through repository mining"
 author: "J. J. Merelo"
 date: "13 de agosto de 2016"
-output: pdf_document
+output: html_document
 abstract: |
   This is a template for reporting on the characteristics of the changes in a project from using the number of lines changed in every commit that affects those files. Our intention, by analyzing repositories that hold projects of different type such as books, research papers or simply software, is to show that they present remarkably similar characteristics, main diferences based on the fact that they are collaborative or not and the number of commits present.
   In this report we will visualize patterns in creativity burst by examining the size of changes in projects in different ways.
@@ -12,12 +12,15 @@ abstract: |
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
+library(TTR)
 #use 
-#words <- read.csv('../data/books/words-hoborg.csv')
+#file <- "/home/jmerelo/proyectos/literaturame/data/books/words-hoborg.csv"
 # for testing here
 words <- read.csv(file) # File should be established from an R script
 lines <- words[-1,]
 lines$Delta <- abs(lines$Delta)
+lines$SMA5 <- SMA(lines$Delta,n=5)
+lines$SMA10 <- SMA(lines$Delta,n=10)
 ```
 
 This is a report for a particular repository whose data is contained in the file `r file`. This file contains a sequence of change sizes for every commit that affects those parcitular files. Since changes include insertion and deletion of files, the biggest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of the sizes of all files.
@@ -42,7 +45,12 @@ gg.lines+geom_point(aes(x=Commit,y=Delta))+scale_y_log10()
 gg.lines+geom_line(aes(x=Commit,y=Delta,group=1))+scale_y_log10()
 ```
 
-The change in scale might mean that it is distributed using a Pareto distribution. Next we represent the number of changes of a particular size in a log-log scale.
+Probably it will be a bit more visible if we do a order 5 and then an order 10 smoothing
+```{r smoothie, echo=FALSE}
+gg.lines+geom_line(aes(x=Commit,y=SMA5,color='SMA5'))+geom_line(aes(x=Commit,y=SMA10,color='SMA10'))+scale_y_log10()
+```
+
+The width of the scale might mean that it is distributed using a Pareto distribution. Next we represent the number of changes of a particular size in a log-log scale.
 
 ```{r linecount, echo=FALSE}
 by.lines <- group_by(lines,Delta)

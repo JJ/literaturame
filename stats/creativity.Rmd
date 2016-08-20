@@ -13,9 +13,9 @@ library(ggplot2)
 library("ggfortify")
 library(dplyr)
 #use 
-# line <- read.csv(../data/books/lines_curso-git_texto_ALL_md.csv)
+lines <- read.csv('../data/books/lines_curso-git_texto_ALL_md.csv')
 # for testing here
-lines <- read.csv(file) # File should be established from an R script
+#lines <- read.csv(file) # File should be established from an R script
 ```
 
 This is a report for a particular repository whose data is contained in the file `r file`. This file contains a sequence of change sizes for every commit that affects those parcitular files. Since changes include insertion and deletion of files, the biggest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of the sizes of all files.
