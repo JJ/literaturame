@@ -1,4 +1,4 @@
-# literaturame
+# literatura.me
 
 Measuring progress in literature and in other creative endeavours, like programming. Preparing a paper/presentation for YAPC::EU 2016.
 
@@ -35,6 +35,8 @@ twitter to `@jjmerelo`, and I'll do it for you. Of course, that file
 includes author and stuff, so if you want to change conclusions,
 author or whatever, feel free to do so, it has the same license as the
 whole repo. 
+
+You can also add a link to these results in [`data.md`](data.md) if you so desire. Take a look at [CONTRIBUTING.md](CONTRIBUTING.md) to do it properly (don't worry, just a minimal set of rules).
 
 ## What kind of repos will be *interesting*
 
