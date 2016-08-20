@@ -1,12 +1,25 @@
-.bkg { 
-       background-color:rgba(86,20,32,0.9);
+section[data-background] h1 { 
+       background-color:rgba(233,233,233,0.7);
        padding: 50px;
        margin: 20px;
        border-radius: 30px
 }
 
+.bkg { 
+       background-color:rgba(0,43,54,0.7);
+       padding: 30px;
+       margin: 15px;
+       border-radius: 10px
+}
+
 .reveal li { font-size:1.75em }
 .reveal li.credits { font-size:0.75em }
+.credits {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+.credits li { font-size:0.75em }
 
 
 .chart div {
@@ -35,6 +48,5 @@
         top: 0;
         right: 0;
         width: 200px;
-        z-index: 1;
-           
+        z-index: 1;           
 }
