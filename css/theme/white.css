@@ -3,7 +3,7 @@
  *
  * By Hakim El Hattab, http://hakim.se
  */
-@import 'https://fonts.googleapis.com/css?family=Averia+Libre|Baloo+Paaji';
+@import 'https://fonts.googleapis.com/css?family=Averia+Libre|Baloo+Paaji|Inconsolata';
 
 section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
   color: #fff; }
@@ -16,7 +16,7 @@ body {
   background-color: #fff; }
 
 .reveal {
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: "Averia Libre", Helvetica, sans-serif;
   font-size: 38px;
   font-weight: normal;
   color: #222; }
@@ -42,7 +42,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #222;
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: "Baloo Paaji", Helvetica, sans-serif;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
@@ -50,10 +50,10 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 2.5em; }
+  font-size: 2.75em; }
 
 .reveal h2 {
-  font-size: 1.6em; }
+  font-size: 1.9em; }
 
 .reveal h3 {
   font-size: 1.3em; }
@@ -145,19 +145,19 @@ body {
   margin: 20px auto;
   text-align: left;
   font-size: 0.55em;
-  font-family: monospace;
+  font-family: Inconsolata, monospace;
   line-height: 1.2em;
   word-wrap: break-word;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
 .reveal code {
-  font-family: monospace; }
+  font-family: Inconsolata, monospace; }
 
 .reveal pre code {
   display: block;
   padding: 5px;
   overflow: auto;
-  max-height: 400px;
+  max-height: 700px;
   word-wrap: normal; }
 
 .reveal table {
