@@ -58,8 +58,34 @@ script: >
 		            my $harness = TAP::Harness->new( { verbosity => 0} );
 			    die "FAIL" if  $harness->runtests( "just_check.t" )->failed;'</code></pre>
 			    </section>
+
+			    <section><h1>How am I writing?</h1>
+			      <pre><code>my $dir = shift || ".";
+my @logs = glob("$dir/log*.log");
+my @data;
+for my $l ( @logs ) {
+  my ($number) = ( $l =~ /log-(\d+)/);
+  my $file_content = read_file ($l );
+  if ( $file_content =~ /Tests=(\d+)/ ) {
+    $data[$number] = $1;
+  }
+}
+			      </code></pre>
+			    </section>
+			      <section><pre><code>say "Commit,Words,Delta";
+my $old_number_of_words = 0;
+for (my $i = 0; $i <=$#data; $i ++ ) {
+  if ( $data[$i] ) {
+    say "$i, $data[$i], ", $data[$i]- $old_number_of_words;
+    $old_number_of_words = $data[$i];
+  }
+}
+			     </code></pre>
+			      </section>
+			  </section>
+			      
 			  
-			  <section><h3>Credits</h3>
+			  <section><h2>Credits</h2>
 			    <ul class='credits'><li>Sandpile by <a href='https://www.flickr.com/photos/davispuh/9233204836/'>Dāvis Mosāns</a></li>
 			      <li>Edge of chaos by <a href='https://www.flickr.com/photos/ecogarden/5642993124/'>Brian Chiu in Flickr</a></li>
 			    </ul>
