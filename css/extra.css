@@ -50,3 +50,19 @@ section[data-background] h1 {
         width: 200px;
         z-index: 1;           
 }
+
+.reveal.slide .slides > section, .reveal.slide .slides > section > section {
+  min-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  position: absolute !important;
+  top: 0 !important;
+  align-items: center !important;
+}
+
+
+.print-pdf .reveal.slide .slides > section, .print-pdf .reveal.slide .slides > section > section {
+  min-height: 770px !important;
+  position: relative !important;
+}
