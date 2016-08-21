@@ -11,3 +11,9 @@ node_modules/
 .sass-cache
 css/reveal.min.css
 js/reveal.min.js
+#Can't see a thing with these
+*.pdf
+*~
+*.html
+data/logs
+*.zip
