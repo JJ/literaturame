@@ -23,7 +23,7 @@ gg.lines+geom_line(aes(x=Commit,y=Delta,group=1))
 gg.lines+geom_point(aes(x=Commit,y=Delta))+scale_y_log10()
 gg.changes <- gg.lines+geom_line(aes(x=Commit,y=Delta,group=1))+scale_y_log10()
 gg.changes
-ggsave('granada-off-word-changes.png',width=1024,height=768)
+ggsave('granada-off-word-changes.png',width=3,height=1.75)
 
 ## ----smoothie, echo=FALSE------------------------------------------------
 gg.lines+geom_line(aes(x=Commit,y=SMA5,color='SMA5'))+geom_line(aes(x=Commit,y=SMA10,color='SMA10'))+scale_y_log10()
