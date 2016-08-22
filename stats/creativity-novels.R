@@ -5,7 +5,7 @@ library(dplyr)
 library(TTR)
 library(plotly)
 #use 
-file <- "/home/jmerelo/proyectos/literaturame/data/books/words-hashslash.csv"
+file <- "../data/books/words-hashslash.csv"
 # for testing here
 words <- read.csv(file) # File should be established from an R script
 lines <- words[-1,]
@@ -31,7 +31,8 @@ gg.lines+geom_line(aes(x=Commit,y=SMA5,color='SMA5'))+geom_line(aes(x=Commit,y=S
 ## ----linecount, echo=FALSE-----------------------------------------------
 by.lines <- group_by(lines,Delta)
 lines.count <- summarize(by.lines, count=n())
-ggplot(lines.count, aes(x=Delta, y=count))+geom_point()+scale_x_log10()+scale_y_log10()
+pl.plot <- ggplot(lines.count, aes(x=Delta, y=count))+geom_point()+scale_x_log10()+scale_y_log10()
+(pl.ly <- ggplotly(pl.plot))
 
 ## ----powerlaw, echo=FALSE------------------------------------------------
 ggplot(data=lines, aes(lines$Delta)) + geom_histogram(bins=100)+scale_x_log10()

@@ -14,7 +14,7 @@ library(rmarkdown)
 data.files <- c( '../data/books/words-nyc-42-8.csv',
                 '../data/books/words-granada-off.csv',
                 '../data/books/words-hoborg.csv',
-                '../data/books/words-hashlash.csv')
+                '../data/books/words-hashslash.csv')
 
 # for each file create a report
 # these reports are saved in output_dir with the name specified by output_file
