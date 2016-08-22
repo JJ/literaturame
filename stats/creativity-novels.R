@@ -31,7 +31,7 @@ gg.lines+geom_line(aes(x=Commit,y=SMA5,color='SMA5'))+geom_line(aes(x=Commit,y=S
 ## ----linecount, echo=FALSE-----------------------------------------------
 by.lines <- group_by(lines,Delta)
 lines.count <- summarize(by.lines, count=n())
-pl.plot <- ggplot(lines.count, aes(x=Delta, y=count))+geom_point()+scale_x_log10()+scale_y_log10()
+pl.plot <- ggplot(lines.count, aes(x=Delta, y=count))+stat_smooth()+geom_point()+scale_x_log10()+scale_y_log10()
 (pl.ly <- ggplotly(pl.plot))
 
 ## ----powerlaw, echo=FALSE------------------------------------------------
