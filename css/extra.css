@@ -1,4 +1,4 @@
-section[data-background] h1 { 
+section[data-background] h1,h2 { 
        background-color:rgba(233,233,233,0.7);
        padding: 50px;
        margin: 20px;
