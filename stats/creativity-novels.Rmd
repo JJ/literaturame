@@ -14,7 +14,7 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-#file <- "/home/jmerelo/proyectos/literaturame/data/books/words-hoborg.csv"
+file <- "/home/jmerelo/proyectos/literaturame/data/books/words-hashlash.csv"
 # for testing here
 words <- read.csv(file) # File should be established from an R script
 lines <- words[-1,]

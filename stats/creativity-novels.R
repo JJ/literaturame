@@ -5,7 +5,7 @@ library(dplyr)
 library(TTR)
 library(plotly)
 #use 
-file <- "/home/jmerelo/proyectos/literaturame/data/books/words-granada-off.csv"
+file <- "/home/jmerelo/proyectos/literaturame/data/books/words-hashslash.csv"
 # for testing here
 words <- read.csv(file) # File should be established from an R script
 lines <- words[-1,]
@@ -23,7 +23,7 @@ gg.lines+geom_line(aes(x=Commit,y=Delta,group=1))
 gg.lines+geom_point(aes(x=Commit,y=Delta))+scale_y_log10()
 gg.changes <- gg.lines+geom_line(aes(x=Commit,y=Delta,group=1))+scale_y_log10()
 gg.changes
-ggsave('granada-off-word-changes.png',width=3,height=1.75)
+ggsave('hashslash-word-changes.png',width=3,height=1.75)
 
 ## ----smoothie, echo=FALSE------------------------------------------------
 gg.lines+geom_line(aes(x=Commit,y=SMA5,color='SMA5'))+geom_line(aes(x=Commit,y=SMA10,color='SMA10'))+scale_y_log10()
@@ -46,11 +46,11 @@ zipf.plot <- ggplot(sorted.lines,aes(x=x,y=Delta)) +geom_point()+scale_y_log10()
 
 ## ----autocorrelation, echo=FALSE-----------------------------------------
 autoplot(pacf(lines$Delta, plot=FALSE) )
-ggsave('granada-off-partial-acf.png',width=3,height=1.75)
+ggsave('hashslash-partial-acf.png',width=3,height=1.75)
 
 
 
 ## ----spectrum, echo=FALSE------------------------------------------------
 autoplot(spectrum(lines$Delta, plot=FALSE) )
-ggsave('granada-off-power-spectrum.png',width=3,height=1.75)
+ggsave('hashslash-power-spectrum.png',width=3,height=1.75)
 
