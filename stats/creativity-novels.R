@@ -46,7 +46,11 @@ zipf.plot <- ggplot(sorted.lines,aes(x=x,y=Delta)) +geom_point()+scale_y_log10()
 
 ## ----autocorrelation, echo=FALSE-----------------------------------------
 autoplot(pacf(lines$Delta, plot=FALSE) )
+ggsave('granada-off-partial-acf.png',width=3,height=1.75)
+
+
 
 ## ----spectrum, echo=FALSE------------------------------------------------
 autoplot(spectrum(lines$Delta, plot=FALSE) )
+ggsave('granada-off-power-spectrum.png',width=3,height=1.75)
 
