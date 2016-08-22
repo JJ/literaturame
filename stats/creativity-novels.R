@@ -52,6 +52,6 @@ ggsave('hashslash-partial-acf.png',width=3,height=1.75)
 
 
 ## ----spectrum, echo=FALSE------------------------------------------------
-autoplot(spectrum(lines$Delta, plot=FALSE) )
-ggsave('hashslash-power-spectrum.png',width=3,height=1.75)
+autoplot(spectrum(lines$Delta, plot=FALSE) )+geom_smooth()
+ggsave('hashslash-power-spectrum.png',width=4,height=3)
 
