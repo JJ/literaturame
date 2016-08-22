@@ -40,6 +40,9 @@ ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Delta))
 ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Delta))+scale_y_log10()
 sorted.lines.no0 <- sorted.lines[sorted.lines$Delta>0,]
 zipf.fit <- lm(log(sorted.lines.no0$Delta) ~ sorted.lines.no0$x)
+zipf.plot <- ggplot(sorted.lines,aes(x=x,y=Delta)) +geom_point()+scale_y_log10()
+(zp.ly <- ggplotly(zipf.plot))
+
 
 ## ----autocorrelation, echo=FALSE-----------------------------------------
 autoplot(pacf(lines$Delta, plot=FALSE) )
