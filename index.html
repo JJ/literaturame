@@ -177,9 +177,49 @@ for (my $i = 0; $i <=$#data; $i ++ ) {
 			      <aside class='notes'>It does not appear always, only in some of them. And this is a very peculiar book</aside>
 			    </section>
 
-			    
-			  </section>			    
-			  
+			    <section>
+			      <h1>Pink noise</h1>
+			      <h2 class='fragment'>Not really</h2>
+			    </section>
+
+			  </section>
+
+			  <!-- Changing to commit diffs -->
+			  <section>
+			    <section><h1>Other ways of measuring the piling of sand</h1></section>
+
+			    <section><h2>Measuring grains of sand</h2>
+			      <pre><code>use Git; #More boilerplate stuff
+my $repo = Git->repository (Directory => $dir);
+my @filespec = split(/ /,$filespec);
+my @revs = $repo->command('rev-list', '--all', '--', @filespec);
+my @data = ("Lines changed");
+my $prev_commit = pop @revs; #Throwaway first commit
+$prev_commit = pop @revs;
+for my $commit ( reverse @revs ) {
+  my $file_contents = $repo->command('diff','--shortstat',  "$commit..$prev_commit", "--", @filespec );
+  my ($insertions) = ($file_contents =~ /(\d+)\s+insertion\S+/s);
+  my ($deletions) = ($file_contents =~ /(\d+)\s+deletion\S+/s);
+  $insertions = $insertions || 0; $deletions = $deletions || 0;
+  my $lines_changed = ($insertions > $deletions)?$insertions:$deletions;
+  push @data, $lines_changed;
+  $prev_commit = $commit;
+}</code></pre>
+			      </section>
+			      <section>
+				<h1>✔ Scale independence</h1>
+				<h1 class='fragment'>✔ Long distance autocorrelation</h1>
+				<h1 class='fragment'>... and ...</h1>
+
+			      </section>
+
+			      <section  id="htmlwidget-4060" style="width: 100%;height: 700px;" class="plotly html-widget">
+				<h1 class='fragment'><span class='pink'>Pink</span> noise!</h2>
+			    </section>
+			      
+			  </section>
+
+			  <!-- credits -->
 			  <section><h2>Credits</h2>
 			    <ul class='credits'><li>Sandpile by <a href='https://www.flickr.com/photos/davispuh/9233204836/'>Dāvis Mosāns</a></li>
 			      <li>Edge of chaos

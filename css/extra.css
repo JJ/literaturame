@@ -5,6 +5,14 @@ section[data-background] h1,h2 {
        border-radius: 30px
 }
 
+
+.pink { 
+       background-color:rgba(255, 192, 203,0.7);
+       padding: 5px;
+       margin: 10px;
+       border-radius: 3px
+}
+
 .bkg { 
        background-color:rgba(0,43,54,0.7);
        padding: 30px;
