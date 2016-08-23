@@ -3,8 +3,9 @@ library(ggplot2)
 library("ggfortify")
 library(dplyr)
 library(TTR)
+library(plotly)
 #use 
-#file <- '/home/jmerelo/proyectos/literaturame/data/books/lines_curso-git_texto_ALL_md.csv'
+file <- '/home/jmerelo/proyectos/literaturame/data/books/lines_HashSlash_texto_HashSlash_md.csv'
 # for testing here
 lines <- read.csv(file) # File should be established from an R script
 lines$SMA5 <- SMA(lines$Lines.changed,n=5)
@@ -41,5 +42,5 @@ zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
 autoplot(pacf(lines$Lines.changed, plot=FALSE) )
 
 ## ----spectrum, echo=FALSE------------------------------------------------
-autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
-
+ap <- autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
+(ap.ly <- ggplotly(ap))
