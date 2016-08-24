@@ -51,7 +51,7 @@ body {
 
 .reveal h1 {
     font-family: "Taviraj", Times, serif;
-    font-size: 2.1em; }
+    font-size: 2.5em; }
 
 .reveal h2 {
   font-size: 1.8em; }
@@ -154,7 +154,7 @@ body {
   font-family: Inconsolata, monospace; }
 
 .reveal pre code {
-    font-size: 0.6em;
+    font-size: 0.9em;
     display: block;
     padding: 5px;
     overflow: auto;
