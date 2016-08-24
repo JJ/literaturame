@@ -84,6 +84,7 @@ script: >
     perl -MTAP::Harness -e 'use utf8;
 		            my $harness = TAP::Harness->new( { verbosity => 0} );
 			    die "FAIL" if  $harness->runtests( "just_check.t" )->failed;'</code></pre>
+			      <aside class='notes'>The key is the test created on the fly, which downloads uses my module Test::Text and then applies it straight away with the directory of your choice on anything having .md or .txt or some other suitable extension</aside>
 			    </section>
 
 			    <section><h1>How am I writing?</h1>
@@ -98,6 +99,8 @@ for my $l ( @logs ) {
   }
 }
 			      </code></pre>
+
+			      <aside class='notes'>As you know, the TAP protocols prints at the end of the tests. 1 test == 1 word. So I know how many words I am writing, which is something I was interested in from the get go, to meet my own objectives and, also, incidentally, to not introduce embarrasing typos in the proceeds.</aside>
 			    </section>
 			      <section><pre><code>say "Commit,Words,Delta";
 my $old_number_of_words = 0;
@@ -236,7 +239,7 @@ for my $commit ( reverse @revs ) {
 			    <section data-background='https://farm6.staticflickr.com/5062/5564636122_10321eb789_b_d.jpg' alt='ants in the sand'><h1>We are ants</h1>
 			      <h1 class='fragment'>Camel ants, maybe</h1>
 			      
-			      <aside class='notes'>Explaining how this might work. There are no camel ants. There are camel spiders that feed on ants. And the other way round, if there are enough of them. That software development self-organizes was explained in a model by us in '05 <a href='https://scholar.google.com/citations?view_op=view_citation&hl=es&user=gFxqc64AAAAJ&citation_for_view=gFxqc64AAAAJ:_FxGoFyzp5QC'>in this paper</a>. This presentation does more or less the same for non-software writing and using somewhat different measures and techniques. Goes to prove the same, anyway. </aside>
+			      <aside class='notes'>Explaining how this might work. There are no camel ants. There are camel spiders that feed on ants. And the other way round, if there are enough of them. That software development self-organizes was explained in a model by us in '05 <a href='https://scholar.google.com/citations?view_op=view_citation&hl=es&user=gFxqc64AAAAJ&citation_for_view=gFxqc64AAAAJ:_FxGoFyzp5QC'>in this paper</a>. This presentation does more or less the same for non-software writing and using somewhat different measures and techniques. Goes to prove the same, anyway. Stigmergy is now <a href='http://ubiquity.acm.org/blog/why-cant-programmers-be-more-like-ants-or-a-lesson-in-stigmergy/'>understood</a> as an essential model for modern, distributed, software development. Stigmergy is a general mechanism for collaboration.</aside>
 			    </section>
 
 			  </section>
