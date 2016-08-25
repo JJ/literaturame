@@ -1,11 +1,10 @@
 ---
-title: "Quantifying creativity through repository mining"
+title: "Quantifying activity through repository mining: the case of Moose"
 author: "J. J. Merelo"
-date: "13 de agosto de 2016"
+date: "25 de agosto de 2016"
 output: pdf_document
 abstract: |
-  This is a template for reporting on the characteristics of the changes in a project from using the number of lines changed in every commit that affects those files. Our intention, by analyzing repositories that hold projects of different type such as books, research papers or simply software, is to show that they present remarkably similar characteristics, main diferences based on the fact that they are collaborative or not and the number of commits present.
-  In this report we will visualize patterns in creativity burst by examining the size of changes in projects in different ways.
+  This is a report on the characteristics of the changes in a project from using the number of lines changed in every commit that affects those files. Our intention, by analyzing repositories that hold projects of different type such as books, research papers or simply software, is to show that they present remarkably similar characteristics, main diferences based on the fact that they are collaborative or not and the number of commits present. In this report we will visualize patterns in creativity bursts by examining the size of changes in projects in different ways, trying to prove that they fullfill the characteristics of a self-organized system in a critical state.
 ---
 
 ```{r setup, include=FALSE}
