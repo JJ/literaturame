@@ -2,7 +2,7 @@
 title: 'Quantifying activity through repository mining: the case of Moose'
 author: "J. J. Merelo"
 date: "25 de agosto de 2016"
-output: html_document
+output: pdf_document
 abstract: |
   This is a report on the characteristics of the changes in a project from using the number of lines changed in every commit that affects those files. Our intention, by analyzing repositories that hold projects of different type such as books, research papers or simply software, is to show that they present remarkably similar characteristics, main diferences based on the fact that they are collaborative or not and the number of commits present. In this report we will visualize patterns in creativity bursts by examining the size of changes in projects in different ways, trying to prove that they fullfill the characteristics of a self-organized system in a critical state.
 ---
@@ -13,7 +13,7 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-file <- '/home/jmerelo/proyectos/literaturame/data/software/lines_mojo_ALL_p[ml]_ALL_ALL_p[ml]_ALL_ALL_t_ALL_ALL_ALL_t_ALL_ALL_ALL_ALL_t_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_ALL_pm.csv'
+file <- '/home/jmerelo/proyectos/literaturame/data/software/lines_catalyst-runtime_ALL_p[ml]_ALL_ALL_p[ml]_ALL_ALL_t_ALL_ALL_ALL_t_ALL_ALL_ALL_ALL_t_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_ALL_pm.csv'
 # for testing here
 lines <- read.csv(file) # File should be established from an R script
 lines$SMA5 <- SMA(lines$Lines.changed,n=5)
