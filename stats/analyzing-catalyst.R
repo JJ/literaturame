@@ -43,5 +43,5 @@ zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
 autoplot(pacf(lines$Lines.changed, plot=FALSE) )
 ggsave('catalyst-acf.png',width=3,height=2.5)
 ## ----spectrum, echo=FALSE------------------------------------------------
-autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
+autoplot(spectrum(lines$Lines.changed, plot=FALSE) )+stat_smooth()
 ggsave('catalyst-pink.png',width=3,height=2.5)
