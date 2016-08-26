@@ -4,7 +4,7 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-file <- '/home/jmerelo/proyectos/literaturame/data/software/lines_Moose_ALL_p[ml]_ALL_ALL_p[ml]_ALL_ALL_t_ALL_ALL_ALL_t_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_ALL_pm.csv'
+file <- '/home/jmerelo/proyectos/literaturame/data/software/lines_mojo_ALL_p[ml]_ALL_ALL_p[ml]_ALL_ALL_t_ALL_ALL_ALL_t_ALL_ALL_ALL_ALL_t_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_pm_ALL_ALL_ALL_ALL_ALL_pm.csv'
 # for testing here
 lines <- read.csv(file) # File should be established from an R script
 lines$SMA5 <- SMA(lines$Lines.changed,n=5)
