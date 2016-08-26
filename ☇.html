@@ -35,160 +35,46 @@
 		  <h1>Code code code</h1>
 		</section>
 		
+		<section data-background='https://farm3.staticflickr.com/2618/3804460670_e5a07bc8e3_o_d.jpg' alt='avalanches'>
+		  <h1>Code ⇔ break ⇔ rewrite ⇔ debug ⇔ code</h1>
+		</section>
 
-	      <section><h1>They can if</h1>
-		<h2 class='fragment'>they are scale-invariant</h2>
-		<h3 class='fragment'>WHERE <code>scale-invariant</code> IS no <em>average</em> scale</h3>
-		
-		<h2 class='fragment'>There are long-distance correlations</h2>
-		<h3 class='fragment'>WHERE <code>long-distance</code> IS exactly that.</h3>
-		
-	      </section>
-	      
-	      <section data-background='https://farm4.staticflickr.com/3804/10412819215_590d3b638d_b_d.jpg' alt='a bit of pink in sand'>
-		<h1>... and there is <em>pink</em> noise</h1>
-		<h2 class='fragment'>WHERE <code>pink noise</code> IS ...</h2>
-		<h3 class='fragment'>too complicated for a single slide</h3>
-		<aside class='notes'>It includes power spectral density and things like that, decreasing with frequencies. It does not seem to show up in what I have seen, anyway.</aside>
-	      </section>
-	      
-	      
-	      <section><!-- Completing self-organizing features -->
-		<section>
-		  <h1>✔ Scale independence</h1>
-		  <img src='img/hashslash-delta-distribution.png' alt='Hashlash-log-log distribution of deltas'>
-		  <aside class='notes'>This is anothet power law. Not as clear as the other one, mainly because there are not so many</aside>
+		<section data-background='https://farm4.staticflickr.com/3293/2848272633_8ecbbb5f11_o_d.jpg' alt='more avalanches'>
+		  <h1>No matter what you do
+		  </h1>
 		</section>
-		
-		
-		<section>
-		  <h1>✔ Long-distance autocorrelation</h1>
-		  <img src='img/hashslash-partial-acf.png' alt='Hashlash-partial autocorrelation'>
-		  <aside class='notes'>It does not appear always, only in some of them. And this is a very peculiar book</aside>
+		<section data-background='https://farm6.staticflickr.com/5021/5545688212_7b3c726668_b_d.jpg' alt='hourglasses'>
+		  <h1>Self-organized criticality beckons</h1>
 		</section>
-		
-		<section data-background='https://farm9.staticflickr.com/8544/29080757371_ecae3d1f46_k_d.jpg' alt='Pink salt'>
-		  <h1>☹ Pink noise</h1>
-		  <h2 class='fragment'>Not really</h2>
-		  <aside class='notes'>Because it's salt, not sand</aside>
-		</section>
-		
 	      </section>
-	      
-	      <!-- Changing to commit diffs -->
+
+
 	      <section>
-
-		<section><h2>Measuring grains of sand</h2>
-		  <pre><code>my $repo = Git->repository (Directory => $dir);
-my @filespec = split(/ /,$filespec);
-my @revs = $repo->command('rev-list', '--all', '--', @filespec);
-my @data = ("Lines changed");
-my $prev_commit = pop @revs; #Throwaway first commit
-$prev_commit = pop @revs;
-for my $commit ( reverse @revs ) {
-  my $file_contents = $repo->command('diff','--shortstat',  "$commit..$prev_commit", "--", @filespec );
-  my ($insertions) = ($file_contents =~ /(\d+)\s+insertion\S+/s);
-  my ($deletions) = ($file_contents =~ /(\d+)\s+deletion\S+/s);
-  $insertions = $insertions || 0; $deletions = $deletions || 0;
-  my $lines_changed = ($insertions > $deletions)?$insertions:$deletions;
-  push @data, $lines_changed;
-  $prev_commit = $commit;
-}</code></pre>
-		</section>
-			      
-		<section>
-		  <h1>✔ Scale independence</h1>
-		  <h1 class='fragment'>✔ Long distance autocorrelation</h1>
-		  <h1 class='fragment'>... and ...</h1>
-		  
-		</section>
-		
-		<section  id="htmlwidget-4060" style="width: 100%;height: 700px;" class="plotly html-widget">
-		  <h1 class='fragment'>✔ <span class='pink'>Pink</span> noise!</h1>
-		</section>
-		
+		<h1>Your project code becomes</h1>
 	      </section>
 
 	      <section>
-			    
-			    <section data-background='https://farm4.staticflickr.com/3741/9276465183_734368003c_k_d.jpg' alt='sands'><h1>Self-organized criticality emerges in</h1>
-			      <h2 class='fragment'>slowly driven systems, </h2>
-			      <h2 class='fragment'>with many degrees of freedom and </h2>
-			      <h2 class='fragment'>non-linear dynamics. </h2>
+		<section>
+		  <h1>✔ Scale independent</h1>
 
-			      <aside class='notes'>Taken from the <a href='https://en.wikipedia.org/wiki/Self-organized_criticality'>Wikipedia</a></aside>
-			    </section>
-			    
-			    <section><h1>How come?</h1></section>
-			    
-			    <section data-background='https://farm6.staticflickr.com/5062/5564636122_10321eb789_b_d.jpg' alt='ants in the sand'><h1>We are ants</h1>
-			      <h1 class='fragment'>Camel ants, maybe</h1>
-			      
-			      <aside class='notes'>Explaining how this might work. There are no camel ants. There are camel spiders that feed on ants. And the other way round, if there are enough of them. That software development self-organizes was explained in a model by us in '05 <a href='https://scholar.google.com/citations?view_op=view_citation&hl=es&user=gFxqc64AAAAJ&citation_for_view=gFxqc64AAAAJ:_FxGoFyzp5QC'>in this paper</a>. This presentation does more or less the same for non-software writing and using somewhat different measures and techniques. Goes to prove the same, anyway. Stigmergy is now <a href='http://ubiquity.acm.org/blog/why-cant-programmers-be-more-like-ants-or-a-lesson-in-stigmergy/'>understood</a> as an essential model for modern, distributed, software development. Stigmergy is a general mechanism for collaboration. And there's no such a thing as camel ants, but there are fire ants, and "fire" is "llama" in Spanish. So there you have it.</aside>
-			    </section>
+		  <img src='img/mojo-sizes-log.png'>
+		</section>
 
-			  </section>
-
-			  <!-- conclusions -->
-			  <section>
-			    <section data-background='https://farm9.staticflickr.com/8209/8180063551_161f938eb2_k_d.jpg' alt='zen sand garden'>
-			      <h1>So what?</h1>
-
-			      <aside class='notes'>Writing is so <em>not</em> like a Japanese sand garden. It's at the edge of chaos.</aside>
-			    </section>
-			    <section data-background='https://farm9.staticflickr.com/8170/28580198103_6ef6a0b619_k_d.jpg' alt='writer because badass'>
-			      <h1>Writers gonna write</h1>
-			    </section>
-			    <section>
-			      <h1>Insight helps us improve the process</h1>
-
-			      <aside class='notes'>Like walking the <em>sandwalk</em> helped Darwin focus</aside>
-			    </section>
-			    <section>
-			      <h1>Automatizing production/repair can't be long behind</h1>
-			      <aside class='notes'>Mutational robustness was proved by <a href='http://arxiv.org/abs/1204.4224'>Stephanie Forrest and collaborators</a> some time ago. These same mutations can be leveraged in creative fiction and non-fiction writing. Besides, as far as we know, this self-organized criticality state had not been proved so far in literary texts, simply because there was no data in its production like there is here. <a href='http://www.mit.edu/~8.334/grades/projects/projects12/V.%20A.%20Golyk.pdf'>This paper, for instance, just counts words</a>.</aside>
-			    </section>
-			  </section>
-			  
-			  <section data-background='https://farm9.staticflickr.com/8824/28989725985_555df1d275_k_d.jpg' alt='Camel and sands'>
-			    <h1>And Perl helps us do all that!</h1>
-			  </section>
+		<section>
+		  <img src='img/moose-sizes-log.png'>
+		</section>
+	      </section>
 			  
 			  <!-- credits -->
 			  <section><h2>Picture credits</h2>
-			    <h2>And thank you, and questions?</h2>
 			    <ul class='credits'>
 			      <li><a href='https://www.flickr.com/photos/kretyen/2821401760/'>Ken Bosma, Dune climb</a></li>
 
 			      <li><a href='https://www.flickr.com/photos/lonnie_tucker/9780398433/'>Lonnie Tucker, sand cliff</a></li>
-			      <!--li>Sandpile by <a href='https://www.flickr.com/photos/davispuh/9233204836/'>Dāvis Mosāns</a></li>
-			      <li>Edge of chaos
-			      by <a href='https://www.flickr.com/photos/ecogarden/5642993124/'>Brian
-				  Chiu in Flickr</a></li>
-			      <li>Darwin
-			      by <a href='https://www.flickr.com/photos/nationalmediamuseum/7643315508/'>National
-				  Media Museum</a></li>
+			      <li><a href='https://www.flickr.com/photos/ohhector/3804460670/'>Avalanche by Héctor Palayuelos</a></li>
+			      <li><a href='https://www.flickr.com/photos/cowlishaw/2848272633/'>Nathan Cowlishaw, avalanche</a></li>
+			      <li><a href='https://www.flickr.com/photos/derekbruff/5545688212/'>Derek Bruff, Hourglasses 2</a></li>
 
-			      <li>Zen garden
-			      by <a href='https://www.flickr.com/photos/worldchaos/3233776294/'>Eric
-				  G. in Flickr</a></li>
-
-			      <li>Trones pinnacles
-			      by <a href='https://www.flickr.com/photos/blmcalifornia/26940387294/'>Bureau
-				  of Land Management
-				  California</a></li>
-			      
-			      <li>Sand tufa
-				by <a href='https://www.flickr.com/photos/glenn_n/9733646731/'>Glenn Nelson</a></li>
-
-			      <li><a href='https://commons.wikimedia.org/wiki/File:Backtang2.png'>Sandpile cellular automata By Claudio Rocchini (Own work) [CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons </a></li>
-
-			      <li>Pink sand by <a href='https://www.flickr.com/photos/miguelvirkkunen/10412819215/'>Miguel Virkkunen Carvalho</a></li>
-			      <li>Hourglass by <a href='https://www.flickr.com/photos/thepaco/9719702617/'>Chris Zúñiga in Flickr</a>
-			      <li>Sand dunes by <a href='https://www.flickr.com/photos/39422575@N02/9276465183/'>Robb Hannawacker</a></li>
-			      <li>Ants in the sand by <a href='https://www.flickr.com/photos/fineplan/5564636122/'>fine_plan in Flickr</a></li>
-			      <li>Painting of camels and sands by <a href='https://www.flickr.com/photos/tine-heijermans/28989725985/'>Hubertine Heijermans</a></li>
-			      <li>Japanese sand garden by <a href='https://www.flickr.com/photos/onourtravels/8180063551/'>Alexander2010</a></li-->
 			    </ul>
 			  </section>
 
