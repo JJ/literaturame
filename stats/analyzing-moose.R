@@ -27,7 +27,11 @@ gg.lines+geom_line(aes(x=x,y=SMA5,color='SMA5'))+geom_line(aes(x=x,y=SMA10,color
 ## ----linecount, echo=FALSE-----------------------------------------------
 by.lines <- group_by(lines,Lines.changed)
 lines.count <- summarize(by.lines, count=n())
-ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()
+sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
+print(sizes.fit)
+ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth()
+ggsave('moose-sizes-log.png',width=3,height=2.5)
+                
 
 ## ----powerlaw, echo=FALSE------------------------------------------------
 ggplot(data=lines, aes(lines$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10()
@@ -39,7 +43,8 @@ zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
 
 ## ----autocorrelation, echo=FALSE-----------------------------------------
 autoplot(pacf(lines$Lines.changed, plot=FALSE) )
+ggsave('moose-acf.png',width=3,height=2.5)
 
 ## ----spectrum, echo=FALSE------------------------------------------------
 autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
-
+ggsave('moose-pink.png',width=3,height=2.5)
