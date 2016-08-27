@@ -4,9 +4,19 @@ Measuring progress in literature and in other creative endeavours, like programm
 
 This repo and branch contain scripts to process repositories and generate time series of lines changed in commits, as well as, if it is a literary work that has been continously integrated, to extract the number of words changed. You need to use the `Test::Text` module in order to process it in this way.
 
-## How to use this on your repo.
+## Maybe you are looking for the YAPC::EU 2016 presentations
 
-Perl needs to be installed. Do it the usual way. I'll be using `cpanm` in the instructions, so that is needed too. If you use `perlbrew`, which you should, you will have both.
+The talk on
+[analyzing creativity, or progress when writing books, is in this repo and also published as a GitHub page by means of reveal.js](https://jj.github.io/literaturame). The
+[lightning talk the next day, focusing on several famous Perl modules, Dancer2, Moose, Mojo and Catalyst](https://jj.github.io/literaturame/☇.html),
+same repo (this one). Take a look at it for a shorter intro.
+
+## How to use this on your repo (or any other, for that matter)
+
+Perl needs to be installed. Do it the usual way or, better yet, using
+[`perlbrew`](https://perlbrew.pl/). I'll be using `cpanm` in the
+instructions, so that is needed too. If you use `perlbrew`, which you
+should, you will have both. 
 
 Scripts for processing repositories are contained in the appropriately named `scripts` repository. So
 
