@@ -1,15 +1,35 @@
 #!/usr/bin/env perl
 
+=head1 NAME
+
+get-diffs.pl - Quantify diffs in a software repository
+
+=head1 SYNOPSIS
+
+First, install needed modules
+
+    cpanm install Git File::Slurp::Tiny
+
+Then run it. If there is a git repo in C</home/thatsme/repo>
+
+    ./get-diff.pl "*.pl */*.pm */*/*.pm" /home/thatsme/repo
+
+The quotes are important so that it is not expanded by bash.
+
+=head1 SEE ALSO
+
+Check out L<http://github.com/JJ/literaturame>, for some results, generated reports, R files for analyzing them, and so on. I would be grateful if you added your results to the L<https://github.com/JJ/literaturame/blob/master/data.md> file via pull request.
+=cut
+
 use strict;
 use warnings;
 
 use v5.20;
 
-use JSON;
 use Git;
 use File::Slurp::Tiny qw(write_file);
 
-my $filespec = shift || die "Usage: $0 <ficheros> [git directory]\n";
+my $filespec = shift || die "Usage: $0 <file glob between quotes> [git directory (defaults to .)]\n";
 my $dir = shift || ".";
 
 my $repo = Git->repository (Directory => $dir);

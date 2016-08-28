@@ -1,7 +1,7 @@
 ---
 title: 'Self-organizing criticality in software projects: the case of Catalyst'
 author: "J. J. Merelo"
-date: "25 de agosto de 2016"
+date: "28 de agosto de 2016"
 output: pdf_document
 bibliography: biblio.bib
 abstract: |
@@ -85,3 +85,5 @@ autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
 ##Conclusion
 
 This files has been generated automatically from the data file, so it is difficult to draw a conclusion sight unseen. From what I have seen, there are in many cases long-distance correlations centered around 20 commits of distance, and they show mainly in repositories with a collaborative activity, but they might show up too in some others developed mainly by a single person. You can draw your own conclusions on your own repos by running the Perl script in <http://github.com/JJ/literaturame>
+
+# References
