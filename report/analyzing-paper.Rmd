@@ -22,12 +22,19 @@ lines$SMA5 <- SMA(lines$Lines.changed,n=5)
 lines$SMA10 <- SMA(lines$Lines.changed,n=10)
 ```
 
-The existence of a self-organized critical state in software repositories has been well established and attributed to an stigmergy project in which collaborators interact through the code itself and other communication media, such as the Slack chat application or mailing lists.
-This is a report for a particular repository whose data is contained in the file `r file`. This file contains a sequence of change sizes for every commit that affects those parcitular files. Since changes include insertion and deletion of files, the biggest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of the sizes of all files.
+#Introduction
 
-Not all files in the repository are considered; some care has been taken to include only files written in the same language; also, in general only files that have actually been written by the user have been included. For that reason, the size of the first commit is eliminated from the sequence. 
+The existence of a self-organized critical state [@bak1988self] in software repositories has been well established [@wu2007empirical] [@gorshenev2004punctuated] [@Merelo2016] and attributed to an stigmergy process [@robles05] in which collaborators interact through the code itself and other communication media, such as the Slack chat application, task assignment systems or mailing lists. The case for this critical state is supported by mainly the non-existence of a particular scale in the size of changes [@wu2007empirical] [@gorshenev2004punctuated], but in some cases they also exhibit long-range correlations and a *pink noise* in the power spectral density, with *noise* or variations with respect to the *normal* frequency changing in a way that is inversely proportional to it, higher frequency changes getting a smaller spectral density. 
 
-What I intend with these report is to show that *writing is writing*. It is a creative process, with the same characteristics, or similar, cutting accross types of writing, be it software, fiction or other kind of *literary* writing.
+After examining and establishing the existence of this state in the software repository for the Moose library, in this report we are going to work on a repository for a paper our research group has been working for a long time. Since our research group supports open science, we develop in open software repositories, and this one can be found in https://github.com/geneura-papers/2015_books . This particular paper has been chosen since it has been a work in progress for more than one a year, and in fact in this precise moment it is in the process of being reviewed to be submitted again to a journal. 
+
+Coming up next, we will examine the methodology followed to extract information from the repository and how we have processed it. [Results](#res) will be presented in the next section, and eventually we will expose our [conclusions](#conc).
+
+# Methodology {#methodology}
+To extract information of changes in this file, changes have been circumscribed to the paper itself: two files including the paper and response to reviewers, which are the ones that more particularly relate to the projects. Other files are considered artifacts (for instance, images) and are not taken into account. The repository is analyzed with a Perl script and a sequence of lines changed in each commit is generated. Since changes include insertion and deletion of lines within those files, the biggest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of the sizes of all files. A change in two lines will appear in a diff as "2 insertions, 2 deletions", adding up to 0; that is why we consider the bigger of these two values.
+
+
+#Results {#res}
 
 This is a summary of the characteristics of commit sizes.
 ```{r summary}
@@ -85,7 +92,7 @@ These possible long range autocorrelations point also to a state of self-organiz
 autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
 ```
 
-##Conclusion
+##Conclusions {#conc}
 
 This files has been generated automatically from the data file, so it is difficult to draw a conclusion sight unseen. From what I have seen, there are in many cases long-distance correlations centered around 20 commits of distance, and they show mainly in repositories with a collaborative activity, but they might show up too in some others developed mainly by a single person. You can draw your own conclusions on your own repos by running the Perl script in <http://github.com/JJ/literaturame>
 
