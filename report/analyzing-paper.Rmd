@@ -1,0 +1,92 @@
+---
+title: 'Self-organized criticality in repository-mediated projects'
+author: "J. J. Merelo"
+date: "29 de agosto de 2016"
+output: pdf_document
+bibliography: biblio.bib
+abstract: |
+   In this paper we will examine if a particular source-contro system repository, devoted to the collaborative writing of a software paper, is in a self-organized critical state, which can be measured by the existence of a scale-free structure, long-distance correlations and pink noise when analyzing the size of changes and its time series.
+   Our intention is to prove that, although with different characteristics, any repository independently of the number of collaborators and its real nature, self-organizes, which implies that it is the nature of the interactions, and not the object of the interaction, which takes the project to a critical state. At the same time, we will examine the differences with software projects. 
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library("ggfortify")
+library(dplyr)
+library(TTR)
+#use 
+file <- '/home/jmerelo/proyectos/literaturame/data/papers/lines_2015_books_ALL_tex.csv'
+# for testing here
+lines <- read.csv(file) # File should be established from an R script
+lines$SMA5 <- SMA(lines$Lines.changed,n=5)
+lines$SMA10 <- SMA(lines$Lines.changed,n=10)
+```
+
+The existence of a self-organized critical state in software repositories has been well established and attributed to an stigmergy project in which collaborators interact through the code itself and other communication media, such as the Slack chat application or mailing lists.
+This is a report for a particular repository whose data is contained in the file `r file`. This file contains a sequence of change sizes for every commit that affects those parcitular files. Since changes include insertion and deletion of files, the biggest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of the sizes of all files.
+
+Not all files in the repository are considered; some care has been taken to include only files written in the same language; also, in general only files that have actually been written by the user have been included. For that reason, the size of the first commit is eliminated from the sequence. 
+
+What I intend with these report is to show that *writing is writing*. It is a creative process, with the same characteristics, or similar, cutting accross types of writing, be it software, fiction or other kind of *literary* writing.
+
+This is a summary of the characteristics of commit sizes.
+```{r summary}
+summary(lines)
+```
+
+The timeline of the commit sizes is represented next, in different ways, with logarithmic or decimal *y* scale. The serrated characteristics is the same, as well as the big changes in scale. *x* axis is simply the temporal sequence of commits, while the *y* axis is the absolute size. 
+
+```{r timeline, echo=FALSE}
+lines$x = as.numeric(row.names(lines))
+gg.lines = ggplot(lines)
+gg.lines+geom_point(aes(x=x,y=Lines.changed))
+gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))
+gg.lines+geom_point(aes(x=x,y=Lines.changed))+scale_y_log10()
+gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))+scale_y_log10()
+```
+
+
+Probably it will be a bit more visible if we do a order 5 and then an order 10 smoothing
+```{r smoothie, echo=FALSE}
+gg.lines+geom_line(aes(x=x,y=SMA5,color='SMA5'))+geom_line(aes(x=x,y=SMA10,color='SMA10'))+scale_y_log10()
+```
+
+The change in scale might mean that it is distributed using a Pareto distribution. Next we represent the number of changes of a particular size in a log-log scale.
+
+```{r linecount, echo=FALSE}
+by.lines <- group_by(lines,Lines.changed)
+lines.count <- summarize(by.lines, count=n())
+sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
+ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth()
+```
+
+This distribution also appears as a Zipf distribution, with the commit sizes ranked in descending order and plotted with a logarighmic *y* axis. I can be linearly fit to a log-log distribution with coefficients `r sizes.fit$coefficients`
+
+```{r powerlaw, echo=FALSE}
+ggplot(data=lines, aes(lines$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10()
+sorted.lines <- data.frame(x=1:length(lines$Lines.changed),Lines.changed=as.numeric(lines[order(-lines$Lines.changed),]$Lines.changed))
+ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))
+ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
+sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
+zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
+```
+
+The Zipf exponent for this graph is `r zipf.fit$coefficients`
+
+Finally, these scale distributions hints at the possibility of long-scale correlations. The partial autocorrelation is plotted in the next figure.
+
+```{r autocorrelation, echo=FALSE}
+autoplot(pacf(lines$Lines.changed, plot=FALSE) )
+```
+
+These possible long range autocorrelations point also to a state of self-organized criticality. One of the characteristics of this state is the presence of *pink* noise, as measured by the power spectral density, shown below
+
+```{r spectrum, echo=FALSE}
+autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
+```
+
+##Conclusion
+
+This files has been generated automatically from the data file, so it is difficult to draw a conclusion sight unseen. From what I have seen, there are in many cases long-distance correlations centered around 20 commits of distance, and they show mainly in repositories with a collaborative activity, but they might show up too in some others developed mainly by a single person. You can draw your own conclusions on your own repos by running the Perl script in <http://github.com/JJ/literaturame>
+
+# References
