@@ -15,12 +15,17 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-file <- '/home/jmerelo/proyectos/literaturame/data/papers/lines_2015_books_ALL_tex.csv'
+file <- '/home/jmerelo/proyectos/literaturame/data/books/lines_HashSlash_texto_HashSlash_md.csv'
 # for testing here
 lines <- read.csv(file) # File should be established from an R script
 lines$SMA5 <- SMA(lines$Lines.changed,n=5)
 lines$SMA10 <- SMA(lines$Lines.changed,n=10)
 lines$SMA20 <- SMA(lines$Lines.changed,n=20)
+deltas <- read.csv('/home/jmerelo/proyectos/literaturame/data/books/words-hashslash.csv') # File should be established from an R script
+words <- deltas[-1,]
+words$Delta <- abs(words$Delta)
+words$SMA5 <- SMA(words$Delta,n=5)
+words$SMA10 <- SMA(words$Delta,n=10)
 ```
 
 #Introduction
@@ -38,8 +43,9 @@ To extract information of changes in this file, changes have been circumscribed 
 #Results {#res}
 
 This is a summary of the characteristics of the commit sizes.
-```{r summary}
+```{r summary, echo=FALSE}
 summary(lines)
+summary(words)
 ```
 
 The timeline of the commit sizes is represented next with logarithmic or decimal *y* scale. The serrated characteristic is the same, as well as the big changes in scale. *x* axis is simply the temporal sequence of commits, while the *y* axis is the absolute size of the commit in number of lines. 
