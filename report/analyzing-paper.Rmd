@@ -15,7 +15,7 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-file <- '/home/jmerelo/proyectos/literaturame/data/papers/lines_2015_books_ALL_tex.csv'
+file <- '/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv'
 # for testing here
 lines <- read.csv(file) # File should be established from an R script
 lines$SMA5 <- SMA(lines$Lines.changed,n=5)
