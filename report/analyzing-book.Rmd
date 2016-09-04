@@ -55,9 +55,11 @@ In the next section we will effectively analyze the sequence of changes and its 
 
 This is a summary of the characteristics of the commit sizes and, next, the number of words changed. 
 ```{r summary, echo=FALSE}
-summary(lines)
-summary(words)
+summary(lines$Lines.changed)
+summary(words$Delta)
 ```
+
+There is an order of magnitude difference between lines and words, which should only be expected. 
 
 The timeline of the commit sizes is represented next with logarithmic or decimal *y* scale. The serrated characteristic is the same, as well as the big changes in scale. *x* axis is simply the temporal sequence of commits, while the *y* axis is the absolute size of the commit in number of lines. 
 
@@ -72,15 +74,16 @@ gg.changes <- gg.words+geom_line(aes(x=Commit,y=Delta,group=1))+scale_y_log10()
 gg.changes
 ```
 
-A certain *rhythm* can be observed. Probably it will be a bit more visible if we do a order 10 and then an order 20 smoothing, averaging over that number of changes.
-```{r smoothie, echo=FALSE, warnings=FALSE}
+The top graph corresponds to lines, bottom one to words. A certain *rhythm* can be observed in both. Probably it will be a bit more visible if we do a order 10 and then an order 20 smoothing, averaging over that number of changes.
+
+```{r smoothie, echo=FALSE, warning=FALSE}
 gg.lines+geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()
 gg.words+geom_line(aes(x=Commit,y=SMA5,color='SMA5'))+geom_line(aes(x=Commit,y=SMA10,color='SMA10'))+scale_y_log10()
 ```
 
-The change in scale might mean that it is distributed using a Pareto distribution. Next we represent the number of changes of a particular size in a log-log scale, with linear smoothing to show the trend.
+The scale of changes, which varies widely, might mean that it is distributed using a Pareto distribution. Next we represent the number of changes of a particular size in a log-log scale, with linear smoothing to highlight the trend.
 
-```{r linecount, echo=FALSE}
+```{r linecount, echo=FALSE, warning=FALSE}
 by.lines <- group_by(lines,Lines.changed)
 lines.count <- summarize(by.lines, count=n())
 sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
@@ -89,9 +92,10 @@ by.words <- group_by(words,Delta)
 words.count <- summarize(by.words, count=n())
 pl.plot <- ggplot(words.count, aes(x=Delta, y=count))+stat_smooth()+geom_point()+scale_x_log10()+scale_y_log10()
 pl.plot
+deltas.fit <- lm(log(1+words.count$Delta) ~ log(words.count$count))
 ```
 
-This distribution appears as a Zipf distribution, with the commit sizes ranked in descending order and plotted with a logarighmic *y* axis. I can be linearly fit to a log-log distribution with coefficients `r sizes.fit$coefficients`, which we can compare with the results in [@Merelo2016], with a slope coefficient equal to `-0.9608`.
+These graphs appears as a Zipf distribution, with the commit sizes ranked in descending order and plotted in a log-log scale. I can be linearly fit to a log-log distribution with coefficients `r sizes.fit$coefficients`, which we can compare with the results in [@Merelo2016], with a slope coefficient equal to `-0.9608`. On the other hand, the bottom graph of word deltas can be fit to a log-log distribution with coefficients `r deltas.fit$coefficients`. These two coefficients, despite the variation in scale, are surprisingly similar, which hints again at the fractal nature of changes due to its similarity at different scales (words and lines).
 
 We can look at the changes in some other way, ranking changes by size and representing them in a graph with logarithmic $y$ axis, as wel as in the form of an histogram. 
 
