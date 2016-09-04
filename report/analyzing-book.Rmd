@@ -5,7 +5,7 @@ date: "31 de agosto de 2016"
 output: pdf_document
 bibliography: biblio.bib
 abstract: |
-   In this paper we will examine if a novel written in the same way as a software project, using source-control system and continous delivery, is in a self-organized critical state, which can be measured by the existence of a scale-free structure, long-distance correlations and pink noise when analyzing the size of changes and its time series. 
+   In this paper we will examine if a novel written in the same way as a software project, using a source-control system and continuous integration and delivery, is in a self-organized critical state, which can be measured by the existence of a scale-free structure, long-distance correlations and pink noise when analyzing the size of changes and its time series. 
    Our intention is to prove that it is probably in the nature of the media or the use of a software repository the cause of self-organization, without needing to have actual interaction between different writers. This lowers the threshold for the existence of self-organization, and, at the same time, gives a completely new measure of the performance in a creative process, writing: the existence or not of self-organization.
 ---
 
@@ -112,7 +112,7 @@ sorted.words.no0 <- sorted.words[sorted.words$Delta>0,]
 zipf.fit.w <- lm(log(sorted.words.no0$Delta) ~ sorted.words.no0$x)
 ```
 
-The Zipf exponent for these graphs are `r zipf.fit$coefficients` in the case of lines and `r zipf.fit.w$coefficients` , which are also in the same ranges as the ones found in [@Merelo2016,@merelo16:self], around 0.02. As before, these graphs show two regimes, first one with an almost exponential decrease and a second one with a lower rate of decrement. This is probably a double-Pareto-lognormal distribution. However, even as that would be interesting, as well as the coefficients themselves, it veers off the main objective of this report, which is to establish the critical state of the book. 
+The Zipf exponent for these graphs are `r zipf.fit$coefficients` in the case of lines and `r zipf.fit.w$coefficients` , which are also in the same ranges as the ones found in [@Merelo2016,@merelo16:self], around 0.02. As before, these graphs show two regimes, first one with an almost exponential decrease and a second one with a lower rate of decrease. This is probably a double-Pareto-lognormal distribution. However, even as that would be interesting, as well as the coefficients themselves, it veers off the main objective of this report, which is to establish the critical state of the book. 
 
 Finally, these scale distributions hints at the possibility of long-scale correlations, which is also a characteristic of a critical state. The partial autocorrelation is plotted in the next figure.
 
