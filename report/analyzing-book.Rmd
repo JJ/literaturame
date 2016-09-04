@@ -1,5 +1,5 @@
 ---
-title: 'Self-organized criticality in repository-mediated projects: the case of #Slash, a novel'
+title: 'Self-organized criticality in fiction: the case of #Slash, a novel'
 author: "J. J. Merelo"
 date: "31 de agosto de 2016"
 output: pdf_document
@@ -32,21 +32,21 @@ words$SMA10 <- SMA(words$Delta,n=10)
 
 The existence of a self-organized critical state [@bak1988self] in repositories has been well established [@wu2007empirical,@gorshenev2004punctuated,@Merelo2016,@merelo16:self] and attributed to an stigmergy process [@robles05] in which collaborators interact through the code itself and other communication media, such as the Slack chat application, task assignment systems or mailing lists. The case for this critical state is supported by mainly the non-existence of a particular scale in the size of changes [@wu2007empirical,@gorshenev2004punctuated], but in some cases they also exhibit long-range correlations and a *pink noise* in the power spectral density, with *noise* or variations with respect to the *normal* frequency changing in a way that is inversely proportional to it, higher frequency changes getting a smaller spectral density. In fact, it does not need to be software to reach that critical state, as proved in [@merelo16:self], where we examined a scientific paper and reached the same conclusions as for software, proving that, in fact, collaboration and a source control system are the only things needed to reach that state through self-organization.
 
-The question that we will try to answer in this paper is: could one of those conditions be dropped? For instance, is collaboration actually needed for self-organization? In order to answer that question we will examine the changes in the repository for a novel the author wrote using also a source-control system, which made possible to extract the same information as we did for the previous repositories. In fact, the intention of this paper will go beyond that: we will try to check whether books, be it fiction or non-fiction, are also written in this critical state, which is reached through changes that interact with the text repository. 
+The question that we will try to answer in this paper is: could one of those conditions be dropped? For instance, is collaboration actually needed for self-organization? In order to answer that question we will examine the changes in the repository for a novel the author wrote using also a source-control system, which made possible to extract the same information as we did for the previous repositories. In fact, the intention of this paper will go beyond that: we will try to check whether books, be it fiction or non-fiction, are also written in this critical state, which is reached through changes that interact with the text repository. The object of study will be the book #Slash [@slash], written along several months of the year 2014 and eventually self-published in Amazon.
 
-As fas as we know, there has been no study similar to this done, for the simple reason that there is no data kept of how many words or lines are changed in a writing session. We are using a system that spell-checks text at the end of every session and as a side effect counts the total number of words; at the same time, as a side effect of the use of git to check-in every session into a source-code repository, we also know the number of lines changed in every session. Missing that information, most studies of creative work focus on the *fractal* nature of the final painting [@taylor1999fractal], text corpus [@montemurro2001beyond], or, in general, on cognitive activities leading to self-organized criticality, which is observed via that fractal geometry [@wagenmakers2005human] in some aspect of the final result. This paper uses the same information used for the previous ones [@Merelo2016,@merelo16:self] which mines the changed lines from the repository, and adds specific information for the nature of the media: number of words. Besides checking whether the conditions for self-organized criticality hold, we will also check whether they emerge in both measures and will try to explain discrepancies, if there are any. 
+As far as we know, there has been no study similar to this done, for the simple reason that there is no data kept of how many words or lines are changed in a writing session. We are using a system that spell-checks text at the end of every session and as a side effect counts the total number of words; at the same time, as a side effect of the use of git to check-in every session into a source-code repository, we also know the number of lines changed in every session. Missing that information, most studies of creative work focus on the *fractal* nature of the final painting [@taylor1999fractal], text corpus [@montemurro2001beyond], or, in general, on cognitive activities leading to self-organized criticality, which is observed via that fractal geometry [@wagenmakers2005human] in some aspect of the final result. This paper uses the same information used for the previous ones [@Merelo2016,@merelo16:self] which mines the changed lines from the repository, and adds specific information for the nature of the media: number of words. Besides checking whether the conditions for self-organized criticality hold, we will also check whether they emerge in both measures and will try to explain discrepancies, if there are any. 
 
 Coming up next, we will examine the methodology followed to extract information from the repository and how we have processed it. [Results](#res) will be presented in the next section, and eventually we will expose our [conclusions](#conc).
 
 # Methodology {#methodology}
 
-The book we are working is is contained in a single MarkDown file. Markdown is a minimal markup  language whose elements have no influence on the word or line count. 
+The book we are working is is contained in a single Markdown file. Markdown is a minimal markup  language whose elements have no influence on the word or line count. 
 
 To extract information about changes in this file, the repository is analyzed with a Perl script and a sequence of lines changed in each commit is generated. Since changes include insertion and deletion of lines within those files, the biggest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of the sizes of all files. A change in two lines will appear in a diff as "2 insertions, 2 deletions", adding up to 0; that is why we consider the bigger of these two values.
 
 The number of words changed is computed via the spelling check log files. These logs are hosted in Travis, a continuous integration site. A Perl script extracts also the total number of words and computes the difference with respect to the previous one. 
 
-In this case, the book was written working simultaneously in several *branches*. These branches included a core that was common, but also different POV narrations that were not present in all branches. That is why the word count sequence changes so dramatically: when branches change, so do the word count changes too. In fact, this will account for some of the bigger word count changes, although since this is part of the *normal*, in this environemny, writing dynamic, it need not be discounted. 
+In this case, the book was written working simultaneously in several *branches*. These branches included a core that was common, but also different POV narrations that were not present in all branches. That is why the word count sequence changes so dramatically: when branches change, so do the word count changes too. In fact, this will account for some of the bigger word count changes, although since this is part of the *normal*, in this environment, writing dynamic, it need not be discounted. 
 
 In the next section we will effectively analyze the sequence of changes and its critical characteristics. 
 
@@ -95,11 +95,11 @@ pl.plot
 deltas.fit <- lm(log(1+words.count$Delta) ~ log(words.count$count))
 ```
 
-These graphs appears as a Zipf distribution, with the commit sizes ranked in descending order and plotted in a log-log scale. I can be linearly fit to a log-log distribution with coefficients `r sizes.fit$coefficients`, which we can compare with the results in [@Merelo2016], with a slope coefficient equal to `-0.9608`. On the other hand, the bottom graph of word deltas can be fit to a log-log distribution with coefficients `r deltas.fit$coefficients`. These two coefficients, despite the variation in scale, are surprisingly similar, which hints again at the fractal nature of changes due to its similarity at different scales (words and lines).
+These graphs appears as a Zipf distribution, with the commit sizes ranked in descending order and plotted in a log-log scale. I can be linearly fit to a log-log distribution with coefficients `r sizes.fit$coefficients`, which we can compare with the results in [@Merelo2016], with a slope coefficient equal to `-0.9608`, and `-1.0782681` in [@merelo16:self]. On the other hand, the bottom graph of word deltas can be fit to a log-log distribution with coefficients `r deltas.fit$coefficients`. These two coefficients, despite the variation in scale, are surprisingly similar, which hints again at the fractal nature of changes due to its similarity at different scales (words and lines). The values, however, are significantly higher than in the previous cases. This is specially curious in the last case, a scientific paper, since, essentially, the object of work is the same: text. For the time being we will not try to explain these differences. 
 
-We can look at the changes in some other way, ranking changes by size and representing them in a graph with logarithmic $y$ axis, as wel as in the form of an histogram. 
+We can look at the changes in some other way, ranking changes by size and representing them in a graph with logarithmic $y$ axis, as well as in the form of an histogram. 
 
-```{r powerlaw, echo=FALSE}
+```{r powerlaw, echo=FALSE, warning=FALSE}
 ggplot(data=lines, aes(lines$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10()
 sorted.lines <- data.frame(x=1:length(lines$Lines.changed),Lines.changed=as.numeric(lines[order(-lines$Lines.changed),]$Lines.changed))
 ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
@@ -107,16 +107,14 @@ sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
 zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
 ggplot(data=words, aes(words$Delta)) + geom_histogram(bins=100)+scale_x_log10()
 sorted.words <- data.frame(x=1:length(words$Delta),Delta=as.numeric(words[order(-words$Delta),]$Delta))
-ggplot()+geom_point(data=sorted.words,aes(x=x,y=Delta))
 ggplot()+geom_point(data=sorted.words,aes(x=x,y=Delta))+scale_y_log10()
 sorted.words.no0 <- sorted.words[sorted.words$Delta>0,]
 zipf.fit.w <- lm(log(sorted.words.no0$Delta) ~ sorted.words.no0$x)
-ggplot(sorted.words,aes(x=x,y=Delta)) +geom_point()+scale_y_log10()
 ```
 
-The Zipf exponent for thes graphs are `r zipf.fit$coefficients` in the case of lines and `r zipf.fit.w$coefficients` , which is also in the same range as the one found in [@Merelo2016]
+The Zipf exponent for these graphs are `r zipf.fit$coefficients` in the case of lines and `r zipf.fit.w$coefficients` , which are also in the same ranges as the ones found in [@Merelo2016,@merelo16:self], around 0.02. As before, these graphs show two regimes, first one with an almost exponential decrease and a second one with a lower rate of decrement. This is probably a double-Pareto-lognormal distribution. However, even as that would be interesting, as well as the coefficients themselves, it veers off the main objective of this report, which is to establish the critical state of the book. 
 
-Finally, these scale distributions hints at the possibility of long-scale correlations. The partial autocorrelation is plotted in the next figure.
+Finally, these scale distributions hints at the possibility of long-scale correlations, which is also a characteristic of a critical state. The partial autocorrelation is plotted in the next figure.
 
 ```{r autocorrelation, echo=FALSE}
 autoplot(pacf(lines$Lines.changed, plot=FALSE) )
@@ -124,21 +122,23 @@ autoplot(pacf(words$Delta, plot=FALSE) )
 
 ```
 
-The spikes around the 20 commit mark, which also appeared in [@Merelo2016], are present here. In that case, there was positive autocorrelation in the 21 commit period; in this case, it appears at 25 and 15. It shows, anyway, that the size of a commit has a clear influence further down writing history, with high autocorrelations around 20 commits. 
+The spikes around the 20 commit mark, which also appeared in [@Merelo2016,@merelo16:self], are present here. In that case, there was positive autocorrelation in the 21 commit period; in this case, it appears at 21 for lines and 22 for words. It shows, anyway, that the size of a commit has a clear influence further down the writing history, with high autocorrelations around 20 commits. 
 
 With two of the three features of the critical state present, we will focus on the third, the presence of *pink* noise, as measured by the power spectral density, shown below
 
 ```{r spectrum, echo=FALSE}
 autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
-autoplot(pacf(words$Delta, plot=FALSE) )
+autoplot(spectrum(words$Delta, plot=FALSE) )
 ```
 
-The fact that there is not a clear trend downwards that would indicate the `1/frequency` state of the power spectrum indicates that, in this case, this feature does not show up. It might be the case that pink noise appears later on in development, or simply needs larger periods to appear. The fact that this third characteristic of the self-organized state is not present does not obscure the other two, however, which appear clearly and significantly.
+The `1/frequency` power spectrum appears with a certain clarity in the top graph, and with less clarity in the graph below. This indicates a *pink noise* in the sequence of changes, which would be the third feature in the critical state, a critical state that, since it has not been designed, was reached via repository mediated self-organization. 
 
 ##Conclusions {#conc}
 
-After analyzing the software repository for a scientific paper, we can conclude that it is in a critical state, as proved by the fact that its changes have a scale-free form and that there are long-distance correlations, with *long* indicating here a distance further than the two or three closer commits. Differently from other papers, we have used commits as discrete measure, not *dailies* or other time measure, since development often stops for several days more clearly in the case of this paper, where nothing was done for months, and nothing between submission and the first revision. We think that commits, and not actual time measures, will show a much clearer picture of the state of the repository, since they correspond to units of work done and are also related to discrete tasks in the ticketing system.
+As far as we have been able to find, this is the first paper that establishes the presence of a self-organized critical state in a work of literary fiction. This conclusion has been reached via the analysis of word and line changes in written sessions registered in a source-control system, namely, GitHub. The analysis proves that in both scales the essential features of self-organized criticality, namely, self-similarity, long-distance autocorrelations and pink noise, are present. Besides, fit models are quite similar in both scales, although in some cases coefficients differ from models fit to other sorts of projects. 
 
- You can draw your own conclusions on your own repos by running the Perl script in <http://github.com/JJ/literaturame>. As future line of work, we will compare different paper repositories, and these with other type of repositories, and see if there are some outstanding and statistically significant differences, which would be attributed rather than the substrate itself, to different types of collaboration.
+The fact that self-organization happens despite the absence of collaboration implies that in fact, the *agents* of the stigmergy project are not individual persons, but probably something at a lower level that we could call *ideas* or *functionalities*. Besides, having data on writing sessions might be used either to authenticate the author or, in generative literature, to create models that are based more on the writing process than on its final state, and are thus much more realistic. As far as we know, this has not been done so far either. 
+
+All data for this paper, as well as the scripts used to extract them, are hosted <http://github.com/JJ/literaturame> with a free license. Future lines of work will include a more extensive comparison of different types of repositories with different kinds of works and some conclusions on the model, as well as implications for software and literature metrics. 
 
 # References
