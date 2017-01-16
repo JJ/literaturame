@@ -125,9 +125,22 @@
 \fi
 
 \begin{document}
+<<setup, cache=FALSE,echo=FALSE>>=
+library(ggplot2)
+library("ggfortify")
+library(dplyr)
+library(TTR)
+#use 
+file <- '/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv'
+# for testing here
+lines <- read.csv(file) # File should be established from an R script
+lines$SMA5 <- SMA(lines$Lines.changed,n=5)
+lines$SMA10 <- SMA(lines$Lines.changed,n=10)
+lines$SMA20 <- SMA(lines$Lines.changed,n=20)
+@ 
 \maketitle
 \begin{abstract}
-In this paper we will examine if a particular source-contro system
+In this paper we will examine if a particular source-control system
 repository, devoted to the collaborative writing of a software paper, is
 in a self-organized critical state, which can be measured by the
 existence of a scale-free structure, long-distance correlations and pink
@@ -142,16 +155,14 @@ differences with software projects.
 
 \section{Introduction}\label{introduction}
 
-The existence of a self-organized critical state (Bak, Tang, and
-Wiesenfeld 1988) in software repositories has been well established (Wu,
-Holt, and Hassan 2007) (Gorshenev and Pis'mak 2004) (Merelo 2016) and
+The existence of a self-organized critical state \cite{bak1988self} in
+software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining} and
 attributed to an stigmergy process (Robles, Guervós, and
 González-Barahona 2005) in which collaborators interact through the code
 itself and other communication media, such as the Slack chat
 application, task assignment systems or mailing lists. The case for this
 critical state is supported by mainly the non-existence of a particular
-scale in the size of changes (Wu, Holt, and Hassan 2007) (Gorshenev and
-Pis'mak 2004), but in some cases they also exhibit long-range
+scale in the size of changes \cite{wu2007empirical,gorshenev2004punctuated}, but in some cases they also exhibit long-range
 correlations and a \emph{pink noise} in the power spectral density, with
 \emph{noise} or variations with respect to the \emph{normal} frequency
 changing in a way that is inversely proportional to it, higher frequency
@@ -201,17 +212,19 @@ This is a summary of the characteristics of the commit sizes.
 \KeywordTok{summary}\NormalTok{(lines)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-##  Lines.changed         SMA5            SMA10            SMA20       
-##  Min.   :  1.00   Min.   :  1.60   Min.   :  2.40   Min.   :  4.70  
-##  1st Qu.:  4.00   1st Qu.:  9.90   1st Qu.: 13.70   1st Qu.: 18.75  
-##  Median :  9.00   Median : 21.10   Median : 26.30   Median : 28.95  
-##  Mean   : 32.01   Mean   : 32.26   Mean   : 32.56   Mean   : 33.08  
-##  3rd Qu.: 31.25   3rd Qu.: 41.40   3rd Qu.: 44.40   3rd Qu.: 41.90  
-##  Max.   :675.00   Max.   :205.00   Max.   :132.70   Max.   :101.55  
-##                   NA's   :4        NA's   :9        NA's   :19
-\end{verbatim}
+<<commits, cache=FALSE,echo=FALSE>>=
+summary(lines)
+@
+% \begin{verbatim}
+% ##  Lines.changed         SMA5            SMA10            SMA20       
+% ##  Min.   :  1.00   Min.   :  1.60   Min.   :  2.40   Min.   :  4.70  
+% ##  1st Qu.:  4.00   1st Qu.:  9.90   1st Qu.: 13.70   1st Qu.: 18.75  
+% ##  Median :  9.00   Median : 21.10   Median : 26.30   Median : 28.95  
+% ##  Mean   : 32.01   Mean   : 32.26   Mean   : 32.56   Mean   : 33.08  
+% ##  3rd Qu.: 31.25   3rd Qu.: 41.40   3rd Qu.: 44.40   3rd Qu.: 41.90  
+% ##  Max.   :675.00   Max.   :205.00   Max.   :132.70   Max.   :101.55  
+% ##                   NA's   :4        NA's   :9        NA's   :19
+% \end{verbatim}
 
 The timeline of the commit sizes is represented next with logarithmic or
 decimal \emph{y} scale. The serrated characteristic is the same, as well
@@ -219,53 +232,90 @@ as the big changes in scale. \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
 commit in number of lines.
 
-\includegraphics{analyzing-paper_files/figure-latex/timeline-1.pdf}
-\includegraphics{analyzing-paper_files/figure-latex/timeline-2.pdf}
+% \includegraphics{analyzing-paper_files/figure-latex/timeline-1.pdf}
+% \includegraphics{analyzing-paper_files/figure-latex/timeline-2.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<timeline, cache=FALSE,echo=FALSE,warning=FALSE>>=
+lines$x = as.numeric(row.names(lines))
+gg.lines = ggplot(lines)
+gg.lines+geom_point(aes(x=x,y=Lines.changed))+scale_y_log10()
+gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))+scale_y_log10()
+@ 
+\caption{Lines changed per commit in a log-y scale.\label{fig:tl}}
+\end{figure*}
 
 A certain \emph{rhythm} can be observed. Probably it will be a bit more
 visible if we do a order 10 and then an order 20 smoothing, averaging
 over that number of changes.
-
-\begin{verbatim}
-## Warning: Removed 9 rows containing missing values (geom_path).
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: Removed 19 rows containing missing values (geom_path).
-\end{verbatim}
-
-\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
+%
+%\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE>>=
+gg.lines+geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()
+@ 
+\caption{Smoothed line over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
+\end{figure*}
 
 The change in scale might mean that it is distributed using a Pareto
 distribution. Next we represent the number of changes of a particular
 size in a log-log scale, with linear smoothing to show the trend.
 
-\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
-
+%\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE>>=
+by.lines <- group_by(lines,Lines.changed)
+lines.count <- summarize(by.lines, count=n())
+sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
+ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth()
+@ 
+\caption{Number of changes vs size in a log-log scale.\label{fig:zipf}}
+\end{figure*}
+%
 This distribution appears as a Zipf distribution, with the commit sizes
 ranked in descending order and plotted with a logarighmic \emph{y} axis.
 I can be linearly fit to a log-log distribution with coefficients
-4.7287153, -1.0782681, which we can compare with the results in (Merelo
-2016), with a slope coefficient equal to \texttt{-0.9608}.
+4.7287153, -1.0782681, which we can compare with the results in \cite{Merelo2016:repomining}, with a slope coefficient equal to \texttt{-0.9608}.
 
 We can look at the changes in some other way, ranking changes by size
 and representing them in a graph with logarithmic \(y\) axis, as wel as
 in the form of an histogram.
 
-\includegraphics{analyzing-paper_files/figure-latex/powerlaw-1.pdf}
-\includegraphics{analyzing-paper_files/figure-latex/powerlaw-2.pdf}
-
+%\includegraphics{analyzing-paper_files/figure-latex/powerlaw-1.pdf}
+%\includegraphics{analyzing-paper_files/figure-latex/powerlaw-2.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE>>=
+ggplot(data=lines, aes(lines$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10()
+sorted.lines <- data.frame(x=1:length(lines$Lines.changed),Lines.changed=as.numeric(lines[order(-lines$Lines.changed),]$Lines.changed))
+ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
+sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
+zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
+@ 
+\caption{Changes, ordered by size, and represented in a logarithmic
+  $y$ axis.\label{fig:zipf2}}
+\end{figure*}
+%
+%
 The Zipf exponent for this graph is 4.8995184, -0.0150829, which is also
-in the same range as the one found in (Merelo 2016)
+in the same range as the one found in \cite{Merelo2016:repomining}.
 
 Finally, these scale distributions hints at the possibility of
 long-scale correlations. The partial autocorrelation is plotted in the
 next figure.
 
-\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
-
-The spikes around the 20 commit mark, which also appeared in (Merelo
-2016), are present here. In that case, there was positive
+%\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE>>=
+autoplot(pacf(lines$Lines.changed, plot=FALSE) )
+@ 
+\caption{Autocorrelation plot. \label{fig:auto}}
+\end{figure*}
+%
+The spikes around the 20 commit mark, which also appeared in \cite{Merelo2016:repomining}, are present here. In that case, there was positive
 autocorrelation in the 21 commit period; in this case, it appears at 25
 and 15. It shows, anyway, that the size of a commit has a clear
 influence further down writing history, with high autocorrelations
@@ -275,8 +325,15 @@ With two of the three features of the critical state present, we will
 focus on the third, the presence of \emph{pink} noise, as measured by
 the power spectral density, shown below
 
-\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
-
+%\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<spectrum,message=FALSE, cache=FALSE,echo=FALSE>>=  
+autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
+@ 
+\caption{Spectral density of changes. \label{fig:spectrum}}
+\end{figure*}
+%
 The fact that there is not a clear trend downwards that would indicate
 the \texttt{1/frequency} state of the power spectrum indicates that, in
 this case, this feature does not show up. It might be the case that pink
@@ -307,32 +364,7 @@ type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
 than the substrate itself, to different types of collaboration.
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
-
-\hypertarget{refs}{}
-\hypertarget{ref-bak1988self}{}
-Bak, Per, Chao Tang, and Kurt Wiesenfeld. 1988. ``Self-Organized
-Criticality.'' \emph{Physical Review A} 38 (1). APS: 364.
-
-\hypertarget{ref-gorshenev2004punctuated}{}
-Gorshenev, AA, and Yu M Pis'mak. 2004. ``Punctuated Equilibrium in
-Software Evolution.'' \emph{Physical Review E} 70 (6). APS: 067103.
-
-\hypertarget{ref-Merelo2016}{}
-Merelo, Juan J. 2016. ``Quantifying Activity Through Repository Mining:
-The Case of Moose,'' August. \url{10.6084/m9.figshare.3756768.v3}.
-
-\hypertarget{ref-robles05}{}
-Robles, Gregorio, Juan Julián Merelo Guervós, and Jesús M.
-González-Barahona. 2005. ``Self-Organized Development in Libre Software
-Projects: A Model Based on the Stigmergy Concept.'' In \emph{Proceedings
-of the 6th International Workshop on Software Process Simulation and
-Modeling (ProSim 2005), St. Louis, Missouri, USA}.
-
-\hypertarget{ref-wu2007empirical}{}
-Wu, Jingwei, Richard C Holt, and Ahmed E Hassan. 2007. ``Empirical
-Evidence for SOC Dynamics in Software Evolution.'' In \emph{2007 IEEE
-International Conference on Software Maintenance}, 244--54. IEEE.
+\bibliographystyle{apalike}
+\bibliography{geneura,biblio}
 
 \end{document}
