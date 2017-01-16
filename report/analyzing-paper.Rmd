@@ -2,7 +2,9 @@
 title: 'Self-organized criticality in repository-mediated projects'
 author: "J. J. Merelo"
 date: "29 de agosto de 2016"
-output: pdf_document
+output: 
+  pdf_document:
+    keep_tex: true
 bibliography: biblio.bib
 abstract: |
    In this paper we will examine if a particular source-contro system repository, devoted to the collaborative writing of a software paper, is in a self-organized critical state, which can be measured by the existence of a scale-free structure, long-distance correlations and pink noise when analyzing the size of changes and its time series.
