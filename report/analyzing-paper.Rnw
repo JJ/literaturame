@@ -308,16 +308,16 @@ We can look at the changes in some other way, ranking changes by size
 and representing them in a graph with logarithmic \(y\) axis, as wel as
 in the form of an histogram.
 
-%\includegraphics{analyzing-paper_files/figure-latex/powerlaw-1.pdf}
-%\includegraphics{analyzing-paper_files/figure-latex/powerlaw-2.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE>>=
-ggplot(data=lines, aes(lines$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10()
-sorted.lines <- data.frame(x=1:length(lines$Lines.changed),Lines.changed=as.numeric(lines[order(-lines$Lines.changed),]$Lines.changed))
-ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
-sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
-zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
+<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+for (i in 1:length(lines) ) {
+     print(ggplot(data=lines[[i]], aes(lines[[i]]$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10())
+    sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
+    print(ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10())
+    sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
+    zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
+}
 @ 
 \caption{Changes, ordered by size, and represented in a logarithmic
   $y$ axis.\label{fig:zipf2}}
@@ -334,8 +334,10 @@ next figure.
 %\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE>>=
-autoplot(pacf(lines$Lines.changed, plot=FALSE) )
+<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+for (i in 1:length(lines) ) {
+    print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
+}
 @ 
 \caption{Autocorrelation plot. \label{fig:auto}}
 \end{figure*}
