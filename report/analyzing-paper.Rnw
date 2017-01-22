@@ -104,12 +104,22 @@ library(TTR)
 #use 
 files <- c('/home/jmerelo/Code/literaturame/data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2016-DCAI_ALL_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_modeling-volunteer-computing_ALL_ALL_tex.csv')
 lines <- list()
+summary <- data.frame(Name = character(),
+                      Mean = double(),
+                      Median = double(),
+                      SD = double())
 for (i in 1:length(files) ) {
 # for testing here
-    lines[[i]] <- read.csv(files[[i]]) # File should be established from an R script
+    lines[[i]] <- read.csv(files[i]) # File should be established from an R script
+    summary <- rbind( summary,
+                     data.frame( Name= gsub(".+lines_(.+)_\\w+\\..+","\\1",files[i]),
+                                Mean = as.double(mean(lines[[i]]$Lines.changed)),
+                                Median = as.double(median(lines[[i]]$Lines.changed)), 
+                                SD = as.double(sd(lines[[i]]$Lines.changed) ) ) )
     lines[[i]]$SMA5 <- SMA(lines[[i]]$Lines.changed,n=5)
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
+
 }
 @ 
 \maketitle
@@ -192,7 +202,8 @@ This is a summary of the characteristics of the commit sizes.
 \end{Highlighting}
 \end{Shaded}
 <<commits, cache=FALSE,echo=FALSE>>=
-summary(lines)
+kable( summary,"latex" )
+
 @
 % \begin{verbatim}
 % ##  Lines.changed         SMA5            SMA10            SMA20       
