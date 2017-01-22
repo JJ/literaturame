@@ -95,13 +95,6 @@
 %%% Change title format to be more compact
 \usepackage{titling}
 
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
 \setlength{\droptitle}{-2em}
   \title{Self-organized criticality in repository-mediated projects}
   \pretitle{\vspace{\droptitle}\centering\huge}
