@@ -355,8 +355,10 @@ the power spectral density, shown below
 %\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<spectrum,message=FALSE, cache=FALSE,echo=FALSE>>=  
-autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
+<<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=  
+for (i in 1:length(lines) ) {
+    print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ))
+}
 @ 
 \caption{Spectral density of changes. \label{fig:spectrum}}
 \end{figure*}
