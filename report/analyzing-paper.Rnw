@@ -274,7 +274,7 @@ over that number of changes.
 \begin{figure*}[h!tb]
   \centering
 <<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
-for (i in 1:length(files) ) {
+for (i in 1:length(lines) ) {
      print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
 }
 @ 
@@ -288,11 +288,13 @@ size in a log-log scale, with linear smoothing to show the trend.
 %\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE>>=
-by.lines <- group_by(lines,Lines.changed)
-lines.count <- summarize(by.lines, count=n())
-sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
-ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth()
+<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+for (i in 1:length(lines) ) {
+    by.lines <- group_by(lines[[i]],Lines.changed)
+    lines.count <- summarize(by.lines, count=n())
+    sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
+    print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth())
+}
 @ 
 \caption{Number of changes vs size in a log-log scale.\label{fig:zipf}}
 \end{figure*}
