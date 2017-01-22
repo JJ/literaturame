@@ -145,9 +145,9 @@ differences with software projects.
 \section{Introduction}\label{introduction}
 
 The existence of a self-organized critical state \cite{bak1988self} in
-software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining} and
+software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis} and
 attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
-itself and other communication media, such as the Slack chat
+itself and other communication media, such as the Slack or IRC chat
 application, task assignment systems or mailing lists. The case for this
 critical state is supported  mainly by the non-existence of a particular
 scale in the size of changes
@@ -156,7 +156,17 @@ also exhibit long-range
 correlations and a \emph{pink noise} in the power spectral density, with
 \emph{noise} or variations with respect to the \emph{normal} frequency
 changing in a way that is inversely proportional to it, higher frequency
-changes getting a smaller spectral density.
+changes getting a smaller spectral density. This state favors
+evolvability of the underlying software system \cite{1544757}, as
+oposed from the the lack of this quality in software created by a
+top-down organization process. That is why this quality has been
+mainly studied in open source software systems which follow a more
+open model of development; however, it might happen that, in the same
+way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
+self-organized state might be essential to the software development
+process, as long as it is done in an application that allows
+collaboration such as a repository managed by a source control system
+such as git. 
 
 After examining and establishing the existence of this state in the
 software repository for the Moose library, in this report we are going
