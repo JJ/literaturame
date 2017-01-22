@@ -146,12 +146,13 @@ differences with software projects.
 
 The existence of a self-organized critical state \cite{bak1988self} in
 software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining} and
-attributed to an stigmergy process (Robles, Guervós, and
-González-Barahona 2005) in which collaborators interact through the code
+attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
 itself and other communication media, such as the Slack chat
 application, task assignment systems or mailing lists. The case for this
-critical state is supported by mainly the non-existence of a particular
-scale in the size of changes \cite{wu2007empirical,gorshenev2004punctuated}, but in some cases they also exhibit long-range
+critical state is supported  mainly by the non-existence of a particular
+scale in the size of changes
+\cite{wu2007empirical,gorshenev2004punctuated}, but in some cases they
+also exhibit long-range 
 correlations and a \emph{pink noise} in the power spectral density, with
 \emph{noise} or variations with respect to the \emph{normal} frequency
 changing in a way that is inversely proportional to it, higher frequency
@@ -173,9 +174,30 @@ within the text itself, a closer relationship between data and report
 and, of course, easier reproducibility.
 
 Coming up next, we will examine the methodology followed to extract
-information from the repository and how we have processed it.
-\protect\hyperlink{res}{Results} will be presented in the next section,
-and eventually we will expose our \protect\hyperlink{conc}{conclusions}.
+information from the repository and how we have processed it. After
+presenting a brief state of the art next, \protect\hyperlink{res}{results} will be presented in the next section,
+and eventually we will expose our
+\protect\hyperlink{conc}{conclusions}. 
+
+\section{State of the art}
+
+As far as we know, there has not been a continuing line of research on
+self-organized criticality in teamwork. Researchers have throughly
+proved that software repositories seem to be in a SOC state,
+\cite{wu2007empirical,gorshenev2004punctuated}, including our own
+reports \cite{Merelo2016:repomining,merelo16:slash,merelo16:self}
+where we examine and establish the existence of repositores in a
+critical state to which they have arrived via self-organization; the
+fact that these repositories have different characteristics in terms
+of number of users, age and type of information they hold implies that
+self-organization, as should be expected, is achieved with relative easiness.
+
+
+In this paper we will examine different repositories of the same kind,
+all devoted to the collaborative writing of scientific papers, but
+with different age, in order to try and find out if self-organization
+arrives simply with age and, if so, what seems to be this critical
+age. 
 
 \section{Methodology}\label{methodology}
 
@@ -203,18 +225,7 @@ This is a summary of the characteristics of the commit sizes.
 \end{Shaded}
 <<commits, cache=FALSE,echo=FALSE>>=
 kable( summary,"latex" )
-
 @
-% \begin{verbatim}
-% ##  Lines.changed         SMA5            SMA10            SMA20       
-% ##  Min.   :  1.00   Min.   :  1.60   Min.   :  2.40   Min.   :  4.70  
-% ##  1st Qu.:  4.00   1st Qu.:  9.90   1st Qu.: 13.70   1st Qu.: 18.75  
-% ##  Median :  9.00   Median : 21.10   Median : 26.30   Median : 28.95  
-% ##  Mean   : 32.01   Mean   : 32.26   Mean   : 32.56   Mean   : 33.08  
-% ##  3rd Qu.: 31.25   3rd Qu.: 41.40   3rd Qu.: 44.40   3rd Qu.: 41.90  
-% ##  Max.   :675.00   Max.   :205.00   Max.   :132.70   Max.   :101.55  
-% ##                   NA's   :4        NA's   :9        NA's   :19
-% \end{verbatim}
 
 The timeline of the commit sizes is represented next with logarithmic or
 decimal \emph{y} scale. The serrated characteristic is the same, as well
