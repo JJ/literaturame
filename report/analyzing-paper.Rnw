@@ -1,4 +1,5 @@
-\documentclass[]{article}
+\documentclass[]{llncs}
+\usepackage{llncsdoc}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
