@@ -1,4 +1,5 @@
 \documentclass[]{llncs}
+\usepackage{subcaption} % an alternative package for sub figures
 \usepackage{llncsdoc}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
@@ -256,14 +257,12 @@ commit in number of lines.
 % \includegraphics{analyzing-paper_files/figure-latex/timeline-2.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<timeline, cache=FALSE,echo=FALSE,warning=FALSE>>=
-gg.lines = ggplot()
-for (i in 1:length(lines) ) {
+<<timeline, cache=FALSE,echo=FALSE,fig.height=5,fig.subcap=c('1','2','3','4'),out.width='.245\\linewidth'>>=
+for (i in 1:length(files) ) {
     lines[[i]]$x = as.numeric(row.names(lines[[i]]))
-    gg.lines = gg.lines + geom_point(aes(x=x,y=Lines.changed))+scale_y_log10()
+    print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
 }
 @
-
 \caption{Lines changed per commit in a log-y scale.\label{fig:tl}}
 \end{figure*}
 
