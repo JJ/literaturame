@@ -24,5 +24,12 @@ nytprof.out
 #backup
 *~
 
+#Tex stuff
 auto/
 stats/*.png
+*.log
+*.tex
+*.out
+*.blg
+*.bbl
+*.aux
