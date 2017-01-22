@@ -108,12 +108,15 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-file <- '/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv'
+files <- c('/home/jmerelo/Code/literaturame/data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv')
+lines <- files
+for (i in 1:length(files) ) {
 # for testing here
-lines <- read.csv(file) # File should be established from an R script
-lines$SMA5 <- SMA(lines$Lines.changed,n=5)
-lines$SMA10 <- SMA(lines$Lines.changed,n=10)
-lines$SMA20 <- SMA(lines$Lines.changed,n=20)
+    lines[i] <- read.csv(files[i]) # File should be established from an R script
+    lines[i]$SMA5 <- SMA(lines[i]$Lines.changed,n=5)
+    lines[i]$SMA10 <- SMA(lines[i]$Lines.changed,n=10)
+    lines[i]$SMA20 <- SMA(lines[i]$Lines.changed,n=20)
+}
 @ 
 \maketitle
 \begin{abstract}
