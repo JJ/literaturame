@@ -166,7 +166,9 @@ way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
 self-organized state might be essential to the software development
 process, as long as it is done in an application that allows
 collaboration such as a repository managed by a source control system
-such as git. 
+such as git. In fact, some explanations have been offered via
+conservation laws \cite{6784340} and other usual complex network
+mechanisms such as preferential attachment \cite{lin2015power}· 
 
 After examining and establishing the existence of this state in the
 software repository for the Moose library, in this report we are going
