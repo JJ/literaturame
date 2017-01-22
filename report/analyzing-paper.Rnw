@@ -96,27 +96,10 @@
 \usepackage{titling}
 
 \setlength{\droptitle}{-2em}
-  \title{Self-organized criticality in repository-mediated projects}
+  \title{Self-organized criticality in collaborative work via GitHub mining}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
   \author{J. J. Merelo}
-  \preauthor{\centering\large\emph}
-  \postauthor{\par}
-  \predate{\centering\large\emph}
-  \postdate{\par}
-  \date{29 de agosto de 2016}
-
-
-
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
 
 \begin{document}
 <<setup, cache=FALSE,echo=FALSE>>=
@@ -134,10 +117,15 @@ lines$SMA20 <- SMA(lines$Lines.changed,n=20)
 @ 
 \maketitle
 \begin{abstract}
-In this paper we will examine if a particular source-control system
-repository, devoted to the collaborative writing of a software paper, is
-in a self-organized critical state, which can be measured by the
-existence of a scale-free structure, long-distance correlations and pink
+  In order to improve software productivity, it is interesting to find
+  out the dynamics underlying collaboration in software development
+  teams; finding if self-organization takes place and under which
+  conditions will yield some insights on the process and some hints on
+  how to improve it. This is why in this paper we will examine whether
+  repositories that host files result from collaborative work find themselves in a self-organized
+critical state, which can be measured by the 
+existence of a scale-free structure, long-distance correlations and
+{\em pink}
 noise when analyzing the size of changes and its time series. Our
 intention is to prove that, although with different characteristics, any
 repository independently of the number of collaborators and its real
