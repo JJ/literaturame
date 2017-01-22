@@ -257,8 +257,8 @@ commit in number of lines.
 % \includegraphics{analyzing-paper_files/figure-latex/timeline-2.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<timeline, cache=FALSE,echo=FALSE,fig.height=5,fig.subcap=c('1','2','3','4'),out.width='.245\\linewidth'>>=
-for (i in 1:length(files) ) {
+<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+for (i in 1:length(lines) ) {
     lines[[i]]$x = as.numeric(row.names(lines[[i]]))
     print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
 }
@@ -273,8 +273,10 @@ over that number of changes.
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE>>=
-gg.lines+geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()
+<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+for (i in 1:length(files) ) {
+     print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
+}
 @ 
 \caption{Smoothed line over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
 \end{figure*}
