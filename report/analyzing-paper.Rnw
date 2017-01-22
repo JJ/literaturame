@@ -228,16 +228,23 @@ the bigger of these two values.
 
 \hypertarget{res}{\section{Results}\label{res}}
 
-This is a summary of the characteristics of the commit sizes.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(lines)}
-\end{Highlighting}
-\end{Shaded}
+A summary of the statisticas characteristics of size of the commits,
+in number of lines, is shown in Table \ref{t:stat}.
+%
+\begin{table}
+    \centering
 <<commits, cache=FALSE,echo=FALSE>>=
 kable( summary,"latex" )
 @
+\caption{Summary of statistical measures for the four papers we have
+  been analyzing here.\label{t:stat}}
+\end{table}
+%
+This table shows that, at least from a macro point of view, median and
+averages are remarkably similar, with median between 9 and 22 lines
+and average between 24 and 54. The fact that the average is so
+separated from the median already is a hint that this is a skewed
+distribution. 
 
 The timeline of the commit sizes is represented next with logarithmic or
 decimal \emph{y} scale. The serrated characteristic is the same, as well
@@ -250,11 +257,13 @@ commit in number of lines.
 \begin{figure*}[h!tb]
   \centering
 <<timeline, cache=FALSE,echo=FALSE,warning=FALSE>>=
-lines$x = as.numeric(row.names(lines))
-gg.lines = ggplot(lines)
-gg.lines+geom_point(aes(x=x,y=Lines.changed))+scale_y_log10()
-gg.lines+geom_line(aes(x=x,y=Lines.changed,group=1))+scale_y_log10()
-@ 
+gg.lines = ggplot()
+for (i in 1:length(lines) ) {
+    lines[[i]]$x = as.numeric(row.names(lines[[i]]))
+    gg.lines = gg.lines + geom_point(aes(x=x,y=Lines.changed))+scale_y_log10()
+}
+@
+
 \caption{Lines changed per commit in a log-y scale.\label{fig:tl}}
 \end{figure*}
 
