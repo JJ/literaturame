@@ -365,7 +365,7 @@ type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
 than the substrate itself, to different types of collaboration.
 
-\bibliographystyle{apalike}
+\bibliographystyle{splncs03}
 \bibliography{geneura,biblio}
 
 \end{document}
