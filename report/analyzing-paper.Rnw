@@ -263,10 +263,17 @@ size in a log-log scale, with linear smoothing to show the trend.
 \begin{figure*}[h!tb]
   \centering
 <<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+sizes.fit.df <- data.frame(Name = character(),
+                        Coefficient = double(),
+                        Intercept = double())
 for (i in 1:length(lines) ) {
     by.lines <- group_by(lines[[i]],Lines.changed)
     lines.count <- summarize(by.lines, count=n())
     sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
+    sizes.fit.df <- rbind( sizes.fit.df,
+                          data.frame( Name = summary[[1]][i],
+                                     Coefficient = summary(sizes.fit)$coefficients[1],
+                                     Intercept = summary(sizes.fit)$coefficients[2] ))
     print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth())
 }
 @ 
@@ -276,8 +283,20 @@ for (i in 1:length(lines) ) {
 This distribution appears as a Zipf distribution, with the commit sizes
 ranked in descending order and plotted with a logarighmic \emph{y} axis.
 I can be linearly fit to a log-log distribution with coefficients
-4.7287153, -1.0782681, which we can compare with the results in \cite{Merelo2016:repomining}, with a slope coefficient equal to \texttt{-0.9608}.
-
+4.7287153, -1.0782681, which we can compare with the results in
+\cite{Merelo2016:repomining}, with a slope coefficient equal to
+\texttt{-0.9608}. The coefficients for all repositories are shown in
+Table \ref{t:sizes}
+%
+\begin{table}
+    \centering
+<<sizes, cache=FALSE,echo=FALSE>>=
+kable( sizes.fit.df,"latex" )
+@
+\caption{Summary of coefficients of the linear models adjusting the
+  number of lines and size.\label{t:sizes}}
+\end{table}
+%
 We can look at the changes in some other way, ranking changes by size
 and representing them in a graph with logarithmic \(y\) axis, as wel as
 in the form of an histogram.
@@ -285,21 +304,38 @@ in the form of an histogram.
 \begin{figure*}[h!tb]
   \centering
 <<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+zipf.fit.df <- data.frame(Name = character(),
+                        Coefficient = double(),
+                        Intercept = double())
 for (i in 1:length(lines) ) {
-     print(ggplot(data=lines[[i]], aes(lines[[i]]$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10())
+    print(ggplot(data=lines[[i]], aes(lines[[i]]$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10())
     sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
     print(ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10())
     sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
     zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
+    zipf.fit.df <- rbind( zipf.fit.df,
+                         data.frame( Name = summary[[1]][i],
+                                    Coefficient = summary(zipf.fit)$coefficients[1],
+                                    Intercept = summary(zipf.fit)$coefficients[2] ))
 }
 @ 
 \caption{Changes, ordered by size, and represented in a logarithmic
-  $y$ axis.\label{fig:zipf2}}
+  $y$ axis.\label{fig:zipf}}
 \end{figure*}
 %
 %
-The Zipf exponent for this graph is 4.8995184, -0.0150829, which is also
+The Zipf exponent for these models are shown in Table \ref{t:zipf}, which is also
 in the same range as the one found in \cite{Merelo2016:repomining}.
+%
+\begin{table}
+    \centering
+<<zipf, cache=FALSE,echo=FALSE>>=
+kable( zipf.fit.df,"latex" )
+@
+\caption{Summary of Zipf coefficients of the linear models adjusting the
+  number of lines and size.\label{t:zipf}}
+\end{table}
+%
 
 Finally, these scale distributions hints at the possibility of
 long-scale correlations. The partial autocorrelation is plotted in the
