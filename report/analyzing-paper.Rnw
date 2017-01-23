@@ -171,7 +171,16 @@ where we examine and establish the existence of repositores in a
 critical state to which they have arrived via self-organization; the
 fact that these repositories have different characteristics in terms
 of number of users, age and type of information they hold implies that
-self-organization, as should be expected, is achieved with relative easiness.
+self-organization, as should be expected, is achieved with relative
+easiness. In fact, this state of self-organized criticality
+quantitatively proves what has already been established via
+qualitative analysis, the fact that in many successful software
+projects, developers self-organize \cite{Crowston2007564}, which is
+the preferred way of working in distributed and volunteer
+teams. Self-organized criticality arise from
+self-organization. However, there has been no work going further and
+proving this even in the case that work is done by a few persons and
+on repositories that are not devoted to software.
 
 
 In this paper we will examine different repositories of the same kind,
