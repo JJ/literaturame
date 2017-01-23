@@ -35,10 +35,7 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{color}
 \usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
+
 \usepackage{framed}
 
 \usepackage{graphicx,grffile}
@@ -49,7 +46,7 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
+%\setcounter{secnumdepth}{0}
 
 %%% Use protect on footnotes to avoid problems with footnotes in titles
 \let\rmarkdownfootnote\footnote%
@@ -348,7 +345,7 @@ appear. The fact that this third characteristic of the self-organized
 state is not present does not obscure the other two, however, which
 appear clearly and significantly.
 
-\hypertarget{conc}{\subsection{Conclusions}\label{conc}}
+\hypertarget{conc}{\section{Conclusions}\label{conc}}
 
 After analyzing the software repository for a scientific paper, we can
 conclude that it is in a critical state, as proved by the fact that its
