@@ -235,6 +235,8 @@ or a few coders, helped sporadically by other coders that find an
 error or adapt the code to particular situations. 
 % Reference 
 % Added - JJ
+In fact, this self-organization has been also observed in similar
+projects such as Wikipedia 
 
 This self-organization, eventually, might produce a critical state
 given necessary conditions. However, there has been no work going further and
