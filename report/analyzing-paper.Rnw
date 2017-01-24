@@ -194,13 +194,13 @@ age.
 
 \section{Methodology}\label{methodology}
 
-To extract information of changes in this file, changes have been
+To extract information of changes in this file, changes have been %which file?
 circumscribed to the paper itself: two files including the paper and
-response to reviewers, which are the ones that more particularly relate
-to the projects. Other files are considered artifacts (for instance,
+the response to reviewers, which are the ones that are more particularly related
+to the project. Other files are considered artifacts (for instance,
 images) and are not taken into account. The repository is analyzed with
 a Perl script and a sequence of lines changed in each commit is
-generated. Since changes include insertion and deletion of lines within
+generated. Since changes include both the insertion and deletion of lines within
 those files, the biggest of these values is taken; in particular, this
 means that the addition of all changes will not be equal to the sum of
 the sizes of all files. A change in two lines will appear in a diff as
