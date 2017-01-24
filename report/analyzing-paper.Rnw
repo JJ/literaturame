@@ -88,6 +88,10 @@ for (i in 1:length(files) ) {
   In order to improve team productivity, it is interesting to find 
   % Maybe it is the whole software development process (Quality, Less Stress, User Commitment, etc.)
   % Don't know what you mean.
+  % I was thinking that understending the way a team collaborates not only improves productivity
+  % but it could also improve the team. This could also increase the commitment of volunteer developers,
+  % and identify death march or the burnout cases.      
+
   out the dynamics underlying collaboration  and their
   mechanisms. These mechanisms might not be explicit or organized from
   the top, but arise from
