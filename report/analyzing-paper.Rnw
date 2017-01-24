@@ -206,9 +206,6 @@ they were available and we knew their circumstances. Whether they are
 or not representative of a larger corpus remains to be seen, and we
 will try to examine this possibility in the conclusions. 
 
-
-Coming up next, we will examine the methodology followed to extract
-information from the repository and how we have processed it. 
 After presenting a brief \protect\hyperlink{soa}{state of the art} next, 
 followed by the \protect\hyperlink{methodology}{methodology},
 obtained \protect\hyperlink{res}{results} will be presented % in the next section, 
@@ -231,12 +228,18 @@ quantitatively proves what has been already established via
 qualitative analysis, the fact that in many successful software
 projects, developers self-organize \cite{Crowston2007564}, which is
 the preferred way of working in distributed and volunteer
-teams.% Reference 
-Self-organized criticality arise from
-self-organization. However, there has been no work going further and
+teams \cite{crowston2012free}. In fact, this way of organization
+matches our own experience in development of open source projects such
+as \cite{ae09,2016arXiv160101607M}, which are developed mainly by one
+or a few coders, helped sporadically by other coders that find an
+error or adapt the code to particular situations. 
+% Reference 
+% Added - JJ
+
+This self-organization, eventually, might produce a critical state
+given necessary conditions. However, there has been no work going further and
 proving this even in the case that work is done by a few persons and
 on repositories that are not devoted to software development.
-
 
 In this paper we will examine different repositories with the same purpose,
 all devoted to the collaborative writing of scientific papers, but
