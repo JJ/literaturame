@@ -203,7 +203,15 @@ been a work in progress for more than
 one a year until it was eventually published
 \cite{Castillo2016books}. The other three papers chosen is in one case
 an evolution of a paper which was initially published in a conference
-and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG1}6
+and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG1},
+another that contains several papers published in diverse venues and
+that are evolution of this one \cite{DBLP:journals/corr/GuervosG15},
+and finally a paper that has been in progress for about a year, but
+has not been finished yet. These papers have been chosen because they
+had a certain length, with more than 50 commits (or changes). Besides,
+they were available and we knew their circumstances. Whether they are
+or not representative of a larger corpus remains to be seen, and we
+will try to examine this possibility in the conclusions. 
 
 
 Coming up next, we will examine the methodology followed to extract
