@@ -20,11 +20,6 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-\hypersetup{unicode=true,
-            pdftitle={Self-organized criticality in repository-mediated projects},
-            pdfauthor={J. J. Merelo},
-            pdfborder={0 0 0},
-            breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -44,14 +39,12 @@
   \title{Finding self-organized criticality in collaborative work via repository mining}
 
   \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario García-Valdez\inst{2}}
-  \institute{Dept. of Computer Architecture, Geneura Team and CITIC,
-    University of Granada (Spain)\\
+  \institute{Geneura Team and CITIC, University of Granada (Spain)\\
     \email{\tt \{jmerelo,pacv\}@ugr.es}
 \and
-  \institute{Dept. of Graduate Studies, 
-    Instituto Tecnologico de Tijuana (Mexico)\\
+  Dept. of Graduate Studies, Instituto Tecnologico de Tijuana (Mexico)\\
     \email{\tt mario@tectijuana.edu.mx}
-  }
+}
 
 \begin{document}
 %\SweaveOpts{concordance=TRUE}
@@ -203,7 +196,7 @@ been a work in progress for more than
 one a year until it was eventually published
 \cite{Castillo2016books}. The other three papers chosen is in one case
 an evolution of a paper which was initially published in a conference
-and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG1},
+and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG16},
 another that contains several papers published in diverse venues and
 that are evolution of this one \cite{DBLP:journals/corr/GuervosG15},
 and finally a paper that has been in progress for about a year, but
