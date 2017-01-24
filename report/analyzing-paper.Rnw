@@ -28,6 +28,7 @@
 
 \usepackage{graphicx,grffile}
 
+\setlength{\abovecaptionskip}{20pt plus 3pt minus 2pt}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
@@ -317,6 +318,7 @@ in number of lines, is shown in Table \ref{t:stat}.
 <<commits, cache=FALSE,echo=FALSE>>=
 kable( summary,"latex" )
 @
+\vspace*{5mm}
 \caption{Summary of statistical measures for the four papers we have
   been analyzing here.\label{t:stat}}
 \end{table}
@@ -388,6 +390,7 @@ Table \ref{t:sizes}
 <<sizes, cache=FALSE,echo=FALSE>>=
 kable( sizes.fit.df,"latex" )
 @
+\vspace*{5mm}
 \caption{Summary of coefficients of the linear models adjusting the
   number of lines and size.\label{t:sizes}}
 \end{table}
@@ -427,6 +430,7 @@ in the same range as the one found in \cite{Merelo2016:repomining}.
 <<zipf, cache=FALSE,echo=FALSE>>=
 kable( zipf.fit.df,"latex" )
 @
+\vspace*{5mm}
 \caption{Summary of Zipf coefficients of the linear models adjusting the
   number of lines and size.\label{t:zipf}}
 \end{table}
