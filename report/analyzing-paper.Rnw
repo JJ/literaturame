@@ -59,9 +59,10 @@
   \title{Finding self-organized criticality in collaborative work via repository mining}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{J. J. Merelo}
+  \author{J. J. Merelo and P. A. Castillo}
 
 \begin{document}
+% is it possible using relative-paths instead of absolute paths to set the file names?
 <<setup, cache=FALSE,echo=FALSE>>=
 library(ggplot2)
 library("ggfortify")
@@ -141,28 +142,29 @@ mechanisms such as preferential attachment \cite{lin2015power}·
 %%
 
 After examining and establishing the existence of this state in the
-software repository for the Moose library, in this report we are going %Reference?
+software repository for the Moose library, in this report we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
 to work on a repository for a paper our research group has been working
 for a long time. Since our research group supports open science, we
-develop using open software repositories, and this one can be found in
-\url{https://github.com/geneura-papers/2015_books}. This particular
-paper has been chosen since it has been a work in progress for more than 
-a year, and in fact in this precise moment it is in the reviewing process 
-to be submitted again to a journal. Collaboratively \emph{developing} a
+develop in open software repositories, and this one can be found in
+\url{https://github.com/geneura-papers/2015_books} . This particular
+paper has been chosen since it has been a work in progress for more than
+one a year, and in fact in this precise moment it is in the process of  % finally, it was accepted and published.
+being reviewed to be submitted again to a journal. \emph{Developing} a
 paper using a repository is a good practice that allows easy
 distribution of tasks, attribution, and, combined with the use of
 \emph{literate} programming tools that allow the embedding of code
 within the text itself, providing a closer relationship between data and report
 and, of course, easier reproducibility.
 
-Coming up next, we will examine the methodology followed in the extraction of
-information from the repository and how we have processed it. After
-presenting a brief state of the art next, \protect\hyperlink{res}{results} 
-will be presented in the next section,
-and eventually we will expose our
-\protect\hyperlink{conc}{conclusions}. 
 
-\section{State of the art}
+Coming up next, we will examine the methodology followed to extract
+information from the repository and how we have processed it. 
+After presenting a brief \protect\hyperlink{soa}{state of the art} next, 
+followed by the \protect\hyperlink{methodology}{methodology},
+obtained \protect\hyperlink{res}{results} will be presented % in the next section, 
+and eventually we will expose our \protect\hyperlink{conc}{conclusions}. 
+
+\hypertarget{soa}{\section{State of the art}\label{soa}}
 
 As far as we know, there has not been a continuing line of research on
 self-organized criticality in teamwork. Researchers have throughly
@@ -192,7 +194,8 @@ each with a different age, in order to try and find out if self-organization
 arrives simply with age and, if so, what seems to be this critical
 age. 
 
-\section{Methodology}\label{methodology}
+
+\hypertarget{methodology}{\section{Methodology}\label{methodology}}
 
 To extract information of changes in this file, changes have been %which file?
 circumscribed to the paper itself: two files including the paper and
@@ -206,6 +209,7 @@ means that the addition of all changes will not be equal to the sum of
 the sizes of all files. A change in two lines will appear in a diff as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
 the bigger of these two values.
+
 
 \hypertarget{res}{\section{Results}\label{res}}
 
@@ -389,6 +393,7 @@ appear. The fact that this third characteristic of the self-organized
 state is not present does not obscure the other two, however, which
 appear clearly and significantly.
 
+
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
 
 After analyzing the software repository for a scientific paper, we can
@@ -416,6 +421,7 @@ work, we will compare different paper repositories, and these with other
 type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
 than the substrate itself, to different types of collaboration.
+
 
 \section*{Acknowledgements}
 This work has been supported in part by:
