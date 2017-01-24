@@ -182,12 +182,12 @@ the preferred way of working in distributed and volunteer
 teams. Self-organized criticality arise from
 self-organization. However, there has been no work going further and
 proving this even in the case that work is done by a few persons and
-on repositories that are not devoted to software.
+on repositories that are not devoted to software development.
 
 
-In this paper we will examine different repositories of the same kind,
+In this paper we will examine different repositories with the same purpose,
 all devoted to the collaborative writing of scientific papers, but
-with different age, in order to try and find out if self-organization
+each with a different age, in order to try and find out if self-organization
 arrives simply with age and, if so, what seems to be this critical
 age. 
 
