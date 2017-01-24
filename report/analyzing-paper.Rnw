@@ -80,6 +80,7 @@ for (i in 1:length(files) ) {
 }
 @ 
 \maketitle
+
 \begin{abstract}
   In order to improve software productivity, it is interesting to find 
   % Maybe it is the whole software development process (Quality, Less Stress, User Commitment, etc.)
