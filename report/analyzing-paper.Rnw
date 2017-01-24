@@ -62,6 +62,7 @@
   \author{J. J. Merelo and P. A. Castillo}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 % is it possible using relative-paths instead of absolute paths to set the file names?
 <<setup, cache=FALSE,echo=FALSE>>=
 library(ggplot2)
@@ -69,7 +70,7 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-files <- c('/home/jmerelo/Code/literaturame/data/papers/lines_2016-DCAI_ALL_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_modeling-volunteer-computing_ALL_ALL_tex.csv')
+files <- c('../data/papers/lines_2016-DCAI_ALL_ALL_tex.csv','../data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','../data/papers/lines_2015_books_ALL_tex.csv','../data/papers/lines_modeling-volunteer-computing_ALL_ALL_tex.csv')
 lines <- list()
 summary <- data.frame(Name = character(),
                       Mean = double(),
