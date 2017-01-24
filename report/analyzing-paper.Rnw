@@ -2,7 +2,7 @@
 \usepackage{subcaption} % an alternative package for sub figures
 \usepackage{llncsdoc}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
+%\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -276,7 +276,7 @@ for (i in 1:length(lines) ) {
     print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth())
 }
 @ 
-\caption{Number of changes vs size in a log-log scale.\label{fig:zipf}}
+\caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
 This distribution appears as a Zipf distribution, with the commit sizes
