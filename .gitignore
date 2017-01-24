@@ -33,3 +33,4 @@ stats/*.png
 *.blg
 *.bbl
 *.aux
+*.gz
