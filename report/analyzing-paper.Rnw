@@ -120,16 +120,38 @@ states reached by these and the object of this paper.
 The existence of a self-organized critical state \cite{bak1988self} in
 software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis} and
 attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
-itself and other communication media, such as the Slack or IRC chat
-application, task assignment systems or mailing lists. The case for this
-critical state is supported  mainly by the non-existence of a particular
+itself and through messages in other communication media, such as the Slack or IRC chat
+application, task assignment systems or mailing lists. In this
+critical state there are specific dynamic behaviors, like small
+changes provoking {\em avalanches} of other changes and long-distance
+correlations that make a particular change in the codebase cause
+further changes down the line. The dynamics of self-organized
+criticality is sometimes compared to that of a sand pile
+\cite{paczuski1996avalanche}, in the sense that the actual shape tends
+to reach a {\em critical} state, represented in the sand pile by a
+critical slope, and a single grain of sand creates avalanches
+unrelated to the frequency of grains falling. This pile of sand is
+also a simple model of a self-organized system that captures many of
+its main characteristics, but its behavior is connected to the
+experience of software developers and paper writers tnat experience
+certain periods of stasis followed by {\em avalanches} of work, new
+code or new paragraphs without an apparent origin. 
+
+This anecdotal experience supports that software teams analyzed
+through the repositories that support their work might also find
+themselves in this self-organized critical state. Furthermore, the case for this
+critical state is supported   by several macro measures that certify the non-existence of a particular
 scale in the size of changes
-\cite{wu2007empirical,gorshenev2004punctuated}, but in some cases they
+\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they
 also exhibit long-range 
 correlations and a \emph{pink noise} in the power spectral density, with
 \emph{noise} or variations with respect to the \emph{normal} frequency
 changing in a way that is inversely proportional to it, higher frequency
-changes getting a smaller spectral density. This state favors
+changes getting a smaller spectral density \cite{Merelo2016:repomining}. 
+
+
+The state in which the team is has obviously an influence in its
+productivity, with some authors finding this state favors
 evolvability of the underlying software system \cite{1544757}, as
 oposed from the the lack of this quality in software created by a
 top-down organization process. That is why this quality has been
@@ -143,22 +165,41 @@ such as git. In fact, some explanations have been offered via
 conservation laws \cite{6784340} and other usual complex network
 mechanisms such as preferential attachment \cite{lin2015power}· 
 %% It remind me about the cathedral vs bazaar discussion 
-%%
+%% Add something about it if you want - JJ
 
-After examining and establishing the existence of this state in the
-software repository for the Moose library, in this report we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
-to work on a repository for a paper our research group has been working
-for a long time. Since our research group supports open science, we
-develop in open software repositories, and this one can be found in
-\url{https://github.com/geneura-papers/2015_books} . This particular
-paper has been chosen since it has been a work in progress for more than
-one a year, and in fact in this precise moment it is in the process of  % finally, it was accepted and published.
-being reviewed to be submitted again to a journal. \emph{Developing} a
+After some initial exploration of the subject  and developing the
+tools needed to mine repositories in GitHub \cite{merelo16:self}, in
+this paper we are interested in finding out whether these mechanism
+are exclusive or software teams or if, indeed, self-organized
+criticality can be found also in other repositories. In our research
+team we are committed to open source and open science, developing all
+our work in open repositories hosted in GitHub. The repository is open
+since the first moment of writing a paper, and the repository itself
+hosts also data and, like in the case of this particular paper, code
+used to extract data. We interact throughout writing the paper via
+comments in the paper and issues, that is, work orders where you can
+comment and that can also be {\em closed} once the {\em issue} has
+been cleared or fixed. \emph{Developing} a
 paper using a repository is a good practice that allows easy
 distribution of tasks, attribution, and, combined with the use of
-\emph{literate} programming tools that allow the embedding of code
+\emph{literate} programming tools such as Knitr \cite{xie2015dynamic}, that allow the embedding of code
 within the text itself, providing a closer relationship between data and report
 and, of course, easier reproducibility.
+
+That is why, after examining and establishing the existence of this state in the
+software repository for the Moose Perl library
+\cite{Merelo2016:repomining} and books written mainly by a single
+person \cite{merelo16:slash}, in this report we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
+%Added citation to the paper
+to work on a repository for several papers in which our research group has been working
+for different amounts of time, from a few months to moreo than a
+year. In particular, one of the papers, which was already the object
+of a previous report \cite{merelo16:self} has been chosen since it has
+been a work in progress for more than 
+one a year until it was eventually published
+\cite{Castillo2016books}. The other three papers chosen is in one case
+an evolution of a paper which was initially published in a conference
+and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG1}6
 
 
 Coming up next, we will examine the methodology followed to extract
