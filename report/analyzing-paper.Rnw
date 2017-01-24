@@ -59,9 +59,10 @@
   \title{Finding self-organized criticality in collaborative work via repository mining}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{J. J. Merelo}
+  \author{J. J. Merelo and P. A. Castillo}
 
 \begin{document}
+% is it possible using relative-paths instead of absolute paths to set the file names?
 <<setup, cache=FALSE,echo=FALSE>>=
 library(ggplot2)
 library("ggfortify")
@@ -385,6 +386,7 @@ appear. The fact that this third characteristic of the self-organized
 state is not present does not obscure the other two, however, which
 appear clearly and significantly.
 
+
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
 
 After analyzing the software repository for a scientific paper, we can
@@ -406,6 +408,7 @@ work, we will compare different paper repositories, and these with other
 type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
 than the substrate itself, to different types of collaboration.
+
 
 \section*{Acknowledgements}
 This work has been supported in part by:
