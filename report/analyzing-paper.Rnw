@@ -246,20 +246,61 @@ age.
 
 
 \hypertarget{methodology}{\section{Methodology}\label{methodology}}
+\label{sec:method}
 
-To extract information of changes in this file, changes have been %which file?
-circumscribed to the paper itself: two files including the paper and
-the response to reviewers, which are the ones that are more particularly related
-to the project. Other files are considered artifacts (for instance,
-images) and are not taken into account. The repository is analyzed with
-a Perl script and a sequence of lines changed in each commit is
-generated. Since changes include both the insertion and deletion of lines within
+In this paper, we will work with the sizes of changes to a particular
+set of files in the repository; since repositories include other
+artifacts such as images or style files we, via a wildcard, select
+only the file or files we are interested in. To extract information
+about changes to these files in the repositories,  we analyze the
+repository using a Perl script that runs over the git log and notes
+the size of the changes that have been made to all files. 
+
+Since changes include both the insertion and deletion of lines within
 those files, the biggest of these values is taken; in particular, this
 means that the addition of all changes will not be equal to the sum of
 the sizes of all files. A change in two lines will appear in a diff as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
-the bigger of these two values.
+the bigger of these two values; the main reason for doing so is also
+that in fact, the algorithm that computes changes in the repository
+examines similitude in lines and counts changes in two lines as two
+insertions and two deletions. There is no way to find out whether
+there have been actually two lines added somewhere and two deleted
+somewhere else, so in absence of that, we opt for the heuristic of
+using the biggest of these two values as change size. 
 
+The script generates a {\tt .csv} file with a single column with the
+sequence of changes of size in the files of interest in each
+repository. These files, as well as the repositories where they have
+been measured, are available with a free license in the repository
+that also hosts this paper. The sequence of changes for the 4 files is
+shown in figure \ref{fig:tl}. 
+%
+\begin{figure*}[h!tb]
+  \centering
+<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+for (i in 1:length(lines) ) {
+    lines[[i]]$x = as.numeric(row.names(lines[[i]]))
+    print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
+}
+@
+\caption{Lines changed per commit in a log-y scale.\label{fig:tl}}
+\end{figure*}
+
+The $x$ axes for these timelines does not correspon to physical time,
+but simply to sequence. In this sense, there is a difference between
+our line of research, which considers discrete changes, to papers such
+as  \cite{herraiz2009statistical}, which take into account {\em daily}
+changes. We think that examining discrete changes does not impose a
+particular rhythm, namely, daily, on the changes, but lets the
+repository expose its own rhythm; it also allows us to examine
+slow-changing repositories such as these ones, that can be static for
+a long time to experience a burst of changes all of a sudden;
+precisely these changes can indicate an {\em avalanche} that is a
+symptom of the underlying self-organized criticality state.
+
+Once the information from the repositories has been extracted, we
+proceed to analyze it in the next section. 
 
 \hypertarget{res}{\section{Results}\label{res}}
 
@@ -287,18 +328,7 @@ as the big changes in scale. The \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
 commit in number of lines.
 
-% \includegraphics{analyzing-paper_files/figure-latex/timeline-1.pdf}
-% \includegraphics{analyzing-paper_files/figure-latex/timeline-2.pdf}
-\begin{figure*}[h!tb]
-  \centering
-<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
-for (i in 1:length(lines) ) {
-    lines[[i]]$x = as.numeric(row.names(lines[[i]]))
-    print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
-}
-@
-\caption{Lines changed per commit in a log-y scale.\label{fig:tl}}
-\end{figure*}
+
 
 A certain \emph{rhythm} can be observed. Probably it will be a bit more
 visible if we do an order 10 and then an order 20 smoothing, averaging
