@@ -43,7 +43,11 @@
 
   \title{Finding self-organized criticality in collaborative work via repository mining}
 
-  \author{J. J. Merelo and P. A. Castillo}
+  \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario García-Valdez\inst{2}}
+  \institute{Dept. of Computer Architecture, Geneura Team and CITIC,
+    University of Granada (Spain)\\
+    Emails: {\tt {jmerelo,pacv}@ugr.es}}
+  \institute{Mario add yours}
 
 \begin{document}
 %\SweaveOpts{concordance=TRUE}
