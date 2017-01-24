@@ -56,7 +56,7 @@
 \usepackage{titling}
 
 \setlength{\droptitle}{-2em}
-  \title{Self-organized criticality in collaborative development via GitHub mining}
+  \title{Finding self-organized criticality in collaborative work via repository mining}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
   \author{J. J. Merelo}
