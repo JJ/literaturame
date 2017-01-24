@@ -46,8 +46,9 @@
   \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario García-Valdez\inst{2}}
   \institute{Dept. of Computer Architecture, Geneura Team and CITIC,
     University of Granada (Spain)\\
-    Emails: {\tt {jmerelo,pacv}@ugr.es}}
-  \institute{Mario add yours}
+    \email{\tt \{jmerelo,pacv\}@ugr.es}
+\and
+  Mario add yours}
 
 \begin{document}
 %\SweaveOpts{concordance=TRUE}
