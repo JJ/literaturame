@@ -68,7 +68,7 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-files <- c('/home/jmerelo/Code/literaturame/data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2016-DCAI_ALL_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_modeling-volunteer-computing_ALL_ALL_tex.csv')
+files <- c('/home/jmerelo/Code/literaturame/data/papers/lines_2016-DCAI_ALL_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','/home/jmerelo/Code/literaturame/data/papers/lines_2015_books_ALL_tex.csv','/home/jmerelo/Code/literaturame/data/papers/lines_modeling-volunteer-computing_ALL_ALL_tex.csv')
 lines <- list()
 summary <- data.frame(Name = character(),
                       Mean = double(),
@@ -231,7 +231,7 @@ commit in number of lines.
 % \includegraphics{analyzing-paper_files/figure-latex/timeline-2.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 for (i in 1:length(lines) ) {
     lines[[i]]$x = as.numeric(row.names(lines[[i]]))
     print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
@@ -247,7 +247,7 @@ over that number of changes.
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 for (i in 1:length(lines) ) {
      print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
 }
@@ -262,7 +262,7 @@ size in a log-log scale, with linear smoothing to show the trend.
 %\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 sizes.fit.df <- data.frame(Name = character(),
                         Coefficient = double(),
                         Intercept = double())
@@ -303,7 +303,7 @@ in the form of an histogram.
 
 \begin{figure*}[h!tb]
   \centering
-<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 zipf.fit.df <- data.frame(Name = character(),
                         Coefficient = double(),
                         Intercept = double())
@@ -344,7 +344,7 @@ next figure.
 %\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=
+<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 for (i in 1:length(lines) ) {
     print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
@@ -365,7 +365,7 @@ the power spectral density, shown below
 %\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('PPSN','Book Prediction','DCAI','Volunteer computing'),out.width='.245\\linewidth'>>=  
+<<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=  
 for (i in 1:length(lines) ) {
     print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
