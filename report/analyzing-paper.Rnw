@@ -82,24 +82,34 @@ for (i in 1:length(files) ) {
 \maketitle
 
 \begin{abstract}
-  In order to improve software productivity, it is interesting to find 
+  In order to improve team productivity, it is interesting to find 
   % Maybe it is the whole software development process (Quality, Less Stress, User Commitment, etc.)
-  out the dynamics underlying collaboration in software development
-  teams; finding if self-organization takes place and under which
-  conditions will yield some insights on the process and some hints on
-  how to improve it. This is why in this paper we will examine whether
-  repositories that host files result from collaborative work find themselves in a self-organized
-critical state, which can be measured by the 
+  % Don't know what you mean.
+  out the dynamics underlying collaboration  and their
+  mechanisms. These mechanisms might not be explicit or organized from
+  the top, but arise from
+  the collaboration and the way it is done and rather be
+  self-organizing. This is why finding if self-organization takes place and under which
+  conditions will yield some insights on this process, and, from this,
+  we can deduce some hints on
+  how to improve it. In this paper we will focus on the former,
+  examining repositories where the collaborative writing of scientific
+  papers by our research team is taking place show hints of a critical
+  state, which can be measured by the 
 existence of a scale-free structure, long-distance correlations and
 {\em pink}
-noise when analyzing the size of changes and its time series. Our
-intention is to prove that, although with different characteristics, any
-repository independently of the number of collaborators and its real
+noise when analyzing the size of changes and its time series. This
+critical state is reached via self-organization, which is why it is
+called self-organized criticality. Our
+intention is to prove that, although with different characteristics,
+most repositories independently of the number of collaborators and its real
 nature, self-organizes, which implies that it is the nature of the
 interactions, and not the object of the interaction, which takes the
-project to a critical state. At the same time, we will examine the
-differences with software projects.
-% differences with repositories of software projects.
+project to a critical state. This critical state has already been
+established in a number of repositories with different types of
+projects, such as software or even literary works; we will also find
+if there is any essential difference between the macro measures of the
+states reached by these and the object of this paper. 
 \end{abstract}
 
 \section{Introduction}\label{introduction}
