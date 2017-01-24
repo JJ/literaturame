@@ -48,7 +48,10 @@
     University of Granada (Spain)\\
     \email{\tt \{jmerelo,pacv\}@ugr.es}
 \and
-  Mario add yours}
+  \institute{Dept. of Graduate Studies, 
+    Instituto Tecnologico de Tijuana (Mexico)\\
+    \email{\tt mario@tectijuana.edu.mx}
+  }
 
 \begin{document}
 %\SweaveOpts{concordance=TRUE}
