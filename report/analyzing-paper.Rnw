@@ -80,11 +80,6 @@ for (i in 1:length(files) ) {
 \begin{abstract}
   In order to improve team productivity and the team interaction
   itself, as well as the willingness of occasional volunteers, it is interesting to find 
-  % Maybe it is the whole software development process (Quality, Less Stress, User Commitment, etc.)
-  % Don't know what you mean.
-  % I was thinking that understending the way a team collaborates not only improves productivity
-  % but it could also improve the team. This could also increase the commitment of volunteer developers,
-  % and identify death march or the burnout cases.      
   out the dynamics underlying collaboration in a repository-mediated project and their
   mechanisms. These mechanisms might not be explicit or organized from
   the top, but arise from
@@ -93,9 +88,8 @@ for (i in 1:length(files) ) {
   conditions will yield some insights on this process, and, from this,
   we can deduce some hints on
   how to improve it. In this paper we will focus on the former,
-  examining repositories where the collaborative writing of scientific
-  papers by our research team is taking place show hints of a critical   % what subject correspond the 
-      %verb "show" in this sentence? it is a bit long and difficult to understand...  - Pedro
+  examining repositories where and how repositories for collaborative writing of scientific
+  papers by our research team is taking place show the characteristics of a critical  
   state, which can be measured by the 
 existence of a scale-free structure, long-distance correlations and
 {\em pink}
