@@ -207,7 +207,7 @@ they were available and we knew their circumstances. Whether they are
 or not representative of a larger corpus remains to be seen, and we
 will try to examine this possibility in the conclusions. The papers
 are plain text with LaTeX commands, and, in some cases, also R
-commands in the case of the paper using Knitr. The inclusion of lines
+commands in those papers using Knitr. The inclusion of lines
 and commands written in computer languages would indicate that these
 papers are halfway between a book, which is mainly text, and an
 application or library, which is mainly code. We will see if this {\em
@@ -243,11 +243,11 @@ or a few coders, helped sporadically by other coders that find an
 error or adapt the code to particular situations. 
 % Reference 
 % Added - JJ
-In fact, this self-organization has been also observed in similar
+In fact, this self-organization has also been observed in similar
 projects such as Wikipedia.
 
 This self-organization, eventually, might produce a critical state
-given necessary conditions. However, there has been no work going further and
+given the necessary conditions. However, there has been no work going further and
 proving this even in the case that work is done by a few persons and
 on repositories that are not devoted to software development.
 
