@@ -337,7 +337,7 @@ separated from the median is already a hint that this is a skewed
 distribution. The book analyzed in \cite{merelo16:slash} had a median
 of 10 lines, but a mean of 150 lines changed, in a distribution that
 is different, much more skewed towards bigger sizes, while the
-software library analyzed in \cite{Merelo2016:repominin} had a median
+software library analyzed in \cite{Merelo2016:repomining} had a median
 of 9 and a mean of close to 32, which is remarkably similar to one of
 the papers analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
@@ -348,8 +348,6 @@ decimal \emph{y} scale. The serrated characteristic is the same, as well
 as the big changes in scale. The \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
 commit in number of lines.
-
-
 
 A certain \emph{rhythm} can be observed. Probably it will be a bit more
 visible if we do an order 10 and then an order 20 smoothing, averaging
