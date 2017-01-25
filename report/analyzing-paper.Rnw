@@ -532,10 +532,8 @@ significant.
 Once two of the three features of self-organized criticality have been
 proved, at least in some of the repositories, we will
 focus on the third, the presence of \emph{pink} noise, as measured by
-the power spectral density. 
-
-shown below
-
+the power spectral density. This is shown in Figure \ref{fig:spectrum}, where the power spectral density is shown for the four papers. A {\em pink} noise would be characterized by a spectrum with a negative slope, with decreasing power the higher the frequency. 
+%
 %\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
 \begin{figure*}[h!tb]
   \centering
@@ -547,13 +545,16 @@ for (i in 1:length(lines) ) {
 \caption{Spectral density of changes. \label{fig:spectrum}}
 \end{figure*}
 %
-The fact that there is not a clear trend downwards that would indicate
-the \texttt{1/frequency} state of the power spectrum indicates that, in
-this case, this feature does not show up. It might be the case that \emph{pink}
-noise appears later on in development, or simply needs larger periods to
-appear. The fact that this third characteristic of the self-organized
-state is not present does not obscure the other two, however, which
-appear clearly and significantly.
+
+In this case, we see that this {\em trend} appears with more or less
+clarity in two of the four papers, the two on the right, although the
+lower-left paper ({\tt book-prediction}) also exhibits it to a certain
+point. In fact, it is much clearer in the second paper, {\tt PPSN},
+which, on the other hand, does not exhibit long-scale autocorrelation.
+
+Once the three main features of systems in self-organized state have
+been measured for the papers under study, we will present in the next
+Section our conclusions. 
 
 
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
