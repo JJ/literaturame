@@ -307,8 +307,8 @@ for (i in 1:length(lines) ) {
 \end{figure*}
 
 The $x$ axes for these timelines does not correspon to physical time,
-but simply to sequence. In this sense, there is a difference between
-our line of research, which considers discrete changes, to papers such
+but simply to sequence. In this sense, there is an important difference between
+our research methodology, which considers discrete changes, to papers such
 as  \cite{herraiz2009statistical}, which take into account {\em daily}
 changes. We think that examining discrete changes does not impose a
 particular rhythm, namely, daily, on the changes, but lets the
