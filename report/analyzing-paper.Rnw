@@ -70,7 +70,6 @@ for (i in 1:length(files) ) {
                                 Mean = as.double(mean(lines[[i]]$Lines.changed)),
                                 Median = as.double(median(lines[[i]]$Lines.changed)), 
                                 SD = as.double(sd(lines[[i]]$Lines.changed) ) ) )
-    lines[[i]]$SMA5 <- SMA(lines[[i]]$Lines.changed,n=5)
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
 
@@ -79,13 +78,14 @@ for (i in 1:length(files) ) {
 \maketitle
 
 \begin{abstract}
-  In order to improve team productivity, it is interesting to find 
+  In order to improve team productivity and the team interaction
+  itself, as well as the willingness of occasional volunteers, it is interesting to find 
   % Maybe it is the whole software development process (Quality, Less Stress, User Commitment, etc.)
   % Don't know what you mean.
   % I was thinking that understending the way a team collaborates not only improves productivity
   % but it could also improve the team. This could also increase the commitment of volunteer developers,
   % and identify death march or the burnout cases.      
-  out the dynamics underlying collaboration  and their
+  out the dynamics underlying collaboration in a repository-mediated project and their
   mechanisms. These mechanisms might not be explicit or organized from
   the top, but arise from
   the collaboration and the way it is done and rather be
@@ -270,17 +270,17 @@ repository using a Perl script that runs over the git log and notes
 the size of the changes that have been made to all files. 
 
 Since changes include both the insertion and deletion of lines within
-those files, the biggest of these values is taken; in particular, this
+those files, the largest of these values is taken; in particular, this
 means that the addition of all changes will not be equal to the sum of
 the sizes of all files. A change in two lines will appear in a diff as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
-the bigger of these two values; the main reason for doing so is also
+the larger of these two values; the main reason for doing so is also
 that in fact, the algorithm that computes changes in the repository
 examines similitude in lines and counts changes in two lines as two
 insertions and two deletions. There is no way to find out whether
 there have been actually two lines added somewhere and two deleted
 somewhere else, so in absence of that, we opt for the heuristic of
-using the biggest of these two values as change size. 
+using the largest of these two values as change size. 
 
 The script generates a {\tt .csv} file with a single column with the
 sequence of changes of size in the files of interest in each
@@ -343,7 +343,7 @@ and the average between 24 and 54. The fact that the average is so
 separated from the median is already a hint that this is a skewed
 distribution. The book analyzed in \cite{merelo16:slash} had a median
 of 10 lines, but a mean of 150 lines changed, in a distribution that
-is different, much more skewed towards bigger sizes, while the
+is different, much more skewed towards larger sizes, while the
 software library analyzed in \cite{Merelo2016:repomining} had a median
 of 9 and a mean of close to 32, which is remarkably similar to one of
 the papers analyzed here. This implies that the concept of {\em
@@ -441,7 +441,7 @@ number of changes. The shape of the line in
 investigation. In the case of \cite{merelo16:slash} values are
 somewhere in the middle, 5.7 and -0.96. The slope is quite similar
 indeed, and the intercept might point to the fact that size changes
-are bigger when fiction is being written, which also matches the macro
+are larger when fiction is being written, which also matches the macro
 averages and medians observed above. 
 
 The scale free nature of the work in the repository can be more
@@ -584,7 +584,9 @@ also related to discrete tasks in the ticketing system.
 After analyzing the software repositories that hold the papers, we can conclude that, in fact, all repositories analyzed show some of the features, specially freedom of a particular scale in the size of the changes; however, we could conclude from the measures taken above that there is a certain amount of interaction needed before the critical state settles. From the limited amount of repositories we have studied, we could put this number at around 100 changes, but of course there is further studies to be made in this subject. In particular, this would indicate that the only condition needed for the critical state to arise is the age of the repository, or maybe its size. Since the four papers were developed by different number and authors, the presence of absence of other artifacts might also play a role. However, we do not think that is the case. 
 
 In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
-script hosted in \url{http://github.com/JJ/literaturame}. This repository holds also the data used in this study, as well as the source of this paper.
+script hosted in \url{http://github.com/JJ/literaturame}. This
+repository holds also the data used in this study, as well as the
+source of this paper. 
 
 As future line of work, we will first try to gather data from more repositories, specially in the boundary where we think self-organization arises, around 100 commits, and these with other
 type of repositories, and see if there are some outstanding and
