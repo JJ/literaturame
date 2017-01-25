@@ -85,7 +85,6 @@ for (i in 1:length(files) ) {
   % I was thinking that understending the way a team collaborates not only improves productivity
   % but it could also improve the team. This could also increase the commitment of volunteer developers,
   % and identify death march or the burnout cases.      
-
   out the dynamics underlying collaboration  and their
   mechanisms. These mechanisms might not be explicit or organized from
   the top, but arise from
@@ -349,7 +348,7 @@ the papers analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
 similar no matter what is the thing that is actually written. 
 
-The timeline of the commit sizes is represented in a line chart in Figure \ref{Fig:smoothie} with logarithmic or
+The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic or
 decimal \emph{y} scale and smoothing over several commits, either 10
 or 20, depending on the color. The \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
