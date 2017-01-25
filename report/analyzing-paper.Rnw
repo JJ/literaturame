@@ -396,7 +396,7 @@ for (i in 1:length(lines) ) {
 \caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
-This distribution appears as a Zipf distribution, with the commit sizes
+This chart show what seems to be a Zipf distribution, with the commit sizes
 ranked in descending order and plotted with a logarithmic \emph{y}
 axis. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
@@ -440,18 +440,17 @@ indeed, and the intercept might point to the fact that size changes
 are bigger when fiction is being written, which also matches the macro
 averages and medians observed above. 
 
-
 The scale free nature of the work in the repository can be more
-properly observed by looking at the changes in some other way, ranking changes by size
-and representing them in a graph with a logarithmic \(y\) axis, as well as
-in the form of an histogram.
+properly observed by looking at the changes in some other way, ranking them by size
+and representing them in a chart with a logarithmic \(y\) axis, as well as
+in the form of an histogram. This is done in Figure \ref{fig:zipf}. 
 
 \begin{figure*}[h!tb]
   \centering
 <<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 zipf.fit.df <- data.frame(Name = character(),
-                        Coefficient = double(),
-                        Intercept = double())
+                          Coefficient = double(),
+                          Intercept = double())
 for (i in 1:length(lines) ) {
     print(ggplot(data=lines[[i]], aes(lines[[i]]$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10())
     sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
