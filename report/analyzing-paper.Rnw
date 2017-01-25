@@ -442,7 +442,8 @@ are bigger when fiction is being written, which also matches the macro
 averages and medians observed above. 
 
 
-We can look at the changes in some other way, ranking changes by size
+The scale free nature of the work in the repository can be more
+properly observed by looking at the changes in some other way, ranking changes by size
 and representing them in a graph with a logarithmic \(y\) axis, as well as
 in the form of an histogram.
 
