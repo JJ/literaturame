@@ -94,7 +94,8 @@ for (i in 1:length(files) ) {
   we can deduce some hints on
   how to improve it. In this paper we will focus on the former,
   examining repositories where the collaborative writing of scientific
-  papers by our research team is taking place show hints of a critical   % what subject correspond the verb "show" in this sentence? it is a bit long and difficult to understand...  - Pedro
+  papers by our research team is taking place show hints of a critical   % what subject correspond the 
+      %verb "show" in this sentence? it is a bit long and difficult to understand...  - Pedro
   state, which can be measured by the 
 existence of a scale-free structure, long-distance correlations and
 {\em pink}
@@ -102,8 +103,8 @@ noise when analyzing the size of changes and its time series. This
 critical state is reached via self-organization, which is why it is
 called self-organized criticality. Our
 intention is to prove that, although with different characteristics,
-most repositories independently of the number of collaborators and its real
-nature, self-organizes, which implies that it is the nature of the
+most repositories independently of the number of collaborators and their real
+nature, self-organize, which implies that it is the nature of the
 interactions, and not the object of the interaction, which takes the
 project to a critical state. This critical state has already been
 established in a number of repositories with different types of
