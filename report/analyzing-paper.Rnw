@@ -94,7 +94,7 @@ for (i in 1:length(files) ) {
   we can deduce some hints on
   how to improve it. In this paper we will focus on the former,
   examining repositories where the collaborative writing of scientific
-  papers by our research team is taking place show hints of a critical
+  papers by our research team is taking place show hints of a critical   % what subject correspond the verb "show" in this sentence? it is a bit long and difficult to understand...  - Pedro
   state, which can be measured by the 
 existence of a scale-free structure, long-distance correlations and
 {\em pink}
@@ -130,7 +130,7 @@ critical slope, and a single grain of sand creates avalanches
 unrelated to the frequency of grains falling. This pile of sand is
 also a simple model of a self-organized system that captures many of
 its main characteristics, but its behavior is connected to the
-experience of software developers and paper writers tnat experience
+experience of software developers and paper writers that experience
 certain periods of stasis followed by {\em avalanches} of work, new
 code or new paragraphs without an apparent origin. 
 
@@ -166,7 +166,7 @@ mechanisms such as preferential attachment \cite{lin2015power}·
 
 After some initial exploration of the subject  and developing the
 tools needed to mine repositories in GitHub \cite{merelo16:self}, in
-this paper we are interested in finding out whether these mechanism
+this paper we are interested in finding out whether these mechanisms
 are exclusive or software teams or if, indeed, self-organized
 criticality can be found also in other repositories. In our research
 team we are committed to open source and open science, developing all
@@ -189,12 +189,12 @@ software repository for the Moose Perl library
 person \cite{merelo16:slash}, in this report we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
 %Added citation to the paper
 to work on a repository for several papers in which our research group has been working
-for different amounts of time, from a few months to moreo than a
+for different amounts of time, from a few months to more than a
 year. In particular, one of the papers, which was already the object
 of a previous report \cite{merelo16:self} has been chosen since it has
 been a work in progress for more than 
 one a year until it was eventually published
-\cite{Castillo2016books}. The other three papers chosen is in one case
+\cite{Castillo2016books}. The other three papers chosen are in one case
 an evolution of a paper which was initially published in a conference
 and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG16},
 another that contains several papers published in diverse venues and
@@ -243,7 +243,7 @@ error or adapt the code to particular situations.
 % Reference 
 % Added - JJ
 In fact, this self-organization has been also observed in similar
-projects such as Wikipedia 
+projects such as Wikipedia.
 
 This self-organization, eventually, might produce a critical state
 given necessary conditions. However, there has been no work going further and
@@ -285,9 +285,10 @@ The script generates a {\tt .csv} file with a single column with the
 sequence of changes of size in the files of interest in each
 repository. These files, as well as the repositories where they have
 been measured, are available with a free license in the repository
-that also hosts this paper. The sequence of changes for the 4 files is
-shown in figure \ref{fig:tl}. 
-%
+that also hosts this paper.  % maybe we should add here the URL to the paper repo, as a footnote  - Pedro
+The sequence of changes for the 4 files is shown in Figure \ref{fig:tl}. 
+
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
   \centering
 <<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
@@ -305,7 +306,7 @@ for (i in 1:length(lines) ) {
   the largest number of commits last.  \label{fig:tl}}
 \end{figure*}
 
-The $x$ axes for these timelines does not correspon to physical time,
+The $x$ axes for these timelines does not correspond to physical time,
 but simply to sequence. In this sense, there is an important difference between
 our research methodology, which considers discrete changes, to papers such
 as  \cite{herraiz2009statistical}, which take into account {\em daily}
@@ -358,7 +359,8 @@ happen and other that alternate big with small changes. A certain
 \emph{rhythm} can be observed, which hints at large-scale
 correlations, that is influence of changes happening now over changes
 that occur several, or many, steps afterwards, in the future. 
-%
+
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
   \centering
@@ -375,6 +377,7 @@ distribution. We will examine this next, representing the number of changes of a
 size in a log-log scale, with linear smoothing to show the trend in
 Figure \ref{fig:changes}. 
 
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
 \begin{figure*}[h!tb]
   \centering
@@ -446,6 +449,7 @@ properly observed by looking at the changes in some other way, ranking changes b
 and representing them in a graph with a logarithmic \(y\) axis, as well as
 in the form of an histogram.
 
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
   \centering
 <<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
@@ -484,9 +488,10 @@ kable( zipf.fit.df,"latex" )
 %
 
 Finally, these scale distributions hints at the possibility of
-long-scale correlations. The partial autocorrelation is plotted in the
-next figure. %ref needed
+long-scale correlations. The partial autocorrelation is plotted in
+Figure \ref{fig:auto}.
 
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
 \begin{figure*}[h!tb]
   \centering
