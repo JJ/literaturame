@@ -371,9 +371,10 @@ for (i in 1:length(lines) ) {
 \caption{Timeline of changes for the four papers, with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
 \end{figure*}
 
-The change in scale might mean that it is distributed using a Pareto
-distribution. Next we represent the number of changes of a particular
-size in a log-log scale, with linear smoothing to show the trend.
+Besides, these changes in scale might mean that commit sizes are distributed along a Pareto
+distribution. We will examine this next, representing the number of changes of a particular
+size in a log-log scale, with linear smoothing to show the trend in
+Figure \ref{fig:changes}. 
 
 %\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
 \begin{figure*}[h!tb]
@@ -397,12 +398,24 @@ for (i in 1:length(lines) ) {
 \end{figure*}
 %
 This distribution appears as a Zipf distribution, with the commit sizes
-ranked in descending order and plotted with a logarithmic \emph{y} axis.
-I can be linearly fit to a log-log distribution with coefficients
-4.7287153, -1.0782681, which we can compare with the results in
-\cite{Merelo2016:repomining}, with a slope coefficient equal to
-\texttt{-0.9608}. The coefficients for all repositories are shown in
-Table \ref{t:sizes}
+ranked in descending order and plotted with a logarithmic \emph{y}
+axis. This distribution shows, in all cases, a {\em tail}
+corresponding to big changes. This might be simply a consequence of
+different practices by different authors, with some prefering atomic
+changes to single lines or paragraphs and others writing down whole
+sections; in some cases, it corresponds also to reuse of common parts
+of papers (authors, acknowledgements, description of a method) to
+create the initial versions of the paper; finally, in some cases
+comments are deleted before the final version is submitted, so these
+{\em tails} are not really unexpected. If you follow the charts also
+in the direction of increasing number of commits it can be seen how
+the linearity of the distribution becomes more crisp; in the first two
+papers there are simply not enough number of commits to actually show
+this Pareto distribution, but in the last case there is a very clear
+log-log distribution. 
+
+These distributions can, in fact, be linearly fit to a log-log distribution with coefficients
+shown in Table \ref{t:sizes}. 
 %
 \begin{table}
     \centering
@@ -414,6 +427,21 @@ kable( sizes.fit.df,"latex" )
   number of lines and size.\label{t:sizes}}
 \end{table}
 %
+These values are also similar to those found in
+\cite{Merelo2016:repomining}, where the intercept was 6.02, above the
+table, and the slope -0.001, a very mild slope that hints at a big
+number of changes and might in fact indicate that, as would be
+expected, the intercept increases and the slope decreases with the
+number of changes. The shape of the line in
+\cite{Merelo2016:repomining} in fact might be more similar to a {\em
+  broken stick}; this is a matter that deserves further
+investigation. In the case of \cite{merelo16:slash} values are
+somewhere in the middle, 5.7 and -0.96. The slope is quite similar
+indeed, and the intercept might point to the fact that size changes
+are bigger when fiction is being written, which also matches the macro
+averages and medians observed above. 
+
+
 We can look at the changes in some other way, ranking changes by size
 and representing them in a graph with a logarithmic \(y\) axis, as well as
 in the form of an histogram.
