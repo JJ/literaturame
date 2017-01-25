@@ -565,31 +565,30 @@ Section our conclusions.
 
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
 
-After analyzing the software repository for a scientific paper, we can
-% is not just the repository? is not software yet
-conclude that it is in a critical state, as proved by the fact that its
-changes have a scale-free form and that there are long-distance
-correlations, with \emph{long} indicating here a distance further than
-the two or three closer commits. Differently from other papers, we have
-used commits as a discrete measure, not \emph{dailies} or other time
+In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers by looking for certain features that are peculiar to the criticla state: scale-free behavior, long-distance correlations and pink we. 
+
+The methodology that we have used counts size of commits as a discrete measure, not \emph{dailies} or other time
 measure, since development often stops for several days more clearly in
 the case of this paper, where nothing was done for months, and nothing   % "this paper" refers to the "literaturame" paper (self-reference), or is something that remains from a previous text?
 between submission and the first revision. We think that commits, and
 not actual time measures, will show a much clearer picture of the state
 of the repository, since they correspond to units of work done and are
 also related to discrete tasks in the ticketing system.
-
 % Comment: There is other information that could be exploited that
 % IMO is more related with self-organization, and is the author of
 % the commit. Maybe rules of interaction arise when for instance some one takes the lead
 % and others wait for him to work, and then make little corrections.
+% This could be the content of other papers, not this one...
 
-You can draw your own conclusions on your own repos by running the Perl
-script in \url{http://github.com/JJ/literaturame}. As future line of
-work, we will compare different paper repositories, and these with other
+After analyzing the software repositories that hold the papers, we can conclude that, in fact, all repositories analyzed show some of the features, specially freedom of a particular scale in the size of the changes; however, we could conclude from the measures taken above that there is a certain amount of interaction needed before the critical state settles. From the limited amount of repositories we have studied, we could put this number at around 100 changes, but of course there is further studies to be made in this subject. In particular, this would indicate that the only condition needed for the critical state to arise is the age of the repository, or maybe its size. Since the four papers were developed by different number and authors, the presence of absence of other artifacts might also play a role. However, we do not think that is the case. 
+
+In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
+script hosted in \url{http://github.com/JJ/literaturame}. This repository holds also the data used in this study, as well as the source of this paper.
+
+As future line of work, we will first try to gather data from more repositories, specially in the boundary where we think self-organization arises, around 100 commits, and these with other
 type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
-than the substrate itself, to different types of collaboration.
+than the substrate itself, to different types of collaboration. We would also like to make more precise models of the ranked change sizes, as well as the relation between number of changes and its size. A study of particular circumstances of every repository will also help us to understand what self-organization means and, finally, as was our initial objective, if this fact can be used to create methodologies that improve productivity in work teams. 
 
 
 \section*{Acknowledgements}
