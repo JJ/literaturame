@@ -593,7 +593,7 @@ than the substrate itself, to different types of collaboration. We would also li
 
 \section*{Acknowledgements}
 This work has been supported in part by:
- Ministerio de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH)
+ Ministerio de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
 
 \bibliographystyle{splncs03}
 \bibliography{geneura,biblio}
