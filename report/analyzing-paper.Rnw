@@ -151,7 +151,7 @@ changes getting a smaller spectral density \cite{Merelo2016:repomining}.
 The state in which the team is has obviously an influence in its
 productivity, with some authors finding this state favors
 evolvability of the underlying software system \cite{1544757}, as
-oposed from the the lack of this quality in software created by a
+opposed from the the lack of this quality in software created by a
 top-down organization process. That is why this quality has been
 mainly studied in open source software systems which follow a more
 open model of development; however, it might happen that, in the same
@@ -182,7 +182,7 @@ paper using a repository is a good practice that allows an easy
 distribution of tasks, attribution, and, combined with the use of
 \emph{literate} programming tools such as Knitr \cite{xie2015dynamic}, that allow the embedding of code
 within the text itself, provide a closer relationship between data and report
-and, of course, easier reproducibility.
+and, of course, easier reproductibility.
 
 That is why, after examining and establishing the existence of this state in the
 software repository for the Moose Perl library
@@ -222,11 +222,11 @@ and eventually we will expose our \protect\hyperlink{conc}{conclusions}.
 \hypertarget{soa}{\section{State of the art}\label{soa}}
 
 As far as we know, there has not been a continuing line of research on
-self-organized criticality in teamwork. Researchers have throughly
+self-organized criticality in teamwork. Researchers have thoroughly
 proved that software repositories seem to be in a SOC state,
 \cite{wu2007empirical,gorshenev2004punctuated}, including our own
 reports \cite{Merelo2016:repomining,merelo16:slash,merelo16:self}
-where we examine and establish the existence of repositores in a
+where we examine and establish the existence of repositories in a
 critical state to which they have arrived via self-organization; the
 fact that these repositories have different characteristics in terms
 of the number of users, age and type of information they hold implies that
@@ -404,7 +404,7 @@ This chart show what seems to be a Zipf distribution, with the commit sizes
 ranked in descending order and plotted with a logarithmic \emph{y}
 axis. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
-different practices by different authors, with some prefering atomic
+different practices by different authors, with some preferring atomic
 changes to single lines or paragraphs and others writing down whole
 sections; in some cases, it corresponds also to reuse of common parts
 of papers (authors, acknowledgements, description of a method) to
@@ -502,7 +502,7 @@ Finally, these scale distributions hints at the possibility of
 long-scale correlations, but in order to find this out, we will have
 to plot the partial autocorrelation of the sequence, that is, the
 relationship between the size of a change and the rest of the changes
-in tue sequence. This is computed and plotted in Figure
+in the sequence. This is computed and plotted in Figure
 \ref{fig:auto}. 
 %
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
@@ -531,7 +531,7 @@ both cases, correlation happens at the distance of 13-25 commits,
 exactly as it happened before. However, autocorrelation seems to
 disappear in the older repositories, at least for that long
 distances. This might indicate significant differences for other types
-of work, but it will need furter research to find out, in a more
+of work, but it will need further research to find out, in a more
 precise way, the ranges of distances where autocorrelation is
 significant. 
 
@@ -566,7 +566,7 @@ Section our conclusions.
 
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
 
-In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers by looking for certain features that are peculiar to the criticla state: scale-free behavior, long-distance correlations and pink we. 
+In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink we. 
 
 The methodology that we have used counts size of commits as a discrete measure, not \emph{dailies} or other time
 measure, since development often stops for several days more clearly in
@@ -595,8 +595,7 @@ than the substrate itself, to different types of collaboration. We would also li
 
 
 \section*{Acknowledgements}
-This work has been supported in part by:
- Ministerio de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
+This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
 
 \bibliographystyle{splncs03}
 \bibliography{geneura,biblio}
