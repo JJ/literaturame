@@ -50,7 +50,7 @@
 \begin{document}
 %\SweaveOpts{concordance=TRUE}
 % is it possible using relative-paths instead of absolute paths to set the file names?
-<<setup, cache=FALSE,echo=FALSE>>=
+<<setup, cache=FALSE,echo=FALSE,warning=FALSE>>=
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
@@ -115,7 +115,7 @@ states reached by these and the object of this paper.
 \section{Introduction}\label{introduction}
 
 The existence of a self-organized critical state \cite{bak1988self} in
-software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis} and
+software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis} and 
 attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
 itself and through messages in other communication media, such as the Slack or IRC chat
 application, task assignment systems or mailing lists. In this
@@ -468,8 +468,10 @@ for (i in 1:length(lines) ) {
 \end{figure*}
 %
 %
-The Zipf exponent for these models are shown in Table \ref{t:zipf}, which is also
-in the same range as the one found in \cite{Merelo2016:repomining}.
+The Zipf exponent for these models are shown in Table \ref{t:zipf},
+and are of the same order, but different range, of the one found  in
+\cite{merelo16:slash}, where it hovers around 6 for the intercept and
+-0.01 for the slope.
 %
 \begin{table}
     \centering
