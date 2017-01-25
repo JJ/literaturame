@@ -205,7 +205,14 @@ has not been finished yet. These papers have been chosen because they
 had a certain length, with more than 50 commits (or changes). Besides,
 they were available and we knew their circumstances. Whether they are
 or not representative of a larger corpus remains to be seen, and we
-will try to examine this possibility in the conclusions. 
+will try to examine this possibility in the conclusions. The papers
+are plain text with LaTeX commands, and, in some cases, also R
+commands in the case of the paper using Knitr. The inclusion of lines
+and commands written in computer languages would indicate that these
+papers are halfway between a book, which is mainly text, and an
+application or library, which is mainly code. We will see if this {\em
+  hybrid} nature translates to the measures taken over the repository
+and its dynamics. 
 
 After presenting a brief \protect\hyperlink{soa}{state of the art} next, 
 followed by the \protect\hyperlink{methodology}{methodology},
@@ -254,7 +261,7 @@ age.
 \hypertarget{methodology}{\section{Methodology}\label{methodology}}
 \label{sec:method}
 
-In this paper, we will work with the sizes of changes to a particular
+In this paper we will work with the sizes of changes to a particular
 set of files in the repository; since repositories include other
 artifacts such as images or style files we, via a wildcard, select
 only the file or files we are interested in. To extract information
