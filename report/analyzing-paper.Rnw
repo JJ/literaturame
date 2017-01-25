@@ -261,7 +261,7 @@ age.
 \hypertarget{methodology}{\section{Methodology}\label{methodology}}
 \label{sec:method}
 
-In this paper we will work with the sizes of changes to a particular
+In this paper we will work with the size of changes to a particular
 set of files in the repository; since repositories include other
 artifacts such as images or style files we, via a wildcard, select
 only the file or files we are interested in. To extract information
@@ -281,6 +281,7 @@ insertions and two deletions. There is no way to find out whether
 there have been actually two lines added somewhere and two deleted
 somewhere else, so in absence of that, we opt for the heuristic of
 using the biggest of these two values as change size. 
+% 
 
 The script generates a {\tt .csv} file with a single column with the
 sequence of changes of size in the files of interest in each
