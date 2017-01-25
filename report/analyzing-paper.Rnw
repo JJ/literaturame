@@ -118,7 +118,7 @@ states reached by these and the object of this paper.
 The existence of a self-organized critical state \cite{bak1988self} in
 software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis} and 
 attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
-itself and through messages in other communication media, such as the Slack or IRC chat
+itself and through messages in other communication media, such as Slack or an IRC chat
 application, task assignment systems or mailing lists. In this
 critical state there are specific dynamic behaviors, like small
 changes provoking {\em avalanches} of other changes and long-distance
@@ -138,7 +138,7 @@ code or new paragraphs without an apparent origin.
 This anecdotal experience supports that software teams analyzed
 through the repositories that support their work might also find
 themselves in this self-organized critical state. Furthermore, the case for this
-critical state is supported   by several macro measures that certify the non-existence of a particular
+critical state is supported by several macro measures that certify the non-existence of a particular
 scale in the size of changes
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they
 also exhibit long-range 
@@ -168,20 +168,20 @@ mechanisms such as preferential attachment \cite{lin2015power}·
 After some initial exploration of the subject  and developing the
 tools needed to mine repositories in GitHub \cite{merelo16:self}, in
 this paper we are interested in finding out whether these mechanisms
-are exclusive or software teams or if, indeed, self-organized
+are exclusive to software teams or if, indeed, self-organized
 criticality can be found also in other repositories. In our research
 team we are committed to open source and open science, developing all
 our work in open repositories hosted in GitHub. The repository is open
 since the first moment of writing a paper, and the repository itself
-hosts also data and, like in the case of this particular paper, code
+hosts also data and, like in the case of this particular paper, the code
 used to extract data. We interact throughout writing the paper via
 comments in the paper and issues, that is, work orders where you can
 comment and that can also be {\em closed} once the {\em issue} has
 been cleared or fixed. \emph{Developing} a
-paper using a repository is a good practice that allows easy
+paper using a repository is a good practice that allows an easy
 distribution of tasks, attribution, and, combined with the use of
 \emph{literate} programming tools such as Knitr \cite{xie2015dynamic}, that allow the embedding of code
-within the text itself, providing a closer relationship between data and report
+within the text itself, provide a closer relationship between data and report
 and, of course, easier reproducibility.
 
 That is why, after examining and establishing the existence of this state in the
