@@ -513,8 +513,9 @@ around 20 commits.
 
 With two of the three features of the critical state present, we will
 focus on the third, the presence of \emph{pink} noise, as measured by
-the power spectral density, shown below
+the power spectral density, shown in Figure \ref{fig:spectrum}.
 
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
 \begin{figure*}[h!tb]
   \centering
