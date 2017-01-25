@@ -327,7 +327,14 @@ This table shows that, at least from a macro point of view, median and
 averages are remarkably similar, with the median between 9 and 22 lines
 and the average between 24 and 54. The fact that the average is so
 separated from the median is already a hint that this is a skewed
-distribution. 
+distribution. The book analyzed in \cite{merelo16:slash} had a median
+of 10 lines, but a mean of 150 lines changed, in a distribution that
+is different, much more skewed towards bigger sizes, while the
+software library analyzed in \cite{Merelo2016:repominin} had a median
+of 9 and a mean of close to 32, which is remarkably similar to one of
+the papers analyzed here. This implies that the concept of {\em
+  session}, or size of changes committed together, might be very
+similar no matter what is the thing that is actually written. 
 
 The timeline of the commit sizes is represented next with logarithmic or
 decimal \emph{y} scale. The serrated characteristic is the same, as well
