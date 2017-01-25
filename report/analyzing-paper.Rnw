@@ -261,7 +261,7 @@ age.
 \hypertarget{methodology}{\section{Methodology}\label{methodology}}
 \label{sec:method}
 
-In this paper we will work with the sizes of changes to a particular
+In this paper we will work with the size of changes to a particular
 set of files in the repository; since repositories include other
 artifacts such as images or style files we, via a wildcard, select
 only the file or files we are interested in. To extract information
