@@ -547,7 +547,7 @@ correlations, with \emph{long} indicating here a distance further than
 the two or three closer commits. Differently from other papers, we have
 used commits as a discrete measure, not \emph{dailies} or other time
 measure, since development often stops for several days more clearly in
-the case of this paper, where nothing was done for months, and nothing
+the case of this paper, where nothing was done for months, and nothing   % "this paper" refers to the "literaturame" paper (self-reference), or is something that remains from a previous text?
 between submission and the first revision. We think that commits, and
 not actual time measures, will show a much clearer picture of the state
 of the repository, since they correspond to units of work done and are
