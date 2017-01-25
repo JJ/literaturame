@@ -297,7 +297,13 @@ for (i in 1:length(lines) ) {
     print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
 }
 @
-\caption{Lines changed per commit in a log-y scale.\label{fig:tl}}
+\caption{Lines changed per commit in a log-y scale. The four charts
+  correspond, starting with the top right, DCAI, PPSN, book prediction,
+  volunteer computing at the lower bottom. This order is going to be
+  the same across all figures from now on. This order has been
+  chosen, as it can be observed, to follow the size of the log, with
+  the paper with the smaller number of commits first and the one with
+  the largest number of commits last.  \label{fig:tl}}
 \end{figure*}
 
 The $x$ axes for these timelines does not correspon to physical time,
@@ -343,15 +349,16 @@ the papers analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
 similar no matter what is the thing that is actually written. 
 
-The timeline of the commit sizes is represented next with logarithmic or
-decimal \emph{y} scale. The serrated characteristic is the same, as well
-as the big changes in scale. The \emph{x} axis is simply the temporal
+The timeline of the commit sizes is represented in a line chart in Figure \ref{Fig:smoothie} with logarithmic or
+decimal \emph{y} scale and smoothing over several commits, either 10
+or 20, depending on the color. The \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
-commit in number of lines.
-
-A certain \emph{rhythm} can be observed. Probably it will be a bit more
-visible if we do an order 10 and then an order 20 smoothing, averaging
-over that number of changes.
+commit in number of lines. The serrated characteristic is the same, as well
+as the big changes in scale, with some periods where small changes
+happen and other that alternate big with small changes. A certain
+\emph{rhythm} can be observed, which hints at large-scale
+correlations, that is influence of changes happening now over changes
+that occur several, or many, steps afterwards, in the future. 
 %
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
@@ -361,7 +368,7 @@ for (i in 1:length(lines) ) {
      print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
 }
 @ 
-\caption{Smoothed line over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
+\caption{Timeline of changes for the four papers, with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
 \end{figure*}
 
 The change in scale might mean that it is distributed using a Pareto
