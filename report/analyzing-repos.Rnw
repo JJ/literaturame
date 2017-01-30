@@ -1,0 +1,597 @@
+\documentclass[a4paper]{llncs}
+\usepackage{subcaption} % an alternative package for sub figures
+\usepackage{llncsdoc}
+\usepackage{lmodern}
+%\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+
+\usepackage{framed}
+
+\usepackage{graphicx,grffile}
+
+\setlength{\abovecaptionskip}{20pt plus 3pt minus 2pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\setcounter{secnumdepth}{0}
+
+  \title{Finding self-organized criticality in collaborative work via repository mining}
+
+  \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario García-Valdez\inst{2}}
+  \institute{Geneura Team and CITIC, University of Granada (Spain)\\
+    \email{\tt \{jmerelo,pacv\}@ugr.es}
+\and
+  Dept. of Graduate Studies, Instituto Tecnologico de Tijuana (Mexico)\\
+    \email{\tt mario@tectijuana.edu.mx}
+}
+
+\begin{document}
+%\SweaveOpts{concordance=TRUE}
+% is it possible using relative-paths instead of absolute paths to set the file names?
+<<setup, cache=FALSE,echo=FALSE,warning=FALSE>>=
+library(ggplot2)
+library("ggfortify")
+library(dplyr)
+library(TTR)
+#use 
+files <- c('../data/papers/lines_2016-DCAI_ALL_ALL_tex.csv','../data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','../data/papers/lines_2015_books_ALL_tex.csv','../data/papers/lines_modeling-volunteer-computing_ALL_ALL_tex.csv')
+lines <- list()
+summary <- data.frame(Name = character(),
+                      Mean = double(),
+                      Median = double(),
+                      SD = double())
+for (i in 1:length(files) ) {
+# for testing here
+    lines[[i]] <- read.csv(files[i]) # File should be established from an R script
+    summary <- rbind( summary,
+                     data.frame( Name= gsub(".+lines_(.+)_\\w+\\..+","\\1",files[i]),
+                                Mean = as.double(mean(lines[[i]]$Lines.changed)),
+                                Median = as.double(median(lines[[i]]$Lines.changed)), 
+                                SD = as.double(sd(lines[[i]]$Lines.changed) ) ) )
+    lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
+    lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
+
+}
+@ 
+\maketitle
+
+\begin{abstract}
+  In order to improve team productivity and the team interaction
+  itself, as well as the willingness of occasional volunteers, it is interesting to find 
+  out the dynamics underlying collaboration in a repository-mediated project and their
+  mechanisms. These mechanisms might not be explicit or organized from
+  the top, but arise from
+  the collaboration and the way it is done and rather be
+  self-organizing. This is why finding if self-organization takes place and under which
+  conditions will yield some insights on this process, and, from this,
+  we can deduce some hints on
+  how to improve it. In this paper we will focus on the former,
+  examining repositories where and how repositories for collaborative writing of scientific
+  papers by our research team is taking place show the characteristics of a critical  
+  state, which can be measured by the 
+existence of a scale-free structure, long-distance correlations and
+{\em pink}
+noise when analyzing the size of changes and its time series. This
+critical state is reached via self-organization, which is why it is
+called self-organized criticality. Our
+intention is to prove that, although with different characteristics,
+most repositories independently of the number of collaborators and their real
+nature, self-organize, which implies that it is the nature of the
+interactions, and not the object of the interaction, which takes the
+project to a critical state. This critical state has already been
+established in a number of repositories with different types of
+projects, such as software or even literary works; we will also find
+if there is any essential difference between the macro measures of the
+states reached by these and the object of this paper. 
+\end{abstract}
+
+\section{Introduction}\label{introduction}
+
+The existence of a self-organized critical state \cite{bak1988self} in
+software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis} and 
+attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
+itself and through messages in other communication media, such as Slack or an IRC chat
+application, task assignment systems or mailing lists. In this
+critical state there are specific dynamic behaviors, like small
+changes provoking {\em avalanches} of other changes and long-distance
+correlations that make a particular change in the codebase cause
+further changes down the line. The dynamics of self-organized
+criticality is sometimes compared to that of a sand pile
+\cite{paczuski1996avalanche}, in the sense that the actual shape tends
+to reach a {\em critical} state, represented in the sand pile by a
+critical slope, and a single grain of sand creates avalanches
+unrelated to the frequency of grains falling. This pile of sand is
+also a simple model of a self-organized system that captures many of
+its main characteristics, but its behavior is connected to the
+experience of software developers and paper writers that experience
+certain periods of stasis followed by {\em avalanches} of work, new
+code or new paragraphs without an apparent origin. 
+
+This anecdotal experience supports that software teams analyzed
+through the repositories that support their work might also find
+themselves in this self-organized critical state. Furthermore, the case for this
+critical state is supported by several macro measures that certify the non-existence of a particular
+scale in the size of changes
+\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they
+also exhibit long-range 
+correlations and a \emph{pink noise} \cite{szendro2001pink} in the power spectral density, with
+\emph{noise} or variations with respect to the \emph{normal} frequency
+changing in a way that is inversely proportional to it, higher frequency
+changes getting a smaller spectral density \cite{Merelo2016:repomining}. 
+
+
+The state in which the team is has obviously an influence in its
+productivity, with some authors finding this state favors
+evolvability of the underlying software system \cite{1544757}, as
+opposed from the the lack of this quality in software created by a
+top-down organization process. That is why this quality has been
+mainly studied in open source software systems which follow a more
+open model of development; however, it might happen that, in the same
+way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
+self-organized state might be essential to the software development
+process, as long as it is done in an application that allows
+collaboration such as a repository managed by a source control system
+such as git. In fact, some explanations have been offered via
+conservation laws \cite{6784340} and other usual complex network
+mechanisms such as preferential attachment \cite{lin2015power}· 
+%% It remind me about the cathedral vs bazaar discussion 
+%% Add something about it if you want - JJ
+
+After some initial exploration of the subject  and developing the
+tools needed to mine repositories in GitHub \cite{merelo16:self}, in
+this paper we are interested in finding out whether these mechanisms
+are exclusive to software teams or if, indeed, self-organized
+criticality can be found also in other repositories. In our research
+team we are committed to open source and open science, developing all
+our work in open repositories hosted in GitHub. The repository is open
+since the first moment of writing a paper, and the repository itself
+hosts also data and, like in the case of this particular paper, the code
+used to extract data. We interact throughout writing the paper via
+comments in the paper and issues, that is, work orders where you can
+comment and that can also be {\em closed} once the {\em issue} has
+been cleared or fixed. \emph{Developing} a
+paper using a repository is a good practice that allows an easy
+distribution of tasks, attribution, and, combined with the use of
+\emph{literate} programming tools such as Knitr \cite{xie2015dynamic}, that allow the embedding of code
+within the text itself, provide a closer relationship between data and report
+and, of course, easier reproductibility.
+
+That is why, after examining and establishing the existence of this state in the
+software repository for the Moose Perl library
+\cite{Merelo2016:repomining} and books written mainly by a single
+person \cite{merelo16:slash}, in this report we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
+%Added citation to the paper
+to work on a repository for several papers in which our research group has been working
+for different amounts of time, from a few months to more than a
+year. In particular, one of the papers, which was already the object
+of a previous report \cite{merelo16:self} has been chosen since it has
+been a work in progress for more than 
+one a year until it was eventually published
+\cite{Castillo2016books}. The other three papers chosen are in one case
+an evolution of a paper which was initially published in a conference
+and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG16},
+another that contains several papers published in diverse venues and
+that are evolution of this one \cite{DBLP:journals/corr/GuervosG15},
+and finally a paper that has been in progress for about a year, but
+has not been finished yet. These papers have been chosen because they
+had a certain length, with more than 50 commits (or changes). Besides,
+they were available and we knew their circumstances. Whether they are
+or not representative of a larger corpus remains to be seen, and we
+will try to examine this possibility in the conclusions. The papers
+are plain text with LaTeX commands, and, in some cases, also R
+commands in those papers using Knitr. The inclusion of lines
+and commands written in computer languages would indicate that these
+papers are halfway between a book, which is mainly text, and an
+application or library, which is mainly code. We will see if this {\em
+  hybrid} nature translates to the measures taken over the repository
+and its dynamics. 
+
+After presenting a brief \protect\hyperlink{soa}{state of the art} next, 
+followed by the \protect\hyperlink{methodology}{methodology},
+obtained \protect\hyperlink{res}{results} will be presented % in the next section, 
+and eventually we will expose our \protect\hyperlink{conc}{conclusions}. 
+
+\hypertarget{soa}{\section{State of the art}\label{soa}}
+
+As far as we know, there has not been a continuing line of research on
+self-organized criticality in teamwork. Researchers have thoroughly
+proved that software repositories seem to be in a SOC state,
+\cite{wu2007empirical,gorshenev2004punctuated}, including our own
+reports \cite{Merelo2016:repomining,merelo16:slash,merelo16:self}
+where we examine and establish the existence of repositories in a
+critical state to which they have arrived via self-organization; the
+fact that these repositories have different characteristics in terms
+of the number of users, age and type of information they hold implies that
+self-organization, as should be expected, is achieved with relative
+ease. In fact, this state of self-organized criticality
+quantitatively proves what has been already established via
+qualitative analysis, the fact that in many successful software
+projects, developers self-organize \cite{Crowston2007564}, which is
+the preferred way of working in distributed and volunteer
+teams \cite{crowston2012free}. In fact, this way of organization
+matches our own experience in development of open source projects such
+as \cite{ae09,2016arXiv160101607M}, which are developed mainly by one
+or a few coders, helped sporadically by other coders that find an
+error or adapt the code to particular situations. 
+% Reference 
+% Added - JJ
+In fact, this self-organization has also been observed in similar
+projects such as Wikipedia.
+
+This self-organization, eventually, might produce a critical state
+given the necessary conditions. However, there has been no work going further and
+proving this even in the case that work is done by a few persons and
+on repositories that are not devoted to software development.
+
+In this paper we will examine different repositories with the same purpose,
+all devoted to the collaborative writing of scientific papers, but
+each with a different age, in order to try and find out if self-organization
+arrives simply with age and, if so, what seems to be this critical
+age. 
+
+
+\hypertarget{methodology}{\section{Methodology}\label{methodology}}
+\label{sec:method}
+
+In this paper we will work with the size of changes to a particular
+set of files in the repository; since repositories include other
+artifacts such as images or style files we, via a wildcard, select
+only the file or files we are interested in. To extract information
+about changes to these files in the repositories,  we analyze the
+repository using a Perl script that runs over the git log and notes
+the size of the changes that have been made to all files. 
+
+Since changes include both the insertion and deletion of lines within
+those files, the largest of these values is taken; in particular, this
+means that the addition of all changes will not be equal to the sum of
+the sizes of all files. A change in two lines will appear in a diff as
+``2 insertions, 2 deletions'', adding up to 0; that is why we consider
+the larger of these two values; the main reason for doing so is also
+that in fact, the algorithm that computes changes in the repository
+examines similitude in lines and counts changes in two lines as two
+insertions and two deletions. There is no way to find out whether
+there have been actually two lines added somewhere and two deleted
+somewhere else, so in absence of that, we opt for the heuristic of
+using the largest of these two values as change size. 
+
+The script generates a {\tt .csv} file with a single column with the
+sequence of changes of size in the files of interest in each
+repository. These files, as well as the repositories where they have
+been measured, are available with a free license in the repository
+that also hosts this paper.  % maybe we should add here the URL to the paper repo, as a footnote  - Pedro
+The sequence of changes for the 4 files is shown in Figure \ref{fig:tl}. 
+
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+\begin{figure*}[h!tb]
+  \centering
+<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+for (i in 1:length(lines) ) {
+    lines[[i]]$x = as.numeric(row.names(lines[[i]]))
+    print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
+}
+@
+\caption{Lines changed per commit in a log-y scale. The four charts
+  correspond, starting with the top right, DCAI, PPSN, book prediction,
+  volunteer computing at the lower bottom. This order is going to be
+  the same across all figures from now on. This order has been
+  chosen, as it can be observed, to follow the size of the log, with
+  the paper with the smaller number of commits first and the one with
+  the largest number of commits last.  \label{fig:tl}}
+\end{figure*}
+
+The $x$ axes for these timelines does not correspond to physical time,
+but simply to sequence. In this sense, there is an important difference between
+our research methodology, which considers discrete changes, to papers such
+as  \cite{herraiz2009statistical}, which take into account {\em daily}
+changes. We think that examining discrete changes does not impose a
+particular rhythm, namely, daily, on the changes, but lets the
+repository expose its own rhythm; it also allows us to examine
+slow-changing repositories such as these ones, that can be static for
+a long time to experience a burst of changes all of a sudden;
+precisely these changes can indicate an {\em avalanche} that is a
+symptom of the underlying self-organized criticality state.
+
+Once the information from the repositories has been extracted, we
+proceed to analyze it in the next section. 
+
+\hypertarget{res}{\section{Results}\label{res}}
+
+A summary of the statistical characteristics of the size of the commits,
+in number of lines, is shown in Table \ref{t:stat}.
+%
+\begin{table}
+    \centering
+<<commits, cache=FALSE,echo=FALSE>>=
+kable( summary,"latex" )
+@
+\vspace*{5mm}
+\caption{Summary of statistical measures for the four papers we have
+  been analyzing here.\label{t:stat}}
+\end{table}
+%
+This table shows that, at least from a macro point of view, median and
+averages are remarkably similar, with the median between 9 and 22 lines
+and the average between 24 and 54. The fact that the average is so
+separated from the median is already a hint that this is a skewed
+distribution. The book analyzed in \cite{merelo16:slash} had a median
+of 10 lines, but a mean of 150 lines changed, in a distribution that
+is different, much more skewed towards larger sizes, while the
+software library analyzed in \cite{Merelo2016:repomining} had a median
+of 9 and a mean of close to 32, which is remarkably similar to one of
+the papers analyzed here. This implies that the concept of {\em
+  session}, or size of changes committed together, might be very
+similar no matter what is the thing that is actually written. 
+
+The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic or
+decimal \emph{y} scale and smoothing over several commits, either 10
+or 20, depending on the color. The \emph{x} axis is simply the temporal
+sequence of commits, while the \emph{y} axis is the absolute size of the
+commit in number of lines. The serrated characteristic is the same, as well
+as the big changes in scale, with some periods where small changes
+happen and other that alternate big with small changes. A certain
+\emph{rhythm} can be observed, which hints at large-scale
+correlations, that is influence of changes happening now over changes
+that occur several, or many, steps afterwards, in the future. 
+
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+%\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+for (i in 1:length(lines) ) {
+     print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
+}
+@ 
+\caption{Timeline of changes for the four papers, with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
+\end{figure*}
+
+Besides, these changes in scale might mean that commit sizes are distributed along a Pareto
+distribution. We will examine this next, representing the number of changes of a particular
+size in a log-log scale, with linear smoothing to show the trend in
+Figure \ref{fig:changes}. 
+
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+%\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+sizes.fit.df <- data.frame(Name = character(),
+                        Coefficient = double(),
+                        Intercept = double())
+for (i in 1:length(lines) ) {
+    by.lines <- group_by(lines[[i]],Lines.changed)
+    lines.count <- summarize(by.lines, count=n())
+    sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
+    sizes.fit.df <- rbind( sizes.fit.df,
+                          data.frame( Name = summary[[1]][i],
+                                     Coefficient = summary(sizes.fit)$coefficients[1],
+                                     Intercept = summary(sizes.fit)$coefficients[2] ))
+    print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth())
+}
+@ 
+\caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
+\end{figure*}
+%
+This chart show what seems to be a Zipf distribution, with the commit sizes
+ranked in descending order and plotted with a logarithmic \emph{y}
+axis. This distribution shows, in all cases, a {\em tail}
+corresponding to big changes. This might be simply a consequence of
+different practices by different authors, with some preferring atomic
+changes to single lines or paragraphs and others writing down whole
+sections; in some cases, it corresponds also to reuse of common parts
+of papers (authors, acknowledgements, description of a method) to
+create the initial versions of the paper; finally, in some cases
+comments are deleted before the final version is submitted, so these
+{\em tails} are not really unexpected. If you follow the charts also
+in the direction of increasing number of commits it can be seen how
+the linearity of the distribution becomes more crisp; in the first two
+papers there are simply not enough number of commits to actually show
+this Pareto distribution, but in the last case there is a very clear
+log-log distribution. 
+
+These distributions can, in fact, be linearly fit to a log-log distribution with coefficients
+shown in Table \ref{t:sizes}. 
+%
+\begin{table}
+    \centering
+<<sizes, cache=FALSE,echo=FALSE>>=
+kable( sizes.fit.df,"latex" )
+@
+\vspace*{5mm}
+\caption{Summary of coefficients of the linear models adjusting the
+  number of lines and size.\label{t:sizes}}
+\end{table}
+%
+These values are also similar to those found in
+\cite{Merelo2016:repomining}, where the intercept was 6.02, above the
+table, and the slope -0.001, a very mild slope that hints at a big
+number of changes and might in fact indicate that, as would be
+expected, the intercept increases and the slope decreases with the
+number of changes. The shape of the line in
+\cite{Merelo2016:repomining} in fact might be more similar to a {\em
+  broken stick}; this is a matter that deserves further
+investigation. In the case of \cite{merelo16:slash} values are
+somewhere in the middle, 5.7 and -0.96. The slope is quite similar
+indeed, and the intercept might point to the fact that size changes
+are larger when fiction is being written, which also matches the macro
+averages and medians observed above. 
+
+The scale free nature of the work in the repository can be more
+properly observed by looking at the changes in some other way, ranking them by size
+and representing them in a chart with a logarithmic \(y\) axis, as well as
+in the form of an histogram. This is done in Figure \ref{fig:zipf}. 
+
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+\begin{figure*}[h!tb]
+  \centering
+<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
+zipf.fit.df <- data.frame(Name = character(),
+                          Coefficient = double(),
+                          Intercept = double())
+for (i in 1:length(lines) ) {
+    print(ggplot(data=lines[[i]], aes(lines[[i]]$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10())
+    sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
+    print(ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10())
+    sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
+    zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
+    zipf.fit.df <- rbind( zipf.fit.df,
+                         data.frame( Name = summary[[1]][i],
+                                    Coefficient = summary(zipf.fit)$coefficients[1],
+                                    Intercept = summary(zipf.fit)$coefficients[2] ))
+}
+@ 
+\caption{Changes, ordered by size, and represented in a logarithmic
+  $y$ axis. Side by side, the histogram and Zipf chart for the four papers analyzed.\label{fig:zipf}}
+\end{figure*}
+%
+%
+The Zipf exponents and intercepts for these models are shown in Table \ref{t:zipf},
+and are of the same order, but different range, of the one found  in
+\cite{merelo16:slash}, where it hovers around 6 for the intercept and
+-0.01 for the slope.
+%
+\begin{table}
+    \centering
+<<zipf, cache=FALSE,echo=FALSE>>=
+kable( zipf.fit.df,"latex" )
+@
+\vspace*{5mm}
+\caption{Summary of Zipf coefficients of the linear models adjusting the
+  number of lines and size.\label{t:zipf}}
+\end{table}
+%
+The {\em evolution} in the nature of the distribution can be observed,
+from a more or less straight line in the first cases, to something
+more similar to a broken stick model in the last one, although it can
+still be linearly fit to a log scale and there is a regime of size
+changes that is still logarithmic in scale. Whatever the actual
+distribution, there is no doubt that changes do not organize
+themselves along a central value and that there is scale-free nature
+in them, which is, besides, independent of the {\em age} or total
+number of changes of the paper, as has been shown above. 
+
+Finally, these scale distributions hints at the possibility of
+long-scale correlations, but in order to find this out, we will have
+to plot the partial autocorrelation of the sequence, that is, the
+relationship between the size of a change and the rest of the changes
+in the sequence. This is computed and plotted in Figure
+\ref{fig:auto}. 
+%
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+%\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+for (i in 1:length(lines) ) {
+    print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
+}
+@ 
+\caption{Autocorrelation plot. The order of the papers is the same as in the rest of the figures, from top left to bottom right, DCAI, PPSN, Book Prediction and Volunteer Computing.\label{fig:auto}}
+\end{figure*}
+% 
+Autocorrelation is significant only if the lines go over the average
+plotted as a dashed line. The long distance correlations, already
+found in \cite{Merelo2016:repomining}, are present here. In that case, there was positive
+autocorrelation in the 21 commit period; in this case, it appears at 25
+and 15. It shows, anyway, that the size of a commit has a clear
+influence further down writing history, with high autocorrelations
+around 20 commits. In these repositories of increasing age, we find
+that actual long-distance autocorrelation only happens when they age,
+with no long-distance significant autocorrelation in the first two
+repositories, and a significant one in the two bottom repositories. In
+both cases, correlation happens at the distance of 13-25 commits,
+exactly as it happened before. However, autocorrelation seems to
+disappear in the older repositories, at least for that long
+distances. This might indicate significant differences for other types
+of work, but it will need further research to find out, in a more
+precise way, the ranges of distances where autocorrelation is
+significant. 
+
+Once two of the three features of self-organized criticality have been
+proved, at least in some of the repositories, we will
+focus on the third, the presence of \emph{pink} noise, as measured by
+the power spectral density. This is shown in Figure \ref{fig:spectrum}, where the power spectral density is shown for the four papers. A {\em pink} noise would be characterized by a spectrum with a negative slope, with decreasing power the higher the frequency. 
+%
+% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+%\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
+\begin{figure*}[h!tb]
+  \centering
+<<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=  
+for (i in 1:length(lines) ) {
+    print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ))
+}
+@ 
+\caption{Spectral density of changes. The repos are in the same order as above.  \label{fig:spectrum}}
+\end{figure*}
+%
+
+In this case, we see that this {\em trend} appears with more or less
+clarity in two of the four papers, the two on the right, although the
+lower-left paper ({\tt book-prediction}) also exhibits it to a certain
+point. In fact, it is much clearer in the second paper, {\tt PPSN},
+which, on the other hand, does not exhibit long-scale autocorrelation.
+
+Once the three main features of systems in self-organized state have
+been measured for the papers under study, we will present in the next
+Section our conclusions. 
+
+
+\hypertarget{conc}{\section{Conclusions}\label{conc}}
+
+In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink we. 
+
+The methodology that we have used counts size of commits as a discrete measure, not \emph{dailies} or other time
+measure, since development often stops for several days more clearly in
+the case of this paper, where nothing was done for months, and nothing   % "this paper" refers to the "literaturame" paper (self-reference), or is something that remains from a previous text?
+between submission and the first revision. We think that commits, and
+not actual time measures, will show a much clearer picture of the state
+of the repository, since they correspond to units of work done and are
+also related to discrete tasks in the ticketing system.
+% Comment: There is other information that could be exploited that
+% IMO is more related with self-organization, and is the author of
+% the commit. Maybe rules of interaction arise when for instance some one takes the lead
+% and others wait for him to work, and then make little corrections.
+% This could be the content of other papers, not this one...
+
+After analyzing the software repositories that hold the papers, we can conclude that, in fact, all repositories analyzed show some of the features, specially freedom of a particular scale in the size of the changes; however, we could conclude from the measures taken above that there is a certain amount of interaction needed before the critical state settles. From the limited amount of repositories we have studied, we could put this number at around 100 changes, but of course there is further studies to be made in this subject. In particular, this would indicate that the only condition needed for the critical state to arise is the age of the repository, or maybe its size. Since the four papers were developed by different number and authors, the presence of absence of other artifacts might also play a role. However, we do not think that is the case. 
+
+In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
+script hosted in \url{http://github.com/JJ/literaturame}. This
+repository holds also the data used in this study, as well as the
+source of this paper. 
+
+As future line of work, we will first try to gather data from more repositories, specially in the boundary where we think self-organization arises, around 100 commits, and these with other
+type of repositories, and see if there are some outstanding and
+statistically significant differences, which would be attributed rather
+than the substrate itself, to different types of collaboration. We would also like to make more precise models of the ranked change sizes, as well as the relation between number of changes and its size. A study of particular circumstances of every repository will also help us to understand what self-organization means and, finally, as was our initial objective, if this fact can be used to create methodologies that improve productivity in work teams. 
+
+
+\section*{Acknowledgements}
+This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
+
+\bibliographystyle{splncs03}
+\bibliography{geneura,biblio}
+
+\end{document}
