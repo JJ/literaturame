@@ -1,23 +1,31 @@
-\documentclass[a4paper]{llncs}
+\documentclass{sig-alternate}
+\usepackage{graphicx}        % standard LaTeX graphics tool
+\usepackage{url} 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+\lstset{
+basicstyle=\ttfamily \scriptsize,
+language=java,
+frame=single,
+stringstyle=\ttfamily,
+showstringspaces=false
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{subcaption} % an alternative package for sub figures
 \usepackage{llncsdoc}
 \usepackage{lmodern}
 %\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
-\fi
-\usepackage[margin=1in]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%\usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 \urlstyle{same}  % don't use monospace font for urls
@@ -36,8 +44,29 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 %\setcounter{secnumdepth}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \title{Self-organized criticality in code repositories}
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\begin{document}
+%
+% --- Author Metadata here ---
+\conferenceinfo{GECCO'16,} {July 2017.} 
+\CopyrightYear{2016} 
+\crdata{xxx-x-xxxx-xxxx-x/xx/xx} 
+\clubpenalty=10000 
+\widowpenalty = 10000
+
+\title{Self-organized criticality in code repositories}
+
+\numberofauthors{1}
+\author{
+ \alignauthor
+        No Author\\
+        \affaddr{University}\\
+        \affaddr{Department}\\
+        \affaddr{City, Country}\\
+        \email{me@email.com}
+}
 
 %   \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario García-Valdez\inst{2}}
 %   \institute{Geneura Team and CITIC, University of Granada (Spain)\\
@@ -47,7 +76,7 @@
 %     \email{\tt mario@tectijuana.edu.mx}
 % }
 
-\begin{document}
+
 %\SweaveOpts{concordance=TRUE}
 % is it possible using relative-paths instead of absolute paths to set the file names?
 <<setup, cache=FALSE,echo=FALSE,warning=FALSE>>=
@@ -107,6 +136,20 @@ if there is any essential difference between the macro measures of the
 states reached by these and the object of this paper. 
 \end{abstract}
 
+% A category with the (minimum) three required fields
+%\category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+\category{D.2.11}{Software Engineering}{Software Architectures}[Data abstraction]
+\category{D.2.12}{Software Engineering}{Interoperability}[Distributed objects]
+\category{I.2.8}{Artificial Intelligence}{Problem Solving, Control Methods, and Search}[Heuristic methods]
+
+%sures, performance measures
+\terms{Algorithms}
+
+\keywords{Service oriented architecture, evolutionary algorithms, genetic algorithms, distributed algorithms, OSGi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INTRODUCTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{introduction}
 
 The existence of a self-organized critical state \cite{bak1988self} in
@@ -591,7 +634,8 @@ than the substrate itself, to different types of collaboration. We would also li
 \section*{Acknowledgements}
 This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
 
-\bibliographystyle{splncs03}
+\bibliographystyle{plain}
+%\bibliographystyle{splncs03}
 \bibliography{geneura,biblio}
 
 \end{document}
