@@ -37,15 +37,15 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 %\setcounter{secnumdepth}{0}
 
-  \title{Finding self-organized criticality in collaborative work via repository mining}
+  \title{Self-organized criticality in code repositories}
 
-  \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario García-Valdez\inst{2}}
-  \institute{Geneura Team and CITIC, University of Granada (Spain)\\
-    \email{\tt \{jmerelo,pacv\}@ugr.es}
-\and
-  Dept. of Graduate Studies, Instituto Tecnologico de Tijuana (Mexico)\\
-    \email{\tt mario@tectijuana.edu.mx}
-}
+%   \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario García-Valdez\inst{2}}
+%   \institute{Geneura Team and CITIC, University of Granada (Spain)\\
+%     \email{\tt \{jmerelo,pacv\}@ugr.es}
+% \and
+%   Dept. of Graduate Studies, Instituto Tecnologico de Tijuana (Mexico)\\
+%     \email{\tt mario@tectijuana.edu.mx}
+% }
 
 \begin{document}
 %\SweaveOpts{concordance=TRUE}
