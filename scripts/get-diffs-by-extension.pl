@@ -51,6 +51,7 @@ do {
     push @filespec, "$glob*.$j"
   }
   $revs = "cd $dir; git rev-list --all -- ".join(" ",@filespec);
+  say "Testing ", join("-", @filespec );
   @these_revs = `$revs`;
   $depth++;
 } until $#these_revs == $#revs;
