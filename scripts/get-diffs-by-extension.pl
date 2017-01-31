@@ -31,6 +31,7 @@ use File::Slurp::Tiny qw(write_file);
 
 my $extensions = shift || die "Usage: $0 <extensions> [depth (defaults to 1, that is, */*.ext)] [git directory (defaults to .)]\n";
 my $dir = shift || ".";
+my $min_depth = shift || 1;
 
 my $repo = Git->repository (Directory => $dir);
 
@@ -51,10 +52,11 @@ do {
     push @filespec, "$glob*.$j"
   }
   $revs = "cd $dir; git rev-list --all -- ".join(" ",@filespec);
-  say "Testing ", join("-", @filespec );
+  say "Testing ", join(" ", @filespec );
   @these_revs = `$revs`;
   $depth++;
-} until $#these_revs == $#revs;
+  say "Found $#these_revs";
+} until $#these_revs == $#revs and $depth > $min_depth ;
 
 
 my @data = ("Lines changed");
