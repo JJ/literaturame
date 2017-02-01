@@ -82,8 +82,7 @@ for (i in 1:length(files) ) {
   itself, as well as the willingness of occasional volunteers, it is interesting to find 
   out the dynamics underlying collaboration in a repository-mediated project and their
   mechanisms. These mechanisms might not be explicit or organized from
-  the top, but self organize, arising from
-  the collaboration and the way it is done. This is why finding if self-organization takes place and under which
+  the top, which allows that self organization emerges the collaboration and the way it is done. This is why finding if self-organization takes place and under which
   conditions will yield some insights on this process, and, from this,
   we can deduce some hints on
   how to improve it. In this paper we will focus on the former,
@@ -280,7 +279,7 @@ sequence of changes of size in the files of interest in each
 repository. These files, as well as the repositories where they have
 been measured, are available with a free license in the repository
 that also hosts this paper.  % maybe we should add here the URL to the paper repo, as a footnote  - Pedro
-
+The sequence of changes for the 4 files is shown in Figure \ref{fig:tl}. 
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
