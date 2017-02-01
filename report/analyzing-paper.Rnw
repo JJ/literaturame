@@ -82,13 +82,12 @@ for (i in 1:length(files) ) {
   itself, as well as the willingness of occasional volunteers, it is interesting to find 
   out the dynamics underlying collaboration in a repository-mediated project and their
   mechanisms. These mechanisms might not be explicit or organized from
-  the top, but arise from
-  the collaboration and the way it is done and rather be
-  self-organizing. This is why finding if self-organization takes place and under which
+  the top, but self organize, arising from
+  the collaboration and the way it is done. This is why finding if self-organization takes place and under which
   conditions will yield some insights on this process, and, from this,
   we can deduce some hints on
   how to improve it. In this paper we will focus on the former,
-  examining repositories where and how repositories for collaborative writing of scientific
+  examining repositories where collaborative writing of scientific
   papers by our research team is taking place show the characteristics of a critical  
   state, which can be measured by the 
 existence of a scale-free structure, long-distance correlations and
