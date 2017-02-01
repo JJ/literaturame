@@ -176,11 +176,33 @@ The existence of a self-organized critical state \cite{bak1988self} in
 software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repominingANON,gao2014analysis} and 
 attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
 itself and through messages in other communication media, such as Slack or an IRC chat
-application, task assignment systems or mailing lists. In this
+application, task assignment systems or mailing lists. This is
+probably just some of the self-organization processes taking place,
+but the fact is that the model predicts that the system will reach a
+critical state through self-organization given very few initial
+conditions. 
+In this
 critical state there are specific dynamic behaviors, like small
-changes provoking {\em avalanches} of other changes and long-distance
-correlations that make a particular change in the codebase cause
-further changes down the line. The dynamics of self-organized
+changes in the code base provoking {\em avalanches} of changes of all sizes and long-distance
+correlations that make a particular change in a file cause
+further changes down the line in a regular pattern. The anecdotal
+evidence cathered by the authors confirms this kind of events
+happening in software development teams, mainly in open source. In
+open source projects there is usually a {\em core} team with has the
+privilege to write directly to the repository. Code advances through
+several mechanisms, but mainly by following a {\em roadmap} where
+developers agree on a series of new features, and also bug fixes where
+developers fix errors arising in production or pointed out by
+users. Besides, many software project have a series of contribution
+guidelines indicating where and how users can spontaneously contribute
+to the code. These contributions are incorporated through {\em pull
+  requests}, which means that the contributor {\em requests} the core
+team to {\em pull} or incorporate changes from her own repository.
+
+Most software development nowadays is done using the git tool \cite{loeliger2012version}.
+%Continue explaining commits and pulls and so on - JJ
+
+The dynamics of self-organized
 criticality is sometimes compared to that of a sand pile
 \cite{paczuski1996avalanche}, in the sense that the actual shape tends
 to reach a {\em critical} state, represented in the sand pile by a
@@ -188,13 +210,12 @@ critical slope, and a single grain of sand creates avalanches
 unrelated to the frequency of grains falling. This pile of sand is
 also a simple model of a self-organized system that captures many of
 its main characteristics, but its behavior is connected to the
-experience of software developers and paper writers that experience
+experience of software developers and other people using work
+coordination mechanisms to produce something measurable, that experience
 certain periods of stasis followed by {\em avalanches} of work, new
 code or new paragraphs without an apparent origin. 
 
-This anecdotal experience supports that software teams analyzed
-through the repositories that support their work might also find
-themselves in this self-organized critical state. Furthermore, the case for this
+Furthermore, the case for this
 critical state is supported by several macro measures that certify the non-existence of a particular
 scale in the size of changes
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repominingANON}, but in some cases they
