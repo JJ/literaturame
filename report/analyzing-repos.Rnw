@@ -79,23 +79,38 @@ showstringspaces=false
 
 %\SweaveOpts{concordance=TRUE}
 % is it possible using relative-paths instead of absolute paths to set the file names?
-<<setup, cache=FALSE,echo=FALSE,warning=FALSE>>=
+<<setup, cache=FALSE,echo=FALSE,warning=FALSE,messages=FALSE>>=
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-files <- c('../data/papers/lines_2016-DCAI_ALL_ALL_tex.csv','../data/papers/lines_2016-ea-languages-PPSN_ea-languages_Rnw.csv','../data/papers/lines_2015_books_ALL_tex.csv','../data/papers/lines_modeling-volunteer-computing_ALL_ALL_tex.csv')
+pref <- '../data/software/lines_'
+files <- c('ejabberd_3-erl hrl yrl escript ex exs','tensorflow_2-py cc h',
+           'mojo_2-pl pm PL','tty_2-rb','cask_5-el py','webpack_2-js','language-perl6fe_4-coffee p6',
+           'tpot_5-py','scalatra_2-scala','Moose_2-pl pm xs t','django_8-py','docker_2-go',
+           'fission_4-go py js','vue_2-js','Dancer2_2-pl pm t')
+age <-  data.frame(Name = character(),
+                   age = integer())
+for (i in 1:length(files) ) {
+    this.file <-  read.csv(paste0(pref,files[i],'.csv'))
+    age <- rbind( age,
+                 data.frame( Name = files[i],
+                            age = length(this.file$Lines.changed)))
+}
+files <- age[order(age$age),]$Name
 lines <- list()
 summary <- data.frame(Name = character(),
                       Mean = double(),
                       Median = double(),
                       SD = double())
+
 for (i in 1:length(files) ) {
 # for testing here
-    lines[[i]] <- read.csv(files[i]) # File should be established from an R script
+    file.name <- paste0(pref,files[i],'.csv')
+    lines[[i]] <- read.csv(file.name) # File should be established from an R script
     summary <- rbind( summary,
-                     data.frame( Name= gsub(".+lines_(.+)_\\w+\\..+","\\1",files[i]),
+                     data.frame( Name= files[i],
                                 Mean = as.double(mean(lines[[i]]$Lines.changed)),
                                 Median = as.double(median(lines[[i]]$Lines.changed)), 
                                 SD = as.double(sd(lines[[i]]$Lines.changed) ) ) )
@@ -327,22 +342,23 @@ that also hosts this paper.  % maybe we should add here the URL to the paper rep
 The sequence of changes for the 4 files is shown in Figure \ref{fig:tl}. 
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
-\begin{figure*}[h!tb]
-  \centering
-<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
-for (i in 1:length(lines) ) {
-    lines[[i]]$x = as.numeric(row.names(lines[[i]]))
-    print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
-}
-@
-\caption{Lines changed per commit in a log-y scale. The four charts
-  correspond, starting with the top right, DCAI, PPSN, book prediction,
-  volunteer computing at the lower bottom. This order is going to be
-  the same across all figures from now on. This order has been
-  chosen, as it can be observed, to follow the size of the log, with
-  the paper with the smaller number of commits first and the one with
-  the largest number of commits last.  \label{fig:tl}}
-\end{figure*}
+% I am going to eliminate it. It should have done so automatically. 
+% \begin{figure*}[h!tb]
+%   \centering
+% <<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+% for (i in 1:length(lines) ) {
+%
+% #     print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
+% }
+%@
+% \caption{Lines changed per commit in a log-y scale. The four charts
+%   correspond, starting with the top right, DCAI, PPSN, book prediction,
+%   volunteer computing at the lower bottom. This order is going to be
+%   the same across all figures from now on. This order has been
+%   chosen, as it can be observed, to follow the size of the log, with
+%   the paper with the smaller number of commits first and the one with
+%   the largest number of commits last.  \label{fig:tl}}
+% \end{figure*}
 
 The $x$ axes for these timelines does not correspond to physical time,
 but simply to sequence. In this sense, there is an important difference between
@@ -364,7 +380,7 @@ proceed to analyze it in the next section.
 A summary of the statistical characteristics of the size of the commits,
 in number of lines, is shown in Table \ref{t:stat}.
 %
-\begin{table}
+\begin{table*}
     \centering
 <<commits, cache=FALSE,echo=FALSE>>=
 kable( summary,"latex" )
@@ -372,7 +388,7 @@ kable( summary,"latex" )
 \vspace*{5mm}
 \caption{Summary of statistical measures for the four papers we have
   been analyzing here.\label{t:stat}}
-\end{table}
+\end{table*}
 %
 This table shows that, at least from a macro point of view, median and
 averages are remarkably similar, with the median between 9 and 22 lines
@@ -402,9 +418,10 @@ that occur several, or many, steps afterwards, in the future.
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.115\\linewidth'>>=
 for (i in 1:length(lines) ) {
-     print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
+    lines[[i]]$x = as.numeric(row.names(lines[[i]]))
+    print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
 }
 @ 
 \caption{Timeline of changes for the four papers, with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
@@ -419,7 +436,7 @@ Figure \ref{fig:changes}.
 %\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=4,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.115\\linewidth'>>=
 sizes.fit.df <- data.frame(Name = character(),
                         Coefficient = double(),
                         Intercept = double())
@@ -457,7 +474,7 @@ log-log distribution.
 These distributions can, in fact, be linearly fit to a log-log distribution with coefficients
 shown in Table \ref{t:sizes}. 
 %
-\begin{table}
+\begin{table*}
     \centering
 <<sizes, cache=FALSE,echo=FALSE>>=
 kable( sizes.fit.df,"latex" )
@@ -465,7 +482,7 @@ kable( sizes.fit.df,"latex" )
 \vspace*{5mm}
 \caption{Summary of coefficients of the linear models adjusting the
   number of lines and size.\label{t:sizes}}
-\end{table}
+\end{table*}
 %
 These values are also similar to those found in
 \cite{Merelo2016:repomining}, where the intercept was 6.02, above the
@@ -489,12 +506,11 @@ in the form of an histogram. This is done in Figure \ref{fig:zipf}.
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
   \centering
-<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
+<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=4,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 zipf.fit.df <- data.frame(Name = character(),
                           Coefficient = double(),
                           Intercept = double())
 for (i in 1:length(lines) ) {
-    print(ggplot(data=lines[[i]], aes(lines[[i]]$Lines.changed)) + geom_histogram(bins=100)+scale_x_log10())
     sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
     print(ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10())
     sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
@@ -515,7 +531,7 @@ and are of the same order, but different range, of the one found  in
 \cite{merelo16:slash}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
-\begin{table}
+\begin{table*}
     \centering
 <<zipf, cache=FALSE,echo=FALSE>>=
 kable( zipf.fit.df,"latex" )
@@ -523,7 +539,7 @@ kable( zipf.fit.df,"latex" )
 \vspace*{5mm}
 \caption{Summary of Zipf coefficients of the linear models adjusting the
   number of lines and size.\label{t:zipf}}
-\end{table}
+\end{table*}
 %
 The {\em evolution} in the nature of the distribution can be observed,
 from a more or less straight line in the first cases, to something
@@ -546,7 +562,7 @@ in the sequence. This is computed and plotted in Figure
 %\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.115\\linewidth'>>=
 for (i in 1:length(lines) ) {
     print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
@@ -581,7 +597,7 @@ the power spectral density. This is shown in Figure \ref{fig:spectrum}, where th
 %\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=  
+<<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.115\\linewidth'>>=  
 for (i in 1:length(lines) ) {
     print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
