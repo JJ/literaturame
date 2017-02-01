@@ -280,7 +280,7 @@ sequence of changes of size in the files of interest in each
 repository. These files, as well as the repositories where they have
 been measured, are available with a free license in the repository
 that also hosts this paper.  % maybe we should add here the URL to the paper repo, as a footnote  - Pedro
-The sequence of changes for the 4 files is shown in Figure \ref{fig:tl}. 
+
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
