@@ -690,15 +690,18 @@ the power spectral density. This is shown in Figure \ref{fig:spectrum}, where th
 <<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.245\\linewidth'>>=  
 spec.fit.df <- data.frame(Name = character(),
                           Coefficient = double(),
-                          Intercept = double())
+                          p = double())
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
     print(autoplot( this.spectrum ) + scale_x_log10() )
     spec.fit <- lm(log(this.spectrum$spec) ~ log(this.spectrum$freq))
     repo <- strsplit(paste(summary[[1]][i],""),"_")
+    f <- summary(spec.fit)$fstatistic
+    p <- pf(f[1],f[2],f[3],lower.tail=F)
+    attributes(p) <- NULL
     spec.fit.df <- rbind( spec.fit.df,
                          data.frame( Name = repo[[1]][1],
-                                    Intercept = summary(spec.fit)$coefficients[1],
+                                    p = p,
                                     Coefficient = summary(spec.fit)$coefficients[2] ))
 }
 @ 
@@ -712,14 +715,17 @@ kable( spec.fit.df,"latex" )
 @
 \vspace*{2mm}
 \caption{Summary of coefficients of the linear models adjusting the
-  power spectrum. Pink noise would correspon to a coefficient of -1.\label{t:zipf}}
+  power spectrum with the p-value of the fit. Pink noise would
+  correspond to a coefficient of -1, although in the cases that
+  p-value > 0.05 the fit does not hold. \label{t:spec}}
 \end{table}
 
-In this case, we see that this {\em trend} appears with more or less
-clarity in two of the four papers, the two on the right, although the
-lower-left paper ({\tt book-prediction}) also exhibits it to a certain
-point. In fact, it is much clearer in the second paper, {\tt PPSN},
-which, on the other hand, does not exhibit long-scale autocorrelation.
+In this case, we see that this {\em trend} appears with increasing
+clarity from top left to bottom right. The actual coefficients are
+shown in Table \ref{t:spec}. Pink noise is characterized by
+coefficient values between 0 and 2, and that is the case for all of
+the repositories studied, with the only difference being the goodness
+of the fit. 
 
 Once the three main features of systems in self-organized state have
 been measured for the papers under study, we will present in the next
