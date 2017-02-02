@@ -123,7 +123,10 @@ for (i in 1:length(files) ) {
 \maketitle
 
 \begin{abstract}
-  In order to improve team productivity interactions  within the team
+  Finding the fitness of complex systems such as software development
+  team is a difficult task without straightforward
+  solutions. 
+  In order to improve team productivity and interactions  within the team
   as well as the willingness of occasional volunteers, it is
   interesting to find   
   out the mechanism underlying collaboration in open
@@ -189,14 +192,36 @@ in software repositories.
 \terms{Algorithms}
 
 \keywords{Complex systems, self-organizing systems, self-organized
-  criticality, power laws}
+  criticality, power laws, artificial life}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INTRODUCTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{introduction}
 
-Software projects behave as complex social systems, and the fact that
-many of them, mainly in large, long-running projects, of a self-organized critical state \cite{bak1988self} in 
+The goal of automatic code improvement has been lately approached
+successfully from a number of different angles
+\cite{petke2014using,langdon2014genetic}. While noteworthy, these
+methods do not deal with the true nature of software development,
+which is done in a team and using a series of methodological as well
+as social cues to get to release or to production. This essentially
+means that any change by anyone will interact with other changes, not
+only directly through tests, but also indirectly through knowledge
+inserted or simply removal or addition of lines close to what other
+programmer has done; this also implies that what can be optimal in a
+first order approximation might not be in the frame of the
+project. The projects have to be observed as a whole, and any approach
+to genetic improvement must eventually deal with this complexity. But
+in order to make improvement of software projects possible, we have to
+find out a precise way of evaluating the state they are in, so that we
+can compare the state of the project before and after the change. And
+this is a challenge a bigger than simply counting bugs eliminated or
+tests passed. 
+
+In this paper, we take the first steps towards the evaluation and
+eventual improvement of software projects by treatubg them as complex
+social systems. Several researchers have proved that many of them,
+mainly large, long-running projects, of a self-organized critical
+state \cite{bak1988self} in  
 software repositories has been well established
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repominingANON,gao2014analysis} and  
 attributed to a stigmergy process \cite{robles05} in which collaborators interact through the code
