@@ -124,24 +124,30 @@ for (i in 1:length(files) ) {
 \maketitle
 
 \begin{abstract}
-  In order to improve team productivity and the team interaction itself, as well as the willingness of occasional volunteers, it is interesting to find 
+  In order to improve team productivity interactions  within the team
+  as well as the willingness of occasional volunteers, it is
+  interesting to find   
   out the mechanism underlying collaboration in open
   source projects and their dynamics. These mechanisms might not be
   explicit or organized in a top-down fashion, but arise from
   the collaboration and the way it is done, being thus
   self-organizing. This is why finding if open source code
-  repositories are in a particular state, reached via self-organization, and what are the conditions
+  repositories are in a particular, critical, state, reached via self-organization, and what are the conditions
   to reach that state will yield some insights on this process, and, from this,
-  we can deduce some rules on how to improve it.
+  we can deduce some rules on how to interactions and thus productivity.
 % Antonio - no queda claro a qué se refiere 'it' (state, productivity)
- In this paper we will focus on the former,
-  examining repositories, hosted in GitHub, for open source projects,
+  % Aclarado - JJ
+ In this paper we will focus on trying to find this self-organized
+ criticality which makes the project a complex system and implies
+ certain rules on its future evolution, state by examining repositories, hosted in GitHub, for open source projects,
   and taking a series of measures to see if they show the characteristics of a critical state, 
 % Antonio - aclarar qué es el 'critical state'
+  % explicado arriba - JJ
 which can be deduced by the 
-existence of a scale-free structure, long-distance correlations and
+existence of a scale-free structure, long-distance correlations and so-called
 {\em pink} noise 
 % Antonio - Aclarar qué es esto del 'ruido rosa'
+% Añadido so-called, se aclarará luego - JJ
 when analyzing the size of changes in the state of the
 repository and its temporal sequence.  Our
 intention is to prove that, although with entirely different
@@ -152,17 +158,25 @@ interactions, and not the object of the interaction, which takes the
 project to a critical state. This critical state has already been
 established 
 % Antonio - in previous works?
+% in a number of repositories, lo dice luego.
 in a number of repositories with different types of
 projects, including software or even literary works; in this paper we
-apply a new methodology to measure changes and their sequence, focus
+apply a new methodology to measure changes and their sequence; we will
+also focus
 % Antonio - focusing?
-on all types of repositories, not only big and {\em old ones}, and
+on a wider range of repository sizes and ages, not only big and {\em
+  old ones}, with two main objectives: establish their self-organized
+criticality state or at least some features of it, and
 eventually try 
 % Antonio - trying?
-to find if {\em age} as measured as the number of changes 
+and find if {\em age} as measured as the number of changes 
 % Antonio - changes o commits? Lo primero serían a nivel de carácter, por ejemplo en lugar de un conjunto de cambios agrupado
-is the only condition needed to find self-organization.
+is the only condition needed to find self-organization. 
 % Antonio - comentar algo de los resultados obtenidos
+The measures in these repositories we can conclude that the number
+changes is the main, if not only, factor that creates a critical state
+in software repositories.
+% Añadido - JJ
 \end{abstract}
 
 % A category with the (minimum) three required fields
