@@ -82,7 +82,6 @@ showstringspaces=false
 <<setup, cache=FALSE,echo=FALSE,warning=FALSE,messages=FALSE>>=
 library(ggplot2)
 library("ggfortify")
-library(dplyr)
 library(TTR)
 #use 
 pref <- '../data/software/lines_'
@@ -498,7 +497,7 @@ that occur several, or many, steps afterwards, in the future.
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.115\\linewidth'>>=
+<<smoothie,message=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=summary$Name,out.width='.115\\linewidth'>>=
 for (i in 1:length(lines) ) {
     lines[[i]]$x = as.numeric(row.names(lines[[i]]))
     print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
@@ -518,16 +517,17 @@ Figure \ref{fig:changes}.
   \centering
 <<linecount,message=FALSE, fig.subcap=summary$Name, echo=FALSE,warning=FALSE,fig.height=4,out.width='.245\\linewidth'>>=
 sizes.fit.df <- data.frame(Name = character(),
-                        Coefficient = double(),
-                        Intercept = double())
+                           Coefficient = double(),
+                           Intercept = double())
 for (i in 1:length(lines) ) {
     by.lines <- group_by(lines[[i]],Lines.changed)
     lines.count <- summarize(by.lines, count=n())
     sizes.fit <- lm(log(1+lines.count$Lines.changed) ~ log(lines.count$count))
+    repo <- strsplit(paste(summary[[1]][i],""),"_",fixed=T)
     sizes.fit.df <- rbind( sizes.fit.df,
-                          data.frame( Name = summary[[1]][i],
-                                     Coefficient = summary(sizes.fit)$coefficients[1],
-                                     Intercept = summary(sizes.fit)$coefficients[2] ))
+                          data.frame( Name = repo[[1]][1],
+                                     Intercept = summary(sizes.fit)$coefficients[1],
+                                     Coefficient = summary(sizes.fit)$coefficients[2] ))
     print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth())
 }
 @ 
@@ -554,15 +554,15 @@ log-log distribution.
 These distributions can, in fact, be linearly fit to a log-log distribution with coefficients
 shown in Table \ref{t:sizes}. 
 %
-\begin{table*}
+\begin{table}
     \centering
 <<sizes, cache=FALSE,echo=FALSE>>=
 kable( sizes.fit.df,"latex" )
 @
-\vspace*{5mm}
+\vspace*{2mm}
 \caption{Summary of coefficients of the linear models adjusting the
   number of lines and size.\label{t:sizes}}
-\end{table*}
+\end{table}
 %
 These values are also similar to those found in
 \cite{Merelo2016:repominingANON}, where the intercept was 6.02, above the
@@ -594,11 +594,12 @@ for (i in 1:length(lines) ) {
     sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
     print(ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10())
     sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
+    repo <- strsplit(paste(summary[[1]][i],""),"_")
     zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
     zipf.fit.df <- rbind( zipf.fit.df,
-                         data.frame( Name = summary[[1]][i],
-                                    Coefficient = summary(zipf.fit)$coefficients[1],
-                                    Intercept = summary(zipf.fit)$coefficients[2] ))
+                         data.frame( Name = repo[[1]][1],
+                                    Intercept = summary(zipf.fit)$coefficients[1],
+                                    Coefficient = summary(zipf.fit)$coefficients[2] ))
 }
 @ 
 \caption{Changes, ordered by size, and represented in a logarithmic
@@ -611,15 +612,15 @@ and are of the same order, but different range, of the one found  in
 \cite{merelo16:slashANON}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
-\begin{table*}
+\begin{table}
     \centering
 <<zipf, cache=FALSE,echo=FALSE>>=
 kable( zipf.fit.df,"latex" )
 @
-\vspace*{5mm}
+\vspace*{2mm}
 \caption{Summary of Zipf coefficients of the linear models adjusting the
   number of lines and size.\label{t:zipf}}
-\end{table*}
+\end{table}
 %
 The {\em evolution} in the nature of the distribution can be observed,
 from a more or less straight line in the first cases, to something
@@ -679,7 +680,7 @@ the power spectral density. This is shown in Figure \ref{fig:spectrum}, where th
   \centering
 <<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.245\\linewidth'>>=  
 for (i in 1:length(lines) ) {
-    print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ))
+    print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ) + scale_x_log10() )
 }
 @ 
 \caption{Spectral density of changes. The repos are in the same order as above.  \label{fig:spectrum}}
@@ -732,8 +733,7 @@ than the substrate itself, to different types of collaboration. We would also li
 \section*{Acknowledgements}
 %This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
 Several projects \\
-taking this much \\
-space
+taking this much space \\
 
 \bibliographystyle{plain}
 %\bibliographystyle{splncs03}
