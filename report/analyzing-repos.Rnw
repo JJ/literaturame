@@ -69,7 +69,7 @@ showstringspaces=false
 }
 
 %   \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario GarcÃ­a-Valdez\inst{2}}
-%   \institute{Geneura Team and CITIC, University of Granada (Spain)\\
+%   \institute{Geneura Team, ETSIIT and CITIC, University of Granada (Spain)\\
 %     \email{\tt \{jmerelo,pacv\}@ugr.es}
 % \and
 %   Dept. of Graduate Studies, Instituto Tecnologico de Tijuana (Mexico)\\
@@ -124,8 +124,7 @@ for (i in 1:length(files) ) {
 \maketitle
 
 \begin{abstract}
-  In order to improve team productivity and the team interaction
-  itself, as well as the willingness of occasional volunteers, it is interesting to find 
+  In order to improve team productivity and the team interaction itself, as well as the willingness of occasional volunteers, it is interesting to find 
   out the mechanism underlying collaboration in open
   source projects and their dynamics. These mechanisms might not be
   explicit or organized in a top-down fashion, but arise from
@@ -133,26 +132,37 @@ for (i in 1:length(files) ) {
   self-organizing. This is why finding if open source code
   repositories are in a particular state, reached via self-organization, and what are the conditions
   to reach that state will yield some insights on this process, and, from this,
-  we can deduce some rules on how to improve it. In this paper we will focus on the former,
+  we can deduce some rules on how to improve it.
+% Antonio - no queda claro a qué se refiere 'it' (state, productivity)
+ In this paper we will focus on the former,
   examining repositories, hosted in GitHub, for open source projects,
-  and taking a series of measures to see if they show the characteristics of a critical  
-  state, which can be deduced by the 
+  and taking a series of measures to see if they show the characteristics of a critical state, 
+% Antonio - aclarar qué es el 'critical state'
+which can be deduced by the 
 existence of a scale-free structure, long-distance correlations and
-{\em pink}
-noise when analyzing the size of changes in the state of the
-repositorio and its temporal sequence.  Our
+{\em pink} noise 
+% Antonio - Aclarar qué es esto del 'ruido rosa'
+when analyzing the size of changes in the state of the
+repository and its temporal sequence.  Our
 intention is to prove that, although with entirely different
 characteristics, teams, rules and sizes, most repositories
 independently of the number of collaborators and their real 
 nature, self-organize, which implies that it is the nature of these
 interactions, and not the object of the interaction, which takes the
 project to a critical state. This critical state has already been
-established in a number of repositories with different types of
-projects, such as software or even literary works; in this paper we
+established 
+% Antonio - in previous works?
+in a number of repositories with different types of
+projects, including software or even literary works; in this paper we
 apply a new methodology to measure changes and their sequence, focus
+% Antonio - focusing?
 on all types of repositories, not only big and {\em old ones}, and
-eventually try to find if {\em age} as measured by the number of
-changes is the only condition needed to find self-organization.
+eventually try 
+% Antonio - trying?
+to find if {\em age} as measured as the number of changes 
+% Antonio - changes o commits?
+is the only condition needed to find self-organization.
+% Antonio - comentar algo de los resultados obtenidos
 \end{abstract}
 
 % A category with the (minimum) three required fields
