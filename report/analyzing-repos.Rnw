@@ -196,8 +196,10 @@ in software repositories.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INTRODUCTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{introduction}
 
-The existence of a self-organized critical state \cite{bak1988self} in
-software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repominingANON,gao2014analysis} and 
+Software projects behave as complex social systems, and the fact that
+many of them, mainly in large, long-running projects, of a self-organized critical state \cite{bak1988self} in 
+software repositories has been well established
+\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repominingANON,gao2014analysis} and  
 attributed to a stigmergy process \cite{robles05} in which collaborators interact through the code
 itself and through messages in other communication media, such as Slack or an IRC chat
 application, task assignment systems or mailing lists. This is
@@ -209,10 +211,31 @@ In this
 critical state there are specific dynamic behaviors, like small
 changes in the code base provoking {\em avalanches} of changes of all sizes and long-distance
 correlations that make a particular change in a file cause
-further changes down the line in a regular pattern. The anecdotal
-evidence cathered by the authors confirms this kind of events
+further changes down the line in a regular pattern. 
+
+% Antonio - lo que viene a continuación yo lo pondría al inicio de la sección, para introducir el concepto de 'critical state', que se referencia justo al principio de la introducción ahora.
+% Cambiado más arriba. Ahora habrá que re-revisar - JJ
+The dynamics of self-organized criticality is sometimes compared to
+that of a sand pile \cite{paczuski1996avalanche}, in the sense that
+the actual shape tends 
+to reach a {\em critical} state, represented in the sand pile by a
+critical slope, and a single grain of sand creates avalanches
+unrelated to the frequency of grains falling. This pile of sand is
+also a simple model of a self-organized system that captures many of
+its main characteristics, but its behavior is connected to the
+experience of software developers and other people using work
+coordination mechanisms to produce something measurable, that experience
+certain periods of stasis followed by {\em avalanches} of work, new
+code or new paragraphs without an apparent origin. 
+
+
+
+The anecdotal
+evidence gathered by the authors confirms this kind of events
 happen in software development teams, mainly in open source. 
 % Antonio - no sé la validez que tendrá esta evidencia...
+% Sólo para confirmar que no sólo sucede en grandes proyectos. El
+% paper está para probarlo - JJ
 In open source projects there is usually a {\em core} team with has the
 privilege to write directly to the repository. Code advances through
 several mechanisms, but mainly by following a {\em roadmap} where
@@ -230,9 +253,13 @@ make changes and then {\em push} those changes to the upstream
 repository. There is no {\em master} or {\em central} repository, but
 usually there is one that is distinguished, which is the one deployed
 to production or released. Development might happen in {\em branches}
-which eventually get merged with master. 
+which eventually get merged with the master branch in the central repository. 
 % Antonio - se acaba de decir que no hay 'master', aunque ya sé que se llama así la rama principal, queda un poco incongruente. Yo quitaría el master arriba, dejando sólo 'central'
-Best practices usually dictate that changes, represented by {\em commits}, should be atomic, i. e., affect a single function or file and be independently testable, with the object that if something goes wrong the guilty commit can be
+% Corregido
+Best practices usually dictate that changes, made through and
+represented by {\em commits}, should be atomic, i. e., affect a single
+function or file and be independently testable, with the object that
+if something goes wrong the guilty commit can be 
 immediately found and, if needed, reverted or fixed. That means that
 commits necessarily have a small size; however, in some merging
 processes, a method called {\em squash} is used, by which several
@@ -242,20 +269,11 @@ lines than what would be expected by single, atomic commits. At any
 rate, commits record changes by the number of lines added or {\em
   eliminated}, making commit size, by which we mean the number of
 lines affected by a commit, much more precise than the change of size
-in the whole repository used by other studies. 
+in the whole repository used by other studies, simply because it
+measures real changes made usually by individual users, not aggregated
+changes through all the repository as has been reported by other researchers.
 % Antonio - cita...
-
-% Antonio - lo que viene a continuación yo lo pondría al inicio de la sección, para introducir el concepto de 'critical state', que se referencia justo al principio de la introducción ahora.
-The dynamics of self-organized criticality is sometimes compared to that of a sand pile \cite{paczuski1996avalanche}, in the sense that the actual shape tends
-to reach a {\em critical} state, represented in the sand pile by a
-critical slope, and a single grain of sand creates avalanches
-unrelated to the frequency of grains falling. This pile of sand is
-also a simple model of a self-organized system that captures many of
-its main characteristics, but its behavior is connected to the
-experience of software developers and other people using work
-coordination mechanisms to produce something measurable, that experience
-certain periods of stasis followed by {\em avalanches} of work, new
-code or new paragraphs without an apparent origin. 
+% Más bien explicación - JJ
 
 Furthermore, the case for this
 critical state is supported by several macro measures that certify the non-existence of a particular
@@ -267,72 +285,50 @@ correlations and a \emph{pink noise} \cite{szendro2001pink} in the power spectra
 changing in a way that is inversely proportional to it, higher frequency
 changes getting a smaller spectral density \cite{Merelo2016:repominingANON}. 
 
-
-The state in which the team is has obviously an influence in its
-productivity, with some authors finding this state favors
+The state in which the project is has obviously an influence in its
+productivity, with some authors finding this state favors the
 evolvability of the underlying software system \cite{1544757}, 
 % Antonio - evolvability puede ser a mejor o a peor => improvement/enhancing
+% Evolvability es bueno, porque lo hace más flexible a cambios - JJ
 as opposed from the lack of this quality in software created by a
-top-down organization process. That is why this quality has been
-mainly studied in open source software systems which follow a more
+top-down organization process, considered more {\em brittle} in the
+sense that a single needed change might break down the whole system. That is why this quality has been
+mainly studied in free software systems which follow a more
 open model of development; however, it might happen that, in the same
 way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
 self-organized state might be essential to the software development
-process, as long as it is done in an application that allows
-collaboration such as a repository managed by a source control system
-such as git. In fact, some explanations have been offered via
+process, as long as it is done through an application that allows
+collaboration, for instance, as a repository managed by a source
+control system such as git. In fact, some explanations have been offered via
 conservation laws \cite{6784340} and other usual complex network
-mechanisms such as preferential attachment \cite{lin2015power}· 
+mechanisms such as preferential attachment \cite{lin2015power}.
 %% It reminds me about the cathedral vs bazaar discussion 
 %% Add something about it if you want - JJ
+At any rate, software projects can be considered complex systems and
+as such we will study them in this paper. 
 
 After some initial exploration of the subject and developing the
 tools needed to mine repositories in GitHub \cite{merelo16:selfANON}, in
-this paper we are interested in finding out whether these mechanisms
-are exclusive to software teams or if, indeed, self-organized
-criticality can be found also in other repositories. In our research
-team we are committed to open source and open science, developing all
-our work in open repositories hosted in GitHub. The repository is open
-since the first moment of writing a paper, and the repository itself
-hosts also data and, like in the case of this particular paper, the code
-used to extract data. We interact throughout writing the paper via
-comments in the paper and issues, that is, work orders where you can
-comment and that can also be {\em closed} once the {\em issue} has
-been cleared or fixed. \emph{Developing} a
-paper using a repository is a good practice that allows an easy
-distribution of tasks, attribution, and, combined with the use of
-\emph{literate} programming tools such as Knitr \cite{xie2015dynamic}, that allow the embedding of code
-within the text itself, provide a closer relationship between data and report
-and, of course, easier reproductibility.
+this paper we will study many different software repositories, all of
+them in active development,  trying to find out whether the telltale
+signs of self-organized criticality, as enumerated above. 
 
-That is why, after examining and establishing the existence of this state in the
-software repository for the Moose Perl library
-\cite{Merelo2016:repominingANON} and books written mainly by a single
-person \cite{merelo16:slashANON}, in this report we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
+Previously we have applied these techniques to examining the software repository for the Moose Perl library
+\cite{Merelo2016:repominingANON}, books written mainly by a single
+person \cite{merelo16:slashANON} and papers written collaboratively \cite{merelo16:selfANON}. In this paper we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
 %Added citation to the paper
-to work on a repository for several papers in which our research group has been working for different amounts of time, from a few months to more than a
-year. In particular, one of the papers, which was already the object
-of a previous report \cite{merelo16:selfANON} has been chosen since it has
-been a work in progress for more than 
-one a year until it was eventually published
-\cite{Castillo2016books}. The other three papers chosen are in one case
-an evolution of a paper which was initially published in a conference
-and that is now a work in progress  \cite{DBLP:conf/dcai/RivasPMAG16},
-another that contains several papers published in diverse venues and
-that are evolution of this one \cite{DBLP:journals/corr/GuervosG15},
-and finally a paper that has been in progress for about a year, but
-has not been finished yet. These papers have been chosen because they
-had a certain length, with more than 50 commits (or changes). Besides,
-they were available and we knew their circumstances. Whether they are
-or not representative of a larger corpus remains to be seen, and we
-will try to examine this possibility in the conclusions. The papers
-are plain text with LaTeX commands, and, in some cases, also R
-commands in those papers using Knitr. The inclusion of lines
-and commands written in computer languages would indicate that these
-papers are halfway between a book, which is mainly text, and an
-application or library, which is mainly code. We will see if this {\em
-  hybrid} nature translates to the measures taken over the repository
-and its dynamics. 
+to work on a total of 16 papers, chosen to represent different
+languages and in such a way that all of them have at least a few
+thousand commits, independently of the actual time it has taken to
+make them. Since repositories hold many kind of different files,
+including art, documentation and building tools, We have worked mainly
+on the code parts, and also focused on the code written in the two or
+three main languages of the repository itself. We have focused on this
+ones since in fact the dynamics of documentation of build tools is
+probably completely different. Besides, we avoid generated artifacts
+such as configuration files that might change completely during a
+commit; in a word, we are working only with code, and only the kind of
+code that is written by a human coder. 
 
 After presenting a brief \protect\hyperlink{soa}{state of the art} next, 
 followed by the \protect\hyperlink{methodology}{methodology},
