@@ -199,8 +199,29 @@ to the code. These contributions are incorporated through {\em pull
   requests}, which means that the contributor {\em requests} the core
 team to {\em pull} or incorporate changes from her own repository.
 
-Most software development nowadays is done using the git tool \cite{loeliger2012version}.
-%Continue explaining commits and pulls and so on - JJ
+Most software development nowadays is done using the git tool
+\cite{loeliger2012version}. Git is a distributed source control
+management tools based in a synchronize from
+upstream-change-synchronize to upstream cycle. Developers {\em pull}
+from upstream to bring their repository (or {\em repo}) up to date,
+make changes and then {\em push} those changes to the upstream
+repository. There is no {\em master} or {\em central} repository, but
+usually there is one that is distinguished, which is the one deployed
+to production or released. Development might happen in {\em branches}
+which eventually get merged with master. Best practices usually
+dictate that changes, represented by {\em commits}, should be atomic,
+i. e., affect a single function or file and be independently testable,
+with the object that if something goes wrong the guilty commit can be
+immediately found and, if needed, reverted or fixed. That means that
+commits necessarily have a small size; however, in some merging
+processes, a method called {\em squash} is used, by which several
+commits are merged into a single, bigger, one, possibly with the same
+object. That means that commits, in some cases, might span many more
+lines than what would be expected by single, atomic commits. At any
+rate, commits record changes by the number of lines added or {\em
+  eliminated}, making commit size, by which we mean the number of
+lines affected by a commit, much more precise than the change of size
+in the whole repository used by other studies. 
 
 The dynamics of self-organized
 criticality is sometimes compared to that of a sand pile
@@ -243,7 +264,7 @@ mechanisms such as preferential attachment \cite{lin2015power}·
 %% It remind me about the cathedral vs bazaar discussion 
 %% Add something about it if you want - JJ
 
-After some initial exploration of the subject  and developing the
+After some initial exploration of the subject and developing the
 tools needed to mine repositories in GitHub \cite{merelo16:selfANON}, in
 this paper we are interested in finding out whether these mechanisms
 are exclusive to software teams or if, indeed, self-organized
