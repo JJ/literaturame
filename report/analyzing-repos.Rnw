@@ -472,10 +472,13 @@ in number of lines, is shown in Table \ref{t:stat}.
 <<commits, cache=FALSE,echo=FALSE>>=
 kable( summary,"latex" )
 @
-\vspace*{5mm}
+\vspace*{1mm}
 \caption{Summary of statistical measures for the software repositories we have
   been analyzing here. {\tt age} is measured in total number of
-  commits for the files analyzed. \label{t:stat}}
+  commits for the files analyzed. The complete name is shown here,
+  which includes the depth of the directory structure in a number and
+  the extension. For instance, the first one has directories up to 4
+  deep and uses CoffeScript ({\tt coffee}) and Perl 6 {\em p6}. \label{t:stat}}
 \end{table*}
 %
 This table shows that, at least from a macro point of view, median and
@@ -725,7 +728,11 @@ clarity from top left to bottom right. The actual coefficients are
 shown in Table \ref{t:spec}. Pink noise is characterized by
 coefficient values between 0 and 2, and that is the case for all of
 the repositories studied, with the only difference being the goodness
-of the fit. 
+of the fit, which makes the hypothesis hold in all but 3 repositories:
+{\tt language-perl6fe}, {\tt cask} and {\tt tty}. In all cases they
+are repositories with less than 1000 changes, although other
+repositories with similar number of commits do show this {\em pink
+  noise} feature. 
 
 Once the three main features of systems in self-organized state have
 been measured for the papers under study, we will present in the next
