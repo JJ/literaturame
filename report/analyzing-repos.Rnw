@@ -338,7 +338,9 @@ and eventually we will expose our \protect\hyperlink{conc}{conclusions}.
 \hypertarget{soa}{\section{State of the art}\label{soa}}
 
 As far as we know, there has not been a continuing line of research on
-self-organized criticality in teamwork. Researchers have thoroughly
+self-organized criticality in software projects or, for that matter,
+any other kind of collaborative work teams. The main reason might be
+that researchers have thoroughly
 proved that software repositories seem to be in a SOC state,
 \cite{wu2007empirical,gorshenev2004punctuated}, including our own
 reports \cite{Merelo2016:repominingANON,merelo16:slashANON,merelo16:selfANON}
@@ -357,8 +359,6 @@ matches our own experience in development of open source projects such
 as \cite{ae09,2016arXiv160101607M}, which are developed mainly by one
 or a few coders, helped sporadically by other coders that find an
 error or adapt the code to particular situations. 
-% Reference 
-% Added - JJ
 In fact, this self-organization has also been observed in similar
 projects such as Wikipedia.
 
