@@ -394,7 +394,7 @@ those repositories.
 
 In this paper we will work with the size of changes to a particular
 set of files in the repository; since repositories include other
-artifacts such as images or style files we, via a wildcard, select
+artifacts such as images or style files we select using wildcards
 only the file or files we are interested in. To extract information
 about changes to these files in the repositories,  we analyze the
 repository using a Perl script that runs over the git log and notes
@@ -413,31 +413,14 @@ there have been actually two lines added somewhere and two deleted
 somewhere else, so in absence of that, we opt for the heuristic of
 using the largest of these two values as change size. 
 
-The script generates a {\tt .csv} file with a single column with the
+The Perl script generates a {\tt .csv} file with a single column with the
 sequence of changes of size in the files of interest in each
 repository. These files, as well as the repositories where they have
 been measured, are available with a free license in the repository
-that also hosts this paper (hidden now for double blind review).  % maybe we should add here the URL to the paper repo, as a footnote  - Pedro
+that also hosts this paper (hidden now for double blind review). 
+% maybe we should add here the URL to the paper repo, as a footnote  - Pedro
+% Done
 
-
-% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
-% I am going to eliminate it. It should have done so automatically. 
-% \begin{figure*}[h!tb]
-%   \centering
-% <<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
-% for (i in 1:length(lines) ) {
-%
-% #     print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
-% }
-%@
-% \caption{Lines changed per commit in a log-y scale. The four charts
-%   correspond, starting with the top right, DCAI, PPSN, book prediction,
-%   volunteer computing at the lower bottom. This order is going to be
-%   the same across all figures from now on. This order has been
-%   chosen, as it can be observed, to follow the size of the log, with
-%   the paper with the smaller number of commits first and the one with
-%   the largest number of commits last.  \label{fig:tl}}
-% \end{figure*}
 
 The $x$ axes for these timelines does not correspond to physical time,
 but simply to sequence. In this sense, there is an important difference between
@@ -466,7 +449,8 @@ kable( summary,"latex" )
 @
 \vspace*{5mm}
 \caption{Summary of statistical measures for the software repositories we have
-  been analyzing here.\label{t:stat}}
+  been analyzing here. {\tt age} is measured in total number of
+  commits for the files analyzed. \label{t:stat}}
 \end{table*}
 %
 This table shows that, at least from a macro point of view, median and
