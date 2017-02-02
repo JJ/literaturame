@@ -160,7 +160,7 @@ on all types of repositories, not only big and {\em old ones}, and
 eventually try 
 % Antonio - trying?
 to find if {\em age} as measured as the number of changes 
-% Antonio - changes o commits?
+% Antonio - changes o commits? Lo primero serían a nivel de carácter, por ejemplo en lugar de un conjunto de cambios agrupado
 is the only condition needed to find self-organization.
 % Antonio - comentar algo de los resultados obtenidos
 \end{abstract}
@@ -184,7 +184,7 @@ is the only condition needed to find self-organization.
 
 The existence of a self-organized critical state \cite{bak1988self} in
 software repositories has been well established \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repominingANON,gao2014analysis} and 
-attributed to an stigmergy process \cite{robles05} in which collaborators interact through the code
+attributed to a stigmergy process \cite{robles05} in which collaborators interact through the code
 itself and through messages in other communication media, such as Slack or an IRC chat
 application, task assignment systems or mailing lists. This is
 probably just some of the self-organization processes taking place,
@@ -197,31 +197,28 @@ changes in the code base provoking {\em avalanches} of changes of all sizes and 
 correlations that make a particular change in a file cause
 further changes down the line in a regular pattern. The anecdotal
 evidence cathered by the authors confirms this kind of events
-happening in software development teams, mainly in open source. In
-open source projects there is usually a {\em core} team with has the
+happen in software development teams, mainly in open source. 
+% Antonio - no sé la validez que tendrá esta evidencia...
+In open source projects there is usually a {\em core} team with has the
 privilege to write directly to the repository. Code advances through
 several mechanisms, but mainly by following a {\em roadmap} where
 developers agree on a series of new features, and also bug fixes where
 developers fix errors arising in production or pointed out by
-users. Besides, many software project have a series of contribution
-guidelines indicating where and how users can spontaneously contribute
-to the code. These contributions are incorporated through {\em pull
-  requests}, which means that the contributor {\em requests} the core
-team to {\em pull} or incorporate changes from her own repository.
+users. Besides, many software projects have a series of participation guidelines indicating where and how users can spontaneously contribute
+to the code. These contributions are incorporated, for instance, through the so-called {\em pull requests} in {\em git}, which means that the contributor {\em requests} the core team to {\em pull} or incorporate changes from her own repository.
 
 Most software development nowadays is done using the git tool
 \cite{loeliger2012version}. Git is a distributed source control
-management tools based in a synchronize from
+management tool based in a synchronize from
 upstream-change-synchronize to upstream cycle. Developers {\em pull}
 from upstream to bring their repository (or {\em repo}) up to date,
 make changes and then {\em push} those changes to the upstream
 repository. There is no {\em master} or {\em central} repository, but
 usually there is one that is distinguished, which is the one deployed
 to production or released. Development might happen in {\em branches}
-which eventually get merged with master. Best practices usually
-dictate that changes, represented by {\em commits}, should be atomic,
-i. e., affect a single function or file and be independently testable,
-with the object that if something goes wrong the guilty commit can be
+which eventually get merged with master. 
+% Antonio - se acaba de decir que no hay 'master', aunque ya sé que se llama así la rama principal, queda un poco incongruente. Yo quitaría el master arriba, dejando sólo 'central'
+Best practices usually dictate that changes, represented by {\em commits}, should be atomic, i. e., affect a single function or file and be independently testable, with the object that if something goes wrong the guilty commit can be
 immediately found and, if needed, reverted or fixed. That means that
 commits necessarily have a small size; however, in some merging
 processes, a method called {\em squash} is used, by which several
@@ -232,10 +229,10 @@ rate, commits record changes by the number of lines added or {\em
   eliminated}, making commit size, by which we mean the number of
 lines affected by a commit, much more precise than the change of size
 in the whole repository used by other studies. 
+% Antonio - cita...
 
-The dynamics of self-organized
-criticality is sometimes compared to that of a sand pile
-\cite{paczuski1996avalanche}, in the sense that the actual shape tends
+% Antonio - lo que viene a continuación yo lo pondría al inicio de la sección, para introducir el concepto de 'critical state', que se referencia justo al principio de la introducción ahora.
+The dynamics of self-organized criticality is sometimes compared to that of a sand pile \cite{paczuski1996avalanche}, in the sense that the actual shape tends
 to reach a {\em critical} state, represented in the sand pile by a
 critical slope, and a single grain of sand creates avalanches
 unrelated to the frequency of grains falling. This pile of sand is
@@ -259,8 +256,9 @@ changes getting a smaller spectral density \cite{Merelo2016:repominingANON}.
 
 The state in which the team is has obviously an influence in its
 productivity, with some authors finding this state favors
-evolvability of the underlying software system \cite{1544757}, as
-opposed from the the lack of this quality in software created by a
+evolvability of the underlying software system \cite{1544757}, 
+% Antonio - evolvability puede ser a mejor o a peor => improvement/enhancing
+as opposed from the lack of this quality in software created by a
 top-down organization process. That is why this quality has been
 mainly studied in open source software systems which follow a more
 open model of development; however, it might happen that, in the same
@@ -270,8 +268,8 @@ process, as long as it is done in an application that allows
 collaboration such as a repository managed by a source control system
 such as git. In fact, some explanations have been offered via
 conservation laws \cite{6784340} and other usual complex network
-mechanisms such as preferential attachment \cite{lin2015power}Â· 
-%% It remind me about the cathedral vs bazaar discussion 
+mechanisms such as preferential attachment \cite{lin2015power}· 
+%% It reminds me about the cathedral vs bazaar discussion 
 %% Add something about it if you want - JJ
 
 After some initial exploration of the subject and developing the
@@ -298,8 +296,7 @@ software repository for the Moose Perl library
 \cite{Merelo2016:repominingANON} and books written mainly by a single
 person \cite{merelo16:slashANON}, in this report we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
 %Added citation to the paper
-to work on a repository for several papers in which our research group has been working
-for different amounts of time, from a few months to more than a
+to work on a repository for several papers in which our research group has been working for different amounts of time, from a few months to more than a
 year. In particular, one of the papers, which was already the object
 of a previous report \cite{merelo16:selfANON} has been chosen since it has
 been a work in progress for more than 
