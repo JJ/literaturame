@@ -688,13 +688,32 @@ the power spectral density. This is shown in Figure \ref{fig:spectrum}, where th
 \begin{figure*}[h!tb]
   \centering
 <<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.245\\linewidth'>>=  
+spec.fit.df <- data.frame(Name = character(),
+                          Coefficient = double(),
+                          Intercept = double())
 for (i in 1:length(lines) ) {
-    print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ) + scale_x_log10() )
+    this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
+    print(autoplot( this.spectrum ) + scale_x_log10() )
+    spec.fit <- lm(log(this.spectrum$spec) ~ log(this.spectrum$freq))
+    repo <- strsplit(paste(summary[[1]][i],""),"_")
+    spec.fit.df <- rbind( spec.fit.df,
+                         data.frame( Name = repo[[1]][1],
+                                    Intercept = summary(spec.fit)$coefficients[1],
+                                    Coefficient = summary(spec.fit)$coefficients[2] ))
 }
 @ 
 \caption{Spectral density of changes. The repos are in the same order as above.  \label{fig:spectrum}}
 \end{figure*}
 %
+\begin{table}
+    \centering
+<<spec.tab, cache=FALSE,echo=FALSE>>=
+kable( spec.fit.df,"latex" )
+@
+\vspace*{2mm}
+\caption{Summary of coefficients of the linear models adjusting the
+  power spectrum. Pink noise would correspon to a coefficient of -1.\label{t:zipf}}
+\end{table}
 
 In this case, we see that this {\em trend} appears with more or less
 clarity in two of the four papers, the two on the right, although the
