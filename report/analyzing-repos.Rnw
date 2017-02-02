@@ -365,13 +365,29 @@ projects such as Wikipedia.
 This self-organization, eventually, might produce a critical state
 given the necessary conditions. However, there has been no work going further and
 proving this even in the case that work is done by a few persons and
-on repositories that are not devoted to software development.
+on repositories that are not devoted to software development. And this
+critical state is key to carry the system to adaptive success, as
+defined in \cite{benbya2006toward}. This paper presents the seven
+mechanisms that create complexity in systems as initially enounced for
+biological systems and apply them to information system
+development. The principle of {\em change rate}, which appears in the
+way of observation-orientation-decision-action, are very explicit in
+open source development, where you usually observe a repository or
+project for a certain time, they find if there is something to fix or
+the way you can adapt it to your particular circumstances, decide what
+to do and how to do it and eventually act on your fork, resulting in a
+pull request to the original repository. These activities can
+effectively be defined as social, so that teamwork in software
+repositories is embedded in a social network. \cite{valverde2007self}
+has proved how this network grows under the tension of top-down or
+hierarchical rules and self-organization emerging from the bottom. At
+any rate, quite clearly these software repositories are the record of
+the activity of a complex network.
 
-In this paper we will examine different repositories with the same purpose,
-all devoted to the collaborative writing of scientific papers, but
-each with a different age, in order to try and find out if self-organization
-arrives simply with age and, if so, what seems to be this critical
-age. 
+In this paper we will examine different repositories with the purpose
+of finding out how that complex network effectively emerges. Next we
+will present the methodology used to choose and mine information in
+those repositories. 
 
 
 \hypertarget{methodology}{\section{Methodology}\label{methodology}}
