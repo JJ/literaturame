@@ -82,6 +82,7 @@ showstringspaces=false
 <<setup, cache=FALSE,echo=FALSE,warning=FALSE,messages=FALSE>>=
 library(ggplot2)
 library("ggfortify")
+library(dplyr)
 library(TTR)
 #use 
 pref <- '../data/software/lines_'
@@ -655,12 +656,12 @@ in the sequence. This is computed and plotted in Figure
 %\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.115\\linewidth'>>=
+<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.115\\linewidth'>>=
 for (i in 1:length(lines) ) {
     print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
 @ 
-\caption{Autocorrelation plot. The order of the papers is the same as in the rest of the figures, from top left to bottom right, DCAI, PPSN, Book Prediction and Volunteer Computing.\label{fig:auto}}
+\caption{Autocorrelation plot. The order of the papers is the same as in the rest of the figures, increasing in age from the top left to bottom right. The horizontal lines show the level of statistical significant, with any line surpassing it indicating positive or negative self-correlation .\label{fig:auto}}
 \end{figure*}
 % 
 Autocorrelation is significant only if the lines go over the average
