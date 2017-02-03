@@ -482,10 +482,10 @@ kable( summary,"latex" )
 \vspace*{1mm}
 \caption{Summary of statistical measures for the software repositories we have
   been analyzing here. {\tt age} is measured in total number of
-  commits for the files analyzed. The complete name is shown here,
+  commits that affect the files analyzed. The complete name is shown here,
   which includes the depth of the directory structure in a number and
   the extension. For instance, the first one has directories up to 4
-  deep and uses CoffeScript ({\tt coffee}) and Perl 6 {\em p6}. \label{t:stat}}
+  deep and uses CoffeScript ({\tt coffee}) and Perl 6 {\em p6}. They are all open source and can be found in the GitHub repository with the same name.\label{t:stat}}
 \end{table*}
 %
 This table shows that, at least from a macro point of view, median and
@@ -498,7 +498,7 @@ software library analyzed in \cite{Merelo2016:repominingANON} had a median
 of 9 and a mean of close to 32, which is remarkably similar to one of
 the papers analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
-similar no matter what is the thing that is actually written. 
+similar no matter what is the thing that is actually written. However, some repositories, specially ejabberd (a server written in Erlang for the Jabber protocol), Django and Tensorflow show the practice called {\em squashing}, which compresses several commits into a single one creating changes of several thousands lines. Those changes are not {\em organic} in the sense that they do not reflect the work of a single person. In the big picture of the self-organization of the repository, its impact will have to be assessed, but in principle it would not have to have an influence on the overall state, since their scale will also follow the same principles. 
 
 The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic or
 decimal \emph{y} scale and smoothing over several commits, either 10
