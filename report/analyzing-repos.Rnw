@@ -418,17 +418,15 @@ those repositories.
 \hypertarget{methodology}{\section{Methodology}\label{methodology}}
 \label{sec:method}
 
-In this paper we will work with the size of changes to a particular
-set of files in the repository; since repositories include other
-artifacts such as images or style files we select using wildcards
-only the file or files we are interested in. To extract information
-about changes to these files in the repositories,  we analyze the
-repository using a Perl script that runs over the git log and notes
-the size of the changes that have been made to all files. 
+We have chosen 16 repositores in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They represent many different languages, either interpreted or compiled, and vary also in {\em profesionality}, from the aforementioned plugin to Docker, created and maintained by a professional community. 
 
-Since changes include both the insertion and deletion of lines within
-those files, the largest of these values is taken; in particular, this
-means that the addition of all changes will not be equal to the sum of
+In this paper we will work with the size of changes to a particular
+set of files in the repository, selected via wildcards. We exclude other 
+artifacts such as images or style files. To extract information
+about changes to these files in the repositories, we analyze the
+repository log  using a Perl script to extract the size of the changes that have been made to the considered files. 
+
+Since changes include both the insertion and deletion of lines in committed files, the largest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of
 the sizes of all files. A change in two lines will appear in a diff as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
 the larger of these two values; the main reason for doing so is also
@@ -437,28 +435,36 @@ examines similitude in lines and counts changes in two lines as two
 insertions and two deletions. There is no way to find out whether
 there have been actually two lines added somewhere and two deleted
 somewhere else, so in absence of that, we opt for the heuristic of
-using the largest of these two values as change size. 
+using the largest of these two values as change size. This analysis
+method is more precise that the one used by other authors, which takes
+into account only changes in size in the whole repository, and does
+not include activities such as refactoring that consist mainly in
+making changes in place. It also has the granularity of single commits
+and not days or weeks, which are not as problem-specific as using the
+number of commits.
 
 The Perl script generates a {\tt .csv} file with a single column with the
-sequence of changes of size in the files of interest in each
-repository. These files, as well as the repositories where they have
+sequence of changes in size in the files of interest in each
+repository. These data files, as well as the repositories where they have
 been measured, are available with a free license in the repository
 that also hosts this paper (hidden now for double blind review). 
 % maybe we should add here the URL to the paper repo, as a footnote  - Pedro
 % Done
 
-
 The $x$ axes for these timelines does not correspond to physical time,
-but simply to sequence. In this sense, there is an important difference between
+but simply to the sequence, and then only in changes of the
+interesting files. In this sense, there is an important difference between
 our research methodology, which considers discrete changes, to papers such
 as  \cite{herraiz2009statistical}, which take into account {\em daily}
 changes. We think that examining discrete changes does not impose a
 particular rhythm, namely, daily, on the changes, but lets the
 repository expose its own rhythm; it also allows us to examine
-slow-changing repositories such as these ones, that can be static for
+slow-changing repositories such as what is usual in non-critic open
+source projects, that can be static for
 a long time to experience a burst of changes all of a sudden;
 precisely these changes can indicate an {\em avalanche} that is a
-symptom of the underlying self-organized criticality state.
+symptom of the underlying self-organized criticality state and might
+be better detected using commits. An {\em avalanche} caused by a small change happening in a day followed by a flurry of changes fill appear as a big change if time units bigger than the discrete commit. 
 
 Once the information from the repositories has been extracted, we
 proceed to analyze it in the next section. 
@@ -483,8 +489,7 @@ kable( summary,"latex" )
 \end{table*}
 %
 This table shows that, at least from a macro point of view, median and
-averages are remarkably similar, with the median between 9 and 22 lines
-and the average between 24 and 54. The fact that the average is so
+averages are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Averages span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the average is so
 separated from the median is already a hint that this is a skewed
 distribution. The book analyzed in \cite{merelo16:slashANON} had a median
 of 10 lines, but a mean of 150 lines changed, in a distribution that
