@@ -137,7 +137,7 @@ for (i in 1:length(files) ) {
   self-organizing. This is why finding if open source code
   repositories are in a particular, critical, state, reached via self-organization, and what are the conditions
   to reach that state will yield some insights on this process, and, from this,
-  we can deduce some rules on how to interactions and thus productivity.
+  we can deduce some rules on how to interactions and thus productivity. % How to improve? interactions - Mario
 % Antonio - no queda claro a qué se refiere 'it' (state, productivity)
   % Aclarado - JJ
  In this paper we will focus on trying to find this self-organized
@@ -176,7 +176,7 @@ and find if {\em age} as measured as the number of changes
 % Antonio - changes o commits? Lo primero serían a nivel de carácter, por ejemplo en lugar de un conjunto de cambios agrupado
 is the only condition needed to find self-organization. 
 % Antonio - comentar algo de los resultados obtenidos
-The measures in these repositories we can conclude that the number
+The measures in these repositories we can conclude that the number % By measuring these? - Mario  
 changes is the main, if not only, factor that creates a critical state
 in software repositories.
 % Añadido - JJ
