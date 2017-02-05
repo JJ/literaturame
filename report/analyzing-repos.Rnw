@@ -176,7 +176,7 @@ and find if {\em age} as measured as the number of changes
 % Antonio - changes o commits? Lo primero serían a nivel de carácter, por ejemplo en lugar de un conjunto de cambios agrupado
 is the only condition needed to find self-organization. 
 % Antonio - comentar algo de los resultados obtenidos
-The measures in these repositories we can conclude that the number % By measuring these? - Mario  
+Taking into account these measures in the repositories we can conclude that the number of % By measuring these? - Mario  
 changes is the main, if not only, factor that creates a critical state
 in software repositories.
 % Añadido - JJ
