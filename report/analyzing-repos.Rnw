@@ -169,7 +169,7 @@ also focus
 % Antonio - focusing?
 on a wider range of repository sizes and ages, not only big and {\em
   old ones}, with two main objectives: establish their 
-self-organized criticality state   % sorry, but, does "self-organized criticality" corresponds to SOC used bellow?
+self-organized criticality state   % sorry, but, does "self-organized criticality" corresponds to SOC used bellow? In that case, lets define it here
 or at least some features of it, and eventually try 
 % Antonio - trying?
 and find if {\em age} as measured as the number of changes 
@@ -556,7 +556,7 @@ for (i in 1:length(lines) ) {
 \caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
-This chart show what seems to be a Zipf distribution, with the commit sizes
+This chart shows what seems to be a Zipf distribution, with the commit sizes
 ranked in descending order and plotted with a logarithmic \emph{y}
 axis. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
