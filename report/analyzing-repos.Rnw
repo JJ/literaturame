@@ -215,11 +215,11 @@ to genetic improvement must eventually deal with this complexity. But
 in order to make improvement of software projects possible, we have to
 find out a precise way of evaluating the state they are in, so that we
 can compare the state of the project before and after the change. And
-this is a challenge a bigger than simply counting bugs eliminated or
+this is a challenge bigger than simply counting eliminated bugs or
 tests passed. 
 
 In this paper, we take the first steps towards the evaluation and
-eventual improvement of software projects by treatubg them as complex
+eventual improvement of software projects by treating them as complex
 social systems. Several researchers have proved that many of them,
 mainly large, long-running projects, of a self-organized critical
 state \cite{bak1988self} in  
@@ -261,13 +261,17 @@ happen in software development teams, mainly in open source.
 % Antonio - no sé la validez que tendrá esta evidencia...
 % Sólo para confirmar que no sólo sucede en grandes proyectos. El
 % paper está para probarlo - JJ
-In open source projects there is usually a {\em core} team with has the
+In open source projects there is usually a {\em core} team which has the
 privilege to write directly to the repository. Code advances through
 several mechanisms, but mainly by following a {\em roadmap} where
 developers agree on a series of new features, and also bug fixes where
 developers fix errors arising in production or pointed out by
-users. Besides, many software projects have a series of participation guidelines indicating where and how users can spontaneously contribute
-to the code. These contributions are incorporated, for instance, through the so-called {\em pull requests} in {\em git}, which means that the contributor {\em requests} the core team to {\em pull} or incorporate changes from her own repository.
+users. Besides, many software projects have a series of participation 
+guidelines indicating where and how users can spontaneously contribute
+to the code. These contributions are incorporated, for instance, through 
+the so-called {\em pull requests} in {\em git}, which means that the 
+contributor {\em requests} the core team to {\em pull} or incorporate 
+changes from her own repository.
 
 Most software development nowadays is done using the git tool
 \cite{loeliger2012version}. Git is a distributed source control
