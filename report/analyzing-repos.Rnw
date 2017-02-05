@@ -168,9 +168,9 @@ apply a new methodology to measure changes and their sequence; we will
 also focus
 % Antonio - focusing?
 on a wider range of repository sizes and ages, not only big and {\em
-  old ones}, with two main objectives: establish their self-organized
-criticality state or at least some features of it, and
-eventually try 
+  old ones}, with two main objectives: establish their 
+self-organized criticality state   % sorry, but, does "self-organized criticality" corresponds to SOC used bellow?
+or at least some features of it, and eventually try 
 % Antonio - trying?
 and find if {\em age} as measured as the number of changes 
 % Antonio - changes o commits? Lo primero serían a nivel de carácter, por ejemplo en lugar de un conjunto de cambios agrupado
