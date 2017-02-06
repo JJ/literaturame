@@ -766,17 +766,7 @@ been measured for all projects under study, our conclusions will be presented ne
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
 
 
-In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers 
-% Antonio - papers y otro tipo de proyectos, no?
-by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink noise. 
-
-The methodology that we have used counts size of commits as a discrete measure, not \emph{dailies} or other time
-measure, since development often stops for several days more clearly in
-the case of this paper, where nothing was done for months, and nothing   % "this paper" refers to the "literaturame" paper (self-reference), or is something that remains from a previous text?
-between submission and the first revision. 
-% Antonio - este paper no se ha enviado todavía... :D
-Thus, we think that commits, and
-not actual time measures, will show a much clearer picture of the state
+In this paper we were interested in finding traces of self-organized criticality in software repositories by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink noise. Our methodology, which is new in the sense that we have used counts size of commits as a discrete measure, will show a much clearer picture of the state
 of the repository, since they correspond to units of work done and are
 also related to discrete tasks in the ticketing system.
 % Comment: There is other information that could be exploited that
@@ -785,12 +775,26 @@ also related to discrete tasks in the ticketing system.
 % and others wait for him to work, and then make little corrections.
 % This could be the content of other papers, not this one...
 % Antonio - I agree. The people involved in repos are very important, as they are the reason of self-organization indeed. ;)
+% Interesting discussio, not for this paper - JJ
 
-After analyzing the software repositories that hold the papers, 
-% Antonio - papers y otros proyectos
-we can conclude that, in fact, all repositories analyzed show some of the features, specially freedom of a particular scale in the size of the changes; however, we could conclude from the measures taken above that there is a certain amount of interaction needed before the critical state settles. From the limited amount of repositories we have studied, we could put this number at around 100 changes, but of course there is further studies to be made in this subject. In particular, this would indicate that the only condition needed for the critical state to arise is the age of the repository, or maybe its size. Since the four papers were developed by different number and authors, the presence of absence of other artifacts might also play a role. However, we do not think that is the case. 
-
-% Antonio - defender la utilidad o consecuencias de estas conclusiones...
+After analyzing the software repositories we can conclude that, in
+fact, all repositories analyzed show some of the features, specially
+freedom of a particular scale in the size of the changes. However, we
+could conclude from the measures taken above that there is a certain
+amount of interaction needed before the critical state is actually
+reached. From the limited amount of repositories we have studied, we
+could put this number between 100 and 1000 changes, with all
+repositories examined over 1000 changes exhibiting self-organized
+criticality. In particular, this would indicate that the only
+condition needed for the critical state to arise is the age of the
+repository, or maybe its size. On the other hand, there are some
+differences depending on the software development methodology which
+might impact the evolvability of the repository, as has been seen in
+the cases of repositories such as Tensorflow. Even so, the fact that
+they are in the SOC state and evolving continuously shows that a SOC
+state might be a good indication of a high fitness in the complex
+social system that develops the repository, which is what we were
+looking for. 
 
 In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
 script hosted in http://anonymousu.rl 
@@ -799,10 +803,20 @@ script hosted in http://anonymousu.rl
 repository holds also the data used in this study, as well as the
 source of this paper. 
 
-As future line of work, we will first try to gather data from more repositories, specially in the boundary where we think self-organization arises, around 100 commits, and these with other
+As a future line of work, we will first try to gather data from more
+repositories, specially in the boundary where we think
+self-organization arises, between 100 and 1000 commits, and these with other
 type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
-than the substrate itself, to different types of collaboration. We would also like to make more precise models of the ranked change sizes, as well as the relation between number of changes and its size. A study of particular circumstances of every repository will also help us to understand what self-organization means and, finally, as was our initial objective, if this fact can be used to create methodologies that improve productivity in work teams. 
+than the substrate itself, to different types of collaboration. We
+would also like to make more precise models of the ranked change
+sizes, as well as the relation between number of changes and its
+size. A study of particular circumstances of every repository will
+also help us to understand what self-organization means and, finally,
+as was our initial objective, if this fact can be used to create
+methodologies that improve productivity in work teams and to develop a
+fitness measure for repositories based on self-organized criticality
+that allows evolution via genetic improvement.  
 
 
 \section*{Acknowledgements}
