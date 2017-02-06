@@ -166,10 +166,10 @@ in a number of repositories with different types of
 projects, including software or even literary works; in this paper we
 apply a new methodology to measure changes and their sequence; we will
 also focus
-% Antonio - focusing?
 on a wider range of repository sizes and ages, not only big and {\em
   old ones}, with two main objectives: establish their 
 self-organized criticality state   % sorry, but, does "self-organized criticality" corresponds to SOC used bellow? In that case, lets define it here
+% Antonio - I have included 'SOC state' in the introduction 
 or at least some features of it, and eventually try 
 % Antonio - trying?
 and find if {\em age} as measured as the number of changes 
@@ -211,7 +211,9 @@ inserted or simply removal or addition of lines close to what other
 programmer has done; this also implies that what can be optimal in a
 first order approximation might not be in the frame of the
 project. The projects have to be observed as a whole, and any approach
-to genetic improvement must eventually deal with this complexity. But
+to genetic improvement 
+% Antonio - ¿esto se refiere a un algoritmo evolutivo (PG) para mejorarlo o es una expresión hecha? Aclarar si es el primer caso.
+must eventually deal with this complexity. But
 in order to make improvement of software projects possible, we have to
 find out a precise way of evaluating the state they are in, so that we
 can compare the state of the project before and after the change. And
@@ -221,15 +223,17 @@ tests passed.
 In this paper, we take the first steps towards the evaluation and
 eventual improvement of software projects by treating them as complex
 social systems. Several researchers have proved that many of them,
-mainly large, long-running projects, of a self-organized critical
-state \cite{bak1988self} in  
+mainly large, long-running projects, of a self-organized {\em critical
+state} (SOC State) \cite{bak1988self} in  
 software repositories has been well established
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repominingANON,gao2014analysis} and  
 attributed to a stigmergy process \cite{robles05} in which collaborators interact through the code
 itself and through messages in other communication media, such as Slack or an IRC chat
 application, task assignment systems or mailing lists. This is
 probably just some of the self-organization processes taking place,
-but the fact is that the model predicts that the system will reach a
+but the fact is that the model 
+% Antonio - a qué modelo te refieres?
+predicts that the system will reach a
 critical state through self-organization given very few initial
 conditions. 
 In this
@@ -240,10 +244,13 @@ further changes down the line in a regular pattern.
 
 % Antonio - lo que viene a continuación yo lo pondría al inicio de la sección, para introducir el concepto de 'critical state', que se referencia justo al principio de la introducción ahora.
 % Cambiado más arriba. Ahora habrá que re-revisar - JJ
+% Antonio - hecho. ahora está mejor creo yo. ;)
 The dynamics of self-organized criticality is sometimes compared to
 that of a sand pile \cite{paczuski1996avalanche}, in the sense that
 the actual shape tends 
-to reach a {\em critical} state, represented in the sand pile by a
+to reach also a critical state, 
+% Antonio - lo he puesto en cursiva la primera vez (arriba)
+represented in the sand pile by a
 critical slope, and a single grain of sand creates avalanches
 unrelated to the frequency of grains falling. This pile of sand is
 also a simple model of a self-organized system that captures many of
@@ -261,6 +268,7 @@ happen in software development teams, mainly in open source.
 % Antonio - no sé la validez que tendrá esta evidencia...
 % Sólo para confirmar que no sólo sucede en grandes proyectos. El
 % paper está para probarlo - JJ
+% Antonio - ok
 In open source projects there is usually a {\em core} team which has the
 privilege to write directly to the repository. Code advances through
 several mechanisms, but mainly by following a {\em roadmap} where
@@ -303,6 +311,7 @@ measures real changes made usually by individual users, not aggregated
 changes through all the repository as has been reported by other researchers.
 % Antonio - cita...
 % Más bien explicación - JJ
+% Antonio - ok, mejor ahora
 
 Furthermore, the case for this
 critical state is supported by several macro measures that certify the non-existence of a particular
@@ -342,6 +351,8 @@ this paper we will study many different software repositories, all of
 them in active development,  trying to find out whether the telltale
 signs of self-organized criticality, as enumerated above. 
 
+% Antonio - no queda clara la motivación del artículo. ¿por qué es necesario este estudio? ¿qué objetivo/beneficio persigue?
+
 Previously we have applied these techniques to examining the software repository for the Moose Perl library
 \cite{Merelo2016:repominingANON}, books written mainly by a single
 person \cite{merelo16:slashANON} and papers written collaboratively \cite{merelo16:selfANON}. In this paper we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
@@ -364,6 +375,10 @@ followed by the \protect\hyperlink{methodology}{methodology},
 obtained \protect\hyperlink{res}{results} will be presented % in the next section, 
 and eventually we will expose our \protect\hyperlink{conc}{conclusions}. 
 
+
+% --------------------------------------------------------
+
+
 \hypertarget{soa}{\section{State of the art}\label{soa}}
 
 As far as we know, there has not been a continuing line of research on
@@ -377,11 +392,13 @@ where we examine and establish the existence of repositories in a
 critical state to which they have arrived via self-organization; the
 fact that these repositories have different characteristics in terms
 of the number of users, age and type of information they hold implies that
-self-organization, as should be expected, is achieved with relative
-ease. In fact, this state of self-organized criticality
+self-organization, as it should be expected, is achieved with relative
+ease. Indeed, this state of self-organized criticality
 quantitatively proves what has been already established via
 qualitative analysis, the fact that in many successful software
-projects, developers self-organize \cite{Crowston2007564}, which is
+projects, developers self-organize \cite{Crowston2007564}, 
+% Antonio - ¿qué es lo que se auto-organiza? 'themselves'? 'the code'?
+which is
 the preferred way of working in distributed and volunteer
 teams \cite{crowston2012free}. In fact, this way of organization
 matches our own experience in development of open source projects such
@@ -390,48 +407,66 @@ or a few coders, helped sporadically by other coders that find an
 error or adapt the code to particular situations. 
 In fact, this self-organization has also been observed in similar
 projects such as Wikipedia.
+% Antonio - cita?
 
-This self-organization, eventually, might produce a critical state
+Self-organization, eventually, might produce a critical state
 given the necessary conditions. However, there has been no work going further and
 proving this even in the case that work is done by a few persons and
 on repositories that are not devoted to software development. And this
 critical state is key to carry the system to adaptive success, as
-defined in \cite{benbya2006toward}. This paper presents the seven
+defined in \cite{benbya2006toward}. This paper presents 
+% Antonio - se puede malinterpretar entre este artículo y el de la cita. Yo lo pondría en pasado ('presented') para aclarar que es el citado
+the seven
 mechanisms that create complexity in systems as initially enounced for
 biological systems and apply them to information system
-development. The principle of {\em change rate}, which appears in the
-way of observation-orientation-decision-action, are very explicit in
+development. 
+
+The principle of {\em change rate}, which appears in the
+way of observation-orientation-decision-action, is very explicit in
 open source development, where you usually observe a repository or
-project for a certain time, they find if there is something to fix or
+project for a certain time, then find if there is something to fix or
 the way you can adapt it to your particular circumstances, decide what
-to do and how to do it and eventually act on your fork, resulting in a
+to do and how to do it, and, eventually, act on your fork, resulting in a
 pull request to the original repository. These activities can
 effectively be defined as social, so that teamwork in software
-repositories is embedded in a social network. \cite{valverde2007self}
+repositories is embedded in a kind of social network. \cite{valverde2007self}
 has proved how this network grows under the tension of top-down or
 hierarchical rules and self-organization emerging from the bottom. At
 any rate, quite clearly these software repositories are the record of
 the activity of a complex network.
 
 In this paper we will examine different repositories with the purpose
-of finding out how that complex network effectively emerges. Next we
+of finding out how that complex network effectively emerges. 
+% Antonio - pero qué objetivo tiene eso? Se podrá mejora la forma de colaborar o algo así? Creo que habría que comentarlo.
+Next we
 will present the methodology used to choose and mine information in
 those repositories. 
+
+
+% --------------------------------------------------------
 
 
 \hypertarget{methodology}{\section{Methodology}\label{methodology}}
 \label{sec:method}
 
-We have chosen 16 repositores in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They represent many different languages, either interpreted or compiled, and vary also in {\em profesionality}, from the aforementioned plugin to Docker, created and maintained by a professional community. 
+We have chosen 16 
+% Antonio - own? public?
+repositores in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em profesionality}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
+created and maintained by a professional community. 
+% Antonio - Y las personas en sí? Cómo se mide su 'profesionalidad'? Explicarlo mejor
 
 In this paper we will work with the size of changes to a particular
-set of files in the repository, selected via wildcards. We exclude other 
+set of files in the repository, selected via wildcards. 
+% Antonio - aclarar qué quiere decir esto de las 'wildcards'
+We exclude other 
 artifacts such as images or style files. To extract information
 about changes to these files in the repositories, we analyze the
-repository log  using a Perl script to extract the size of the changes that have been made to the considered files. 
+repository log using a Perl script to extract the size of the changes that have been made to the considered files. 
 
 Since changes include both the insertion and deletion of lines in committed files, the largest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of
-the sizes of all files. A change in two lines will appear in a diff as
+the sizes of all files. A change in two lines will appear in a diff 
+% Antonio - 'diff' es un programa no?
+as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
 the larger of these two values; the main reason for doing so is also
 that in fact, the algorithm that computes changes in the repository
@@ -440,7 +475,9 @@ insertions and two deletions. There is no way to find out whether
 there have been actually two lines added somewhere and two deleted
 somewhere else, so in absence of that, we opt for the heuristic of
 using the largest of these two values as change size. This analysis
-method is more precise that the one used by other authors, which takes
+method is more precise that the one used by other authors, 
+% Antonio - referencias de ejemplo
+which takes
 into account only changes in size in the whole repository, and does
 not include activities such as refactoring that consist mainly in
 making changes in place. It also has the granularity of single commits
@@ -455,11 +492,13 @@ that also hosts this paper (hidden now for double blind review).
 % maybe we should add here the URL to the paper repo, as a footnote  - Pedro
 % Done
 
-The $x$ axes for these timelines does not correspond to physical time,
+The $x$ axis for these timelines does not correspond to physical time,
 but simply to the sequence, and then only in changes of the
 interesting files. In this sense, there is an important difference between
-our research methodology, which considers discrete changes, to papers such
-as  \cite{herraiz2009statistical}, which take into account {\em daily}
+our research methodology, which considers discrete 
+% Antonio - discrete -> simple? / atomic? Los cambios diarios no serían también discretos (no continuos)?
+changes, to papers such
+as \cite{herraiz2009statistical}, which take into account {\em daily}
 changes. We think that examining discrete changes does not impose a
 particular rhythm, namely, daily, on the changes, but lets the
 repository expose its own rhythm; it also allows us to examine
@@ -468,10 +507,14 @@ source projects, that can be static for
 a long time to experience a burst of changes all of a sudden;
 precisely these changes can indicate an {\em avalanche} that is a
 symptom of the underlying self-organized criticality state and might
-be better detected using commits. An {\em avalanche} caused by a small change happening in a day followed by a flurry of changes fill appear as a big change if time units bigger than the discrete commit. 
+be better detected using commits. An {\em avalanche} caused by a small change happening in a day followed by a flurry of changes fill appear as a big change if the time unit is bigger than the discrete commit. 
 
 Once the information from the repositories has been extracted, we
 proceed to analyze it in the next section. 
+
+
+% --------------------------------------------------------
+
 
 \hypertarget{res}{\section{Results}\label{res}}
 
@@ -485,12 +528,14 @@ kable( summary,"latex" )
 @
 \vspace*{1mm}
 \caption{Summary of statistical measures for the software repositories we have
-  been analyzing here. {\tt age} is measured in total number of
-  commits that affect the files analyzed. The complete name is shown here,
-  which includes the depth of the directory structure in a number and
-  the extension. For instance, the first one has directories up to 4
-  deep and uses CoffeScript ({\tt coffee}) and Perl 6 {\em p6}. They are all open source and can be found in the GitHub repository with the same name.\label{t:stat}}
+  analyzed here. {\tt age} is measured in total number of
+  commits that affects the files checked. The complete name is shown here,
+  which includes the depth of the directory structure as a number and
+  the extension. For instance, the first one has directories up to deep 4
+  and uses CoffeeScript ({\tt coffee}) and Perl 6 {\em p6}. They are all open source and can be found in the GitHub repository with the same name.\label{t:stat}}
 \end{table*}
+%
+% Antonio - Antes de comparar resultados, una duda que puede surgir es cómo se justifica la selección de ficheros para que sean comparables entre distintos repos??? Explicarlo aquí o en lo de las wildcards.
 %
 This table shows that, at least from a macro point of view, median and
 averages are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Averages span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the average is so
@@ -556,7 +601,9 @@ for (i in 1:length(lines) ) {
 \caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
-This chart shows what seems to be a Zipf distribution, with the commit sizes
+This chart shows what seems to be a Zipf distribution,
+% Antonio - ref? 
+ with the commit sizes
 ranked in descending order and plotted with a logarithmic \emph{y}
 axis. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
@@ -652,7 +699,7 @@ changes that is still logarithmic in scale. Whatever the actual
 distribution, there is no doubt that changes do not organize
 themselves along a central value and that there is scale-free nature
 in them, which is, besides, independent of the {\em age} or total
-number of changes of the paper, as has been shown above. 
+number of changes of the paper, as it has been shown above. 
 
 Finally, these scale distributions hints at the possibility of
 long-scale correlations, but in order to find this out, we will have
@@ -691,10 +738,15 @@ of work, but it will need further research to find out, in a more
 precise way, the ranges of distances where autocorrelation is
 significant. 
 
-Once two of the three features of self-organized criticality have been
+Once two of the three features of self-organized criticality 
+% Antonio - las tres características no se han comentado previamente...¿ponerlas en la intro?
+have been
 proved, at least in some of the repositories, we will
-focus on the third, the presence of \emph{pink} noise, as measured by
-the power spectral density. This is shown in Figure \ref{fig:spectrum}, where the power spectral density is shown for the four papers. A {\em pink} noise would be characterized by a spectrum with a negative slope, with decreasing power the higher the frequency. 
+focus on the third, the presence of \emph{pink noise}, as measured by
+the power spectral density. This is shown in Figure \ref{fig:spectrum}, where the power spectral density is shown for the four papers. 
+% Antonio - ¿por qué sólo sobre los 4 artículos? Aclararlo
+A {\em pink noise} would be characterized by a spectrum with a negative slope, with decreasing power the higher the frequency. 
+% Antonio - 'with the lower the power, the higher the frequency'?
 %
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
@@ -744,19 +796,30 @@ are repositories with less than 1000 changes, although other
 repositories with similar number of commits do show this {\em pink
   noise} feature. 
 
-Once the three main features of systems in self-organized state have
-been measured for the papers under study, we will present in the next
-Section our conclusions. 
+Once the three main features of systems in self-organized 
+% Antonio - critical?
+state have
+been measured for the papers 
+% Antonio - papers y otro tipo de proyectos, no?
+under study, we will present in the next
+section our conclusions. 
+
+
+% --------------------------------------------------------
 
 
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
 
-In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink we. 
+In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers 
+% Antonio - papers y otro tipo de proyectos, no?
+by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink noise. 
 
 The methodology that we have used counts size of commits as a discrete measure, not \emph{dailies} or other time
 measure, since development often stops for several days more clearly in
 the case of this paper, where nothing was done for months, and nothing   % "this paper" refers to the "literaturame" paper (self-reference), or is something that remains from a previous text?
-between submission and the first revision. We think that commits, and
+between submission and the first revision. 
+% Antonio - este paper no se ha enviado todavía... :D
+Thus, we think that commits, and
 not actual time measures, will show a much clearer picture of the state
 of the repository, since they correspond to units of work done and are
 also related to discrete tasks in the ticketing system.
@@ -765,8 +828,13 @@ also related to discrete tasks in the ticketing system.
 % the commit. Maybe rules of interaction arise when for instance some one takes the lead
 % and others wait for him to work, and then make little corrections.
 % This could be the content of other papers, not this one...
+% Antonio - I agree. The people involved in repos are very important, as they are the reason of self-organization indeed. ;)
 
-After analyzing the software repositories that hold the papers, we can conclude that, in fact, all repositories analyzed show some of the features, specially freedom of a particular scale in the size of the changes; however, we could conclude from the measures taken above that there is a certain amount of interaction needed before the critical state settles. From the limited amount of repositories we have studied, we could put this number at around 100 changes, but of course there is further studies to be made in this subject. In particular, this would indicate that the only condition needed for the critical state to arise is the age of the repository, or maybe its size. Since the four papers were developed by different number and authors, the presence of absence of other artifacts might also play a role. However, we do not think that is the case. 
+After analyzing the software repositories that hold the papers, 
+% Antonio - papers y otros proyectos
+we can conclude that, in fact, all repositories analyzed show some of the features, specially freedom of a particular scale in the size of the changes; however, we could conclude from the measures taken above that there is a certain amount of interaction needed before the critical state settles. From the limited amount of repositories we have studied, we could put this number at around 100 changes, but of course there is further studies to be made in this subject. In particular, this would indicate that the only condition needed for the critical state to arise is the age of the repository, or maybe its size. Since the four papers were developed by different number and authors, the presence of absence of other artifacts might also play a role. However, we do not think that is the case. 
+
+% Antonio - defender la utilidad o consecuencias de estas conclusiones...
 
 In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
 script hosted in http://anonymousu.rl 
@@ -782,7 +850,8 @@ than the substrate itself, to different types of collaboration. We would also li
 
 
 \section*{Acknowledgements}
-%This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
+%This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH). 
+% Antonio - completar con otros, para la versión final (KNOWAVES, por ejemplo)
 Several projects \\
 taking this much space \\
 
