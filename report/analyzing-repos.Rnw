@@ -242,9 +242,6 @@ changes in the code base provoking {\em avalanches} of changes of all sizes and 
 correlations that make a particular change in a file cause
 further changes down the line in a regular pattern. 
 
-% Antonio - lo que viene a continuación yo lo pondría al inicio de la sección, para introducir el concepto de 'critical state', que se referencia justo al principio de la introducción ahora.
-% Cambiado más arriba. Ahora habrá que re-revisar - JJ
-% Antonio - hecho. ahora está mejor creo yo. ;)
 The dynamics of self-organized criticality is sometimes compared to
 that of a sand pile \cite{paczuski1996avalanche}, in the sense that
 the actual shape tends 
@@ -260,15 +257,9 @@ coordination mechanisms to produce something measurable, that experience
 certain periods of stasis followed by {\em avalanches} of work, new
 code or new paragraphs without an apparent origin. 
 
-
-
 The anecdotal
 evidence gathered by the authors confirms this kind of events
 happen in software development teams, mainly in open source. 
-% Antonio - no sé la validez que tendrá esta evidencia...
-% Sólo para confirmar que no sólo sucede en grandes proyectos. El
-% paper está para probarlo - JJ
-% Antonio - ok
 In open source projects there is usually a {\em core} team which has the
 privilege to write directly to the repository. Code advances through
 several mechanisms, but mainly by following a {\em roadmap} where
@@ -291,8 +282,6 @@ repository. There is no {\em master} or {\em central} repository, but
 usually there is one that is distinguished, which is the one deployed
 to production or released. Development might happen in {\em branches}
 which eventually get merged with the master branch in the central repository. 
-% Antonio - se acaba de decir que no hay 'master', aunque ya sé que se llama así la rama principal, queda un poco incongruente. Yo quitaría el master arriba, dejando sólo 'central'
-% Corregido
 Best practices usually dictate that changes, made through and
 represented by {\em commits}, should be atomic, i. e., affect a single
 function or file and be independently testable, with the object that
@@ -309,9 +298,6 @@ lines affected by a commit, much more precise than the change of size
 in the whole repository used by other studies, simply because it
 measures real changes made usually by individual users, not aggregated
 changes through all the repository as has been reported by other researchers.
-% Antonio - cita...
-% Más bien explicación - JJ
-% Antonio - ok, mejor ahora
 
 Furthermore, the case for this
 critical state is supported by several macro measures that certify the non-existence of a particular
@@ -321,7 +307,7 @@ also exhibit long-range
 correlations and a \emph{pink noise} \cite{szendro2001pink} in the power spectral density, with
 \emph{noise} or variations with respect to the \emph{normal} frequency
 changing in a way that is inversely proportional to it, higher frequency
-changes getting a smaller spectral density \cite{Merelo2016:repominingANON}. 
+changes getting a smaller spectral density \cite{Merelo2016:repominingANON}. These are the three characteristics of systems in a critical self-organized state which will be examined in this paper.
 
 The state in which the project is has obviously an influence in its
 productivity, with some authors finding this state favors the
@@ -372,7 +358,7 @@ code that is written by a human coder.
 
 After presenting a brief \protect\hyperlink{soa}{state of the art} next, 
 followed by the \protect\hyperlink{methodology}{methodology},
-obtained \protect\hyperlink{res}{results} will be presented % in the next section, 
+obtained \protect\hyperlink{res}{results} will be presented 
 and eventually we will expose our \protect\hyperlink{conc}{conclusions}. 
 
 
@@ -398,6 +384,7 @@ quantitatively proves what has been already established via
 qualitative analysis, the fact that in many successful software
 projects, developers self-organize \cite{Crowston2007564}, 
 % Antonio - ¿qué es lo que se auto-organiza? 'themselves'? 'the code'?
+% developers - JJ
 which is
 the preferred way of working in distributed and volunteer
 teams \cite{crowston2012free}. In fact, this way of organization
@@ -408,6 +395,7 @@ error or adapt the code to particular situations.
 In fact, this self-organization has also been observed in similar
 projects such as Wikipedia.
 % Antonio - cita?
+% Antonio, de veras que me ayudaría si tú buscaras esas citas. No tienes más que irte a Google Scholar y poner "Self-organized criticality - Wikipedia" e insertarla aquí. No tengo tiempo de mirar absolutamente nada ahora - JJ
 
 Self-organization, eventually, might produce a critical state
 given the necessary conditions. However, there has been no work going further and
@@ -436,8 +424,9 @@ any rate, quite clearly these software repositories are the record of
 the activity of a complex network.
 
 In this paper we will examine different repositories with the purpose
-of finding out how that complex network effectively emerges. 
+of finding out how that complex network dynamics effectively emerge. 
 % Antonio - pero qué objetivo tiene eso? Se podrá mejora la forma de colaborar o algo así? Creo que habría que comentarlo.
+% Ya se ha hecho en la intro - JJ
 Next we
 will present the methodology used to choose and mine information in
 those repositories. 
@@ -454,10 +443,12 @@ We have chosen 16
 repositores in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em profesionality}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
 created and maintained by a professional community. 
 % Antonio - Y las personas en sí? Cómo se mide su 'profesionalidad'? Explicarlo mejor
+% Hay proyectos de gente y otros liberados por empresas. - JJ
 
 In this paper we will work with the size of changes to a particular
 set of files in the repository, selected via wildcards. 
 % Antonio - aclarar qué quiere decir esto de las 'wildcards'
+% Comodines - JJ
 We exclude other 
 artifacts such as images or style files. To extract information
 about changes to these files in the repositories, we analyze the
@@ -466,6 +457,7 @@ repository log using a Perl script to extract the size of the changes that have 
 Since changes include both the insertion and deletion of lines in committed files, the largest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of
 the sizes of all files. A change in two lines will appear in a diff 
 % Antonio - 'diff' es un programa no?
+% También es un programa, pero no estoy hablando de eso aquí - JJ
 as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
 the larger of these two values; the main reason for doing so is also
@@ -675,7 +667,7 @@ kable( zipf.fit.df,"latex" )
 %
 The {\em evolution} in the nature of the distribution can be observed,
 from a more or less straight line in the first cases, to something
-more similar to a broken stick model in the last one, although it can
+more similar to a {\em broken stick} model in the last one, although it can
 still be linearly fit to a log scale and there is a regime of size
 changes that is still logarithmic in scale. Whatever the actual
 distribution, there is no doubt that changes do not organize
@@ -684,7 +676,7 @@ in them, which is, besides, independent of the {\em age} or total
 number of changes of the paper, as it has been shown above. 
 
 Finally, these scale distributions hints at the possibility of
-long-scale correlations, but in order to find this out, we will have
+long-distance correlations, but in order to find this out, we will have
 to plot the partial autocorrelation of the sequence, that is, the
 relationship between the size of a change and the rest of the changes
 in the sequence. This is computed and plotted in Figure
@@ -692,6 +684,7 @@ in the sequence. This is computed and plotted in Figure
 %
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
+% Again, don't know how to do it. It's the same order always. 
 \begin{figure*}[h!tb]
   \centering
 <<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.115\\linewidth'>>=
@@ -699,39 +692,24 @@ for (i in 1:length(lines) ) {
     print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
 @ 
-\caption{Autocorrelation plot. The order of the papers is the same as in the rest of the figures, increasing in age from the top left to bottom right. The horizontal lines show the level of statistical significant, with any line surpassing it indicating positive or negative self-correlation .\label{fig:auto}}
+\caption{Autocorrelation plot. The order of the papers is the same as in the rest of the figures, increasing in age from the top left to bottom right. The horizontal lines show the level of statistical significant, with any line surpassing it indicating positive or negative self-correlation.\label{fig:auto}}
 \end{figure*}
 % 
 Autocorrelation is significant only if the lines go over the average
-plotted as a dashed line. The long distance correlations, already
-found in \cite{Merelo2016:repominingANON}, are present here. In that case, there was positive
-autocorrelation in the 21 commit period; in this case, it appears at 25
-and 15. It shows, anyway, that the size of a commit has a clear
-influence further down writing history, with high autocorrelations
-around 20 commits. In these repositories of increasing age, we find
-that actual long-distance autocorrelation only happens when they age,
-with no long-distance significant autocorrelation in the first two
-repositories, and a significant one in the two bottom repositories. In
-both cases, correlation happens at the distance of 13-25 commits,
-exactly as it happened before. However, autocorrelation seems to
-disappear in the older repositories, at least for that long
-distances. This might indicate significant differences for other types
-of work, but it will need further research to find out, in a more
-precise way, the ranges of distances where autocorrelation is
-significant. 
+plotted as a dashed line. These long distance autocorrelations, already
+found in \cite{Merelo2016:repominingANON}, are present here too. In the mentioned paper, there was positive
+autocorrelation in the 21 commit period; in this case, it appears  in different places depending on the repository, but is present in most cases anyway.
+
+In these repositories of increasing age, we find that actual long-distance autocorrelation only happens when they age, with no significant long-distance  autocorrelation in the first two repositories, and a significant one in most of the rest. However, while in the above mentioned work we found sharp peaks of long-distance correlation, in this case there are multiple peaks at many diffeent distances, from short distance to very long distance of 30 and 40 commits. 
 
 Once two of the three features of self-organized criticality 
 % Antonio - las tres características no se han comentado previamente...¿ponerlas en la intro?
+% _Están_ en la intro. Le he añadido una frase que menciona que son las tres características que se estudian - JJ
 have been
-proved, at least in some of the repositories, we will
+proved, at least in some of the projects, we will
 focus on the third, the presence of \emph{pink noise}, as measured by
-the power spectral density. This is shown in Figure \ref{fig:spectrum}, where the power spectral density is shown for the four papers. 
-% Antonio - ¿por qué sólo sobre los 4 artículos? Aclararlo
-A {\em pink noise} would be characterized by a spectrum with a negative slope, with decreasing power the higher the frequency. 
-% Antonio - 'with the lower the power, the higher the frequency'?
+the power spectral density, which we show in Figure \ref{fig:spectrum}. The presence of {\em pink noise} would be characterized by a spectrum with a negative slope, with decreasing power the higher the frequency. 
 %
-% in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
-%\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
 \begin{figure*}[h!tb]
   \centering
 <<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.245\\linewidth'>>=  
@@ -768,7 +746,7 @@ kable( spec.fit.df,"latex" )
 \end{table}
 
 In this case, we see that this {\em trend} appears with increasing
-clarity from top left to bottom right. The actual coefficients are
+clarity from top left to bottom right, with actual coefficients and p-values for the fit are
 shown in Table \ref{t:spec}. Pink noise is characterized by
 coefficient values between 0 and 2, and that is the case for all of
 the repositories studied, with the only difference being the goodness
@@ -778,13 +756,8 @@ are repositories with less than 1000 changes, although other
 repositories with similar number of commits do show this {\em pink
   noise} feature. 
 
-Once the three main features of systems in self-organized 
-% Antonio - critical?
-state have
-been measured for the papers 
-% Antonio - papers y otro tipo de proyectos, no?
-under study, we will present in the next
-section our conclusions. 
+Once the three main features of systems in a critical self-organized state have
+been measured for all projects under study, our conclusions will be presented next. 
 
 
 % --------------------------------------------------------
