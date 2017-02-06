@@ -655,7 +655,7 @@ in the form of an histogram. This is done in Figure \ref{fig:zipf}.
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
   \centering
-<<powerlaw,message=FALSE, fig.subcap=summary$Name,echo=FALSE,warning=FALSE,fig.height=4,out.width='.245\\linewidth'>>=
+<<powerlaw,message=FALSE, fig.subcap=summary$Name,echo=FALSE,warning=FALSE,fig.height=4,out.width='.115\\linewidth'>>=
 zipf.fit.df <- data.frame(Name = character(),
                           Coefficient = double(),
                           Intercept = double())
