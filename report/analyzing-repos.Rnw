@@ -125,60 +125,44 @@ for (i in 1:length(files) ) {
 
 \begin{abstract}
   Finding the fitness of complex systems such as software development
-  team is a difficult task without straightforward
-  solutions. 
-  In order to improve team productivity and interactions  within the team
-  as well as the willingness of occasional volunteers, it is
-  interesting to find   
-  out the mechanism underlying collaboration in open
-  source projects and their dynamics. These mechanisms might not be
-  explicit or organized in a top-down fashion, but arise from
-  the collaboration and the way it is done, being thus
-  self-organizing. This is why finding if open source code
-  repositories are in a particular, critical, state, reached via self-organization, and what are the conditions
-  to reach that state will yield some insights on this process, and, from this,
-  we can deduce some rules on how to interactions and thus productivity. % How to improve? interactions - Mario
-% Antonio - no queda claro a qué se refiere 'it' (state, productivity)
-  % Aclarado - JJ
- In this paper we will focus on trying to find this self-organized
- criticality which makes the project a complex system and implies
- certain rules on its future evolution, state by examining repositories, hosted in GitHub, for open source projects,
-  and taking a series of measures to see if they show the characteristics of a critical state, 
-% Antonio - aclarar qué es el 'critical state'
-  % explicado arriba - JJ
-which can be deduced by the 
-existence of a scale-free structure, long-distance correlations and so-called
-{\em pink} noise 
-% Antonio - Aclarar qué es esto del 'ruido rosa'
-% Añadido so-called, se aclarará luego - JJ
-when analyzing the size of changes in the state of the
-repository and its temporal sequence.  Our
-intention is to prove that, although with entirely different
-characteristics, teams, rules and sizes, most repositories
-independently of the number of collaborators and their real 
-nature, self-organize, which implies that it is the nature of these
-interactions, and not the object of the interaction, which takes the
-project to a critical state. This critical state has already been
-established 
-% Antonio - in previous works?
-% in a number of repositories, lo dice luego.
-in a number of repositories with different types of
+team is a difficult task without straightforward solutions.  In order
+to improve team productivity and interactions within the team as well
+as the willingness of occasional volunteers, it is interesting to find
+out the mechanism underlying collaboration in open source projects and
+their dynamics. These mechanisms might not be explicit or organized in
+a top-down fashion, but arise from the collaboration and the way it is
+done, being thus self-organizing. This is why finding if open source
+code repositories are in a particular, critical, state, reached via
+self-organization, and what are the conditions to reach that state
+will yield some insights on this process, and, from this, we can
+deduce some rules on how to interactions and thus productivity.  In
+this paper we will focus on trying to find this self-organized
+criticality which makes the project a complex system and implies
+certain rules on its future evolution, state by examining
+repositories, hosted in GitHub, for open source projects, and taking a
+series of measures to see if they show the characteristics of a
+critical state, which can be deduced by the existence of a scale-free
+structure, long-distance correlations and so-called {\em pink} noise
+when analyzing the size of changes in the state of the repository and
+its temporal sequence.  Our intention is to prove that, although with
+entirely different characteristics, teams, rules and sizes, most
+repositories independently of the number of collaborators and their
+real nature, self-organize, which implies that it is the nature of
+these interactions, and not the object of the interaction, which takes
+the project to a critical state. This critical state has already been
+established in a number of repositories with different types of
 projects, including software or even literary works; in this paper we
 apply a new methodology to measure changes and their sequence; we will
-also focus
-on a wider range of repository sizes and ages, not only big and {\em
-  old ones}, with two main objectives: establish their 
-self-organized criticality state   % sorry, but, does "self-organized criticality" corresponds to SOC used bellow? In that case, lets define it here
-% Antonio - I have included 'SOC state' in the introduction 
-or at least some features of it, and eventually try 
-% Antonio - trying?
-and find if {\em age} as measured as the number of changes 
-% Antonio - changes o commits? Lo primero serían a nivel de carácter, por ejemplo en lugar de un conjunto de cambios agrupado
-is the only condition needed to find self-organization. 
-% Antonio - comentar algo de los resultados obtenidos
-Taking into account these measures in the repositories we can conclude that the number of % By measuring these? - Mario  
-changes is the main, if not only, factor that creates a critical state
-in software repositories.
+also focus on a wider range of repository sizes and ages, not only big
+and {\em old ones}, with two main objectives: establish their
+self-organized criticality state or at least some features of it, and
+eventually try and find if {\em age} as measured as the number of
+changes is the only condition needed to find self-organization, since
+all repositories examined show at least some features and all of them
+the three main features.  Taking into account these measures in the
+repositories we can conclude that the number of changes is the main,
+if not only, factor that creates a critical state in software
+repositories.
 % Añadido - JJ
 \end{abstract}
 
