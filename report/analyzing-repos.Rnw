@@ -405,7 +405,7 @@ critical state is key to carry the system to adaptive success, as
 defined in \cite{benbya2006toward}. This paper presents 
 % Antonio - se puede malinterpretar entre este artículo y el de la cita. Yo lo pondría en pasado ('presented') para aclarar que es el citado
 the seven
-mechanisms that create complexity in systems as initially enounced for
+mechanisms that create complexity in systems as initially enunciated for
 biological systems and apply them to information system
 development. 
 
@@ -440,7 +440,7 @@ those repositories.
 
 We have chosen 16 
 % Antonio - own? public?
-repositores in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em profesionality}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
+repositories in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em professionally}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
 created and maintained by a professional community. 
 % Antonio - Y las personas en sí? Cómo se mide su 'profesionalidad'? Explicarlo mejor
 % Hay proyectos de gente y otros liberados por empresas. - JJ
@@ -700,7 +700,7 @@ plotted as a dashed line. These long distance autocorrelations, already
 found in \cite{Merelo2016:repominingANON}, are present here too. In the mentioned paper, there was positive
 autocorrelation in the 21 commit period; in this case, it appears  in different places depending on the repository, but is present in most cases anyway.
 
-In these repositories of increasing age, we find that actual long-distance autocorrelation only happens when they age, with no significant long-distance  autocorrelation in the first two repositories, and a significant one in most of the rest. However, while in the above mentioned work we found sharp peaks of long-distance correlation, in this case there are multiple peaks at many diffeent distances, from short distance to very long distance of 30 and 40 commits. 
+In these repositories of increasing age, we find that actual long-distance autocorrelation only happens when they age, with no significant long-distance  autocorrelation in the first two repositories, and a significant one in most of the rest. However, while in the above mentioned work we found sharp peaks of long-distance correlation, in this case there are multiple peaks at many different distances, from short distance to very long distance of 30 and 40 commits. 
 
 Once two of the three features of self-organized criticality 
 % Antonio - las tres características no se han comentado previamente...¿ponerlas en la intro?
