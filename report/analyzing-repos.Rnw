@@ -549,16 +549,13 @@ the papers analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
 similar no matter what is the thing that is actually written. However, some repositories, specially ejabberd (a server written in Erlang for the Jabber protocol), Django and Tensorflow show the practice called {\em squashing}, which compresses several commits into a single one creating changes of several thousands lines. Those changes are not {\em organic} in the sense that they do not reflect the work of a single person. In the big picture of the self-organization of the repository, its impact will have to be assessed, but in principle it would not have to have an influence on the overall state, since their scale will also follow the same principles. 
 
-The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic or
-decimal \emph{y} scale and smoothing over several commits, either 10
+The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic \emph{y} scale and smoothing over several commits, either 10
 or 20, depending on the color. The \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
-commit in number of lines. The serrated characteristic is the same, as well
-as the big changes in scale, with some periods where small changes
-happen and other that alternate big with small changes. A certain
+commit in number of lines. There are big changes in scale certain
 \emph{rhythm} can be observed, which hints at large-scale
-correlations, that is influence of changes happening now over changes
-that occur several, or many, steps afterwards, in the future. 
+correlations, which has been created by current changes influencing other changes
+that occur several, or many, steps in the future. 
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
@@ -570,12 +567,12 @@ for (i in 1:length(lines) ) {
     print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
 }
 @ 
-\caption{Timeline of changes for the four papers, with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
+\caption{Timeline of changes for all repositories with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
 \end{figure*}
 
-Besides, these changes in scale might mean that commit sizes are distributed along a Pareto
+Besides, these variations in scale might mean that commit sizes are distributed along a Pareto
 distribution. We will examine this next, representing the number of changes of a particular
-size in a log-log scale, with linear smoothing to show the trend in
+size in a log-log scale, with linear smoothing to show trends, in
 Figure \ref{fig:changes}. 
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
@@ -601,24 +598,13 @@ for (i in 1:length(lines) ) {
 \caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
-This chart shows what seems to be a Zipf distribution,
+This chart shows what seems to be a Pareto distribution,
 % Antonio - ref? 
+% That's something you can do yourself, right? - JJ
  with the commit sizes
-ranked in descending order and plotted with a logarithmic \emph{y}
-axis. This distribution shows, in all cases, a {\em tail}
+ranked in ascending order and plotted with a log-log scale. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
-different practices by different authors, with some preferring atomic
-changes to single lines or paragraphs and others writing down whole
-sections; in some cases, it corresponds also to reuse of common parts
-of papers (authors, acknowledgements, description of a method) to
-create the initial versions of the paper; finally, in some cases
-comments are deleted before the final version is submitted, so these
-{\em tails} are not really unexpected. If you follow the charts also
-in the direction of increasing number of commits it can be seen how
-the linearity of the distribution becomes more crisp; in the first two
-papers there are simply not enough number of commits to actually show
-this Pareto distribution, but in the last case there is a very clear
-log-log distribution. 
+different practices by different authors, but also to different in-company practices. It is specially remarkable the {\em fat tail} in the case of Tensorflow and {\em ejabberd}, next-to-last row, first and second from right. Due to some practices of merging a whole branch in a single commit, they exhibit exceptionally big commit sizes, with tens of thousands lines. In that case, that would show that there is some top-down organization taking place, but it does not hide the general self-organizing shape of the curve to their left. 
 
 These distributions can, in fact, be linearly fit to a log-log distribution with coefficients
 shown in Table \ref{t:sizes}. 
@@ -638,21 +624,17 @@ These values are also similar to those found in
 table, and the slope -0.001, a very mild slope that hints at a big
 number of changes and might in fact indicate that, as would be
 expected, the intercept increases and the slope decreases with the
-number of changes. The shape of the line in
+number of changes or the size of the project. The shape of the line in
 \cite{Merelo2016:repominingANON} in fact might be more similar to a {\em
   broken stick}; this is a matter that deserves further
-investigation. In the case of \cite{merelo16:slashANON} values are
-somewhere in the middle, 5.7 and -0.96. The slope is quite similar
-indeed, and the intercept might point to the fact that size changes
-are larger when fiction is being written, which also matches the macro
-averages and medians observed above. 
+investigation.  
 
 The scale free nature of the work in the repository can be more
 properly observed by looking at the changes in some other way, ranking them by size
-and representing them in a chart with a logarithmic \(y\) axis, as well as
-in the form of an histogram. This is done in Figure \ref{fig:zipf}. 
+and representing them in a chart with a logarithmic \(y\) axis, in what is known as a {\em Zipf} chart. This is done in Figure \ref{fig:zipf}. 
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+% I didn't find the way to do it, but feel free to look it up - JJ
 \begin{figure*}[h!tb]
   \centering
 <<powerlaw,message=FALSE, fig.subcap=summary$Name,echo=FALSE,warning=FALSE,fig.height=4,out.width='.115\\linewidth'>>=
@@ -676,8 +658,8 @@ for (i in 1:length(lines) ) {
 \end{figure*}
 %
 %
-The Zipf exponents and intercepts for these models are shown in Table \ref{t:zipf},
-and are of the same order, but different range, of the one found  in
+We can in fact fit this to a Zipf distribution, whose Zipf exponents and intercepts for these models are shown in Table \ref{t:zipf},
+and are of the same order, but different range, of those found  in
 \cite{merelo16:slashANON}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
@@ -809,6 +791,7 @@ section our conclusions.
 
 
 \hypertarget{conc}{\section{Conclusions}\label{conc}}
+
 
 In this paper we were interesting in finding traces of self-organized criticality in the repositories of scientific papers 
 % Antonio - papers y otro tipo de proyectos, no?
