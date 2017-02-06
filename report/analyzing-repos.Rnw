@@ -56,7 +56,7 @@ showstringspaces=false
 \clubpenalty=10000 
 \widowpenalty = 10000
 
-\title{Self-organized criticality in code repositories}
+\title{What is the fitness of a software project? Studying self-organized criticality in code repositories}
 
 \numberofauthors{1}
 \author{
