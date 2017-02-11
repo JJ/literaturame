@@ -34,3 +34,5 @@ stats/*.png
 *.bbl
 *.aux
 *.gz
+
+**/figure
