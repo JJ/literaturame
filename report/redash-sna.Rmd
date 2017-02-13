@@ -1,0 +1,18 @@
+---
+title: "Complex graphs in repositories"
+author: "JJ Merelo"
+date: "13 de febrero de 2017"
+output: html_document
+---
+
+##Abstract
+
+>There is no single *natural* way of analyzing the graph created by the collaborative work of a team of software developers as reflected in the log of that repository. In this paper we will analyze several graphs created by this work, considering author or files the nodes in what is actually a bipartite network. We will try to find out which network better represents the complex nature of the technosocial system.
+
+```{r setup, echo=FALSE}
+library("igraph")
+redash.net <- read_graph("../data/sna/author-redash.net")
+```
+
+
+

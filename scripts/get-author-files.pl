@@ -92,7 +92,7 @@ my @authors = keys %author_graph;
 my %author_nodes;
 my $author_net = SNA::Network->new();
 for my $a (@authors) {
-  my $this_node = $author_net->create_node( name => $a );
+  my $this_node = $author_net->create_node( name => "\"$a\"" );
   $author_nodes{$a} = $this_node;
 }
 
