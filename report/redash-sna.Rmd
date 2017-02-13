@@ -18,11 +18,11 @@ delete.isolates <- function(graph) {
   delete.vertices(graph, bad.vs)
 }
 beehive.author.net <- read_graph(file = "../data/sna/author-beehive.net", format = 'pajek')
-beehive.author.net.core <- delete.isolates(beehive.author.net)
+beehive.author.net.core <- as.undirected(delete.isolates(beehive.author.net), mode='each')
 beehive.files.net <- read_graph(file = "../data/sna/files-beehive.net", format = 'pajek')
-beehive.files.net.core <- delete.isolates(beehive.files.net)
+beehive.files.net.core <- as.undirected(delete.isolates(beehive.files.net), mode='each')
 beehive.commit.net <- read_graph(file = "../data/sna/commit-beehive.net", format = 'pajek')
-beehive.commit.net.core <- delete.isolates(beehive.commit.net)
+beehive.commit.net.core <- as.undirected(delete.isolates(beehive.commit.net), mode='each')
 
 ```
 
@@ -33,7 +33,7 @@ Beehive is a Go event and agent system available with a free license from https:
 The repository can be represented as a bipartite graph with authors and files, with non-directed edges connecting authors with those files they have worked on. There are several possible ways of turning this bipartite graph into a one-party graph: create a graph of files joined by one edge if they have one developer in common, or joining authors by one edge if they have worked on at least one file. These are represented next
 
 ```{r plot, echo=FALSE}
-plot(beehive.author.net.core)
+plot(beehive.author.net.core,vertex.size=betweenness(beehive.author.net.core)/10,vertex.label=NA,layout = layout.fruchterman.reingold,vertex.color=closeness(beehive.author.net.core),palette=diverging_pal(11))
 plot(beehive.files.net.core)
 ```
 
@@ -41,6 +41,6 @@ However, the file graph is not entirely satisfactory since, in fact, the main de
 
 
 ```{r commit, echo=FALSE}
-plot(beehive.commit.net.core)
+plot(beehive.commit.net.core,vertex.size=betweenness(beehive.commit.net.core)/500,vertex.label=NA,layout = layout.fruchterman.reingold,vertex.color=closeness(beehive.author.net.core)*10,palette=diverging_pal(11))
 ```
 
