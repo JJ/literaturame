@@ -11,8 +11,31 @@ output: html_document
 
 ```{r setup, echo=FALSE}
 library("igraph")
-redash.net <- read_graph("../data/sna/author-redash.net")
+
+# from http://stackoverflow.com/questions/5643002/r-selectively-display-nodes-when-plotting-an-igraph
+delete.isolates <- function(graph, mode = 'all') {
+  isolates <- which(degree(graph, mode = mode) == 0) - 1
+  delete.vertices(graph, isolates)
+}
+mocha.author.net <- read_graph(file = "../data/sna/author-mocha.net", format = 'pajek')
+mocha.author.net.core <- delete.isolates(mocha.author.net)
+#mocha.files.net <- read_graph(file = "../data/sna/files-mocha.net", format = 'pajek')
+#mocha.commit.net <- read_graph(file = "../data/sna/commit-mocha.net", format = 'pajek')
 ```
+
+# Introduction
+
+Mocha is a popular test library written mainly in Javascript. It includes several developers, and a history with a few thousands commits. 
+
+The repository can be represented as a bipartite graph with authors and files, with non-directed edges connecting authors with those files they have worked on. There are several possible ways of turning this bipartite graph into a one-party graph: create a graph of files joined by one edge if they have one developer in common, or joining authors by one edge if they have worked on at least one file. These are represented next
+
+```{r plot, echo=FALSE}
+plot(mocha.author.net.core)
+#plot(mocha.files.net)
+```
+
+However, the file graph is not entirely satisfactory since, in fact, the main developer might have touched all files, and, second, files completely unrelated might be joined since they are created or modified sequentially by the same developer. 
+
 
 
 
