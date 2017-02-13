@@ -13,30 +13,34 @@ output: html_document
 library("igraph")
 
 # from http://stackoverflow.com/questions/5643002/r-selectively-display-nodes-when-plotting-an-igraph
-delete.isolates <- function(graph, mode = 'all') {
-  isolates <- which(degree(graph, mode = mode) == 0) - 1
-  delete.vertices(graph, isolates)
+delete.isolates <- function(graph) {
+  bad.vs<-V(graph)[degree(graph) == 0]
+  delete.vertices(graph, bad.vs)
 }
-mocha.author.net <- read_graph(file = "../data/sna/author-mocha.net", format = 'pajek')
-bad.vs<-V(mocha.author.net)[degree(mocha.author.net) == 0] 
-mocha.author.net.core <- delete.vertices(mocha.author.net,bad.vs)
-#mocha.files.net <- read_graph(file = "../data/sna/files-mocha.net", format = 'pajek')
-#mocha.commit.net <- read_graph(file = "../data/sna/commit-mocha.net", format = 'pajek')
+beehive.author.net <- read_graph(file = "../data/sna/author-beehive.net", format = 'pajek')
+beehive.author.net.core <- delete.isolates(beehive.author.net)
+beehive.files.net <- read_graph(file = "../data/sna/files-beehive.net", format = 'pajek')
+beehive.files.net.core <- delete.isolates(beehive.files.net)
+beehive.commit.net <- read_graph(file = "../data/sna/commit-beehive.net", format = 'pajek')
+beehive.commit.net.core <- delete.isolates(beehive.commit.net)
+
 ```
 
 # Introduction
 
-Mocha is a popular test library written mainly in Javascript. It includes several developers, and a history with a few thousands commits. 
+Beehive is a Go event and agent system available with a free license from https://github.com/muesli/beehive.
 
 The repository can be represented as a bipartite graph with authors and files, with non-directed edges connecting authors with those files they have worked on. There are several possible ways of turning this bipartite graph into a one-party graph: create a graph of files joined by one edge if they have one developer in common, or joining authors by one edge if they have worked on at least one file. These are represented next
 
 ```{r plot, echo=FALSE}
-plot(mocha.author.net.core)
-#plot(mocha.files.net)
+plot(beehive.author.net.core)
+plot(beehive.files.net.core)
 ```
 
 However, the file graph is not entirely satisfactory since, in fact, the main developer might have touched all files, and, second, files completely unrelated might be joined since they are created or modified sequentially by the same developer. 
 
 
-
+```{r commit, echo=FALSE}
+plot(beehive.commit.net.core)
+```
 
