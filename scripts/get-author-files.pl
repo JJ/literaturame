@@ -29,8 +29,7 @@ use v5.20;
 use Git;
 use Net::GitHub::V3;
 use File::Slurp::Tiny qw(write_file);
-use Graph;
-use Graph::Writer;
+use SNA::Network;
 
 my $dir = shift || ".";
 my $owner = shift || die "Need an owner";
@@ -41,51 +40,77 @@ my $gh = Net::GitHub::V3->new( access_token => $token );
 my $git_search = $gh->search;
 my @these_revs = `cd $dir; git rev-list --all`;
 
-my (%author_graph, %files_graph);
-my %author_nicks;
+my (%author_graph, %files_graph, %nick_for);
 for my $commit ( reverse @these_revs ) {
   chop $commit;
   my $commit_info = $repo->command('show', '--pretty=full', $commit);
   my ($author) = ($commit_info =~ /Author:\s+(.+)/);
   my @files = ($commit_info =~ /\+\+\+\s+b\/(.+)/g);
-  if ( !$author_nicks{$author} ) {
+  if ( !$nick_for{$author} ) {
     my ($name,$email) = ($author =~ /(.+)\s+<([^>]+)>/);
     my $user = $git_search->users( { q => "$email in:email"});
     say "Sleeping after $email...";
     sleep 1; # To avoid hitting rate limit
     if ( $user->{'items'}[0]->{'login'} ) {
-      $author_nicks{$author} = $user->{'items'}[0]->{'login'};
+      $nick_for{$author} = $user->{'items'}[0]->{'login'};
     } else {
       $user = $git_search->users( { q => $name });
       if ( $user->{'items'}[0]->{'login'} ) {
-	$author_nicks{$author} = $user->{'items'}[0]->{'login'};
+	$nick_for{$author} = $user->{'items'}[0]->{'login'};
       } else  {
-	$author_nicks{$author} = $author;
+	$nick_for{$author} = $author;
       }
     }
   }
       
   for my $f (@files ) {
-    $author_graph{$author}{$f}++;
-    $files_graph{$f}{$author}++;
+    $author_graph{$nick_for{$author}}{$f}++;
+    $files_graph{$f}{$nick_for{$author}}++;
   }
 }
 
 my @authors = keys %author_graph;
-my $author_real_graph = Graph::Undirected->new( unionfind => 1,
-						vertices => \@authors );
+my %author_nodes;
+my $author_net = SNA::Network->new();
+for my $a (@authors) {
+  my $this_node = $author_net->create_node( name => $a );
+  $author_nodes{$a} = $this_node;
+}
+
+my %file_nodes;
+my $file_net = SNA::Network->new();
+for my $f (keys %files_graph) {
+  my $this_node = $file_net->create_node( name => $f );
+  $file_nodes{$f} = $this_node;
+}
+
 for my $f (keys %files_graph) {
   my @authors = keys %{$files_graph{$f}};
-  for ( my $i = 0; $i <= $#authors; $i ++ ) {
-    for ( my $j = $i; $j <= $#authors; $j++ ) {
-      $author_real_graph->add_edge( $authors[$i], $authors[$j] );
+  if ( $#authors > 0 ) {
+    for ( my $i = 0; $i < $#authors; $i ++ ) {
+      for ( my $j = $i+1; $j <= $#authors; $j++ ) {
+	$author_net->create_edge(
+				 source_index => $author_nodes{$authors[$i]}->{'index'},
+				 target_index => $author_nodes{$authors[$j]}->{'index'} );
+      }
     }
   }
 }
 
-say "Graph is $author_real_graph";
+$author_net->save_to_pajek_net("author-$repo_name.net");
 
+for my $a (keys %author_graph) {
+  my @files = keys %{$author_graph{$a}};
+  if ( $#files > 0 ) {
+    for ( my $i = 0; $i < $#files; $i ++ ) {
+      for ( my $j = $i+1; $j <= $#files; $j++ ) {
+	$file_net->create_edge(
+				 source_index => $file_nodes{$files[$i]}->{'index'},
+				 target_index => $file_nodes{$files[$j]}->{'index'} );
+      }
+    }
+  }
+}
 
-
-#write_file("info_$last_dir_name.csv", join("\n", @data));
+$file_net->save_to_pajek_net("files-$repo_name.net");
 
