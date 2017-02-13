@@ -97,7 +97,11 @@ for my $f (keys %files_graph) {
   }
 }
 
+$author_net->calculate_authorities_and_hubs();
+$author_net->calculate_betweenness;
 $author_net->save_to_pajek_net("author-$repo_name.net");
+$author_net->save_to_gdf(filename => "author-$repo_name.gdf", node_fields => ['betweenness','authority','hub']);
+
 
 for my $a (keys %author_graph) {
   my @files = keys %{$author_graph{$a}};
@@ -112,5 +116,8 @@ for my $a (keys %author_graph) {
   }
 }
 
+$file_net->calculate_authorities_and_hubs();
+$file_net->calculate_betweenness;
 $file_net->save_to_pajek_net("files-$repo_name.net");
+$file_net->save_to_gdf(filename => "files-$repo_name.gdf",  node_fields => ['betweenness','authority','hub'] );
 

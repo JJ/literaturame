@@ -1,0 +1,15 @@
+nodedef> name,label,betweenness,authority,hub
+n1,amorag,0,0.436206104495195,0.18085521881057
+n2,mariosky,0.0833333333333333,0.738969058376384,0.338183635786397
+n3,Pedro A. Castillo <pedro@geneura.ugr.es>,0.0833333333333333,0.110504346145677,0.871236572850744
+n4,JJ,0.5,0.501435693430736,0.306382199944064
+edgedef> node1,node2,directed
+n4,n3,true
+n4,n2,true
+n3,n2,true
+n3,n2,true
+n3,n1,true
+n3,n4,true
+n2,n1,true
+n2,n4,true
+n1,n4,true
