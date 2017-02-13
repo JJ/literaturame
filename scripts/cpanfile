@@ -2,3 +2,4 @@ requires 'JSON';
 requires 'Git';
 requires 'File::Slurp::Tiny';
 requires 'SNA::Network';
+requires 'Net::GitHub::V3';
