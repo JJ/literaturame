@@ -1,0 +1,16 @@
+nodedef> name,label,betweenness,authority,hub
+n1,MadcapJake,0,0.0369629393374327,0.985227475945336
+n2,zoffixznet,0,0,0.170278545497434
+n3,samcv,0,0.999316637065318,0.0182218985196345
+edgedef> node1,node2,directed
+n3,n1,true
+n1,n3,true
+n2,n1,true
+n2,n3,true
+n1,n3,true
+n1,n3,true
+n3,n1,true
+n1,n3,true
+n1,n3,true
+n3,n1,true
+n1,n3,true
