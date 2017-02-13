@@ -30,6 +30,7 @@ use Git;
 use Net::GitHub::V3;
 use File::Slurp::Tiny qw(write_file);
 use Graph;
+use Graph::Writer;
 
 my $dir = shift || ".";
 my $owner = shift || die "Need an owner";
@@ -52,12 +53,13 @@ for my $commit ( reverse @these_revs ) {
     my $user = $git_search->users( { q => "$email in:email"});
     say "Sleeping after $email...";
     sleep 1; # To avoid hitting rate limit
-    if ( $user ) {
+    if ( $user->{'items'}[0]->{'login'} ) {
       $author_nicks{$author} = $user->{'items'}[0]->{'login'};
     } else {
       $user = $git_search->users( { q => $name });
-      $author_nicks{$author} = $user;
-      if ( !$user ) {
+      if ( $user->{'items'}[0]->{'login'} ) {
+	$author_nicks{$author} = $user->{'items'}[0]->{'login'};
+      } else  {
 	$author_nicks{$author} = $author;
       }
     }
