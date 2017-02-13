@@ -28,7 +28,7 @@ use v5.20;
 
 use Git;
 use Net::GitHub::V3;
-use File::Slurp::Tiny qw(write_file);
+use File::Slurp::Tiny qw(write_file read_file);
 use SNA::Network;
 
 my $dir = shift || ".";
@@ -70,7 +70,7 @@ for my $commit ( reverse @these_revs ) {
   for (my $i = 0; $i <= $#files; $i++ ) {
     my $f = $files[$i];
     if ( !$commit_nodes{$f} ) {
-      my $this_node = $commit_net->create_node( name => $f );
+      my $this_node = $commit_net->create_node( name => "\"$f\"" );
       $commit_nodes{$f} = $this_node;
     }
     $author_graph{$nick_for{$author}}{$f}++;
@@ -78,7 +78,7 @@ for my $commit ( reverse @these_revs ) {
     if ( $i < $#files ) {
       for ( my $j = $i+1; $j<=$#files; $j++ ) {
 	if ( !$commit_nodes{$files[$j]} ) {
-	  my $this_node = $commit_net->create_node( name => $files[$j] );
+	  my $this_node = $commit_net->create_node( name => "\"$files[$j]\"" );
 	  $commit_nodes{$files[$j]} = $this_node;
 	}
 	$commit_net->create_edge( source_index => $commit_nodes{$f}->{'index'},
@@ -99,7 +99,7 @@ for my $a (@authors) {
 my %file_nodes;
 my $file_net = SNA::Network->new();
 for my $f (keys %files_graph) {
-  my $this_node = $file_net->create_node( name => $f );
+  my $this_node = $file_net->create_node( name =>  "\"$f\"" );
   $file_nodes{$f} = $this_node;
 }
 
@@ -117,11 +117,7 @@ for my $f (keys %files_graph) {
   }
 }
 
-$author_net->calculate_authorities_and_hubs();
-$author_net->calculate_betweenness;
-$author_net->save_to_pajek_net("author-$repo_name.net");
-$author_net->save_to_gdf(filename => "author-$repo_name.gdf", node_fields => ['betweenness','authority','hub']);
-
+write_correct_file( $author_net, "author", $repo_name );
 
 for my $a (keys %author_graph) {
   my @files = keys %{$author_graph{$a}};
@@ -135,13 +131,18 @@ for my $a (keys %author_graph) {
   }
 }
 
-$file_net->calculate_authorities_and_hubs();
-$file_net->calculate_betweenness;
-$file_net->save_to_pajek_net("files-$repo_name.net");
-$file_net->save_to_gdf(filename => "files-$repo_name.gdf",  node_fields => ['betweenness','authority','hub'] );
+write_correct_file( $file_net, "files", $repo_name );
+write_correct_file( $commit_net, "commit", $repo_name  );
 
-$commit_net->calculate_authorities_and_hubs();
-$commit_net->calculate_betweenness;
-$commit_net->save_to_pajek_net("commit-$repo_name.net");
-$commit_net->save_to_gdf(filename => "commit-$repo_name.gdf",  node_fields => ['betweenness','authority','hub'] );
 
+# Some useful subs
+sub write_correct_file {
+    my ($net, $name, $repo_name) = @_;
+    $net->calculate_authorities_and_hubs();
+    $net->calculate_betweenness;
+    $net->save_to_pajek_net("$name-$repo_name.net");
+    my $net_file = read_file( "$name-$repo_name.net" );
+    $net_file =~ s/\*Arcs/*arcs/;
+    write_file("$name-$repo_name.net", $net_file);
+    $net->save_to_gdf(filename => "$name-$repo_name.gdf",  node_fields => ['betweenness','authority','hub'] );
+}
