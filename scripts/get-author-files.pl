@@ -40,7 +40,9 @@ my $gh = Net::GitHub::V3->new( access_token => $token );
 my $git_search = $gh->search;
 my @these_revs = `cd $dir; git rev-list --all`;
 
-my (%author_graph, %files_graph, %nick_for);
+my (%author_graph, %files_graph,  %nick_for);
+my $commit_net = SNA::Network->new();
+my %commit_nodes;
 for my $commit ( reverse @these_revs ) {
   chop $commit;
   my $commit_info = $repo->command('show', '--pretty=full', $commit);
@@ -63,9 +65,24 @@ for my $commit ( reverse @these_revs ) {
     }
   }
       
-  for my $f (@files ) {
+  for (my $i = 0; $i <= $#files; $i++ ) {
+    my $f = $files[$i];
+    if ( !$commit_nodes{$f} ) {
+      my $this_node = $commit_net->create_node( name => $f );
+      $commit_nodes{$f} = $this_node;
+    }
     $author_graph{$nick_for{$author}}{$f}++;
     $files_graph{$f}{$nick_for{$author}}++;
+    if ( $i < $#files ) {
+      for ( my $j = $i+1; $j<=$#files; $j++ ) {
+	if ( !$commit_nodes{$files[$j]} ) {
+	  my $this_node = $commit_net->create_node( name => $files[$j] );
+	  $commit_nodes{$files[$j]} = $this_node;
+	}
+	$commit_net->create_edge( source_index => $commit_nodes{$f}->{'index'},
+				  target_index => $commit_nodes{$files[$j]}->{'index'});
+      }
+    }
   }
 }
 
@@ -84,14 +101,15 @@ for my $f (keys %files_graph) {
   $file_nodes{$f} = $this_node;
 }
 
+
+# Author graph
 for my $f (keys %files_graph) {
   my @authors = keys %{$files_graph{$f}};
   if ( $#authors > 0 ) {
     for ( my $i = 0; $i < $#authors; $i ++ ) {
       for ( my $j = $i+1; $j <= $#authors; $j++ ) {
-	$author_net->create_edge(
-				 source_index => $author_nodes{$authors[$i]}->{'index'},
-				 target_index => $author_nodes{$authors[$j]}->{'index'} );
+	$author_net->create_edge( source_index => $author_nodes{$authors[$i]}->{'index'},
+				  target_index => $author_nodes{$authors[$j]}->{'index'} );
       }
     }
   }
@@ -108,9 +126,8 @@ for my $a (keys %author_graph) {
   if ( $#files > 0 ) {
     for ( my $i = 0; $i < $#files; $i ++ ) {
       for ( my $j = $i+1; $j <= $#files; $j++ ) {
-	$file_net->create_edge(
-				 source_index => $file_nodes{$files[$i]}->{'index'},
-				 target_index => $file_nodes{$files[$j]}->{'index'} );
+	$file_net->create_edge( source_index => $file_nodes{$files[$i]}->{'index'},
+				target_index => $file_nodes{$files[$j]}->{'index'} );
       }
     }
   }
@@ -120,4 +137,9 @@ $file_net->calculate_authorities_and_hubs();
 $file_net->calculate_betweenness;
 $file_net->save_to_pajek_net("files-$repo_name.net");
 $file_net->save_to_gdf(filename => "files-$repo_name.gdf",  node_fields => ['betweenness','authority','hub'] );
+
+$commit_net->calculate_authorities_and_hubs();
+$commit_net->calculate_betweenness;
+$commit_net->save_to_pajek_net("commit-$repo_name.net");
+$commit_net->save_to_gdf(filename => "commit-$repo_name.gdf",  node_fields => ['betweenness','authority','hub'] );
 
