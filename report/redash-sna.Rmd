@@ -18,7 +18,8 @@ delete.isolates <- function(graph, mode = 'all') {
   delete.vertices(graph, isolates)
 }
 mocha.author.net <- read_graph(file = "../data/sna/author-mocha.net", format = 'pajek')
-mocha.author.net.core <- delete.isolates(mocha.author.net)
+bad.vs<-V(mocha.author.net)[degree(mocha.author.net) == 0] 
+mocha.author.net.core <- delete.vertices(mocha.author.net,bad.vs)
 #mocha.files.net <- read_graph(file = "../data/sna/files-mocha.net", format = 'pajek')
 #mocha.commit.net <- read_graph(file = "../data/sna/commit-mocha.net", format = 'pajek')
 ```
