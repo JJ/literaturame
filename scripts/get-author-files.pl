@@ -51,7 +51,7 @@ for my $commit ( reverse @these_revs ) {
     my ($name,$email) = ($author =~ /(.+)\s+<([^>]+)>/);
     my $user = $git_search->users( { q => "$email in:email"});
     say "Sleeping after $email...";
-    sleep 2; # To avoid hitting rate limit
+    sleep 1; # To avoid hitting rate limit
     if ( $user ) {
       $author_nicks{$author} = $user->{'items'}[0]->{'login'};
     } else {
