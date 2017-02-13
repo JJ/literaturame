@@ -56,7 +56,9 @@ for my $commit ( reverse @these_revs ) {
     if ( $user->{'items'}[0]->{'login'} ) {
       $nick_for{$author} = $user->{'items'}[0]->{'login'};
     } else {
-      $user = $git_search->users( { q => $name });
+	$user = $git_search->users( { q => $name });
+	say "Sleeping after $name...";
+	sleep 1; # To avoid hitting rate limit
       if ( $user->{'items'}[0]->{'login'} ) {
 	$nick_for{$author} = $user->{'items'}[0]->{'login'};
       } else  {
