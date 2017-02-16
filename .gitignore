@@ -36,3 +36,4 @@ stats/*.png
 *.gz
 
 **/figure
+**/rsconnect
