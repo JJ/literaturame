@@ -2,19 +2,7 @@
 
 =head1 NAME
 
-get-diffs.pl - Quantify diffs in a software repository
 
-=head1 SYNOPSIS
-
-First, install needed modules
-
-    cpanm install Git File::Slurp::Tiny
-
-Then run it. If there is a git repo in C</home/thatsme/repo>
-
-    ./get-diff-by-extension.pl "pl pm" /home/thatsme/repo
-
-The quotes are important so that it is not expanded by bash.
 
 =head1 SEE ALSO
 
@@ -45,7 +33,7 @@ my $commit_net = SNA::Network->new();
 my %commit_nodes;
 for my $commit ( reverse @these_revs ) {
   chop $commit;
-  my $commit_info = $repo->command('show', '--pretty=full', $commit);
+  my $commit_info = $repo->command('show', '--pretty=fuller', $commit);
   my ($author) = ($commit_info =~ /Author:\s+(.+)/);
   my ($name,$email) = ($author =~ /(.+)\s+<([^>]+)>/);
   my @files = ($commit_info =~ /\+\+\+\s+b\/(.+)/g);
