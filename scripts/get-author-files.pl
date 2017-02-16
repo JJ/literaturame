@@ -47,26 +47,36 @@ for my $commit ( reverse @these_revs ) {
   chop $commit;
   my $commit_info = $repo->command('show', '--pretty=full', $commit);
   my ($author) = ($commit_info =~ /Author:\s+(.+)/);
+  my ($name,$email) = ($author =~ /(.+)\s+<([^>]+)>/);
   my @files = ($commit_info =~ /\+\+\+\s+b\/(.+)/g);
   if ( !$nick_for{$author} ) {
-    my ($name,$email) = ($author =~ /(.+)\s+<([^>]+)>/);
-    my $user = $git_search->users( { q => "$email in:email"});
-    say "Sleeping after $email...";
-    sleep 1; # To avoid hitting rate limit
-    if ( $user->{'items'}[0]->{'login'} ) {
-      $nick_for{$author} = $user->{'items'}[0]->{'login'};
+    if ( $nick_for{$name} or $nick_for{$email} ) {
+      $nick_for{$author} = $nick_for{$name}?$nick_for{$name}:$nick_for{$email};
     } else {
-	$user = $git_search->users( { q => $name });
-	say "Sleeping after $name...";
-	sleep 1; # To avoid hitting rate limit
+      my $user = $git_search->users( { q => $author });
+      say "Sleeping after $author...";
+      sleep 1; # To avoid hitting rate limit
       if ( $user->{'items'}[0]->{'login'} ) {
-	$nick_for{$author} = $user->{'items'}[0]->{'login'};
-      } else  {
-	$nick_for{$author} = $author;
+	$nick_for{$author} = $nick_for{$name} = $nick_for{$email}= $user->{'items'}[0]->{'login'};
+      } else {
+	$user = $git_search->users( { q => $email });
+	say "Sleeping after $email...";
+	sleep 1; # To avoid hitting rate limit
+	if ( $user->{'items'}[0]->{'login'} ) {
+	  $nick_for{$author} = $nick_for{$name} = $nick_for{$email} = $user->{'items'}[0]->{'login'};
+	} else {
+	  $user = $git_search->users( { q => $name });
+	  say "Sleeping after $name...";
+	  sleep 1; # To avoid hitting rate limit
+	  if ( $user->{'items'}[0]->{'login'} ) {
+	    $nick_for{$author} = $nick_for{$name} = $nick_for{$email} = $user->{'items'}[0]->{'login'};
+	  } else  {
+	    $nick_for{$author} = $nick_for{$name} = $nick_for{$email} = $author;
+	  }
+	}
       }
     }
-  }
-      
+  } 
   for (my $i = 0; $i <= $#files; $i++ ) {
     my $f = $files[$i];
     if ( !$commit_nodes{$f} ) {
