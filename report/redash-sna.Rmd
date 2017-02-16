@@ -1,8 +1,9 @@
 ---
-title: "Complex graphs in repositories"
+title: "Complex social graphs in repositories"
 author: "JJ Merelo"
 date: "13 de febrero de 2017"
 output: html_document
+bibliography: biblio.bib
 ---
 
 ##Abstract
@@ -30,7 +31,11 @@ beehive.commit.net.core <- as.undirected(delete.isolates(beehive.commit.net), mo
 
 Beehive is a Go event and agent system available with a free license from https://github.com/muesli/beehive.
 
-The repository can be represented as a bipartite graph with authors and files, with non-directed edges connecting authors with those files they have worked on. There are several possible ways of turning this bipartite graph into a one-party graph: create a graph of files joined by one edge if they have one developer in common, or joining authors by one edge if they have worked on at least one file. These are represented next
+The repository can be represented as a bipartite graph with authors and files, with non-directed edges connecting authors with those files they have worked on. There are several possible ways of turning this bipartite graph into a one-party graph: create a graph of files joined by one edge if they have one developer in common, or joining authors by one edge if they have worked on at least one file. In this report our objective is to present a methodology to mine the social aspects of software repositories and some initial results, showing its strenghts and its limitations.
+
+# Mining repository information
+
+What every software project has in common is the history contained in the source control management log. This information can be extracted from the repository, once it has been downloaded, using `git log`. This command gives information on the files that have been changed during that commit, size and places where those changes have taken place, and the author of the commit. Although a commit might include work from several authors at once, if it is combined in a single change set the author will be the one that has actually merged the change set in a single commit; it all boils down to a commit including a single author and one or more files. After establishing the self-organized criticality of some repos examining these commit logs in papers such as @merelo16:self
 
 ```{r plot, echo=FALSE}
 plot(beehive.author.net.core,vertex.size=betweenness(beehive.author.net.core)/10,vertex.label=NA,layout = layout.fruchterman.reingold,vertex.color=closeness(beehive.author.net.core),palette=diverging_pal(11))
@@ -44,3 +49,4 @@ However, the file graph is not entirely satisfactory since, in fact, the main de
 plot(beehive.commit.net.core,vertex.size=betweenness(beehive.commit.net.core)/500,vertex.label=NA,layout = layout.fruchterman.reingold,vertex.color=closeness(beehive.author.net.core)*10,palette=diverging_pal(11))
 ```
 
+# References
