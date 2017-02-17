@@ -2,6 +2,8 @@
 
 ## Working with get_author_files.pl
 
+* [ ] Download contributor information and then user information from
+  the API to create a (cached) contributor data base.
 * [ ] Complete documentation
 * [ ] Account for committers. Check with clojurescript. 
 * [ ]
