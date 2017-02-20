@@ -2,6 +2,8 @@
 
 =head1 NAME
 
+get-author-files.pl - download social graph stats from a github repo
+
 
 
 =head1 SEE ALSO
