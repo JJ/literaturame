@@ -60,6 +60,8 @@ In this graph the node size is related to the betweenness of every author. Quite
 author.betweenness <- as.data.frame( as.table(betweenness(beehive.author.net.core)))
 knitr::kable(author.betweenness, digits=2)
 ```
+
+
 The problem with this graph is that is shows a strong connected component due to the fact that there are a few files in which almost every author works. Despite that, it shows some complexity in the sense that that there is some hint of preferential attachment to the developer who already is co-author with most of the users. 
 
 Let us look next at the graph created by the files.
@@ -71,6 +73,8 @@ The first *natural* way of relating files is by collapsing the bipartite graph i
 ```{r file, echo=FALSE}
 plot(beehive.files.net.core)
 ```
+
+
 However, the file graph is not entirely satisfactory since, in fact, the main developer might have touched all files, and, second, files completely unrelated might be joined since they are created or modified sequentially by the same developer. In fact, there is file above that is *related* to most files in the repository. That is why we will extract another graph from the repository by linking two files by an edge *only* if they appear in the same commit. This is represented below.
 
 
