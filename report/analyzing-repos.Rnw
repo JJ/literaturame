@@ -3,7 +3,6 @@
 \usepackage{graphicx}        % standard LaTeX graphics tool
 \usepackage{url} 
 
-
 \begin{document}
 
 
@@ -11,9 +10,9 @@
 
 \author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora, Mario
   Garc\'ia-Valdez$^{2}$ \\
-mbox{}\\
+\mbox{}\\
 $^1$ Geneura Team, ETSIIT and CITIC, University of Granada (Spain),
-{\tt \{jmerelo,pacv\}@ugr.es}
+{\tt \{jmerelo,pacv\}@ugr.es}\\
 $^2$ Dept. of Graduate Studies, Instituto Tecnologico de Tijuana
 (Mexico) {\tt mario@tectijuana.edu.mx}
 }
@@ -247,16 +246,16 @@ such as configuration files that might change completely during a
 commit; in a word, we are working only with code, and only the kind of
 code that is written by a human coder. 
 
-After presenting a brief \protect\hyperlink{soa}{state of the art} next, 
-followed by the \protect\hyperlink{methodology}{methodology},
-obtained \protect\hyperlink{res}{results} will be presented 
-and eventually we will expose our \protect\hyperlink{conc}{conclusions}. 
+After presenting a brief state of the art next, 
+followed by the methodology in Section \ref{sec:method},
+obtained results  will be presented  in Section \ref{res}
+and eventually we will expose our conclusions. 
 
 
 % --------------------------------------------------------
 
 
-\hypertarget{soa}{\section{State of the art}\label{soa}}
+\section{State of the art}\label{soa}
 
 As far as we know, there has not been a continuing line of research on
 self-organized criticality in software projects or, for that matter,
@@ -326,7 +325,7 @@ those repositories.
 % --------------------------------------------------------
 
 
-\hypertarget{methodology}{\section{Methodology}\label{methodology}}
+\section{Methodology}\label{methodology}
 \label{sec:method}
 
 We have chosen 16 
@@ -399,7 +398,7 @@ proceed to analyze it in the next section.
 % --------------------------------------------------------
 
 
-\hypertarget{res}{\section{Results}\label{res}}
+\section{Results}\label{res}
 
 A summary of the statistical characteristics of the size of the commits,
 in number of lines, is shown in Table \ref{t:stat}.
@@ -654,7 +653,7 @@ been measured for all projects under study, our conclusions will be presented ne
 % --------------------------------------------------------
 
 
-\hypertarget{conc}{\section{Conclusions}\label{conc}}
+\section{Conclusions}\label{conc}
 
 
 In this paper we were interested in finding traces of self-organized criticality in software repositories by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink noise. Our methodology, which is new in the sense that we have used counts size of commits as a discrete measure, will show a much clearer picture of the state
@@ -717,7 +716,6 @@ This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\
 
 
 \bibliographystyle{apalike}
-%\bibliographystyle{splncs03}
 \bibliography{geneura,biblio,anon}
 
 \end{document}
