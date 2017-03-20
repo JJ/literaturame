@@ -1,81 +1,22 @@
-\documentclass{sig-alternate}
+\documentclass[letterpaper]{article}
+\usepackage{natbib,alifeconf}
 \usepackage{graphicx}        % standard LaTeX graphics tool
 \usepackage{url} 
-\usepackage{listings}
-\usepackage{color}
-\usepackage{color}
-\usepackage{alltt}
-\usepackage[T1]{fontenc}
-\lstset{
-basicstyle=\ttfamily \scriptsize,
-language=java,
-frame=single,
-stringstyle=\ttfamily,
-showstringspaces=false
-}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{subcaption} % an alternative package for sub figures
-\usepackage{llncsdoc}
-\usepackage{lmodern}
-%\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-
-%\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
-\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{color}
-\usepackage{fancyvrb}
-
-\usepackage{framed}
-
-\usepackage{graphicx,grffile}
-
-\setlength{\abovecaptionskip}{20pt plus 3pt minus 2pt}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-%\setcounter{secnumdepth}{0}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \begin{document}
-%
-% --- Author Metadata here ---
-\conferenceinfo{GECCO'16,} {July 2017.} 
-\CopyrightYear{2016} 
-\crdata{xxx-x-xxxx-xxxx-x/xx/xx} 
-\clubpenalty=10000 
-\widowpenalty = 10000
 
-\title{What is the fitness of a software project? Studying self-organized criticality in code repositories}
 
-\numberofauthors{1}
-\author{
- \alignauthor
-        No Author\\
-        \affaddr{University}\\
-        \affaddr{Department}\\
-        \affaddr{City, Country}\\
-        \email{me@email.com}
+\title{Studying self-organized criticality in code repositories}
+
+\author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora, Mario
+  Garc\'ia-Valdez$^{2}$ \\
+mbox{}\\
+$^1$ Geneura Team, ETSIIT and CITIC, University of Granada (Spain),
+{\tt \{jmerelo,pacv\}@ugr.es}
+$^2$ Dept. of Graduate Studies, Instituto Tecnologico de Tijuana
+(Mexico) {\tt mario@tectijuana.edu.mx}
 }
-
-%   \author{J. J. Merelo\inst{1}, P. A. Castillo\inst{1}, Mario GarcÃ­a-Valdez\inst{2}}
-%   \institute{Geneura Team, ETSIIT and CITIC, University of Granada (Spain)\\
-%     \email{\tt \{jmerelo,pacv\}@ugr.es}
-% \and
-%   Dept. of Graduate Studies, Instituto Tecnologico de Tijuana (Mexico)\\
-%     \email{\tt mario@tectijuana.edu.mx}
-% }
-
 
 %\SweaveOpts{concordance=TRUE}
 % is it possible using relative-paths instead of absolute paths to set the file names?
@@ -124,12 +65,13 @@ for (i in 1:length(files) ) {
 \maketitle
 
 \begin{abstract}
-  Finding the fitness of complex systems such as software development
-team is a difficult task without straightforward solutions that is why it is interesting to find
-out the mechanism underlying collaboration in open source projects and
-their dynamics, which  might not be explicit or organized in
-a top-down fashion, but emerge in a self-organizing way, reaching
-eventually a critical state. In this paper we examine, using a novel
+%   Finding the fitness of complex systems such as software development
+% team is a difficult task without straightforward solutions that is why it is interesting to find
+% out the mechanism underlying collaboration in open source projects and
+% their dynamics, which  might not be explicit or organized in
+% a top-down fashion, but emerge in a self-organizing way, reaching
+% eventually a critical state. 
+In this paper we examine, using a novel
 and more nathral and precise methodology, several
 repositories measuring the three conditions for this self-organized
 critical (SOC) state when analyzing the size of changes in the state of the repository and
@@ -141,18 +83,8 @@ some of them exhibit all three, which means that effectively they are
 in this state. 
 \end{abstract}
 
-% A category with the (minimum) three required fields
-%\category{H.4}{Information Systems Applications}{Miscellaneous}
-%A category including the fourth, optional field follows...
-\category{D.2.11}{Software Engineering}{Software Architectures}[Data abstraction]
-\category{D.2.12}{Software Engineering}{Interoperability}[Distributed objects]
-\category{I.2.8}{Artificial Intelligence}{Problem Solving, Control Methods, and Search}[Heuristic methods]
-
-%sures, performance measures
-\terms{Algorithms}
-
-\keywords{Complex systems, self-organizing systems, self-organized
-  criticality, power laws, artificial life}
+%\keywords{Complex systems, self-organizing systems, self-organized
+%  criticality, power laws, artificial life}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INTRODUCTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -779,12 +711,12 @@ that allows evolution via genetic improvement.
 
 
 \section*{Acknowledgements}
-%This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH). 
-% Antonio - completar con otros, para la versión final (KNOWAVES, por ejemplo)
-Several projects \\
-taking this much space \\
 
-\bibliographystyle{plain}
+This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH). 
+% Antonio - completar con otros, para la versión final (KNOWAVES, por ejemplo)
+
+
+\bibliographystyle{apalike}
 %\bibliographystyle{splncs03}
 \bibliography{geneura,biblio,anon}
 
