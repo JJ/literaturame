@@ -2,19 +2,22 @@
 \usepackage{natbib,alifeconf}
 \usepackage{graphicx}        % standard LaTeX graphics tool
 \usepackage{url} 
+\usepackage[utf8]{inputenc}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 
 \title{Studying self-organized criticality in code repositories}
 
 \author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora, Mario
-  Garc\'ia-Valdez$^{2}$ \\
+  Garc\'ia-Valdez$^{2}$, Carlos Cotta${^3}$ \\
 \mbox{}\\
 $^1$ Geneura Team, ETSIIT and CITIC, University of Granada (Spain),
 {\tt \{jmerelo,pacv\}@ugr.es}\\
 $^2$ Dept. of Graduate Studies, Instituto Tecnologico de Tijuana
-(Mexico) {\tt mario@tectijuana.edu.mx}
+(Mexico) {\tt mario@tectijuana.edu.mx}\\
+$^3$ Dept. Lenguajes y Ciencias de la Computaci\'on, Universidad de M\'alaga (Spain), {\tt ccotap@lcc.uma.es}
 }
 
 %\SweaveOpts{concordance=TRUE}
@@ -102,7 +105,7 @@ programmer has done; this also implies that what can be optimal in a
 first order approximation might not be in the frame of the
 project. The projects have to be observed as a whole, and any approach
 to genetic improvement 
-% Antonio - ¿esto se refiere a un algoritmo evolutivo (PG) para mejorarlo o es una expresión hecha? Aclarar si es el primer caso.
+% Antonio - ?esto se refiere a un algoritmo evolutivo (PG) para mejorarlo o es una expresi?n hecha? Aclarar si es el primer caso.
 must eventually deal with this complexity. But
 in order to make improvement of software projects possible, we have to
 find out a precise way of evaluating the state they are in, so that we
@@ -122,7 +125,7 @@ itself and through messages in other communication media, such as Slack or an IR
 application, task assignment systems or mailing lists. This is
 probably just some of the self-organization processes taking place,
 but the fact is that the model 
-% Antonio - a qué modelo te refieres?
+% Antonio - a qu? modelo te refieres?
 predicts that the system will reach a
 critical state through self-organization given very few initial
 conditions. 
@@ -203,7 +206,7 @@ The state in which the project is has obviously an influence in its
 productivity, with some authors finding this state favors the
 evolvability of the underlying software system \cite{1544757}, 
 % Antonio - evolvability puede ser a mejor o a peor => improvement/enhancing
-% Evolvability es bueno, porque lo hace más flexible a cambios - JJ
+% Evolvability es bueno, porque lo hace m?s flexible a cambios - JJ
 as opposed from the lack of this quality in software created by a
 top-down organization process, considered more {\em brittle} in the
 sense that a single needed change might break down the whole system. That is why this quality has been
@@ -227,7 +230,7 @@ this paper we will study many different software repositories, all of
 them in active development,  trying to find out whether the telltale
 signs of self-organized criticality, as enumerated above. 
 
-% Antonio - no queda clara la motivación del artículo. ¿por qué es necesario este estudio? ¿qué objetivo/beneficio persigue?
+% Antonio - no queda clara la motivaci?n del art?culo. ?por qu? es necesario este estudio? ?qu? objetivo/beneficio persigue?
 
 Previously we have applied these techniques to examining the software repository for the Moose Perl library
 \cite{Merelo2016:repomining}, books written mainly by a single
@@ -273,7 +276,7 @@ ease. Indeed, this state of self-organized criticality
 quantitatively proves what has been already established via
 qualitative analysis, the fact that in many successful software
 projects, developers self-organize \cite{Crowston2007564}, 
-% Antonio - ¿qué es lo que se auto-organiza? 'themselves'? 'the code'?
+% Antonio - ?qu? es lo que se auto-organiza? 'themselves'? 'the code'?
 % developers - JJ
 which is
 the preferred way of working in distributed and volunteer
@@ -285,7 +288,7 @@ error or adapt the code to particular situations.
 In fact, this self-organization has also been observed in similar
 projects such as Wikipedia.
 % Antonio - cita?
-% Antonio, de veras que me ayudaría si tú buscaras esas citas. No tienes más que irte a Google Scholar y poner "Self-organized criticality - Wikipedia" e insertarla aquí. No tengo tiempo de mirar absolutamente nada ahora - JJ
+% Antonio, de veras que me ayudar?a si t? buscaras esas citas. No tienes m?s que irte a Google Scholar y poner "Self-organized criticality - Wikipedia" e insertarla aqu?. No tengo tiempo de mirar absolutamente nada ahora - JJ
 
 Self-organization, eventually, might produce a critical state
 given the necessary conditions. However, there has been no work going further and
@@ -293,7 +296,7 @@ proving this even in the case that work is done by a few persons and
 on repositories that are not devoted to software development. And this
 critical state is key to carry the system to adaptive success, as
 defined in \cite{benbya2006toward}. This paper presents 
-% Antonio - se puede malinterpretar entre este artículo y el de la cita. Yo lo pondría en pasado ('presented') para aclarar que es el citado
+% Antonio - se puede malinterpretar entre este art?culo y el de la cita. Yo lo pondr?a en pasado ('presented') para aclarar que es el citado
 the seven
 mechanisms that create complexity in systems as initially enunciated for
 biological systems and apply them to information system
@@ -315,7 +318,7 @@ the activity of a complex network.
 
 In this paper we will examine different repositories with the purpose
 of finding out how that complex network dynamics effectively emerge. 
-% Antonio - pero qué objetivo tiene eso? Se podrá mejora la forma de colaborar o algo así? Creo que habría que comentarlo.
+% Antonio - pero qu? objetivo tiene eso? Se podr? mejora la forma de colaborar o algo as?? Creo que habr?a que comentarlo.
 % Ya se ha hecho en la intro - JJ
 Next we
 will present the methodology used to choose and mine information in
@@ -332,12 +335,12 @@ We have chosen 16
 % Antonio - own? public?
 repositories in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em professionally}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
 created and maintained by a professional community. 
-% Antonio - Y las personas en sí? Cómo se mide su 'profesionalidad'? Explicarlo mejor
+% Antonio - Y las personas en s?? C?mo se mide su 'profesionalidad'? Explicarlo mejor
 % Hay proyectos de gente y otros liberados por empresas. - JJ
 
 In this paper we will work with the size of changes to a particular
 set of files in the repository, selected via wildcards. 
-% Antonio - aclarar qué quiere decir esto de las 'wildcards'
+% Antonio - aclarar qu? quiere decir esto de las 'wildcards'
 % Comodines - JJ
 We exclude other 
 artifacts such as images or style files. To extract information
@@ -347,7 +350,7 @@ repository log using a Perl script to extract the size of the changes that have 
 Since changes include both the insertion and deletion of lines in committed files, the largest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of
 the sizes of all files. A change in two lines will appear in a diff 
 % Antonio - 'diff' es un programa no?
-% También es un programa, pero no estoy hablando de eso aquí - JJ
+% Tambi?n es un programa, pero no estoy hablando de eso aqu? - JJ
 as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
 the larger of these two values; the main reason for doing so is also
@@ -378,7 +381,7 @@ The $x$ axis for these timelines does not correspond to physical time,
 but simply to the sequence, and then only in changes of the
 interesting files. In this sense, there is an important difference between
 our research methodology, which considers discrete 
-% Antonio - discrete -> simple? / atomic? Los cambios diarios no serían también discretos (no continuos)?
+% Antonio - discrete -> simple? / atomic? Los cambios diarios no ser?an tambi?n discretos (no continuos)?
 changes, to papers such
 as \cite{herraiz2009statistical}, which take into account {\em daily}
 changes. We think that examining discrete changes does not impose a
@@ -417,7 +420,7 @@ kable( summary,"latex" )
   and uses CoffeeScript ({\tt coffee}) and Perl 6 {\em p6}. They are all open source and can be found in the GitHub repository with the same name.\label{t:stat}}
 \end{table*}
 %
-% Antonio - Antes de comparar resultados, una duda que puede surgir es cómo se justifica la selección de ficheros para que sean comparables entre distintos repos??? Explicarlo aquí o en lo de las wildcards.
+% Antonio - Antes de comparar resultados, una duda que puede surgir es c?mo se justifica la selecci?n de ficheros para que sean comparables entre distintos repos??? Explicarlo aqu? o en lo de las wildcards.
 %
 This table shows that, at least from a macro point of view, median and
 averages are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Averages span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the average is so
@@ -593,8 +596,8 @@ autocorrelation in the 21 commit period; in this case, it appears  in different 
 In these repositories of increasing age, we find that actual long-distance autocorrelation only happens when they age, with no significant long-distance  autocorrelation in the first two repositories, and a significant one in most of the rest. However, while in the above mentioned work we found sharp peaks of long-distance correlation, in this case there are multiple peaks at many different distances, from short distance to very long distance of 30 and 40 commits. 
 
 Once two of the three features of self-organized criticality 
-% Antonio - las tres características no se han comentado previamente...¿ponerlas en la intro?
-% _Están_ en la intro. Le he añadido una frase que menciona que son las tres características que se estudian - JJ
+% Antonio - las tres caracter?sticas no se han comentado previamente...?ponerlas en la intro?
+% _Est?n_ en la intro. Le he a?adido una frase que menciona que son las tres caracter?sticas que se estudian - JJ
 have been
 proved, at least in some of the projects, we will
 focus on the third, the presence of \emph{pink noise}, as measured by
@@ -711,8 +714,8 @@ that allows evolution via genetic improvement.
 
 \section*{Acknowledgements}
 
-This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH). 
-% Antonio - completar con otros, para la versión final (KNOWAVES, por ejemplo)
+This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-\{1,3\}-P (\{UMA,UGR\}-EPHEMECH). 
+% Antonio - completar con otros, para la versi?n final (KNOWAVES, por ejemplo)
 
 
 \bibliographystyle{apalike}
