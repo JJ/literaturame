@@ -5,7 +5,7 @@
 \usepackage[utf8]{inputenc}
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+%\SweaveOpts{concordance=TRUE}
 
 
 \title{Studying self-organized criticality in code repositories}
@@ -92,50 +92,9 @@ in this state.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INTRODUCTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{introduction}
 
-The goal of automatic code improvement has been lately approached
-successfully from a number of different angles
-\cite{petke2014using,langdon2014genetic}. While noteworthy, these
-methods do not deal with the true nature of software development,
-which is done in a team and using a series of methodological as well
-as social cues to get to release or to production. This essentially
-means that any change by anyone will interact with other changes, not
-only directly through tests, but also indirectly through knowledge
-inserted or simply removal or addition of lines close to what other
-programmer has done; this also implies that what can be optimal in a
-first order approximation might not be in the frame of the
-project. The projects have to be observed as a whole, and any approach
-to genetic improvement 
-% Antonio - ?esto se refiere a un algoritmo evolutivo (PG) para mejorarlo o es una expresi?n hecha? Aclarar si es el primer caso.
-must eventually deal with this complexity. But
-in order to make improvement of software projects possible, we have to
-find out a precise way of evaluating the state they are in, so that we
-can compare the state of the project before and after the change. And
-this is a challenge bigger than simply counting eliminated bugs or
-tests passed. 
-
-In this paper, we take the first steps towards the evaluation and
-eventual improvement of software projects by treating them as complex
-social systems. Several researchers have proved that many of them,
-mainly large, long-running projects, of a self-organized {\em critical
-state} (SOC State) \cite{bak1988self} in  
-software repositories has been well established
-\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis} and  
-attributed to a stigmergy process \cite{robles05} in which collaborators interact through the code
-itself and through messages in other communication media, such as Slack or an IRC chat
-application, task assignment systems or mailing lists. This is
-probably just some of the self-organization processes taking place,
-but the fact is that the model 
-% Antonio - a qu? modelo te refieres?
-predicts that the system will reach a
-critical state through self-organization given very few initial
-conditions. 
-In this
-critical state there are specific dynamic behaviors, like small
-changes in the code base provoking {\em avalanches} of changes of all sizes and long-distance
-correlations that make a particular change in a file cause
-further changes down the line in a regular pattern. 
-
-The dynamics of self-organized criticality is sometimes compared to
+Self-organized criticality (SOC) \cite{bak1988self} is a condition
+that describe complex systems in many different venues and
+environments. The dynamics of self-organized criticality is sometimes compared to
 that of a sand pile \cite{paczuski1996avalanche}, in the sense that
 the actual shape tends 
 to reach also a critical state, 
@@ -153,44 +112,24 @@ code or new paragraphs without an apparent origin.
 The anecdotal
 evidence gathered by the authors confirms this kind of events
 happen in software development teams, mainly in open source. 
-In open source projects there is usually a {\em core} team which has the
-privilege to write directly to the repository. Code advances through
-several mechanisms, but mainly by following a {\em roadmap} where
-developers agree on a series of new features, and also bug fixes where
-developers fix errors arising in production or pointed out by
-users. Besides, many software projects have a series of participation 
-guidelines indicating where and how users can spontaneously contribute
-to the code. These contributions are incorporated, for instance, through 
-the so-called {\em pull requests} in {\em git}, which means that the 
-contributor {\em requests} the core team to {\em pull} or incorporate 
-changes from her own repository.
 
-Most software development nowadays is done using the git tool
-\cite{loeliger2012version}. Git is a distributed source control
-management tool based in a synchronize from
-upstream-change-synchronize to upstream cycle. Developers {\em pull}
-from upstream to bring their repository (or {\em repo}) up to date,
-make changes and then {\em push} those changes to the upstream
-repository. There is no {\em master} or {\em central} repository, but
-usually there is one that is distinguished, which is the one deployed
-to production or released. Development might happen in {\em branches}
-which eventually get merged with the master branch in the central repository. 
-Best practices usually dictate that changes, made through and
-represented by {\em commits}, should be atomic, i. e., affect a single
-function or file and be independently testable, with the object that
-if something goes wrong the guilty commit can be 
-immediately found and, if needed, reverted or fixed. That means that
-commits necessarily have a small size; however, in some merging
-processes, a method called {\em squash} is used, by which several
-commits are merged into a single, bigger, one, possibly with the same
-object. That means that commits, in some cases, might span many more
-lines than what would be expected by single, atomic commits. At any
-rate, commits record changes by the number of lines added or {\em
-  eliminated}, making commit size, by which we mean the number of
-lines affected by a commit, much more precise than the change of size
-in the whole repository used by other studies, simply because it
-measures real changes made usually by individual users, not aggregated
-changes through all the repository as has been reported by other researchers.
+
+In fact, several researchers have
+proved that many projects match the features of a critical state,
+\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis},
+which is 
+attributed to a stigmergy process \cite{robles05} in which collaborators interact through the code
+itself and through messages in other communication media, such as Slack or an IRC chat
+application, task assignment systems or mailing lists. These are
+probably just some of the self-organization processes taking place,
+but the fact is that SOC
+predicts that the system will reach a
+critical state through self-organization given very few initial
+conditions. In this
+critical state there are specific dynamic behaviors, like small
+changes in the code base provoking {\em avalanches} of changes of all sizes and long-distance
+correlations that make a particular change in a file cause
+further changes down the line in a regular pattern. 
 
 Furthermore, the case for this
 critical state is supported by several macro measures that certify the non-existence of a particular
@@ -200,18 +139,31 @@ also exhibit long-range
 correlations and a \emph{pink noise} \cite{szendro2001pink} in the power spectral density, with
 \emph{noise} or variations with respect to the \emph{normal} frequency
 changing in a way that is inversely proportional to it, higher frequency
-changes getting a smaller spectral density \cite{Merelo2016:repomining}. These are the three characteristics of systems in a critical self-organized state which will be examined in this paper.
+changes getting a smaller spectral density
+\cite{Merelo2016:repomining}. These are the three characteristics of
+systems in a critical self-organized state which will be examined in
+this paper, where we take a different approach to analyzing the
+repositories. Instead of fixed-time changes in size of the whole
+repository, we introduce a {\em natural} timeline which uses as a {\em
+  tic} the commit itself,
+and consider either increases or decreases in size, not only
+increases. In fact, a refactorization where a number of lines is
+changes might not show up using the previous methodology, while it
+will have an impact in this one. 
 
-The state in which the project is has obviously an influence in its
-productivity, with some authors finding this state favors the
-evolvability of the underlying software system \cite{1544757}, 
-% Antonio - evolvability puede ser a mejor o a peor => improvement/enhancing
-% Evolvability es bueno, porque lo hace m?s flexible a cambios - JJ
-as opposed from the lack of this quality in software created by a
-top-down organization process, considered more {\em brittle} in the
-sense that a single needed change might break down the whole system. That is why this quality has been
-mainly studied in free software systems which follow a more
-open model of development; however, it might happen that, in the same
+% The state in which the project is has obviously an influence in its
+% productivity, with some authors finding this state favors the
+% evolvability of the underlying software system \cite{1544757}, 
+% % Antonio - evolvability puede ser a mejor o a peor => improvement/enhancing
+% % Evolvability es bueno, porque lo hace m?s flexible a cambios - JJ
+% as opposed from the lack of this quality in software created by a
+% top-down organization process, considered more {\em brittle} in the
+% sense that a single needed change might break down the whole system. That is why this quality has been
+% mainly studied in free software systems which follow a more
+% open model of development; however, 
+
+
+One of the intentions in this paper is to try and prove that, in the same
 way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
 self-organized state might be essential to the software development
 process, as long as it is done through an application that allows
@@ -221,35 +173,29 @@ conservation laws \cite{6784340} and other usual complex network
 mechanisms such as preferential attachment \cite{lin2015power}.
 %% It reminds me about the cathedral vs bazaar discussion 
 %% Add something about it if you want - JJ
-At any rate, software projects can be considered complex systems and
-as such we will study them in this paper. 
+% At any rate, software projects can be considered complex systems and
+% as such we will study them in this paper. 
 
 After some initial exploration of the subject and developing the
 tools needed to mine repositories in GitHub \cite{merelo16:self}, in
 this paper we will study many different software repositories, all of
 them in active development,  trying to find out whether the telltale
 signs of self-organized criticality, as enumerated above. 
-
-% Antonio - no queda clara la motivaci?n del art?culo. ?por qu? es necesario este estudio? ?qu? objetivo/beneficio persigue?
-
-Previously we have applied these techniques to examining the software repository for the Moose Perl library
+Previously we have applied these techniques to examining the software
+repository for the Moose Perl library 
 \cite{Merelo2016:repomining}, books written mainly by a single
 person \cite{merelo16:slash} and papers written collaboratively \cite{merelo16:self}. In this paper we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
 %Added citation to the paper
-to work on a total of 16 papers, chosen to represent different
+to work on a total of 16 repositories, chosen to represent different
 languages and in such a way that all of them have at least a few
 thousand commits, independently of the actual time it has taken to
 make them. Since repositories hold many kind of different files,
-including art, documentation and building tools, We have worked mainly
-on the code parts, and also focused on the code written in the two or
-three main languages of the repository itself. We have focused on this
-ones since in fact the dynamics of documentation of build tools is
-probably completely different. Besides, we avoid generated artifacts
-such as configuration files that might change completely during a
-commit; in a word, we are working only with code, and only the kind of
-code that is written by a human coder. 
+including art, documentation and building tools, we have focused on
+the code written in the two or three main languages of the repository
+itself, since in fact the dynamics of documentation of build tools is
+probably completely different. 
 
-After presenting a brief state of the art next, 
+The rest of the paper is organized thus: After presenting a brief state of the art next, 
 followed by the methodology in Section \ref{sec:method},
 obtained results  will be presented  in Section \ref{res}
 and eventually we will expose our conclusions. 
