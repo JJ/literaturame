@@ -120,10 +120,10 @@ proved that many projects match the features of a critical state,
 which is 
 attributed to a stigmergy process \cite{robles05} in which collaborators interact through the code
 itself and through messages in other communication media, such as Slack or an IRC chat
-application, task assignment systems or mailing lists. These are
-probably just some of the self-organization processes taking place,
-but the fact is that SOC
-predicts that the system will reach a
+application, task assignment systems or mailing lists. 
+% un revisor se queja de esta frase justo anterior. Quizás la vea larga, pero sí tiene sentido  - Pedro
+These are probably just some of the self-organization processes taking place,
+but the fact is that SOC predicts that the system will reach a
 critical state through self-organization given very few initial
 conditions. In this
 critical state there are specific dynamic behaviors, like small
@@ -151,7 +151,7 @@ increases. In fact, a refactorization where a number of lines is
 changes might not show up using the previous methodology, while it
 will have an impact in this one. 
 
-% The state in which the project is has obviously an influence in its
+% The current state of the project has obviously an influence in its
 % productivity, with some authors finding this state favors the
 % evolvability of the underlying software system \cite{1544757}, 
 % % Antonio - evolvability puede ser a mejor o a peor => improvement/enhancing
@@ -179,8 +179,8 @@ mechanisms such as preferential attachment \cite{lin2015power}.
 After some initial exploration of the subject and developing the
 tools needed to mine repositories in GitHub \cite{merelo16:self}, in
 this paper we will study many different software repositories, all of
-them in active development,  trying to find out whether the telltale
-signs of self-organized criticality, as enumerated above. 
+them in active development,  trying to find out %whether 
+the telltale signs of self-organized criticality, as enumerated above. 
 Previously we have applied these techniques to examining the software
 repository for the Moose Perl library 
 \cite{Merelo2016:repomining}, books written mainly by a single
@@ -238,7 +238,7 @@ projects such as Wikipedia.
 
 Self-organization, eventually, might produce a critical state
 given the necessary conditions. However, there has been no work going further and
-proving this even in the case that work is done by a few persons and
+proving this even in the case that work is done by a few people and
 on repositories that are not devoted to software development. And this
 critical state is key to carry the system to adaptive success, as
 defined in \cite{benbya2006toward}. This paper presents 
@@ -283,6 +283,9 @@ repositories in different states of development, and representing from web frame
 created and maintained by a professional community. 
 % Antonio - Y las personas en s?? C?mo se mide su 'profesionalidad'? Explicarlo mejor
 % Hay proyectos de gente y otros liberados por empresas. - JJ
+
+% ¿ponemos el periodo de tiempo a lo largo del cual se han recogido los datos? 
+% suponemos el mismo para todos los repositorios (comentario de un Revisor del GECCO) - Pedro
 
 In this paper we will work with the size of changes to a particular
 set of files in the repository, selected via wildcards. 
@@ -369,7 +372,7 @@ kable( summary,"latex" )
 % Antonio - Antes de comparar resultados, una duda que puede surgir es c?mo se justifica la selecci?n de ficheros para que sean comparables entre distintos repos??? Explicarlo aqu? o en lo de las wildcards.
 %
 This table shows that, at least from a macro point of view, median and
-averages are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Averages span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the average is so
+means are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Means span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the mean is so
 separated from the median is already a hint that this is a skewed
 distribution. The book analyzed in \cite{merelo16:slash} had a median
 of 10 lines, but a mean of 150 lines changed, in a distribution that
@@ -378,7 +381,9 @@ software library analyzed in \cite{Merelo2016:repomining} had a median
 of 9 and a mean of close to 32, which is remarkably similar to one of
 the papers analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
-similar no matter what is the thing that is actually written. However, some repositories, specially ejabberd (a server written in Erlang for the Jabber protocol), Django and Tensorflow show the practice called {\em squashing}, which compresses several commits into a single one creating changes of several thousands lines. Those changes are not {\em organic} in the sense that they do not reflect the work of a single person. In the big picture of the self-organization of the repository, its impact will have to be assessed, but in principle it would not have to have an influence on the overall state, since their scale will also follow the same principles. 
+similar no matter what is the thing that is actually written. However, some repositories, specially ejabberd (a server written in Erlang for the Jabber protocol), Django and Tensorflow show the practice called {\em squashing}, which compresses several commits into a single one creating changes of several thousands lines. Those changes are not {\em organic} in the sense that they do not reflect the work of a single person. 
+% Un revisor del GECCO pidió explicar esta frase - Pedro
+In the big picture of the self-organization of the repository, its impact will have to be assessed, but in principle it would not have to have an influence on the overall state, since their scale will also follow the same principles. 
 
 The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic \emph{y} scale and smoothing over several commits, either 10
 or 20, depending on the color. The \emph{x} axis is simply the temporal
@@ -485,7 +490,7 @@ for (i in 1:length(lines) ) {
 }
 @ 
 \caption{Changes, ordered by size, and represented in a logarithmic
-  $y$ axis. Side by side, the histogram and Zipf chart for the four papers analyzed.\label{fig:zipf}}
+  $y$ axis. Side by side, the histogram and Zipf chart for the four papers analyzed.\label{fig:zipf}} % for the 16 repositories   ?
 \end{figure*}
 %
 %
@@ -534,7 +539,7 @@ for (i in 1:length(lines) ) {
 \caption{Autocorrelation plot. The order of the papers is the same as in the rest of the figures, increasing in age from the top left to bottom right. The horizontal lines show the level of statistical significant, with any line surpassing it indicating positive or negative self-correlation.\label{fig:auto}}
 \end{figure*}
 % 
-Autocorrelation is significant only if the lines go over the average
+Autocorrelation is significant only if the lines go over the mean
 plotted as a dashed line. These long distance autocorrelations, already
 found in \cite{Merelo2016:repomining}, are present here too. In the mentioned paper, there was positive
 autocorrelation in the 21 commit period; in this case, it appears  in different places depending on the repository, but is present in most cases anyway.
