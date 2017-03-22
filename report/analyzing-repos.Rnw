@@ -10,7 +10,7 @@
 
 \title{Studying self-organized criticality in code repositories}
 
-\author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora, Mario
+\author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora$^1$, Mario
   Garc\'ia-Valdez$^{2}$, Carlos Cotta${^3}$ \\
 \mbox{}\\
 $^1$ Geneura Team, ETSIIT and CITIC, University of Granada (Spain),
