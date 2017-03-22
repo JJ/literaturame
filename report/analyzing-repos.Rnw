@@ -74,7 +74,7 @@ for (i in 1:length(files) ) {
 % a top-down fashion, but emerge in a self-organizing way, reaching
 % eventually a critical state. 
 In this paper we examine, using a novel
-and more nathral and precise methodology, several
+and more natural and precise methodology, several
 repositories measuring the three conditions for this self-organized
 critical (SOC) state when analyzing the size of changes in the state of the repository and
 its temporal sequence: a scale-free structure, long-distance
@@ -279,7 +279,7 @@ those repositories.
 
 We have chosen 16 
 % Antonio - own? public?
-repositories in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em professionally}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
+repositories in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em professionalism}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
 created and maintained by a professional community. 
 % Antonio - Y las personas en s?? C?mo se mide su 'profesionalidad'? Explicarlo mejor
 % Hay proyectos de gente y otros liberados por empresas. - JJ
@@ -341,7 +341,9 @@ source projects, that can be static for
 a long time to experience a burst of changes all of a sudden;
 precisely these changes can indicate an {\em avalanche} that is a
 symptom of the underlying self-organized criticality state and might
-be better detected using commits. An {\em avalanche} caused by a small change happening in a day followed by a flurry of changes fill appear as a big change if the time unit is bigger than the discrete commit. 
+be better detected using commits. An {\em avalanche} caused by a small change 
+happening in a day followed by a flurry of changes will appear as a big change 
+if the time unit is bigger than the discrete commit. 
 
 Once the information from the repositories has been extracted, we
 proceed to analyze it in the next section. 
@@ -365,7 +367,7 @@ kable( summary,"latex" )
   analyzed here. {\tt age} is measured in total number of
   commits that affects the files checked. The complete name is shown here,
   which includes the depth of the directory structure as a number and
-  the extension. For instance, the first one has directories up to deep 4
+  the extension. For instance, the first one has directories up to depth 4
   and uses CoffeeScript ({\tt coffee}) and Perl 6 {\em p6}. They are all open source and can be found in the GitHub repository with the same name.\label{t:stat}}
 \end{table*}
 %
@@ -405,6 +407,7 @@ for (i in 1:length(lines) ) {
 @ 
 \caption{Timeline of changes for all repositories with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
 \end{figure*}
+% one of the GECCO reviewers said: "The text in figures 1, 2, 3, 4, and 5 is not readable".    -   pedro
 
 Besides, these variations in scale might mean that commit sizes are distributed along a Pareto
 distribution. We will examine this next, representing the number of changes of a particular
