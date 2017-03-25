@@ -641,9 +641,7 @@ social system that develops the repository, which is what we were
 looking for. 
 
 In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
-script hosted in http://anonymousu.rl 
-%\url{http://github.com/JJ/literaturame}
-. This
+script hosted in \url{http://github.com/JJ/literaturame}. This
 repository holds also the data used in this study, as well as the
 source of this paper. 
 
@@ -670,6 +668,6 @@ This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\
 % No sé qué es Knowaves. - JJ
 
 \bibliographystyle{apalike}
-\bibliography{geneura,biblio,anon}
+\bibliography{geneura,biblio}
 
 \end{document}
