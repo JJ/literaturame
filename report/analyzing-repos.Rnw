@@ -185,16 +185,16 @@ signs of self-organized criticality, as enumerated above.
 Previously we have applied these techniques to examining the software
 repository for the Moose Perl library 
 \cite{Merelo2016:repomining}, books written mainly by a single
-person \cite{merelo16:slash} and papers written collaboratively \cite{merelo16:self}. In this paper we are going  % maybe a reference or footnote to this repo (https://github.com/moose) should be added?  - Pedro
-%Added citation to the paper
-to work on a total of 16 repositories, chosen to represent different
-languages and in such a way that all of them have at least a few
-thousand commits, independently of the actual time it has taken to
+person \cite{merelo16:slash} and papers written collaboratively \cite{merelo16:self}. In this paper we are going  
+to work on a total of 16 repositories, chosen among those that have at
+least a few hundred commits, independently of the actual time it has taken to
 make them. Since repositories hold many kind of different files,
-including art, documentation and building tools, we have focused on
+including screen art, documentation and configuration files for building tools, we have focused on
 the code written in the two or three main languages of the repository
 itself, since in fact the dynamics of documentation of build tools is
-probably completely different. 
+probably completely different; these languages have been found using
+the GitHub tool that reveals the percentage of code written in every
+language. 
 
 The rest of the paper is organized thus: After presenting a brief state of the art next, 
 followed by the methodology in Section \ref{sec:method},
@@ -223,8 +223,6 @@ ease. Indeed, this state of self-organized criticality
 quantitatively proves what has been already established via
 qualitative analysis, the fact that in many successful software
 projects, developers self-organize \cite{Crowston2007564}, 
-% Antonio - ?qu? es lo que se auto-organiza? 'themselves'? 'the code'?
-% developers - JJ
 which is
 the preferred way of working in distributed and volunteer
 teams \cite{crowston2012free}. In fact, this way of organization
@@ -242,8 +240,7 @@ given the necessary conditions. However, there has been no work going further an
 proving this even in the case that work is done by a few persons and
 on repositories that are not devoted to software development. And this
 critical state is key to carry the system to adaptive success, as
-defined in \cite{benbya2006toward}. This paper presents 
-% Antonio - se puede malinterpretar entre este art?culo y el de la cita. Yo lo pondr?a en pasado ('presented') para aclarar que es el citado
+defined in \cite{benbya2006toward}, which presents 
 the seven
 mechanisms that create complexity in systems as initially enunciated for
 biological systems and apply them to information system
@@ -278,26 +275,30 @@ those repositories.
 \section{Methodology}\label{methodology}
 \label{sec:method}
 
-We have chosen 16 
-% Antonio - own? public?
-repositories in different states of development, and representing from web frameworks such as Django to Atom plugins in the case of {\em language-perl6e}. They include many different languages, either interpreted or compiled, and vary also in {\em professionally}, from the aforementioned plugin to Docker (an open platform for building and running distributed applications), 
-created and maintained by a professional community. 
-% Antonio - Y las personas en s?? C?mo se mide su 'profesionalidad'? Explicarlo mejor
-% Hay proyectos de gente y otros liberados por empresas. - JJ
+We have chosen 16 repositories in different states of development, and representing from
+web frameworks such as Django to Atom plugins in the case of {\em
+  language-perl6e}. They include many different languages, either
+interpreted or compiled, and vary also in {\em professionality}, from
+the aforementioned and more amateurish plugin to Docker (an open platform for building and running distributed applications), 
+created and maintained by a fully professional community. 
 
 In this paper we will work with the size of changes to a particular
 set of files in the repository, selected via wildcards. 
-% Antonio - aclarar qu? quiere decir esto de las 'wildcards'
-% Comodines - JJ
 We exclude other 
 artifacts such as images or style files. To extract information
 about changes to these files in the repositories, we analyze the
-repository log using a Perl script to extract the size of the changes that have been made to the considered files. 
+repository log using a Perl script to extract the size of the changes
+that have been made to the considered files. All data were collected
+in the same dates at the beginning of 2017; however, since we are not
+comparing repositories among them, in principle the fact that data has
+been collected at the same time or not should not have any influence
+on the results. 
 
-Since changes include both the insertion and deletion of lines in committed files, the largest of these values is taken; in particular, this means that the addition of all changes will not be equal to the sum of
+Since changes include both the insertion and deletion of lines in
+committed files, the largest of these values is taken; in particular,
+this means that the addition of all changes will not be equal to the
+sum of 
 the sizes of all files. A change in two lines will appear in a diff 
-% Antonio - 'diff' es un programa no?
-% Tambi?n es un programa, pero no estoy hablando de eso aqu? - JJ
 as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
 the larger of these two values; the main reason for doing so is also
@@ -370,14 +371,14 @@ kable( summary,"latex" )
 % Antonio - Antes de comparar resultados, una duda que puede surgir es c?mo se justifica la selecci?n de ficheros para que sean comparables entre distintos repos??? Explicarlo aqu? o en lo de las wildcards.
 %
 This table shows that, at least from a macro point of view, median and
-averages are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Averages span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the average is so
+meanss are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Means span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the mean is so
 separated from the median is already a hint that this is a skewed
 distribution. The book analyzed in \cite{merelo16:slash} had a median
 of 10 lines, but a mean of 150 lines changed, in a distribution that
 is different, much more skewed towards larger sizes, while the
 software library analyzed in \cite{Merelo2016:repomining} had a median
 of 9 and a mean of close to 32, which is remarkably similar to one of
-the papers analyzed here. This implies that the concept of {\em
+the repositories analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
 similar no matter what is the thing that is actually written. However, some repositories, specially ejabberd (a server written in Erlang for the Jabber protocol), Django and Tensorflow show the practice called {\em squashing}, which compresses several commits into a single one creating changes of several thousands lines. Those changes are not {\em organic} in the sense that they do not reflect the work of a single person. In the big picture of the self-organization of the repository, its impact will have to be assessed, but in principle it would not have to have an influence on the overall state, since their scale will also follow the same principles. 
 
@@ -399,7 +400,10 @@ for (i in 1:length(lines) ) {
     print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
 }
 @ 
-\caption{Timeline of changes for all repositories with lines smoothed over 20 and 10 changes, shown in different colors.\label{fig:smoothie}}
+\caption{Timeline of changes for all repositories with lines smoothed
+  over 20 and 10 changes, shown in different colors. The order of the
+  repositories is shown increasing in age from the top left to bottom
+  right. This order will be kept for the rest of the figures. \label{fig:smoothie}}
 \end{figure*}
 
 Besides, these variations in scale might mean that commit sizes are distributed along a Pareto
@@ -486,7 +490,7 @@ for (i in 1:length(lines) ) {
 }
 @ 
 \caption{Changes, ordered by size, and represented in a logarithmic
-  $y$ axis. Side by side, the histogram and Zipf chart for the four papers analyzed.\label{fig:zipf}}
+  $y$ axis. Side by side, the histogram and Zipf chart for the 16 repositories analyzed.\label{fig:zipf}}
 \end{figure*}
 %
 %
@@ -532,10 +536,10 @@ for (i in 1:length(lines) ) {
     print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
 @ 
-\caption{Autocorrelation plot. The order of the papers is the same as in the rest of the figures, increasing in age from the top left to bottom right. The horizontal lines show the level of statistical significant, with any line surpassing it indicating positive or negative self-correlation.\label{fig:auto}}
+\caption{Autocorrelation plot. The horizontal lines show the level of statistical significant, with any line surpassing it indicating positive or negative self-correlation.\label{fig:auto}}
 \end{figure*}
 % 
-Autocorrelation is significant only if the lines go over the average
+Autocorrelation is significant only if the lines go over the mean
 plotted as a dashed line. These long distance autocorrelations, already
 found in \cite{Merelo2016:repomining}, are present here too. In the mentioned paper, there was positive
 autocorrelation in the 21 commit period; in this case, it appears  in different places depending on the repository, but is present in most cases anyway.
@@ -580,9 +584,9 @@ kable( spec.fit.df,"latex" )
 @
 \vspace*{2mm}
 \caption{Summary of coefficients of the linear models adjusting the
-  power spectrum with the p-value of the fit. Pink noise would
-  correspond to a coefficient of -1, although in the cases that
-  p-value > 0.05 the fit does not hold. \label{t:spec}}
+  power spectrum with the p-value of the fit. It is considered pink
+ noise if the values are between 0 and -2. In the cases that
+  p-value $>$ 0.05 the fit does not hold. \label{t:spec}}
 \end{table}
 
 In this case, we see that this {\em trend} appears with increasing
@@ -663,7 +667,7 @@ that allows evolution via genetic improvement.
 
 This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-\{1,3\}-P (\{UMA,UGR\}-EPHEMECH). 
 % Antonio - completar con otros, para la versi?n final (KNOWAVES, por ejemplo)
-
+% No sé qué es Knowaves. - JJ
 
 \bibliographystyle{apalike}
 \bibliography{geneura,biblio,anon}
