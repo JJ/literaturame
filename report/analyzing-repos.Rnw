@@ -34,6 +34,9 @@ files <- c('ejabberd_3-erl hrl yrl escript ex exs','tensorflow_2-py cc h',
            'mojo_2-pl pm PL','tty_2-rb','cask_5-el py','webpack_2-js','language-perl6fe_4-coffee p6',
            'tpot_5-py','scalatra_2-scala','Moose_2-pl pm xs t','django_8-py','docker_2-go',
            'fission_4-go py js','vue_2-js','Dancer2_2-pl pm t','rakudo_4-pm pm6 pl pl6 nqp')
+languages <- c('erlang','Python','Perl','Ruby','Emacs Lisp','JavaScript',
+               'CoffeeScript','Python','Scala','Perl','Python','Go','Go','JavaScript','Perl','Perl')
+
 age <-  data.frame(Name = character(),
                    age = integer())
 for (i in 1:length(files) ) {
@@ -48,7 +51,8 @@ summary <- data.frame(Name = character(),
                       Mean = double(),
                       Median = double(),
                       SD = double(),
-                      age = integer())
+                      age = integer(),
+                      language = character())
 
 for (i in 1:length(files) ) {
 # for testing here
@@ -59,7 +63,8 @@ for (i in 1:length(files) ) {
                                 Mean = as.double(mean(lines[[i]]$Lines.changed)),
                                 Median = as.double(median(lines[[i]]$Lines.changed)), 
                                 SD = as.double(sd(lines[[i]]$Lines.changed) ),
-                                age = length( lines[[i]]$Lines.changed ) ) )
+                                age = length( lines[[i]]$Lines.changed ),
+                                language= languages[i]) )
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
 
