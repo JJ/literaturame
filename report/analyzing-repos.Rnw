@@ -634,11 +634,7 @@ condition needed for the critical state to arise is the age of the
 repository, or maybe its size. On the other hand, there are some
 differences depending on the software development methodology which
 might impact the evolvability of the repository, as has been seen in
-the cases of repositories such as Tensorflow. Even so, the fact that
-they are in the SOC state and evolving continuously shows that a SOC
-state might be a good indication of a high fitness in the complex
-social system that develops the repository, which is what we were
-looking for. 
+the cases of repositories such as Tensorflow. 
 
 In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
 script hosted in \url{http://github.com/JJ/literaturame}. This
@@ -655,10 +651,8 @@ would also like to make more precise models of the ranked change
 sizes, as well as the relation between number of changes and its
 size. A study of particular circumstances of every repository will
 also help us to understand what self-organization means and, finally,
-as was our initial objective, if this fact can be used to create
-methodologies that improve productivity in work teams and to develop a
-fitness measure for repositories based on self-organized criticality
-that allows evolution via genetic improvement.  
+as was our initial objective, if this fact can be used to design
+methodologies that improve productivity in work teams.  
 
 
 \section*{Acknowledgements}
