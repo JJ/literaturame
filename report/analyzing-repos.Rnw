@@ -11,13 +11,14 @@
 \title{Studying self-organized criticality in code repositories}
 
 \author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora$^1$, Mario
-  Garc\'ia-Valdez$^{2}$, Carlos Cotta${^3}$ \\
+  Garc\'ia-Valdez$^{2}$, Carlos Cotta${^3}$, Carlos Fernandes${^4}$ \\
 \mbox{}\\
 $^1$ Geneura Team, ETSIIT and CITIC, University of Granada (Spain),
 {\tt \{jmerelo,pacv,amorag\}@ugr.es}\\
 $^2$ Dept. of Graduate Studies, Instituto Tecnologico de Tijuana
 (Mexico) {\tt mario@tectijuana.edu.mx}\\
-$^3$ Dept. Lenguajes y Ciencias de la Computaci\'on, Universidad de M\'alaga (Spain), {\tt ccotap@lcc.uma.es}
+$^3$ Dept. Lenguajes y Ciencias de la Computaci\'on, Universidad de M\'alaga (Spain), {\tt ccotap@lcc.uma.es}\\
+$^4$ LASEEB, Lisbon (Portugal), {\tt cfernandes@laseeb.org}
 }
 
 %\SweaveOpts{concordance=TRUE}
