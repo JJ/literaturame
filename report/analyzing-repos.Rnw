@@ -178,9 +178,9 @@ mechanisms such as preferential attachment \cite{lin2015power}.
 % as such we will study them in this paper. 
 
 After some initial exploration of the subject and developing the
-tools needed to mine repositories in GitHub \cite{merelo16:self}, in
+tools needed to mine repositories on GitHub \cite{merelo16:self}, in
 this paper we will study many different software repositories, all of
-them in active development,  trying to find out %whether 
+them in active development,  trying to find out 
 the telltale signs of self-organized criticality, as enumerated above. 
 Previously we have applied these techniques to examining the software
 repository for the Moose Perl library 
