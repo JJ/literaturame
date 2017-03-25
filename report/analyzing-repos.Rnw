@@ -38,33 +38,28 @@ languages <- c('erlang','Python','Perl','Ruby','Emacs Lisp','JavaScript',
                'CoffeeScript','Python','Scala','Perl','Python','Go','Go','JavaScript','Perl','Perl')
 
 age <-  data.frame(Name = character(),
-                   age = integer())
+                   age = integer(),
+                   language = character(),
+                   Mean = double(),
+                   Median = double(),
+                   SD = double)
 for (i in 1:length(files) ) {
     this.file <-  read.csv(paste0(pref,files[i],'.csv'))
     age <- rbind( age,
                  data.frame( Name = files[i],
-                            age = length(this.file$Lines.changed)))
+                            age = length(this.file$Lines.changed),
+                            language = languages[i]))
 }
-files <- age[order(age$age),]$Name
+files <- age[order(age$age),]
 lines <- list()
-summary <- data.frame(Name = character(),
-                      Mean = double(),
-                      Median = double(),
-                      SD = double(),
-                      age = integer(),
-                      language = character())
 
 for (i in 1:length(files) ) {
 # for testing here
-    file.name <- paste0(pref,files[i],'.csv')
-    lines[[i]] <- read.csv(file.name) # File should be established from an R script
-    summary <- rbind( summary,
-                     data.frame( Name= files[i],
-                                Mean = as.double(mean(lines[[i]]$Lines.changed)),
-                                Median = as.double(median(lines[[i]]$Lines.changed)), 
-                                SD = as.double(sd(lines[[i]]$Lines.changed) ),
-                                age = length( lines[[i]]$Lines.changed ),
-                                language= languages[i]) )
+    file.name <- paste0(pref,files[[i,'Name']],'.csv')
+    lines[[i]] <- read.csv(file.name) 
+    files[[i,'Mean']] <- as.double(mean(lines[[i]]$Lines.changed))
+    files[[i,'Median']] <-  as.double(median(lines[[i]]$Lines.changed))
+    files[[i,'SD']] <-  as.double(sd(lines[[i]]$Lines.changed) )
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
 
