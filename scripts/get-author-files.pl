@@ -5,10 +5,10 @@
 get-author-files.pl - download social graph stats from a github repo
 
 
-
 =head1 SEE ALSO
 
 Check out L<http://github.com/JJ/literaturame>, for some results, generated reports, R files for analyzing them, and so on. I would be grateful if you added your results to the L<https://github.com/JJ/literaturame/blob/master/data.md> file via pull request.
+
 =cut
 
 use strict;
