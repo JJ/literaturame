@@ -260,18 +260,17 @@ to do and how to do it, and, eventually, act on your fork, resulting in a
 pull request to the original repository. These activities can
 effectively be defined as social, so that teamwork in software
 repositories is embedded in a kind of social network. \cite{valverde2007self}
-has proved how this network grows under the tension of top-down or
-hierarchical rules and self-organization emerging from the bottom. At
-any rate, quite clearly these software repositories are the record of
-the activity of a complex network.
+have proved how this network grows under the tension of top-down or
+hierarchical rules and self-organization emerging from the bottom, which make software development teams a complex social system.
 
-In this paper we will examine different repositories with the purpose
-of finding out how that complex network dynamics effectively emerge. 
-% Antonio - pero qu? objetivo tiene eso? Se podr? mejora la forma de colaborar o algo as?? Creo que habr?a que comentarlo.
-% Ya se ha hecho en la intro - JJ
+In this paper we will mine software repositories and take the measures
+that would confirme they are in a self-organized critical
+state. Eventually, our intention is to try and find the point when
+phases change, although in this paper we will focus in studying the
+self-organized criticality state of the repositories under study.
 Next we
-will present the methodology used to choose and mine information in
-those repositories. 
+will present the methodology used to choose those repositories and
+mine their information. 
 
 
 % --------------------------------------------------------
