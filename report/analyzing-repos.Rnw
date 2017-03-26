@@ -45,29 +45,37 @@ languages <- c('erlang','Python','Perl','Ruby','Emacs Lisp','JavaScript',
                'CoffeeScript','Python','Scala','Perl','Python','Go','Go','JavaScript','Perl','Perl')
 
 age <-  data.frame(Name = character(),
+                   file = character(),
                    age = integer(),
                    language = character(),
                    Mean = double(),
                    Median = double(),
                    SD = double())
 
-lines <- list()
+
 
 for (i in 1:length(files) ) {
-    lines[[i]] <-  read.csv(paste0(pref,files[i],'.csv'))
+    file.name = paste0(pref,files[i],'.csv')
+    these.lines <-  read.csv(file.name)
+
+    age <- rbind( age,
+                 data.frame( Name = urls[i],
+                            file = file.name,
+                            age = length(these.lines$Lines.changed),
+                            language = languages[i],
+                            Mean = as.double(mean(these.lines$Lines.changed)),
+                            Median =  as.double(median(these.lines$Lines.changed)),
+                            SD = as.double(sd(these.lines$Lines.changed) )))
+}
+summary <- age[order(age$age),]
+lines <- list()
+# Read again because I am useless in R
+for (i in 1:length(summary$file) ) {
+    lines[[i]] <-  read.csv(as.character(summary[[i,'file']]))
 
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
-    age <- rbind( age,
-                 data.frame( Name = urls[i],
-                            age = length(lines[[i]]$Lines.changed),
-                            language = languages[i],
-                            Mean = as.double(mean(lines[[i]]$Lines.changed)),
-                            Median =  as.double(median(lines[[i]]$Lines.changed)),
-                            SD = as.double(sd(lines[[i]]$Lines.changed) )))
 }
-summary <- age[order(age$age),]
-
 @ 
 
 \maketitle
