@@ -57,7 +57,7 @@ for (i in 1:length(files) ) {
 files <- age[order(age$age),]
 lines <- list()
 
-for (i in 1:length(files) ) {
+for (i in 1:length(files$Name) ) {
 # for testing here
     file.name <- paste0(pref,files[[i,'Name']],'.csv')
     lines[[i]] <- read.csv(file.name) 
