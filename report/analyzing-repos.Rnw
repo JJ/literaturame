@@ -370,9 +370,8 @@ in number of lines, is shown in Table \ref{t:stat}.
 kable( summary,"latex" )
 @
 \vspace*{1mm}
-\caption{Summary of statistical measures for the software repositories we have
-  analyzed here. {\tt age} is measured in total number of
-  commits that affects the files checked. The complete name is shown here,
+\caption{Summary of statistical measures for the software repositories we have analyzed here. {\tt age} is measured in total number of
+  commits that affect the files under study. The complete name is shown here,
   which includes the depth of the directory structure as a number and
   the extension. For instance, the first one has directories up to depth 4
   and uses CoffeeScript ({\tt coffee}) and Perl 6 {\em p6}. They are all open source and can be found in the GitHub repository with the same name.\label{t:stat}}
