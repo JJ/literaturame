@@ -8,7 +8,7 @@
 %\SweaveOpts{concordance=TRUE}
 
 
-\title{Studying self-organized criticality in code repositories}
+\title{Self-organized criticality in code repositories}
 
 \author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora$^1$, Mario
   Garc\'ia-Valdez$^{2}$, Carlos Cotta${^3}$, Carlos Fernandes${^4}$ \\
@@ -23,7 +23,7 @@ $^4$ LASEEB, Lisbon (Portugal), {\tt cfernandes@laseeb.org}
 
 %\SweaveOpts{concordance=TRUE}
 % is it possible using relative-paths instead of absolute paths to set the file names?
-<<setup, cache=FALSE,echo=FALSE,warning=FALSE,messages=FALSE>>=
+<<setup, cache=FALSE,echo=FALSE,warning=FALSE,message=FALSE>>=
 library(ggplot2)
 library("ggfortify")
 library(dplyr)
@@ -99,7 +99,7 @@ in this state.
 \section{Introduction}\label{introduction}
 
 Self-organized criticality (SOC) \cite{bak1988self} is a condition
-that describe complex systems in many different venues and
+that describes complex systems in many different venues and
 environments. The dynamics of self-organized criticality is sometimes compared to
 that of a sand pile \cite{paczuski1996avalanche}, in the sense that
 the actual shape tends 
