@@ -28,12 +28,19 @@ library(ggplot2)
 library("ggfortify")
 library(dplyr)
 library(TTR)
-#use 
+library(xtable)
+                                        #use 
 pref <- '../data/software/lines_'
 files <- c('ejabberd_3-erl hrl yrl escript ex exs','tensorflow_2-py cc h',
            'mojo_2-pl pm PL','tty_2-rb','cask_5-el py','webpack_2-js','language-perl6fe_4-coffee p6',
            'tpot_5-py','scalatra_2-scala','Moose_2-pl pm xs t','django_8-py','docker_2-go',
            'fission_4-go py js','vue_2-js','Dancer2_2-pl pm t','rakudo_4-pm pm6 pl pl6 nqp')
+
+urls <- c('processone/ejabberd','tensorflow/tensorflow',
+          'kraih/mojo','piotrmurach/tty','cask/cask','webpack/webpack','perl6/atom-language-perl6',
+          'rhiever/tpot','scalatra/scalatra','moose/Moose','django/django','docker/docker',
+          'fission/fission','vuejs/vue','PerlDancer/Dancer2','rakudo/rakudo')
+
 languages <- c('erlang','Python','Perl','Ruby','Emacs Lisp','JavaScript',
                'CoffeeScript','Python','Scala','Perl','Python','Go','Go','JavaScript','Perl','Perl')
 
@@ -42,34 +49,27 @@ age <-  data.frame(Name = character(),
                    language = character(),
                    Mean = double(),
                    Median = double(),
-                   SD = double() )
+                   SD = double())
 
-for (i in 1:length(files) ) {
-    this.file <-  read.csv(paste0(pref,files[i],'.csv'))
-    age <- rbind( age,
-                 data.frame( Name = files[i],
-                            age = length(this.file$Lines.changed),
-                            language = languages[i],
-                            Mean = 0,
-                            Median = 0,
-                            SD = 0))
-}
-files <- age[order(age$age),]
 lines <- list()
 
-for (i in 1:length(files$Name) ) {
-# for testing here
-    file.name <- paste0(pref,files[[i,'Name']],'.csv')
-    lines[[i]] <- read.csv(file.name) 
-    files[[i,'Mean']] <- as.double(mean(lines[[i]]$Lines.changed))
-    files[[i,'Median']] <-  as.double(median(lines[[i]]$Lines.changed))
-    files[[i,'SD']] <-  as.double(sd(lines[[i]]$Lines.changed) )
+for (i in 1:length(files) ) {
+    lines[[i]] <-  read.csv(paste0(pref,files[i],'.csv'))
+
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
-
+    age <- rbind( age,
+                 data.frame( Name = urls[i],
+                            age = length(lines[[i]]$Lines.changed),
+                            language = languages[i],
+                            Mean = as.double(mean(lines[[i]]$Lines.changed)),
+                            Median =  as.double(median(lines[[i]]$Lines.changed)),
+                            SD = as.double(sd(lines[[i]]$Lines.changed) )))
 }
-summary <- files
+summary <- age[order(age$age),]
+
 @ 
+
 \maketitle
 
 \begin{abstract}
@@ -366,7 +366,9 @@ in number of lines, is shown in Table \ref{t:stat}.
 \begin{table*}
     \centering
 <<commits, cache=FALSE,echo=FALSE>>=
-kable( summary,"latex" )
+kable.summary <- summary # Row names are useful
+row.names(kable.summary) <- NULL
+kable( kable.summary,"latex",digits=2 )
 @
 \vspace*{1mm}
 \caption{Summary of statistical measures for the software repositories we have analyzed here. {\tt age} is measured in total number of
@@ -377,7 +379,8 @@ kable( summary,"latex" )
 \end{table*}
 %
 % Antonio - Antes de comparar resultados, una duda que puede surgir es c?mo se justifica la selecci?n de ficheros para que sean comparables entre distintos repos??? Explicarlo aqu? o en lo de las wildcards.
-%
+% No te entiendo, Antonio. Ya se ha dicho más arriba por qué se
+% escogen sólo esos ficheros, precisamente donde las wildcards - JJ
 This table shows that, at least from a macro point of view, median and
 means are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Means span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the mean is so
 separated from the median is already a hint that this is a skewed
