@@ -42,13 +42,17 @@ age <-  data.frame(Name = character(),
                    language = character(),
                    Mean = double(),
                    Median = double(),
-                   SD = double)
+                   SD = double() )
+
 for (i in 1:length(files) ) {
     this.file <-  read.csv(paste0(pref,files[i],'.csv'))
     age <- rbind( age,
                  data.frame( Name = files[i],
                             age = length(this.file$Lines.changed),
-                            language = languages[i]))
+                            language = languages[i],
+                            Mean = 0,
+                            Median = 0,
+                            SD = 0))
 }
 files <- age[order(age$age),]
 lines <- list()
@@ -64,6 +68,7 @@ for (i in 1:length(files) ) {
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
 
 }
+summary <- files
 @ 
 \maketitle
 
