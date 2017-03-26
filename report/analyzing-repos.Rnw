@@ -26,6 +26,7 @@ $^4$ LASEEB, Lisbon (Portugal), {\tt cfernandes@laseeb.org}
 <<setup, cache=FALSE,echo=FALSE,warning=FALSE,message=FALSE>>=
 library(ggplot2)
 library("ggfortify")
+library(ggthemes)
 library(dplyr)
 library(TTR)
 library(xtable)
@@ -376,14 +377,16 @@ in number of lines, is shown in Table \ref{t:stat}.
 <<commits, cache=FALSE,echo=FALSE>>=
 kable.summary <- summary # Row names are useful
 row.names(kable.summary) <- NULL
+kable.summary$file <- NULL
 kable( kable.summary,"latex",digits=2 )
 @
 \vspace*{1mm}
-\caption{Summary of statistical measures for the software repositories we have analyzed here. {\tt age} is measured in total number of
-  commits that affect the files under study. The complete name is shown here,
-  which includes the depth of the directory structure as a number and
-  the extension. For instance, the first one has directories up to depth 4
-  and uses CoffeeScript ({\tt coffee}) and Perl 6 {\em p6}. They are all open source and can be found in the GitHub repository with the same name.\label{t:stat}}
+\caption{Summary of statistical measures for the software repositories
+ we have analyzed here. {\tt Name} is the name of the repository in
+ Github, {\tt age} is the total number of commits that affect the
+ files under study, next is the main language the project uses, {\tt
+   Mean} and {\tt Median} are computed over change sizes, with {\tt SD}
+ referring to the standar deviation from the mean.\label{t:stat}}
 \end{table*}
 %
 % Antonio - Antes de comparar resultados, una duda que puede surgir es c?mo se justifica la selecci?n de ficheros para que sean comparables entre distintos repos??? Explicarlo aqu? o en lo de las wildcards.
@@ -412,21 +415,26 @@ correlations, which has been created by current changes influencing other change
 that occur several, or many, steps in the future. 
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
+% It would take too much space. I'll just erase them all. Changed a
+% bit, anyway - JJ
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
   \centering
 <<smoothie,message=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=summary$Name,out.width='.115\\linewidth'>>=
 for (i in 1:length(lines) ) {
     lines[[i]]$x = as.numeric(row.names(lines[[i]]))
-    print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
+    print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()+ theme_tufte() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) )
+
 }
 @ 
 \caption{Timeline of changes for all repositories with lines smoothed
-  over 20 and 10 changes, shown in different colors. The order of the
-  repositories is shown increasing in age from the top left to bottom
-  right. This order will be kept for the rest of the figures. \label{fig:smoothie}}
+  over 20 (blue) and 10 (red) changes. The order of the
+  repositories is the same as in Table \ref{t:stat}, and will be kept
+  across the rest of the figures. Please note the log scale for the
+  $y$ axis, which represents change size. $x$ axis runs through time. \label{fig:smoothie}}
 \end{figure*}
 % one of the GECCO reviewers said: "The text in figures 1, 2, 3, 4, and 5 is not readable".    -   pedro
+% It is not needed, actually. The best is probably to supress it - JJ
 
 Besides, these variations in scale might mean that commit sizes are distributed along a Pareto
 distribution. We will examine this next, representing the number of changes of a particular
