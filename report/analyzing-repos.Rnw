@@ -562,10 +562,10 @@ themselves along a central value and that there is scale-free nature
 in them, which is, besides, independent of the {\em age} or total
 number of changes of the paper, as it has been shown above. Unlike the
 previous adjustment, there does seem to be a trend here towards a {\em
-  flat} coefficient, changing from -0.05 for the {\em youngest}
-repository to -0.0004236 for the oldest. A more gradual distribution
+  flat} slope, changing from $10^{-2}$ for the {\em youngest}
+repository to $10^{-4}$ for the oldest. A more gradual distribution
 of sizes might be the cause, but it also indicates that, with age,
-bigger {\em avalanches}, i.e., changes in size, occur due to the
+bigger {\em avalanches}, i.e. commits with many lines changed, occur due to the
 self-organized critical state. 
 
 Finally, these scale distributions hint at the possibility of
@@ -595,12 +595,8 @@ autocorrelation in the 21 commit period; in this case, it appears  in different 
 
 In these repositories of increasing age, we find that actual long-distance autocorrelation only happens when they age, with no significant long-distance  autocorrelation in the first two repositories, and a significant one in most of the rest. However, while in the above mentioned work we found sharp peaks of long-distance correlation, in this case there are multiple peaks at many different distances, from short distance to very long distance of 30 and 40 commits. 
 
-Once two of the three features of self-organized criticality 
-% Antonio - las tres caracter?sticas no se han comentado previamente...?ponerlas en la intro?
-% _Est?n_ en la intro. Le he a?adido una frase que menciona que son las tres caracter?sticas que se estudian - JJ
-have been
-proved, at least in some of the projects, we will
-focus on the third, the presence of \emph{pink noise}, as measured by
+We will
+focus on the third SOC feature, the presence of \emph{pink noise}, as measured by
 the power spectral density, which we show in Figure \ref{fig:spectrum}. The presence of {\em pink noise} would be characterized by a spectrum with a negative slope, with decreasing power the higher the frequency. 
 %
 \begin{figure*}[h!tb]
@@ -639,7 +635,7 @@ kable( spec.fit.df,"latex" )
 \end{table}
 
 In this case, we see that this {\em trend} appears with increasing
-clarity from top left to bottom right, with actual coefficients and p-values for the fit are
+clarity from top left to bottom right, with actual coefficients and p-values for the fit 
 shown in Table \ref{t:spec}. Pink noise is characterized by
 coefficient values between 0 and 2, and that is the case for all of
 the repositories studied, with the only difference being the goodness
