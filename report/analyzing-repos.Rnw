@@ -382,11 +382,8 @@ proceed to analyze it in the next section.
 
 
 \section{Results}\label{res}
-
-A summary of the statistical characteristics of the size of the commits,
-in number of lines, is shown in Table \ref{t:stat}.
 %
-\begin{table*}
+\begin{table*}[h!tb]
     \centering
 <<commits, cache=FALSE,echo=FALSE>>=
 kable.summary <- summary # Row names are useful
@@ -399,14 +396,13 @@ kable( kable.summary,"latex",digits=2 )
  we have analyzed here. {\tt Name} is the name of the repository in
  Github, {\tt age} is the total number of commits that affect the
  files under study, next is the main language the project uses, {\tt
-   Mean} and {\tt Median} are computed over change sizes, with {\tt SD}
+   Mean} and {\tt Median} are computed over change sizes in number of
+ lines, with {\tt SD}
  referring to the standar deviation from the mean.\label{t:stat}}
 \end{table*}
 %
-% Antonio - Antes de comparar resultados, una duda que puede surgir es c?mo se justifica la selecci?n de ficheros para que sean comparables entre distintos repos??? Explicarlo aqu? o en lo de las wildcards.
-% No te entiendo, Antonio. Ya se ha dicho más arriba por qué se
-% escogen sólo esos ficheros, precisamente donde las wildcards - JJ
-This table shows that, at least from a macro point of view, median and
+A summary of the statistical characteristics of the size of the commits,
+in number of lines, is shown in Table \ref{t:stat}. From a macro point of view, median and
 means are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Means span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the mean is so
 separated from the median is already a hint that this is a skewed
 distribution. The book analyzed in \cite{merelo16:slash} had a median
@@ -419,14 +415,6 @@ the repositories analyzed here. This implies that the concept of {\em
 similar no matter what is the thing that is actually written. However, some repositories, specially ejabberd (a server written in Erlang for the Jabber protocol), Django and Tensorflow show the practice called {\em squashing}, which compresses several commits into a single one creating changes of several thousands lines. Those changes are not {\em organic} in the sense that they do not reflect the work of a single person. 
 % Un revisor del GECCO pidió explicar esta frase - Pedro
 In the big picture of the self-organization of the repository, its impact will have to be assessed, but in principle it would not have to have an influence on the overall state, since their scale will also follow the same principles. 
-
-The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic \emph{y} scale and smoothing over several commits, either 10
-or 20, depending on the color. The \emph{x} axis is simply the temporal
-sequence of commits, while the \emph{y} axis is the absolute size of the
-commit in number of lines. There are big changes in scale certain
-\emph{rhythm} can be observed, which hints at large-scale
-correlations, which has been created by current changes influencing other changes
-that occur several, or many, steps in the future. 
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 % It would take too much space. I'll just erase them all. Changed a
@@ -445,10 +433,20 @@ for (i in 1:length(lines) ) {
   over 20 (blue) and 10 (red) changes. The order of the
   repositories is the same as in Table \ref{t:stat}, and will be kept
   across the rest of the figures. Please note the log scale for the
-  $y$ axis, which represents change size. $x$ axis runs through time. \label{fig:smoothie}}
+  $y$ axis, which represents change size. $x$ axis runs through commit
+  number. \label{fig:smoothie}}
 \end{figure*}
 % one of the GECCO reviewers said: "The text in figures 1, 2, 3, 4, and 5 is not readable".    -   pedro
 % It is not needed, actually. The best is probably to supress it - JJ
+The timeline of the commit sizes is represented in a line chart in Figure \ref{fig:smoothie} with logarithmic \emph{y} scale and smoothing over several commits, either 10
+or 20, depending on the color. The \emph{x} axis is simply the temporal
+sequence of commits, while the \emph{y} axis is the absolute size of the
+commit in number of lines. There are big changes in scale certain
+\emph{rhythm} can be observed, which hints at large-scale
+correlations, which has been created by current changes influencing other changes
+that occur several, or many, steps in the future. 
+
+
 
 Besides, these variations in scale might mean that commit sizes are distributed along a Pareto
 distribution. We will examine this next, representing the number of changes of a particular
@@ -495,8 +493,8 @@ shown in Table \ref{t:sizes}.
 kable( sizes.fit.df,"latex" )
 @
 \vspace*{2mm}
-\caption{Summary of coefficients of the linear models adjusting the
-  number of lines and size.\label{t:sizes}}
+\caption{Summary of coefficients of the linear models adjusting number
+  of change size occurrences vs. size.\label{t:sizes}}
 \end{table}
 %
 These values are also similar to those found in
@@ -507,7 +505,10 @@ expected, the intercept increases and the slope decreases with the
 number of changes or the size of the project. The shape of the line in
 \cite{Merelo2016:repomining} in fact might be more similar to a {\em
   broken stick}; this is a matter that deserves further
-investigation.  
+investigation. In these repositories, the coefficient varies between negative
+0.71 and 2.02 for Tensorflow. There does not seem to be a clear trend
+with age, but this coefficient could depend on other factors
+entirely. 
 
 The scale free nature of the work in the repository can be more
 properly observed by looking at the changes in some other way, ranking them by size
@@ -515,7 +516,7 @@ and representing them in a chart with a logarithmic \(y\) axis, in what is known
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 % I didn't find the way to do it, but feel free to look it up - JJ
-\begin{figure*}[h!]
+\begin{figure*}[h!tb]
   \centering
 <<powerlaw,message=FALSE, fig.subcap=summary$Name,echo=FALSE,warning=FALSE,fig.height=4,out.width='.115\\linewidth'>>=
 zipf.fit.df <- data.frame(Name = character(),
@@ -533,8 +534,7 @@ for (i in 1:length(lines) ) {
                                     Coefficient = summary(zipf.fit)$coefficients[2] ))
 }
 @ 
-\caption{Changes, ordered by size, and represented in a logarithmic
-  $y$ axis. Side by side, the histogram and Zipf chart for the 16 repositories analyzed.\label{fig:zipf}}
+\caption{Zipf, that is, ranked change sizes with logarithmic $y$ axis for the 16 repositories analyzed.\label{fig:zipf}}
 \end{figure*}
 %
 %
@@ -543,14 +543,13 @@ and are of the same order, but different range, of those found  in
 \cite{merelo16:slash}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
-\begin{table}[h!tbp]
+\begin{table}[h!tb]
     \centering
 <<zipf, cache=FALSE,echo=FALSE>>=
 kable( zipf.fit.df,"latex" )
 @
 \vspace*{2mm}
-\caption{Summary of Zipf coefficients of the linear models adjusting the
-  number of lines and size.\label{t:zipf}}
+\caption{Summary of Zipf coefficients of the linear models.\label{t:zipf}}
 \end{table}
 %
 The {\em evolution} in the nature of the distribution can be observed,
@@ -558,12 +557,18 @@ from a more or less straight line in the first cases, to something
 more similar to a {\em broken stick} model in the last one, although it can
 still be linearly fit to a log scale and there is a regime of size
 changes that is still logarithmic in scale. Whatever the actual
-distribution, there is no doubt that changes do not organize
+distribution, there is no doubt that change sizes do not cluster
 themselves along a central value and that there is scale-free nature
 in them, which is, besides, independent of the {\em age} or total
-number of changes of the paper, as it has been shown above. 
+number of changes of the paper, as it has been shown above. Unlike the
+previous adjustment, there does seem to be a trend here towards a {\em
+  flat} coefficient, changing from -0.05 for the {\em youngest}
+repository to -0.0004236 for the oldest. A more gradual distribution
+of sizes might be the cause, but it also indicates that, with age,
+bigger {\em avalanches}, i.e., changes in size, occur due to the
+self-organized critical state. 
 
-Finally, these scale distributions hints at the possibility of
+Finally, these scale distributions hint at the possibility of
 long-distance correlations, but in order to find this out, we will have
 to plot the partial autocorrelation of the sequence, that is, the
 relationship between the size of a change and the rest of the changes
@@ -580,7 +585,7 @@ for (i in 1:length(lines) ) {
     print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
 @ 
-\caption{Autocorrelation plot. The horizontal lines show the level of statistical significant, with any line surpassing it indicating positive or negative self-correlation.\label{fig:auto}}
+\caption{Autocorrelation plot, dashed lines indicate statistical significance and line surpassing it indicating  self-correlation.\label{fig:auto}}
 \end{figure*}
 % 
 Autocorrelation is significant only if the lines go over the mean
@@ -628,8 +633,8 @@ kable( spec.fit.df,"latex" )
 @
 \vspace*{2mm}
 \caption{Summary of coefficients of the linear models adjusting the
-  power spectrum with the p-value of the fit. It is considered pink
- noise if the values are between 0 and -2. In the cases that
+  power spectrum and the p-value of the fit. All coefficients are
+  between 0 and -2, corresponding to pink noise; in the cases that
   p-value $>$ 0.05 the fit does not hold. \label{t:spec}}
 \end{table}
 
@@ -639,8 +644,8 @@ shown in Table \ref{t:spec}. Pink noise is characterized by
 coefficient values between 0 and 2, and that is the case for all of
 the repositories studied, with the only difference being the goodness
 of the fit, which makes the hypothesis hold in all but 3 repositories:
-{\tt language-perl6fe}, {\tt cask} and {\tt tty}. In all cases they
-are repositories with less than 1000 changes, although other
+{\tt language-perl6fe}, {\tt cask} and {\tt tty}. These are all
+repositories with less than 1000 changes, although other 
 repositories with similar number of commits do show this {\em pink
   noise} feature. 
 
