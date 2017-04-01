@@ -185,7 +185,7 @@ mechanisms such as preferential attachment \cite{lin2015power}.
 After some initial exploration of the subject and developing the
 tools needed to mine repositories on GitHub \cite{merelo16:self}, in
 this paper we will study many different software repositories, all of
-them in active development,  trying to find out 
+them in active development, trying to find out 
 the telltale signs of self-organized criticality, as enumerated above. 
 Previously we have applied these techniques to examining the software
 repository for the Moose Perl library 
@@ -200,6 +200,12 @@ itself, since in fact the dynamics of documentation of build tools is
 probably completely different; these languages have been found using
 the GitHub tool that reveals the percentage of code written in every
 language. 
+
+Our intention in this line of research is to eventually find when the
+change of phase to the critical state occurs and if there are any
+other signs related to it. That is why, in this paper, we will focus
+on the characterization of sofware teams, as reflected in the work
+logs, that are actually in that state. 
 
 The rest of the paper is organized thus: After presenting a brief state of the art next, 
 followed by the methodology in Section \ref{sec:method},
@@ -631,36 +637,37 @@ been measured for all projects under study, our conclusions will be presented ne
 \section{Conclusions}\label{conc}
 
 
-In this paper we were interested in finding traces of self-organized criticality in software repositories by looking for certain features that are peculiar to the critical state: scale-free behavior, long-distance correlations and pink noise. Our methodology, which is new in the sense that we have used counts size of commits as a discrete measure, will show a much clearer picture of the state
+In this paper we were interested in finding traces of self-organized
+criticality in software repositories by looking for certain features
+that are peculiar to the critical state: scale-free behavior,
+long-distance correlations and pink noise. Our methodology, which is
+new in the sense that we have used counts size of commits as a
+discrete measure, will show a much clearer picture of the state 
 of the repository, since they correspond to units of work done and are
 also related to discrete tasks in the ticketing system.
-% Comment: There is other information that could be exploited that
-% IMO is more related with self-organization, and is the author of
-% the commit. Maybe rules of interaction arise when for instance some one takes the lead
-% and others wait for him to work, and then make little corrections.
-% This could be the content of other papers, not this one...
-% Antonio - I agree. The people involved in repos are very important, as they are the reason of self-organization indeed. ;)
-% Interesting discussio, not for this paper - JJ
 
 After analyzing the software repositories we can conclude that, in
-fact, all repositories analyzed show some of the features, specially
+fact, all repositories analyzed show some of the SOC features, specially
 freedom of a particular scale in the size of the changes. However, we
 could conclude from the measures taken above that there is a certain
-amount of interaction needed before the critical state is actually
+amount of interaction, in the shape of commits, needed before the critical state is actually
 reached. From the limited amount of repositories we have studied, we
-could put this number between 100 and 1000 changes, with all
+could put this number between 100 and 1000 code-altering changes, with all
 repositories examined over 1000 changes exhibiting self-organized
 criticality. In particular, this would indicate that the only
 condition needed for the critical state to arise is the age of the
 repository, or maybe its size. On the other hand, there are some
 differences depending on the software development methodology which
-might impact the evolvability of the repository, as has been seen in
-the cases of repositories such as Tensorflow. 
+might impact the state of the repository, as has been seen in
+the cases of repositories such as Tensorflow, which shows signs of
+self-organization, but with measures and quantities in a whole
+different range than the other repositories. 
 
 In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
 script hosted in \url{http://github.com/JJ/literaturame}. This
 repository holds also the data used in this study, as well as the
-source of this paper. 
+source for this paper, written using Knitr and including all the
+scripts that process data and generate charts.
 
 As a future line of work, we will first try to gather data from more
 repositories, specially in the boundary where we think
@@ -678,7 +685,9 @@ methodologies that improve productivity in work teams.
 
 \section*{Acknowledgements}
 
-This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-\{1,3\}-P (\{UMA,UGR\}-EPHEMECH). 
+This work has been supported in part by: de Ministerio espa\~{n}ol de
+Econom\'{\i}a y Competitividad under project
+TIN2014-56494-C4-\{1,3\}-P (\{UMA,UGR\}-EPHEMECH).  
 % Antonio - completar con otros, para la versi?n final (KNOWAVES, por ejemplo)
 % No sé qué es Knowaves. - JJ
 
