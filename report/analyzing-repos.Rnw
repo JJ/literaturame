@@ -82,22 +82,17 @@ for (i in 1:length(summary$file) ) {
 \maketitle
 
 \begin{abstract}
-%   Finding the fitness of complex systems such as software development
-% team is a difficult task without straightforward solutions that is why it is interesting to find
-% out the mechanism underlying collaboration in open source projects and
-% their dynamics, which  might not be explicit or organized in
-% a top-down fashion, but emerge in a self-organizing way, reaching
-% eventually a critical state. 
-In this paper we examine, using a novel
-and more natural and precise methodology, several
-repositories measuring the three conditions for this self-organized
-critical (SOC) state when analyzing the size of changes in the state of the repository and
-its temporal sequence: a scale-free structure, long-distance
-correlations and so-called {\em pink} noise.  We will try to find the
-role of several parameters to reach this critical state. In these
-repositories examined at least one of the SOC features exists, and
-some of them exhibit all three, which means that effectively they are
-in this state. 
+  Software development teams become eventually complex systems,
+  reaching a critical state. In this paper we use a different
+  methodology to measure whether this self-organized critical (SOC) state actually exists by looking
+  at the three conditions: a scale-free structure, long-distance
+correlations and so-called {\em pink} noise. We will work on 16
+different repositories, and use a novel, more natural and precise
+methodology to examine change sizes. Our research shows that, in all
+16 repositories examined, at least one of the SOC features exists, and
+most of them exhibit all three, which leads us to think that SOC is
+more widespread in software development than previously thought and
+that very few initial conditions might be needed to reach it. 
 \end{abstract}
 
 %\keywords{Complex systems, self-organizing systems, self-organized
@@ -124,12 +119,8 @@ coordination mechanisms to produce something measurable, that experience
 certain periods of stasis followed by {\em avalanches} of work, new
 code or new paragraphs without an apparent origin. 
 
-The anecdotal
-evidence gathered by the authors confirms this kind of events
-happen in software development teams, mainly in open source. 
-
-
-In fact, several researchers have
+The anecdotal evidence gathered by the authors confirms this kind of events
+happen in software development teams, mainly in open source. And, in fact, several researchers have
 proved that many projects match the features of a critical state,
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis},
 which is 
