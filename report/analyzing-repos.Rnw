@@ -222,15 +222,17 @@ As far as we know, there has not been a continuing line of research on
 self-organized criticality in software projects or, for that matter,
 any other kind of collaborative work teams. The main reason might be
 that researchers have thoroughly
-proved that software repositories seem to be in a SOC state,
-\cite{wu2007empirical,gorshenev2004punctuated}, including our own
-reports \cite{Merelo2016:repomining,merelo16:slash,merelo16:self}
-where we examine and establish the existence of repositories in a
-critical state to which they have arrived via self-organization; the
-fact that these repositories have different characteristics in terms
+proved that several big software repositories seem to be in a SOC state,
+\cite{wu2007empirical,gorshenev2004punctuated}, although some
+not-so-big and not-really-software repositories seem to be in that
+state too \cite{Merelo2016:repomining,merelo16:slash,merelo16:self};
+in these last papers suggest, that since these repositories have different characteristics in terms
 of the number of users, age and type of information they hold implies that
 self-organization, as it should be expected, is achieved with relative
-ease. Indeed, this state of self-organized criticality
+ease and due to factors not related to the nature of the content being
+developed, but the way the interaction is done itself. 
+
+Indeed, this state of self-organized criticality
 quantitatively proves what has been already established via
 qualitative analysis, the fact that in many successful software
 projects, developers self-organize \cite{Crowston2007564}, 
@@ -240,24 +242,21 @@ teams \cite{crowston2012free}. In fact, this way of organization
 matches our own experience in development of open source projects such
 as \cite{ae09,2016arXiv160101607M}, which are developed mainly by one
 or a few coders, helped sporadically by other coders that find an
-error or adapt the code to particular situations. 
+error and fix it or adapt the code to particular situations. 
 In fact, this self-organization has also been observed in similar
-projects such as Wikipedia.
-% Antonio - cita?
-% Antonio, de veras que me ayudar?a si t? buscaras esas citas. No tienes m?s que irte a Google Scholar y poner "Self-organized criticality - Wikipedia" e insertarla aqu?. No tengo tiempo de mirar absolutamente nada ahora - JJ
+projects such as Wikipedia \cite{10.1371/journal.pone.0017333}
 
-Self-organization, eventually, might produce a critical state
+A critical state might eventually emerge from self-organization
 given the necessary conditions. However, there has been no work going further and
-proving this even in the case that work is done by a few people and
+proving this even in the case that the team is carried out by a small team and
 on repositories that are not devoted to software development. And this
 critical state is key to carry the system to adaptive success, as
 defined in \cite{benbya2006toward}, which presents 
-the seven
-mechanisms that create complexity in systems as initially enunciated for
+the seven mechanisms that create complexity as initially enunciated for
 biological systems and apply them to information system
 development. 
 
-The principle of {\em change rate}, which appears in the
+One of these principles, the principle of {\em change rate}, which appears in the
 way of observation-orientation-decision-action, is very explicit in
 open source development, where you usually observe a repository or
 project for a certain time, then find if there is something to fix or
@@ -265,15 +264,19 @@ the way you can adapt it to your particular circumstances, decide what
 to do and how to do it, and, eventually, act on your fork, resulting in a
 pull request to the original repository. These activities can
 effectively be defined as social, so that teamwork in software
-repositories is embedded in a kind of social network. \cite{valverde2007self}
+repositories is embedded in a kind of social
+network. \cite{valverde2007self}, for instance, 
 have proved how this network grows under the tension of top-down or
-hierarchical rules and self-organization emerging from the bottom, which make software development teams a complex social system.
+hierarchical rules and self-organization emerging from the bottom,
+which make software development teams a complex social system. This
+would indicate that the self-organized critical state would be much
+more pervasive than initially thought. 
 
 In this paper we will mine software repositories and take the measures
 that would confirme they are in a self-organized critical
 state. Eventually, our intention is to try and find the point when
 phases change, although in this paper we will focus in studying the
-self-organized criticality state of the repositories under study.
+existence of a self-organized criticality state in the repositories under study.
 Next we
 will present the methodology used to choose those repositories and
 mine their information. 
@@ -287,34 +290,50 @@ mine their information.
 
 We have chosen 16 repositories in different states of development, and representing from
 web frameworks such as Django to Atom plugins in the case of {\em
-  language-perl6e}. They include many different languages, either
+  language-perl6e}. The projects they host are written in many different languages, either
 interpreted or compiled, and vary also in {\em professionalism}, from
-the aforementioned and more amateurish plugin to Docker (an open platform for building and running distributed applications), 
+a recently started Atom editor plugin for Perl6 to Docker, an open
+platform for building and running distributed applications,  
 created and maintained by a fully professional community. 
 
-% ¿ponemos el periodo de tiempo a lo largo del cual se han recogido los datos? 
-% suponemos el mismo para todos los repositorios (comentario de un Revisor del GECCO) - Pedro
+Repository mining was done during the months of January to March
+2017, although the particular time of collection should not have an
+influence on the results, as long as they have a minimum amount of
+commits. 
 
-In this paper we will work with the size of changes to a particular
-set of files in the repository, selected via wildcards. 
-We exclude other 
+The way we look at changes in the repository is novel and was used for
+the first time in the previous technical reports
+\cite{Merelo2016:repomining}. When looking to find SOC in repositories
+you have to look at the timeline of changes in those
+repositories. In most papers so far, this timeline was {\em natural},
+using days or weeks, and the change used was the increase in size
+after every daily work. 
+
+We will introduce several changes to this usual methodology. The first one
+is the timeline: we will use a discrete timeline formed by the
+commits, with every commit counting as time=1. 
+
+The second one is that we will work with the size of changes to a particular
+set of files in the repository, selected via wildcards; we exclude other 
 artifacts such as images or style files. To extract information
 about changes to these files in the repositories, we analyze the
 repository log using a Perl script to extract the size of the changes
-that have been made to the considered files. All data were collected
-in the same dates at the beginning of 2017; however, since we are not
-comparing repositories among them, in principle the fact that data has
-been collected at the same time or not should not have any influence
-on the results. 
+that have been made to the considered files. This discards many
+commits from the initial set, leaving some repositories with less than
+100 from the initial number. The actual number of commits modifying
+code might vary from repository to repository; however this ratio is
+not considered important as long as the remaining number of commits is
+enough. 
 
-Since changes include both the insertion and deletion of lines in
+The third methodological change introduced in this paper is referred
+to code deltas. Since changes in commit logs include both the insertion and deletion of lines in
 committed files, the largest of these values is taken; in particular,
 this means that the addition of all changes will not be equal to the
 sum of 
 the sizes of all files. A change in two lines will appear in a diff 
 as
 ``2 insertions, 2 deletions'', adding up to 0; that is why we consider
-the larger of these two values; the main reason for doing so is also
+the largest of these two values; the main reason for doing so is also
 that in fact, the algorithm that computes changes in the repository
 examines similitude in lines and counts changes in two lines as two
 insertions and two deletions. There is no way to find out whether
@@ -323,32 +342,30 @@ somewhere else, so in absence of that, we opt for the heuristic of
 using the largest of these two values as change size. This analysis
 method is more precise that the one used by other authors, 
 % Antonio - referencias de ejemplo
+% Explained below - JJ
 which takes
-into account only changes in size in the whole repository, and does
+into account only changes in size in the whole repository, and thus does
 not include activities such as refactoring that consist mainly in
 making changes in place. It also has the granularity of single commits
 and not days or weeks, which are not as problem-specific as using the
 number of commits.
 
-The Perl script generates a {\tt .csv} file with a single column with the
-sequence of changes in size in the files of interest in each
+We extact this information via a Perl script, that generates a {\tt
+  .csv} file with a single column with the sequence of changes in size in the files of interest in each
 repository. These data files, as well as the repositories where they have
 been measured, are available with a free license in the repository
 that also hosts this paper (hidden now for double blind review). 
-% maybe we should add here the URL to the paper repo, as a footnote  - Pedro
-% Done
 
-The $x$ axis for these timelines does not correspond to physical time,
-but simply to the sequence, and then only in changes of the
-interesting files. In this sense, there is an important difference between
-our research methodology, which considers discrete 
-% Antonio - discrete -> simple? / atomic? Los cambios diarios no ser?an tambi?n discretos (no continuos)?
-changes, to papers such
+Please remember that the $x$ axis for these sequences of changes,
+shown smoothed in Figure \ref{fig:smoothie}, does not correspond to physical time,
+but simply to the commit number, and then only in changes of the
+{\em interesting}, that is, code files. In this sense, there is an important difference between
+our research methodology, which considers atomic changes, to papers such
 as \cite{herraiz2009statistical}, which take into account {\em daily}
 changes. We think that examining discrete changes does not impose a
 particular rhythm, namely, daily, on the changes, but lets the
 repository expose its own rhythm; it also allows us to examine
-slow-changing repositories such as what is usual in non-critic open
+slow-changing repositories such as what is usual in non-critical open
 source projects, that can be static for
 a long time to experience a burst of changes all of a sudden;
 precisely these changes can indicate an {\em avalanche} that is a
@@ -472,7 +489,7 @@ different practices by different authors, but also to different in-company pract
 These distributions can, in fact, be linearly fit to a log-log distribution with coefficients
 shown in Table \ref{t:sizes}. 
 %
-\begin{table}
+\begin{table}[h!]
     \centering
 <<sizes, cache=FALSE,echo=FALSE>>=
 kable( sizes.fit.df,"latex" )
@@ -498,7 +515,7 @@ and representing them in a chart with a logarithmic \(y\) axis, in what is known
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 % I didn't find the way to do it, but feel free to look it up - JJ
-\begin{figure*}[h!tb]
+\begin{figure*}[h!]
   \centering
 <<powerlaw,message=FALSE, fig.subcap=summary$Name,echo=FALSE,warning=FALSE,fig.height=4,out.width='.115\\linewidth'>>=
 zipf.fit.df <- data.frame(Name = character(),
@@ -526,7 +543,7 @@ and are of the same order, but different range, of those found  in
 \cite{merelo16:slash}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
-\begin{table}
+\begin{table}[h!tbp]
     \centering
 <<zipf, cache=FALSE,echo=FALSE>>=
 kable( zipf.fit.df,"latex" )
