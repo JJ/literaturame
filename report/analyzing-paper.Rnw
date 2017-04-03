@@ -349,11 +349,11 @@ decimal \emph{y} scale and smoothing over several commits, either 10
 or 20, depending on the color. The \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
 commit in number of lines. The serrated characteristic is the same, as well
-as the big changes in scale, with some periods where small changes
-happen and other that alternate big with small changes. A certain
-\emph{rhythm} can be observed, which hints at large-scale
-correlations, that is influence of changes happening now over changes
-that occur several, or many, steps afterwards, in the future. 
+as the big changes in scale,  with some periods where small changes 
+happen and others where they alternate between big and minor changes. A certain
+\emph{rhythm} can be observed, which hints of large-scale
+correlations, that is the influence of changes happening now over changes
+that occur several, or many, steps afterward, in the future. % Grammarly says 'afterwards' is British
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
