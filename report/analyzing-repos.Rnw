@@ -120,7 +120,7 @@ certain periods of stasis followed by {\em avalanches} of work, new
 code or new paragraphs without an apparent origin. 
 
 The anecdotal evidence gathered by the authors confirms this kind of events
-happen in software development teams, mainly in open source. And, in fact, several researchers have
+happens in software development teams, mainly in open source. And, in fact, several researchers have
 proved that many projects match the features of a critical state,
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis},
 which is 
@@ -173,7 +173,7 @@ One of the intentions in this paper is to try and prove that, in the same
 way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
 self-organized state might be essential to the software development
 process, as long as it is done through an application that allows
-collaboration, for instance, as a repository managed by a source
+collaboration, for instance, as a repository managed by a source code
 control system such as git. In fact, some explanations have been offered via
 conservation laws \cite{6784340} and other usual complex network
 mechanisms such as preferential attachment \cite{lin2015power}.
@@ -184,19 +184,20 @@ mechanisms such as preferential attachment \cite{lin2015power}.
 
 After some initial exploration of the subject and developing the
 tools needed to mine repositories on GitHub \cite{merelo16:self}, in
-this paper we will study many different software repositories, all of
+this paper, we will study many different software repositories, all of
 them in active development, trying to find out 
 the telltale signs of self-organized criticality, as enumerated above. 
 Previously we have applied these techniques to examining the software
 repository for the Moose Perl library 
 \cite{Merelo2016:repomining}, books written mainly by a single
-person \cite{merelo16:slash} and papers written collaboratively \cite{merelo16:self}. In this paper we are going  
+person \cite{merelo16:slash} and papers written collaboratively \cite{merelo16:self}. 
+In this paper, we are going  
 to work on a total of 16 repositories, chosen among those that have at
 least a few hundred commits, independently of the actual time it has taken to
 make them. Since repositories hold many kind of different files,
 including screen art, documentation and configuration files for building tools, we have focused on
 the code written in the two or three main languages of the repository
-itself, since in fact the dynamics of documentation of build tools is
+itself, since in fact the dynamics of documentation and build tools is
 probably completely different; these languages have been found using
 the GitHub tool that reveals the percentage of code written in every
 language. 
@@ -209,7 +210,7 @@ logs, that are actually in that state.
 
 The rest of the paper is organized thus: After presenting a brief state of the art next, 
 followed by the methodology in Section \ref{sec:method},
-obtained results  will be presented  in Section \ref{res}
+obtained results  will be presented in Section \ref{res}
 and eventually we will expose our conclusions. 
 
 
