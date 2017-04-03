@@ -222,8 +222,8 @@ proved that software repositories seem to be in a SOC state,
 reports \cite{Merelo2016:repomining,merelo16:slash,merelo16:self}
 where we examine and establish the existence of repositories in a
 critical state to which they have arrived via self-organization; the
-fact that these repositories have different characteristics in terms
-of the number of users, age and type of information they hold implies that
+fact that these repositories have different characteristics regarding
+the number of users, age, and type of information they hold implies that
 self-organization, as should be expected, is achieved with relative
 ease. In fact, this state of self-organized criticality
 quantitatively proves what has been already established via
@@ -238,7 +238,7 @@ error or adapt the code to particular situations.
 % Reference 
 % Added - JJ
 In fact, this self-organization has also been observed in similar
-projects such as Wikipedia.
+projects such as Wikipedia \cite{forte2008scaling}.
 
 This self-organization, eventually, might produce a critical state
 given the necessary conditions. However, there has been no work going further and
