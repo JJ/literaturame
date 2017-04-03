@@ -394,7 +394,7 @@ for (i in 1:length(lines) ) {
 \caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
-This chart show what seems to be a Zipf distribution, with the commit sizes
+This chart shows what seems to be a Zipf distribution, with the commit sizes,
 ranked in descending order and plotted with a logarithmic \emph{y}
 axis. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
@@ -468,7 +468,7 @@ for (i in 1:length(lines) ) {
 %
 %
 The Zipf exponents and intercepts for these models are shown in Table \ref{t:zipf},
-and are of the same order, but different range, of the one found  in
+and are of the same order, but different range, of the one found in
 \cite{merelo16:slash}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
@@ -587,9 +587,17 @@ type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
 than the substrate itself, to different types of collaboration. We would also like to make more precise models of the ranked change sizes, as well as the relation between number of changes and its size. A study of particular circumstances of every repository will also help us to understand what self-organization means and, finally, as was our initial objective, if this fact can be used to create methodologies that improve productivity in work teams. 
 
+% Maybe split the first sentence in two:
+% As a future line of work, we will first try to gather data from more repositories, 
+% specially in the boundary where we think self-organization arises, at around 100 commits.
+% A comparison between these with another type of repositories, to see if 
+% there are some notable and statistically significant differences, which 
+% would be attributed rather than the substrate itself, to different types of collaboration. 
+
+
 
 \section*{Acknowledgements}
-This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
+This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH) and by Consejo Nacional de Ciencia y Tecnolog\'{\i}a under project 220590.
 
 \bibliographystyle{splncs03}
 \bibliography{geneura,biblio}
