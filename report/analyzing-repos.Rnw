@@ -210,7 +210,7 @@ logs, that are actually in that state.
 
 The rest of the paper is organized thus: After presenting a brief state of the art next, 
 followed by the methodology in Section \ref{sec:method},
-obtained results  will be presented in Section \ref{res}
+obtained results  will be reported in Section \ref{res}
 and eventually we will expose our conclusions. 
 
 
@@ -447,8 +447,6 @@ commit in number of lines. There are big changes in scale certain
 correlations, which has been created by current changes influencing other changes
 that occur several, or many, steps in the future. 
 
-
-
 Besides, these variations in scale might mean that commit sizes are distributed along a Pareto
 distribution. We will examine this next, representing the number of changes of a particular
 size in a log-log scale, with linear smoothing to show trends, in
@@ -477,13 +475,17 @@ for (i in 1:length(lines) ) {
 \caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
-This chart shows what seems to be a Pareto distribution,
-% Antonio - ref? 
-% That's something you can do yourself, right? - JJ
- with the commit sizes
+This chart shows what seems to be a Pareto distribution, with the commit sizes
 ranked in ascending order and plotted with a log-log scale. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
-different practices by different authors, but also to different in-company practices. It is specially remarkable the {\em fat tail} in the case of Tensorflow and {\em ejabberd}, next-to-last row, first and second from right. Due to some practices of merging a whole branch in a single commit, they exhibit exceptionally big commit sizes, with tens of thousands lines. In that case, that would show that there is some top-down organization taking place, but it does not hide the general self-organizing shape of the curve to their left. 
+different practices by different authors, but also to different
+in-company practices. It is specially remarkable the {\em fat tail} in
+the case of Tensorflow and {\em ejabberd}, next-to-last row, first and
+second from right. Due to some practices of merging a whole branch in
+a single commit, a practice that is called {\em squashing}, they exhibit exceptionally big commit sizes, with
+tens of thousands lines. In that case, that would show that there is
+some top-down organization taking place, but it does not hide the
+general self-organizing shape of the curve to their left.  
 
 These distributions can, in fact, be linearly fit to a log-log distribution with coefficients
 shown in Table \ref{t:sizes}. 
