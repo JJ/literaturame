@@ -10,12 +10,12 @@
 
 \title{Self-organized criticality in code repositories}
 
-\author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio Mora$^1$, Mario
+\author{J. J. Merelo$^{1}$, P. A. Castillo$^{1}$, Antonio M. Mora$^1$, Mario
   Garc\'ia-Valdez$^{2}$, Carlos Cotta${^3}$, Carlos Fernandes${^4}$ \\
 \mbox{}\\
 $^1$ Geneura Team, ETSIIT and CITIC, University of Granada (Spain),
 {\tt \{jmerelo,pacv,amorag\}@ugr.es}\\
-$^2$ Dept. of Graduate Studies, Instituto Tecnologico de Tijuana
+$^2$ Dept. of Graduate Studies, Instituto Tecnol\'ogico de Tijuana
 (Mexico) {\tt mario@tectijuana.edu.mx}\\
 $^3$ Dept. Lenguajes y Ciencias de la Computaci\'on, Universidad de M\'alaga (Spain), {\tt ccotap@lcc.uma.es}\\
 $^4$ LASEEB, Lisbon (Portugal), {\tt cfernandes@laseeb.org}
@@ -83,7 +83,9 @@ for (i in 1:length(summary$file) ) {
 
 \begin{abstract}
   Software development teams become eventually complex systems,
-  reaching a critical state. In this paper, we use a different
+  reaching a critical state. 
+% Antonio - What's the motivation of the paper?
+In this paper, we use a different
   methodology to measure whether this self-organized critical (SOC) state actually exists by looking
   at the three conditions: a scale-free structure, long-distance
 correlations, and so-called {\em pink} noise. We will work on 16
@@ -92,7 +94,8 @@ methodology to examine change sizes. Our research shows that in all
 16 repositories analyzed, at least one of the SOC features exists, and
 most of them exhibit all three, which leads us to think that SOC is
 more widespread in software development than previously thought and
-that very few initial conditions might be needed to reach it. 
+that very few initial conditions might be needed to reach it.
+% Antonio - Then, say what are the implications of this fact. ;) 
 \end{abstract}
 
 %\keywords{Complex systems, self-organizing systems, self-organized
@@ -104,11 +107,8 @@ that very few initial conditions might be needed to reach it.
 
 Self-organized criticality (SOC) \cite{bak1988self} is a condition
 that describes complex systems in many different venues and
-environments. The dynamics of self-organized criticality is sometimes compared to
-that of a sand pile \cite{paczuski1996avalanche}, in the sense that
-the actual shape tends 
-to reach also a critical state, 
-% Antonio - lo he puesto en cursiva la primera vez (arriba)
+environments. The dynamics of self-organized criticality is sometimes compared to that of a sand pile \cite{paczuski1996avalanche}, in the sense that
+the actual shape tends to reach also a critical state, 
 represented in the sand pile by a
 critical slope, and a single grain of sand creates avalanches
 unrelated to the frequency of grains falling. This pile of sand is
@@ -120,7 +120,9 @@ certain periods of stasis followed by {\em avalanches} of work, new
 code or new paragraphs without an apparent origin. 
 
 The anecdotal evidence gathered by the authors confirms this kind of events
-happens in software development teams, mainly in open source. And, in fact, several researchers have
+happens in software development teams, mainly in open source. 
+% Antonio - Is this properly justified (as an 'anecdotal evidence')? I guess it happens due to the unorganized/unexpected contributions that can appear in open source projects, right?
+And, in fact, several researchers have
 proved that many projects match the features of a critical state,
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis},
 which is 
@@ -139,23 +141,24 @@ further changes down the line in a regular pattern.
 
 Furthermore, the case for this
 critical state is supported by several macro measures that certify the non-existence of a particular
-scale in the size of changes
-\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they
-also exhibit long-range 
-correlations and a \emph{pink noise} \cite{szendro2001pink} in the power spectral density, with
-\emph{noise} or variations with respect to the \emph{normal} frequency
+\emph{scale in the size of changes}
+\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they also exhibit \emph{long-range correlations} and a \emph{pink noise} \cite{szendro2001pink} in the power spectral density, with
+\emph{noise} or variations with respect to the normal frequency
 changing in a way that is inversely proportional to it, higher frequency
 changes getting a smaller spectral density
-\cite{Merelo2016:repomining}. These are the three characteristics of
-systems in a critical self-organized state which will be examined in
-this paper, where we take a different approach to analyzing the
-repositories. Instead of fixed-time changes in size of the whole
-repository, we introduce a {\em natural} timeline which uses as a {\em
-  tic} the commit itself,
-and consider either increases or decreases in size, not only
-increases. In fact, a refactorization where a number of lines is
-changes might not show up using the previous methodology, while it
-will have an impact in this one. 
+\cite{Merelo2016:repomining}. 
+% Antonio - This is the definition of pink noise, rigth?
+
+% Antonio - I have removed some italics and added others in order to remark the characteristics mentioned below. 
+
+These are the three characteristics of systems in a critical self-organized state which will be examined in this paper, where we take a different approach to analyzing the repositories. 
+% Antonio - A different approach to which?
+Instead of fixed-time changes in size of the whole repository, we introduce a {\em natural} timeline which uses as a {\em
+  tic} the commit itself, and consider either increases or decreases in size, not only increases. 
+% Antonio - as it is usual? as it was previously done?
+In fact, a refactorization where a number of lines is changes might not show up using the previous methodology, 
+% Antonio - which one do you refer to? If it was presented in a previous paper, please add a reference.
+while it will have an impact in this one. 
 
 % The current state of the project has obviously an influence in its
 % productivity, with some authors finding this state favors the
@@ -174,26 +177,34 @@ way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
 self-organized state might be essential to the software development
 process, as long as it is done through an application that allows
 collaboration, for instance, as a repository managed by a source code
-control system such as git. In fact, some explanations have been offered via
-conservation laws \cite{6784340} and other usual complex network
+control system such as \emph{git}. In fact, some explanations have been offered via conservation laws \cite{6784340} and other usual complex network
 mechanisms such as preferential attachment \cite{lin2015power}.
+
+% Antonio - It is not clear the motivation, rather than just 'observe' if SOC happens. Please, explain what will be the good news for developers or so if SOC is detected. ;)
+
 %% It reminds me about the cathedral vs bazaar discussion 
 %% Add something about it if you want - JJ
 % At any rate, software projects can be considered complex systems and
 % as such we will study them in this paper. 
 
 After some initial exploration of the subject and developing the
-tools needed to mine repositories on GitHub \cite{merelo16:self}, in
+tools needed to mine 
+% Antonio - mine => Prof. Merelo's
+repositories on GitHub \cite{merelo16:self}, in
 this paper, we will study many different software repositories, all of
 them in active development, trying to find out 
 the telltale signs of self-organized criticality, as enumerated above. 
 Previously we have applied these techniques to examining the software
 repository for the Moose Perl library 
 \cite{Merelo2016:repomining}, books written mainly by a single
-person \cite{merelo16:slash} and papers written collaboratively \cite{merelo16:self}. 
+person \cite{merelo16:slash} and papers written collaboratively \cite{merelo16:self}.
+% Antonio - Tell a bit about the findings in those previous papers... Something like "SOC was detected in all the cases". Therefore the motivation will be clearer in this one if that happened in previous works. ;)
+
 In this paper, we are going  
 to work on a total of 16 repositories, chosen among those that have at
-least a few hundred commits, independently of the actual time it has taken to
+least a few hundred commits, 
+% Antonio - Better say "more than a hundred commits" or so
+independently of the actual time it has taken to
 make them. Since repositories hold many kind of different files,
 including screen art, documentation and configuration files for building tools, we have focused on
 the code written in the two or three main languages of the repository
@@ -205,12 +216,12 @@ language.
 Our intention in this line of research is to eventually find when the
 change of phase to the critical state occurs and if there are any
 other signs related to it. That is why, in this paper, we will focus
-on the characterization of sofware teams, as reflected in the work
+on the characterization of software teams, as reflected in the work
 logs, that are actually in that state. 
 
 The rest of the paper is organized thus: After presenting a brief state of the art next, 
 followed by the methodology in Section \ref{sec:method},
-obtained results  will be reported in Section \ref{res}
+obtained results will be reported in Section \ref{res}
 and eventually we will expose our conclusions. 
 
 
