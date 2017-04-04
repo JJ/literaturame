@@ -292,7 +292,8 @@ for (i in 1:length(lines) ) {
     print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
 }
 @
-\caption{Lines changed per commit in a log-y scale. The four charts
+\caption{Lines changed per commit in a log-y scale, with $x$ scale
+ corresponding to commit number. The four charts
   correspond, starting with the top right, DCAI, PPSN, book prediction,
   volunteer computing at the lower bottom. This order is going to be
   the same across all figures from now on. This order has been
@@ -328,7 +329,7 @@ kable( summary,"latex" )
 @
 \vspace*{5mm}
 \caption{Summary of statistical measures for the four papers we have
-  been analyzing here.\label{t:stat}}
+  been analyzing here; $SD$ stands for ``Standard Deviation''\label{t:stat}}
 \end{table}
 %
 This table shows that, at least from a macro point of view, median and
