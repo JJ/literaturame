@@ -145,7 +145,7 @@ changes getting a smaller spectral density \cite{Merelo2016:repomining}.
 The state in which the team is has obviously an influence in its
 productivity, with some authors finding this state favors
 evolvability of the underlying software system \cite{1544757}, as
-opposed from the the lack of this quality in software created by a
+opposed from the lack of this quality in software created by a
 top-down organization process. That is why this quality has been
 mainly studied in open source software systems which follow a more
 open model of development; however, it might happen that, in the same
@@ -332,7 +332,7 @@ kable( summary,"latex" )
 \end{table}
 %
 This table shows that, at least from a macro point of view, median and
-averages are remarkably similar, with the median between 9 and 22 lines
+averages are remarkably similar to the ones found in other studies  \cite{merelo16:slash,Merelo2016:repomining}, with the median between 9 and 22 lines
 and the average between 24 and 54. The fact that the average is so
 separated from the median is already a hint that this is a skewed
 distribution. The book analyzed in \cite{merelo16:slash} had a median
