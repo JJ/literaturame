@@ -222,8 +222,8 @@ proved that software repositories seem to be in a SOC state,
 reports \cite{Merelo2016:repomining,merelo16:slash,merelo16:self}
 where we examine and establish the existence of repositories in a
 critical state to which they have arrived via self-organization; the
-fact that these repositories have different characteristics in terms
-of the number of users, age and type of information they hold implies that
+fact that these repositories have different characteristics regarding
+the number of users, age, and type of information they hold implies that
 self-organization, as should be expected, is achieved with relative
 ease. In fact, this state of self-organized criticality
 quantitatively proves what has been already established via
@@ -238,7 +238,7 @@ error or adapt the code to particular situations.
 % Reference 
 % Added - JJ
 In fact, this self-organization has also been observed in similar
-projects such as Wikipedia.
+projects such as Wikipedia \cite{forte2008scaling}.
 
 This self-organization, eventually, might produce a critical state
 given the necessary conditions. However, there has been no work going further and
@@ -257,7 +257,7 @@ age.
 
 In this paper we will work with the size of changes to a particular
 set of files in the repository; since repositories include other
-artifacts such as images or style files we, via a wildcard, select
+artifacts such as images or style files we, by using a wildcard, select
 only the file or files we are interested in. To extract information
 about changes to these files in the repositories,  we analyze the
 repository using a Perl script that runs over the git log and notes
@@ -350,11 +350,11 @@ decimal \emph{y} scale and smoothing over several commits, either 10
 or 20, depending on the color. The \emph{x} axis is simply the temporal
 sequence of commits, while the \emph{y} axis is the absolute size of the
 commit in number of lines. The serrated characteristic is the same, as well
-as the big changes in scale, with some periods where small changes
-happen and other that alternate big with small changes. A certain
-\emph{rhythm} can be observed, which hints at large-scale
-correlations, that is influence of changes happening now over changes
-that occur several, or many, steps afterwards, in the future. 
+as the big changes in scale,  with some periods where small changes 
+happen and others where they alternate between big and minor changes. A certain
+\emph{rhythm} can be observed, which hints of large-scale
+correlations, that is the influence of changes happening now over changes
+that occur several, or many, steps afterward, in the future. % Grammarly says 'afterwards' is British
 
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
@@ -395,7 +395,7 @@ for (i in 1:length(lines) ) {
 \caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
-This chart show what seems to be a Zipf distribution, with the commit sizes
+This chart shows what seems to be a Zipf distribution, with the commit sizes,
 ranked in descending order and plotted with a logarithmic \emph{y}
 axis. This distribution shows, in all cases, a {\em tail}
 corresponding to big changes. This might be simply a consequence of
@@ -469,7 +469,7 @@ for (i in 1:length(lines) ) {
 %
 %
 The Zipf exponents and intercepts for these models are shown in Table \ref{t:zipf},
-and are of the same order, but different range, of the one found  in
+and are of the same order, but different range, of the one found in
 \cite{merelo16:slash}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
@@ -588,9 +588,17 @@ type of repositories, and see if there are some outstanding and
 statistically significant differences, which would be attributed rather
 than the substrate itself, to different types of collaboration. We would also like to make more precise models of the ranked change sizes, as well as the relation between number of changes and its size. A study of particular circumstances of every repository will also help us to understand what self-organization means and, finally, as was our initial objective, if this fact can be used to create methodologies that improve productivity in work teams. 
 
+% Maybe split the first sentence in two:
+% As a future line of work, we will first try to gather data from more repositories, 
+% specially in the boundary where we think self-organization arises, at around 100 commits.
+% A comparison between these with another type of repositories, to see if 
+% there are some notable and statistically significant differences, which 
+% would be attributed rather than the substrate itself, to different types of collaboration. 
+
+
 
 \section*{Acknowledgements}
-This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH).
+This work has been supported in part by: de Ministerio espa\~{n}ol de Econom\'{\i}a y Competitividad under project TIN2014-56494-C4-3-P (UGR-EPHEMECH) and by Consejo Nacional de Ciencia y Tecnolog\'{\i}a under project 220590.
 
 \bibliographystyle{splncs03}
 \bibliography{geneura,biblio}
