@@ -286,7 +286,7 @@ The sequence of changes for the 4 files is shown in Figure \ref{fig:tl}.
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
   \centering
-<<timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+<<iwann-timeline, cache=FALSE,echo=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
 for (i in 1:length(lines) ) {
     lines[[i]]$x = as.numeric(row.names(lines[[i]]))
     print(ggplot(lines[[i]]) + geom_point(aes(x=x,y=Lines.changed,group=1))+scale_y_log10())
@@ -360,7 +360,7 @@ that occur several, or many, steps afterwards, in the future.
 %\includegraphics{analyzing-paper_files/figure-latex/smoothie-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+<<iwann-smoothie,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
 for (i in 1:length(lines) ) {
      print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10())
 }
@@ -377,7 +377,7 @@ Figure \ref{fig:changes}.
 %\includegraphics{analyzing-paper_files/figure-latex/linecount-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+<<iwann-linecount,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
 sizes.fit.df <- data.frame(Name = character(),
                         Coefficient = double(),
                         Intercept = double())
@@ -447,7 +447,7 @@ in the form of an histogram. This is done in Figure \ref{fig:zipf}.
 % in this figure, the different subplots should be identified (maybe including the name of repo in each case)  - Pedro
 \begin{figure*}[h!tb]
   \centering
-<<powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
+<<iwann-powerlaw,message=FALSE, cache=FALSE,echo=FALSE,warning=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.245\\linewidth'>>=
 zipf.fit.df <- data.frame(Name = character(),
                           Coefficient = double(),
                           Intercept = double())
@@ -504,7 +504,7 @@ in the sequence. This is computed and plotted in Figure
 %\includegraphics{analyzing-paper_files/figure-latex/autocorrelation-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
+<<iwann-autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=
 for (i in 1:length(lines) ) {
     print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
@@ -539,7 +539,7 @@ the power spectral density. This is shown in Figure \ref{fig:spectrum}, where th
 %\includegraphics{analyzing-paper_files/figure-latex/spectrum-1.pdf}
 \begin{figure*}[h!tb]
   \centering
-<<spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=  
+<<iwann-spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=8,fig.subcap=c('DCAI','PPSN','Book Prediction','Volunteer computing'),out.width='.48\\linewidth'>>=  
 for (i in 1:length(lines) ) {
     print(autoplot(spectrum(lines[[i]]$Lines.changed, plot=FALSE) ))
 }
