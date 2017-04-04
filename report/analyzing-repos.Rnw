@@ -83,19 +83,23 @@ for (i in 1:length(summary$file) ) {
 
 \begin{abstract}
   Software development teams become eventually complex systems,
-  reaching a critical state. 
-% Antonio - What's the motivation of the paper?
-In this paper, we use a different
-  methodology to measure whether this self-organized critical (SOC) state actually exists by looking
-  at the three conditions: a scale-free structure, long-distance
-correlations, and so-called {\em pink} noise. We will work on 16
-different repositories, and use a novel, more natural and precise
-methodology to examine change sizes. Our research shows that in all
-16 repositories analyzed, at least one of the SOC features exists, and
+  reaching a critical state, a fact that has already been proved by
+  several researchers. This state, reached by self-organization, is
+  characterized by three conditions applied to the sequence of changes: a scale-free structure, long-distance
+correlations, and so-called {\em pink} noise. In this paper, we use a new
+  methodology to measure whether this self-organized critical (SOC)
+  state actually exists. Instead of focusing in a single and
+  long-running project as is usual, we will rather work on 16
+different repositories with different sizes and ages, and use a novel, more natural and precise
+methodology to examine the sizes of changes. Our research shows that in all
+16 repositories analyzed, at least one of the SOC characteristics exists, and
 most of them exhibit all three, which leads us to think that SOC is
 more widespread in software development than previously thought and
 that very few initial conditions might be needed to reach it.
-% Antonio - Then, say what are the implications of this fact. ;) 
+% Antonio - Then, say what are the implications of this fact. ;)
+% The implication is that it is more widespread than previously
+% thought and that few initial conditions might be needed to reach
+% it. - JJ
 \end{abstract}
 
 %\keywords{Complex systems, self-organizing systems, self-organized
