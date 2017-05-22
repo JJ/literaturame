@@ -148,7 +148,7 @@ correlations that make a particular change in a file cause
 further changes down the line in a regular pattern. 
 
 Furthermore, the case for this
-critical state in software repositories is supported by several macro measures that certify the non-existence of a particular
+critical state in software repositories is supported by several macro measures that certify the absence of a particular
 scale in the size of changes, that is, a {\em scale-free} structure
 \cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they also exhibit \emph{long-range correlations} and \emph{pink noise} \cite{szendro2001pink} in the power spectral density, with
 noise or variations with respect to the normal frequency
@@ -172,7 +172,7 @@ the whole repository; instead, we introduce a {\em natural} timeline which uses 
   tick} the commit itself, and consider either increases or decreases in size, not only increases. 
 % Antonio - as it is usual? as it was previously done?
 % Don't understand what you mean - JJ
-In fact, a refactorization where a number of lines is changes might
+In fact, a refactorization where a number of lines is changed might
 not show up in daily changes, 
 % Antonio - which one do you refer to? If it was presented in a previous paper, please add a reference.
 while it will have an impact in this one. 
@@ -307,7 +307,7 @@ mine their information.
 % --------------------------------------------------------
 
 
-\section{Methodology}\label{methodology}
+\section{Methodology}
 \label{sec:method}
 
 We have chosen 16 repositories in different states of development, and representing from
@@ -401,7 +401,8 @@ proceed to analyze it in the next section.
 % --------------------------------------------------------
 
 
-\section{Results}\label{res}
+\section{Results}
+\label{res}
 %
 \begin{table*}[h!tb]
     \centering
