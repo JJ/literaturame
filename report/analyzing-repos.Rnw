@@ -363,8 +363,6 @@ there have been actually two lines added somewhere and two deleted
 somewhere else, so in absence of that, we opt for the heuristic of
 using the largest of these two values as change size. This analysis
 method is more precise that the one used by other authors, 
-% Antonio - referencias de ejemplo
-% Explained below - JJ
 which takes
 into account only changes in size in the whole repository, and thus does
 not include activities such as refactoring that consist mainly in
@@ -376,7 +374,7 @@ We extract this information via a Perl script, that generates a {\tt
   .csv} file with a single column with the sequence of changes in size in the files of interest in each
 repository. These data files, as well as the repositories where they have
 been measured, are available with a free license in the repository
-that also hosts this paper (hidden now for double blind review). 
+that also hosts this paper \url{http://github.com/JJ/literaturame}. 
 
 Please remember that the $x$ axis for these sequences of changes,
 shown smoothed in Figure \ref{fig:smoothie}, does not correspond to physical time,
