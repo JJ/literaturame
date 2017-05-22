@@ -229,9 +229,11 @@ other signs related to it. That is why, in this paper, we will focus
 on the characterization of software teams, as reflected in the work
 logs, that are actually in that state. 
 
-The rest of the paper is organized thus: After presenting a brief state of the art next, 
-followed by the methodology in Section \ref{sec:method},
-obtained results will be reported in Section \ref{res}
+% I have deleted the LaTeX code to include the number of sections as this style does not support them   [pedro]
+The rest of the paper is organized thus: 
+After presenting a brief state of the art next, 
+followed by the methodology, % in Section \ref{sec:method},
+obtained results will be reported %in Section \ref{res}
 and eventually we will expose our conclusions. 
 
 
