@@ -82,7 +82,7 @@ for (i in 1:length(summary$file) ) {
 \maketitle
 
 \begin{abstract}
-  Software development teams become eventually complex systems,
+  Software development teams become eventually complex systems
   reaching a critical state, a fact that has already been proved by
   several researchers. This state, reached by self-organization, is
   characterized by three conditions applied to the sequence of changes: a scale-free structure, long-distance
@@ -96,10 +96,6 @@ methodology to examine the sizes of changes. Our research shows that in all
 most of them exhibit all three, which leads us to think that SOC is
 more widespread in software development than previously thought and
 that very few initial conditions might be needed to reach it.
-% Antonio - Then, say what are the implications of this fact. ;)
-% The implication is that it is more widespread than previously
-% thought and that few initial conditions might be needed to reach
-% it. - JJ
 \end{abstract}
 
 %\keywords{Complex systems, self-organizing systems, self-organized
