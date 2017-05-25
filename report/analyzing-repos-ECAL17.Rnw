@@ -82,7 +82,7 @@ for (i in 1:length(summary$file) ) {
 \maketitle
 
 \begin{abstract}
-  Software development teams become eventually complex systems
+  Software development teams eventually become complex systems
   reaching a critical state, a fact that has already been proved by
   several researchers. This state, reached by self-organization, is
   characterized by three conditions applied to the sequence of changes: a scale-free structure, long-distance
@@ -105,10 +105,10 @@ that very few initial conditions might be needed to reach it.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INTRODUCTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{introduction}
 
-Self-organized criticality (SOC) \cite{bak1988self} is a condition
+Self-organized criticality (SOC) \citep{bak1988self} is a condition
 that describes complex systems in many different venues and
 environments. The dynamics of systems in this state is sometimes
-compared to that of a sand pile \cite{paczuski1996avalanche}, in the
+compared to that of a sand pile \citep{paczuski1996avalanche}, in the
 sense that 
 the actual shape tends to reach also a critical state, 
 represented in the sand pile by a
@@ -128,9 +128,9 @@ happens in software development teams, mainly in an open source context.
 % giving a motivation why people would thing this is worthy of study - JJ
 As a matter of fact, several researchers have
 proved that many projects match the features of a critical state,
-\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis},
+\citep{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining,gao2014analysis},
 which is 
-attributed to a stigmergy process \cite{robles05}. Stigmergy implies
+attributed to a stigmergy process \citep{robles05}. Stigmergy implies
 collaboration without direct contact between agents, but through the
 environment. In this case, collaborators interact through the code
 itself and through messages left, like pheromones, in other
@@ -150,11 +150,11 @@ further changes down the line in a regular pattern.
 Furthermore, the case for this
 critical state in software repositories is supported by several macro measures that certify the absence of a particular
 scale in the size of changes, that is, a {\em scale-free} structure
-\cite{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they also exhibit \emph{long-range correlations} and \emph{pink noise} \cite{szendro2001pink} in the power spectral density, with
+\citep{wu2007empirical,gorshenev2004punctuated,Merelo2016:repomining}, but in some cases they also exhibit \emph{long-range correlations} and \emph{pink noise} \citep{szendro2001pink} in the power spectral density, with
 noise or variations with respect to the normal frequency
 changing in a way that is inversely proportional to it, higher frequency
 changes getting a smaller spectral density
-\cite{Merelo2016:repomining}. 
+\citep{Merelo2016:repomining}. 
 % Antonio - This is the definition of pink noise, rigth?
 % The definition of pink noise is in the reference next to the words
 % "pink noise" - JJ
@@ -178,12 +178,12 @@ not show up in daily changes,
 while it will have an impact in this one. 
 
 One of the intentions in this paper is to try and prove that, in the same
-way it happens in neural systems \cite{10.3389/fnsys.2014.00166}, the
+way it happens in neural systems \citep{10.3389/fnsys.2014.00166}, the
 self-organized state might be essential to the software development
 process, as long as it is done through an application that allows
 collaboration, for instance, as a repository managed by a source code
-control system such as {\tt git}. In fact, some explanations have been offered via conservation laws \cite{6784340} and other usual complex network
-mechanisms such as preferential attachment \cite{lin2015power}.
+control system such as {\tt git}. In fact, some explanations have been offered via conservation laws \citep{6784340} and other usual complex network
+mechanisms such as preferential attachment \citep{lin2015power}.
 
 % Antonio - It is not clear the motivation, rather than just 'observe' if SOC happens. Please, explain what will be the good news for developers or so if SOC is detected. ;)
 % That is enough motivation. We don't know in advance if it happens or
@@ -194,15 +194,15 @@ mechanisms such as preferential attachment \cite{lin2015power}.
 % as such we will study them in this paper. 
 
 After some initial exploration of the subject and developing the
-tools needed to mine repositories on GitHub \cite{merelo16:self}, in
+tools needed to mine repositories on GitHub \citep{merelo16:self}, in
 this paper we will study many different software repositories, all of
 them in active development, trying to find out 
 the telltale signs of self-organized criticality, as enumerated above. 
 Previously we have applied these techniques to examining the software
 repository for the Moose Perl library 
-\cite{Merelo2016:repomining}, books written mainly by a single
-person \cite{merelo16:slash} and papers written collaboratively
-\cite{merelo16:self}; they do exhibit some of the signs that indicate
+\citep{Merelo2016:repomining}, books written mainly by a single
+person \citep{merelo16:slash} and papers written collaboratively
+\citep{merelo16:self}; they do exhibit some of the signs that indicate
 we are dealing with a complex system, such as a scale-free size of
 changes. 
 % Antonio - Tell a bit about the findings in those previous papers... Something like "SOC was detected in all the cases". Therefore the motivation will be clearer in this one if that happened in previous works. ;)
@@ -247,9 +247,9 @@ self-organized criticality in software projects or, for that matter,
 any other kind of collaborative work teams. The main reason might be
 that researchers have thoroughly
 proved that several big software repositories seem to be in a SOC state,
-\cite{wu2007empirical,gorshenev2004punctuated}, although some
+\citep{wu2007empirical,gorshenev2004punctuated}, although some
 not-so-big and not-really-software repositories seem to be in that
-state too \cite{Merelo2016:repomining,merelo16:slash,merelo16:self};
+state too \citep{Merelo2016:repomining,merelo16:slash,merelo16:self};
 in these last papers suggest, that since these repositories have different characteristics in terms
 of the number of users, age and type of information they hold implies that
 self-organization, as it should be expected, is achieved with relative
@@ -259,23 +259,23 @@ developed, but the way the interaction is done itself.
 Indeed, this state of self-organized criticality
 quantitatively proves what has been already established via
 qualitative analysis, the fact that in many successful software
-projects, developers self-organize \cite{Crowston2007564}, 
+projects, developers self-organize \citep{Crowston2007564}, 
 which is
 the preferred way of working in distributed and volunteer
-teams \cite{crowston2012free}. In fact, this way of organization
+teams \citep{crowston2012free}. In fact, this way of organization
 matches our own experience in development of open source projects such
-as \cite{ae09,2016arXiv160101607M}, which are developed mainly by one
+as \citep{ae09,2016arXiv160101607M}, which are developed mainly by one
 or a few coders, helped sporadically by other coders that find an
 error and fix it or adapt the code to particular situations. 
 In fact, this self-organization has also been observed in similar
-projects such as Wikipedia \cite{10.1371/journal.pone.0017333}
+projects such as Wikipedia \citep{10.1371/journal.pone.0017333}
 
 A critical state might eventually emerge from self-organization
 given the necessary conditions. However, there has been no work going further and
 proving this even in the case that the team is carried out by a small team and
 on repositories that are not devoted to software development. And this
 critical state is key to carry the system to adaptive success, as
-defined in \cite{benbya2006toward}, which presents 
+defined by \citet{benbya2006toward}, which presents 
 the seven mechanisms that create complexity as initially enunciated for
 biological systems and apply them to information system
 development. 
@@ -289,7 +289,7 @@ to do and how to do it, and, eventually, act on your fork, resulting in a
 pull request to the original repository. These activities can
 effectively be defined as social, so that teamwork in software
 repositories is embedded in a kind of social
-network. \cite{valverde2007self}, for instance, 
+network. \citet{valverde2007self}, for instance, 
 have proved how this network grows under the tension of top-down or
 hierarchical rules and self-organization emerging from the bottom,
 which make software development teams a complex social system. This
@@ -327,7 +327,7 @@ commits.
 
 The way we look at changes in the repository is novel and was used for
 the first time in the previous technical reports
-\cite{Merelo2016:repomining}. When looking to find SOC in repositories
+\citep{Merelo2016:repomining}. When looking to find SOC in repositories
 you have to look at the timeline of changes in those
 repositories. In most papers so far, this timeline was {\em natural},
 using days or weeks, and the change used was the increase in size
@@ -376,14 +376,14 @@ We extract this information via a Perl script, that generates a {\tt
   .csv} file with a single column with the sequence of changes in size in the files of interest in each
 repository. These data files, as well as the repositories where they have
 been measured, are available with a free license in the repository
-that also hosts this paper \url{http://github.com/JJ/literaturame}. 
+that also hosts this paper\footnote{\url{http://github.com/JJ/literaturame}}. 
 
 Please remember that the $x$ axis for these sequences of changes,
 shown smoothed in Figure \ref{fig:smoothie}, does not correspond to physical time,
 but simply to the commit number, and then only in changes of the
 {\em interesting}, that is, code files. In this sense, there is an important difference between
 our research methodology, which considers atomic changes, to papers such
-as \cite{herraiz2009statistical}, which take into account {\em daily}
+as \citep{herraiz2009statistical}, which take into account {\em daily}
 changes. We think that examining discrete changes does not impose a
 particular rhythm, namely, daily, on the changes, but lets the
 repository expose its own rhythm; it also allows us to examine
@@ -427,10 +427,10 @@ A summary of the statistical characteristics of the size of the commits,
 in number of lines, is shown in Table \ref{t:stat}. From a macro point of view, median and
 means are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Means span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the mean is so
 separated from the median is already a hint that this is a skewed
-distribution. The book analyzed in \cite{merelo16:slash} had a median
+distribution. The book analyzed by \citet{merelo16:slash} had a median
 of 10 lines, but a mean of 150 lines changed, in a distribution that
 is different, much more skewed towards larger sizes, while the
-software library analyzed in \cite{Merelo2016:repomining} had a median
+software library analyzed by \citet{Merelo2016:repomining} had a median
 of 9 and a mean of close to 32, which is remarkably similar to one of
 the repositories analyzed here. This implies that the concept of {\em
   session}, or size of changes committed together, might be very
@@ -518,13 +518,13 @@ kable( sizes.fit.df,"latex" )
   of change size occurrences vs. size.\label{t:sizes}}
 \end{table}
 %
-These values are also similar to those found in
-\cite{Merelo2016:repomining}, where the intercept was 6.02, above the
+These values are also similar to those found by
+\citet{Merelo2016:repomining}, where the intercept was 6.02, above the
 table, and the slope -0.001, a very mild slope that hints at a big
 number of changes and might in fact indicate that, as would be
 expected, the intercept increases and the slope decreases with the
 number of changes or the size of the project. The shape of the line in
-\cite{Merelo2016:repomining} in fact might be more similar to a {\em
+\citep{Merelo2016:repomining} in fact might be more similar to a {\em
   broken stick}; this is a matter that deserves further
 investigation. In these repositories, the coefficient varies between negative
 0.71 and 2.02 for Tensorflow. There does not seem to be a clear trend
@@ -559,8 +559,8 @@ for (i in 1:length(lines) ) {
 \end{figure*}
 %
 %
-We can in fact fit these charts to a Zipf distribution, whose Zipf exponents and intercepts for these models are shown in Table \ref{t:zipf}, and are of the same order, but different range, of those found in
-\cite{merelo16:slash}, where it hovers around 6 for the intercept and
+We can in fact fit these charts to a Zipf distribution, whose Zipf exponents and intercepts for these models are shown in Table \ref{t:zipf}, and are of the same order, but different range, of those found by
+\citet{merelo16:slash}, where it hovers around 6 for the intercept and
 -0.01 for the slope.
 %
 \begin{table}[h!tb]
@@ -610,7 +610,7 @@ for (i in 1:length(lines) ) {
 % 
 Autocorrelation is significant only if the lines go over the mean
 plotted as a dashed line. These long distance autocorrelations, already
-found in \cite{Merelo2016:repomining}, are present here too. In the mentioned paper, there was positive
+found by \citet{Merelo2016:repomining}, are present here too. In the mentioned paper, there was positive
 autocorrelation in the 21 commit period; in this case, it appears  in different places depending on the repository, but is present in most cases anyway.
 
 In these repositories of increasing age, we find that actual long-distance autocorrelation only happens when they age, with no significant long-distance  autocorrelation in the first two repositories, and a significant one in most of the rest. However, while in the above mentioned work we found sharp peaks of long-distance correlation, in this case there are multiple peaks at many different distances, from short distance to very long distance of 30 and 40 commits. 
