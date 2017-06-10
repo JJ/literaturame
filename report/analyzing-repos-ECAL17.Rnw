@@ -47,25 +47,23 @@ languages <- c('erlang','Python','Perl','Ruby','Emacs Lisp','JavaScript',
 
 age <-  data.frame(Name = character(),
                    file = character(),
-                   age = integer(),
                    language = character(),
-                   Mean = double(),
+                   age = integer(),
                    Median = double(),
+                   Mean = double(),
                    SD = double())
-
-
 
 for (i in 1:length(files) ) {
     file.name = paste0(pref,files[i],'.csv')
     these.lines <-  read.csv(file.name)
 
     age <- rbind( age,
-                 data.frame( Name = urls[i],
+                 data.frame(Name = urls[i],
                             file = file.name,
-                            age = length(these.lines$Lines.changed),
                             language = languages[i],
-                            Mean = as.double(mean(these.lines$Lines.changed)),
+                            age = length(these.lines$Lines.changed),
                             Median =  as.double(median(these.lines$Lines.changed)),
+                            Mean = as.double(mean(these.lines$Lines.changed)),
                             SD = as.double(sd(these.lines$Lines.changed) )))
 }
 summary <- age[order(age$age),]
