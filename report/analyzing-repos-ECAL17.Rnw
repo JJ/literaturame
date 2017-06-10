@@ -230,6 +230,7 @@ on the characterization of software teams, as reflected in the work
 logs, that are actually in that state. 
 
 % I have deleted the LaTeX code to include the number of sections as this style does not support them   [pedro]
+% Thanks - JJ
 The rest of the paper is organized thus: 
 After presenting a brief state of the art next, 
 followed by the methodology, % in Section \ref{sec:method},
@@ -628,7 +629,7 @@ spec.fit.df <- data.frame(Name = character(),
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
     print(autoplot( this.spectrum ) + scale_x_log10() )
-    spec.fit <- lm(log(this.spectrum$spec) ~ log(this.spectrum$freq))
+    spec.fit <- lm(log(this.spectrum$spec) ~ log((this.spectrum$freq))**2)
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     f <- summary(spec.fit)$fstatistic
     p <- pf(f[1],f[2],f[3],lower.tail=F)
@@ -650,7 +651,7 @@ kable( spec.fit.df,"latex" )
 \vspace*{2mm}
 \caption{Summary of coefficients of the linear models adjusting the
   power spectrum, and the p-value of the fit (values $>$ 0.05 indicate
- a bad fit).  Coefficients around $-1$ correspond to pink noise. \label{t:spec}}
+ a bad fit).  Coefficients between 0 and -2 correspond to pink noise. \label{t:spec}}
 \end{table}
 
 In this case, we see that this {\em trend} appears with increasing
