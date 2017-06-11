@@ -192,13 +192,10 @@ tools needed to mine repositories on GitHub \citep{merelo16:self}, in
 this paper we will study many different software repositories, all of
 them in active development, trying to find out 
 the telltale signs of self-organized criticality, as enumerated above. 
-Previously we have applied these techniques to examining the software
-repository for the Moose Perl library 
-\citep{Merelo2016:repomining}, books written mainly by a single
-person \citep{merelo16:slash} and papers written collaboratively
-\citep{merelo16:self}; they do exhibit some of the signs that indicate
-we are dealing with a complex system, such as a scale-free size of
-changes. 
+Previously we have applied these techniques to different types of repositories
+\citep{Merelo2016:repomining,merelo16:slash,merelo16:self}, finding
+they  have
+this scale-free size property.
 % Antonio - Tell a bit about the findings in those previous papers... Something like "SOC was detected in all the cases". Therefore the motivation will be clearer in this one if that happened in previous works. ;)
 % And this will make the paper well over the 9 pages I so painfully
 % managed to reduce it - JJ
@@ -225,11 +222,9 @@ logs, that are actually in that state.
 
 % I have deleted the LaTeX code to include the number of sections as this style does not support them   [pedro]
 % Thanks - JJ
-The rest of the paper is organized thus: 
-After presenting a brief state of the art next, 
-followed by the methodology. % in Section \ref{sec:method},
-Obtained results will be reported %in Section \ref{res}
-and eventually we will expose our conclusions. 
+Next, after presenting a brief state of the art, we will explain our
+methodology followed by the results obtained, closing with our
+conclusions. 
 
 
 % --------------------------------------------------------
@@ -695,30 +690,27 @@ self-organization, but with measures and quantities in a whole
 different range than the other repositories. 
 
 In line with our open science policy, you can draw your own conclusions on your own repos by running the Perl
-script hosted in \url{http://github.com/JJ/literaturame}. This
+script hosted in \url{https://git.io/soc-repo}. This
 repository holds also the data used in this study, as well as the
 source for this paper, written using Knitr and including all the
 scripts that process data and generate charts.
 
 As a future line of work, we will first try to gather data from more
-repositories, specially in the boundary where we think
-self-organization arises, between 100 and 1000 commits. A comparison
-between these and other types might show statistically significant
+repositories, specially in the age boundary where we think
+self-organization arises. Different types might show statistically significant
 differences, which would be attributed rather 
 than the substrate itself, to different types of collaboration. We
 would also like to make more precise models of the ranked change
 sizes, as well as the relation between number of changes and its
-size. A study of particular circumstances of every repository will
-also help us to understand what self-organization means and, finally,
-as was our initial objective, if this fact can be used to design
-methodologies that improve productivity in work teams.  
+size. We will try to leverage repository measurements to develop
+methodologies that improve collaboration and productivity. 
 
 
 \section*{Acknowledgements}
 
 This work has been supported in part by the Spanish Ministry of 
 Econom\'{\i}a y Competitividad, project
-TIN2014-56494-C4-\{1,3\}-P (\{UMA,UGR\}-EPHEMECH) and by Consejo Nacional de Ciencia y Tecnolog\'{\i}a under project 220590.
+TIN2014-56494-C4-\{1,3\}-P (\{UMA,UGR\}-EPHEMECH) and by CONACYT project 220590.
 % Antonio - completar con otros, para la versi?n final (KNOWAVES, por ejemplo)
 % No sé qué es Knowaves. - JJ
 
