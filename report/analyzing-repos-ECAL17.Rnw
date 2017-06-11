@@ -479,10 +479,10 @@ for (i in 1:length(lines) ) {
                           data.frame( Name = repo[[1]][1],
                                      Intercept = summary(sizes.fit)$coefficients[1],
                                      Coefficient = summary(sizes.fit)$coefficients[2] ))
-    print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()))
+    print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url))
 }
 @ 
-\caption{Number of changes vs lines changed in a log-log scale. The
+\caption{Number of changes of that size vs. lines changed in a log-log scale. The
   blue line and gray zone is a smoothed version of the chart. \label{fig:changes}}
 \end{figure*}
 %
@@ -623,7 +623,7 @@ spec.fit.df <- data.frame(Name = character(),
                           p = double())
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
-    print(autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url)
+    print(autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url) )
     spec.fit <- lm(log(this.spectrum$spec) ~ log((this.spectrum$freq))**2)
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     f <- summary(spec.fit)$fstatistic
@@ -635,7 +635,7 @@ for (i in 1:length(lines) ) {
                                     Coefficient = summary(spec.fit)$coefficients[2] ))
 }
 @ 
-\caption{Spectral density of changes, power vs. frequency. The repos are in the same order as above.  \label{fig:spectrum}}
+\caption{Spectral density of changes, power vs. frequency.  \label{fig:spectrum}}
 \end{figure*}
 %
 \begin{table}
