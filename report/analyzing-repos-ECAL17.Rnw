@@ -52,11 +52,11 @@ age <-  data.frame(Name = character(),
                    Median = double(),
                    Mean = double(),
                    SD = double())
-
+url.list <- list()
 for (i in 1:length(files) ) {
     file.name = paste0(pref,files[i],'.csv')
     these.lines <-  read.csv(file.name)
-
+    url.list[[file.name]] <- urls[i]
     age <- rbind( age,
                  data.frame(Name = urls[i],
                             file = file.name,
@@ -68,10 +68,10 @@ for (i in 1:length(files) ) {
 }
 summary <- age[order(age$age),]
 lines <- list()
-# Read again because I am useless in R
+# Read again in order because I am useless in R
 for (i in 1:length(summary$file) ) {
     lines[[i]] <-  read.csv(as.character(summary[[i,'file']]))
-
+    lines[[i]]$url <- url.list[[i]]
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
 }
@@ -152,10 +152,7 @@ scale in the size of changes, that is, a {\em scale-free} structure
 noise or variations with respect to the normal frequency
 changing in a way that is inversely proportional to it, higher frequency
 changes getting a smaller spectral density
-\citep{Merelo2016:repomining}. 
-% Antonio - This is the definition of pink noise, rigth?
-% The definition of pink noise is in the reference next to the words
-% "pink noise" - JJ
+\citep{Merelo2016:repomining}.
 
 Even if the existence of this SOC state in repositories is well
 established, the choice of repositories to study is limited to
@@ -171,9 +168,8 @@ the whole repository; instead, we introduce a {\em natural} timeline which uses 
 % Antonio - as it is usual? as it was previously done?
 % Don't understand what you mean - JJ
 In fact, a refactorization where a number of lines is changed might
-not show up in daily changes, 
-% Antonio - which one do you refer to? If it was presented in a previous paper, please add a reference.
-while it will have an impact in this one. 
+not show up in daily changes because size in lines might not change, 
+while it will have an impact in this one equal to the number of lines changed. 
 
 One of the intentions in this paper is to try and prove that, in the same
 way it happens in neural systems \citep{10.3389/fnsys.2014.00166}, the
@@ -231,8 +227,8 @@ logs, that are actually in that state.
 % Thanks - JJ
 The rest of the paper is organized thus: 
 After presenting a brief state of the art next, 
-followed by the methodology, % in Section \ref{sec:method},
-obtained results will be reported %in Section \ref{res}
+followed by the methodology. % in Section \ref{sec:method},
+Obtained results will be reported %in Section \ref{res}
 and eventually we will expose our conclusions. 
 
 
@@ -446,7 +442,7 @@ In the big picture of the self-organization of the repository, its impact will h
 <<smoothie,message=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=summary$Name,out.width='.115\\linewidth'>>=
 for (i in 1:length(lines) ) {
     lines[[i]]$x = as.numeric(row.names(lines[[i]]))
-    print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()+ theme_tufte() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) )
+    print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()+ theme_tufte() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()))
 
 }
 @ 
@@ -486,10 +482,10 @@ for (i in 1:length(lines) ) {
                           data.frame( Name = repo[[1]][1],
                                      Intercept = summary(sizes.fit)$coefficients[1],
                                      Coefficient = summary(sizes.fit)$coefficients[2] ))
-    print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth())
+    print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()))
 }
 @ 
-\caption{Number of changes vs size in a log-log scale.\label{fig:changes}}
+\caption{Number of changes vs lines changed in a log-log scale.\label{fig:changes}}
 \end{figure*}
 %
 This chart shows what seems to be a Pareto distribution, with the commit sizes
@@ -626,7 +622,7 @@ spec.fit.df <- data.frame(Name = character(),
                           p = double())
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
-    print(autoplot( this.spectrum ) + scale_x_log10() )
+    print(autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) )
     spec.fit <- lm(log(this.spectrum$spec) ~ log((this.spectrum$freq))**2)
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     f <- summary(spec.fit)$fstatistic
@@ -638,7 +634,7 @@ for (i in 1:length(lines) ) {
                                     Coefficient = summary(spec.fit)$coefficients[2] ))
 }
 @ 
-\caption{Spectral density of changes. The repos are in the same order as above.  \label{fig:spectrum}}
+\caption{Spectral density of changes, power vs. frequency. The repos are in the same order as above.  \label{fig:spectrum}}
 \end{figure*}
 %
 \begin{table}
