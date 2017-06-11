@@ -71,7 +71,7 @@ lines <- list()
 # Read again in order because I am useless in R
 for (i in 1:length(summary$file) ) {
     lines[[i]] <-  read.csv(as.character(summary[[i,'file']]))
-    lines[[i]]$url <- url.list[[i]]
+    lines[[i]]$url <- url.list[[summary[[i,'file']]]]
     lines[[i]]$SMA10 <- SMA(lines[[i]]$Lines.changed,n=10)
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
 }
@@ -284,11 +284,10 @@ to do and how to do it, and, eventually, act on your fork, resulting in a
 pull request to the original repository. These activities can
 effectively be defined as social, so that teamwork in software
 repositories is embedded in a kind of social
-network. \citet{valverde2007self}, for instance, 
+network. \citet{valverde2007self}
 have proved how this network grows under the tension of top-down or
-hierarchical rules and self-organization emerging from the bottom,
-which make software development teams a complex social system. This
-would indicate that the self-organized critical state would be much
+hierarchical rules and self-organization emerges from the bottom,
+which makes software development teams a complex social system, indicating that the self-organized critical state would be much
 more pervasive than initially thought. 
 
 In this paper we will mine software repositories and take the measures
