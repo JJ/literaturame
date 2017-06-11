@@ -414,8 +414,11 @@ kable( kable.summary,"latex",digits=2 )
 %
 A summary of the statistical characteristics of the size of the commits,
 in number of lines, is shown in Table \ref{t:stat}. From a macro point of view, median and
-means are remarkably similar among themselves and with other repositories that have been examined. Median changes are never bigger than 100 lines and it can be as small as 6 or 9 lines. Means span a bigger range, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the mean is so
-separated from the median is already a hint that this is a skewed
+means are remarkably similar among themselves and with other
+repositories that have been examined. Median changes are never bigger
+than 100 lines and it can be as small as 6 or 9 lines. Means span
+range bigger than the medians, from around 22 lines to several tens of thousands in the case of Tensorflow. The fact that the mean is so
+separated from the median hints at a skewed
 distribution. The book analyzed by \citet{merelo16:slash} had a median
 of 10 lines, but a mean of 150 lines changed, in a distribution that
 is different, much more skewed towards larger sizes, while the
@@ -479,7 +482,8 @@ for (i in 1:length(lines) ) {
     print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()))
 }
 @ 
-\caption{Number of changes vs lines changed in a log-log scale.\label{fig:changes}}
+\caption{Number of changes vs lines changed in a log-log scale. The
+  blue line and gray zone is a smoothed version of the chart. \label{fig:changes}}
 \end{figure*}
 %
 This chart shows what seems to be a Pareto distribution, with the commit sizes
@@ -619,7 +623,7 @@ spec.fit.df <- data.frame(Name = character(),
                           p = double())
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
-    print(autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) )
+    print(autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url)
     spec.fit <- lm(log(this.spectrum$spec) ~ log((this.spectrum$freq))**2)
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     f <- summary(spec.fit)$fstatistic
