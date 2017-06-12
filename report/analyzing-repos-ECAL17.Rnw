@@ -516,10 +516,12 @@ These values are also similar to those found by
 table, and the slope -0.001, a very mild slope that hints at a big
 number of changes and might in fact indicate that, as would be
 expected, the intercept increases and the slope decreases with the
-number of changes or the size of the project. The shape of the line in
-\citep{Merelo2016:repomining} in fact might be more similar to a {\em
-  broken stick}; this is a matter that deserves further
-investigation. In these repositories, the coefficient varies between negative
+number of changes or the size of the project. 
+% The shape of the line in
+% \citep{Merelo2016:repomining} in fact might be more similar to a {\em
+%   broken stick}; this is a matter that deserves further
+% investigation. 
+In these repositories, the coefficient varies between negative
 0.71 and 2.02 for Tensorflow. There does not seem to be a clear trend
 with age, but this coefficient could depend on other factors
 entirely. 
