@@ -629,7 +629,7 @@ spec.fit.df <- data.frame(Name = character(),
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
     print(autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url) )
-    spec.fit <- lm(log(this.spectrum$spec) ~ log((this.spectrum$freq))**2)
+    spec.fit <- lm(log(this.spectrum$spec) ~ log(this.spectrum$freq**2))
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     f <- summary(spec.fit)$fstatistic
     p <- pf(f[1],f[2],f[3],lower.tail=F)
