@@ -613,7 +613,10 @@ In these repositories of increasing age, we find that actual long-distance autoc
 
 We will
 focus on the third SOC feature, the presence of \emph{pink noise}, as measured by
-the power spectral density, which we show in Figure \ref{fig:spectrum}. The presence of {\em pink noise} would be characterized by a spectrum with a log-log slope equal to $-1$, with power decreasing inversely proportional to frequency. 
+the power spectral density, which we show in Figure
+\ref{fig:spectrum}. The presence of {\em pink noise} would be
+characterized by a spectrum with a log-log slope equal to $-1$, with
+power decreasing inversely proportional to frequency.  
 %
 \begin{figure*}[h!tb]
   \centering
@@ -650,9 +653,10 @@ kable( spec.fit.df,"latex" )
 \end{table}
 
 In this case, we see that this {\em trend} appears with increasing
-clarity from top left to bottom right, with actual coefficients and p-values for the fit 
+clarity from top left to bottom right. We performed a linear fit of
+density fo the square of the frequencies, with coefficients and p-values for the fit 
 shown in Table \ref{t:spec}. Pink noise is characterized by
-coefficient values around $-1$, and that is the case for all of
+coefficient values between $0$ and $-2$, which is the case for all of
 the repositories studied, with the only difference being the goodness
 of the fit, which makes the hypothesis hold in all but 3 repositories:
 {\tt language-perl6fe}, {\tt cask} and {\tt tty}. These are all
