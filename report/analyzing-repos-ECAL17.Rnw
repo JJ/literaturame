@@ -554,12 +554,12 @@ for (i in 1:length(lines) ) {
 \end{figure*}
 %
 %
-We can in fact fit these charts to a Zipf distribution using a linear
-model that fits the logarithm of the change size to the position. The
-Zipf exponents and intercepts for these models are shown in Table
-\ref{t:zipf}, and are of the same order, but different range, of those
+We have fitted the logarithm of the change size to the rank of that
+size, and shown the
+Zipf exponents and intercepts for these models in Table
+\ref{t:zipf}. These coefficients and are of the same order, but different range, that those
 found by \citet{merelo16:slash}, where it hovers around 6 for the intercept and
--0.01 for the slope.
+-0.01 for the slope, indicating a similar state.
 %
 \begin{table}[h!tb]
     \centering
