@@ -78,48 +78,6 @@
 			      slide. Makes no sense, I know.</aside> 
 			    </section>
 
-			    <section><h1>Writing = breaking metaphors</h1>
-			      <pre><code>language: perl
-perl:
-  - "5.16"
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get -y install libhunspell-1.3-0 libhunspell-dev 
-  - echo "use Test::Text;just_check( 'text','/usr/share/hunspell' );" > just_check.t
-install: cpanm  ExtUtils::PkgConfig Test::Text TAP::Harness
-script: >
-    perl -MTAP::Harness -e 'use utf8;
-		            my $harness = TAP::Harness->new( { verbosity => 0} );
-			    die "FAIL" if  $harness->runtests( "just_check.t" )->failed;'</code></pre>
-			      <aside class='notes'>The key is the test created on the fly, which downloads uses my module Test::Text and then applies it straight away with the directory of your choice on anything having .md or .txt or some other suitable extension</aside>
-			    </section>
-
-			    <section><h1>How am I writing?</h1>
-			      <pre><code>my $dir = shift || ".";
-my @logs = glob("$dir/log*.log");
-my @data;
-for my $l ( @logs ) {
-  my ($number) = ( $l =~ /log-(\d+)/);
-  my $file_content = read_file ($l );
-  if ( $file_content =~ /Tests=(\d+)/ ) {
-    $data[$number] = $1;
-  }
-}
-			      </code></pre>
-
-			      <aside class='notes'>As you know, the TAP protocols prints at the end of the tests. 1 test == 1 word. So I know how many words I am writing, which is something I was interested in from the get go, to meet my own objectives and, also, incidentally, to not introduce embarrasing typos in the proceeds.</aside>
-			    </section>
-			    
-			    <section><pre><code>say "Commit,Words,Delta";
-my $old_number_of_words = 0;
-for (my $i = 0; $i <=$#data; $i ++ ) {
-  if ( $data[$i] ) {
-    say "$i, $data[$i], ", $data[$i]- $old_number_of_words;
-    $old_number_of_words = $data[$i];
-  }
-}
-			     </code></pre>
-			      </section>
 			  </section>
 
 			  <!-- segueing to introducing complex systems concepts -->
@@ -199,24 +157,6 @@ for (my $i = 0; $i <=$#data; $i ++ ) {
 			  <!-- Changing to commit diffs -->
 			  <section>
 			    <section data-background='https://farm4.staticflickr.com/3707/9719702617_6877475e7a_k_d.jpg' alt='Hourglass with turquouise sand'><h1>Other ways of measuring the piling of sand</h1></section>
-
-			    <section><h2>Measuring grains of sand</h2>
-			      <pre><code>my $repo = Git->repository (Directory => $dir);
-my @filespec = split(/ /,$filespec);
-my @revs = $repo->command('rev-list', '--all', '--', @filespec);
-my @data = ("Lines changed");
-my $prev_commit = pop @revs; #Throwaway first commit
-$prev_commit = pop @revs;
-for my $commit ( reverse @revs ) {
-  my $file_contents = $repo->command('diff','--shortstat',  "$commit..$prev_commit", "--", @filespec );
-  my ($insertions) = ($file_contents =~ /(\d+)\s+insertion\S+/s);
-  my ($deletions) = ($file_contents =~ /(\d+)\s+deletion\S+/s);
-  $insertions = $insertions || 0; $deletions = $deletions || 0;
-  my $lines_changed = ($insertions > $deletions)?$insertions:$deletions;
-  push @data, $lines_changed;
-  $prev_commit = $commit;
-}</code></pre>
-			      </section>
 			      
 			      <section>
 				<h1>✔ Scale independence</h1>
@@ -246,7 +186,27 @@ for my $commit ( reverse @revs ) {
 			    <section data-background='https://farm6.staticflickr.com/5062/5564636122_10321eb789_b_d.jpg' alt='ants in the sand'><h1>We are ants</h1>
 			      <h1 class='fragment'>Camel ants, maybe</h1>
 			      
-			      <aside class='notes'>Explaining how this might work. There are no camel ants. There are camel spiders that feed on ants. And the other way round, if there are enough of them. That software development self-organizes was explained in a model by us in '05 <a href='https://scholar.google.com/citations?view_op=view_citation&hl=es&user=gFxqc64AAAAJ&citation_for_view=gFxqc64AAAAJ:_FxGoFyzp5QC'>in this paper</a>. This presentation does more or less the same for non-software writing and using somewhat different measures and techniques. Goes to prove the same, anyway. Stigmergy is now <a href='http://ubiquity.acm.org/blog/why-cant-programmers-be-more-like-ants-or-a-lesson-in-stigmergy/'>understood</a> as an essential model for modern, distributed, software development. Stigmergy is a general mechanism for collaboration. And there's no such a thing as camel ants, but there are fire ants, and "fire" is "llama" in Spanish. So there you have it.</aside>
+			      <aside class='notes'>Explaining how this
+			      might work. There are no camel
+			      ants. There are camel spiders that feed
+			      on ants. And the other way round, if
+			      there are enough of them. That software
+			      development self-organizes was explained
+			      in a model by us in
+			      '05 <a href='https://scholar.google.com/citations?view_op=view_citation&hl=es&user=gFxqc64AAAAJ&citation_for_view=gFxqc64AAAAJ:_FxGoFyzp5QC'>in
+			      this paper</a>. This presentation does
+			      more or less the same for non-software
+			      writing and using somewhat different
+			      measures and techniques. Goes to prove
+			      the same, anyway. Stigmergy is
+			      now <a href='http://ubiquity.acm.org/blog/why-cant-programmers-be-more-like-ants-or-a-lesson-in-stigmergy/'>understood</a>
+			      as an essential model for modern,
+			      distributed, software
+			      development. Stigmergy is a general
+			      mechanism for collaboration. And there's
+			      no such a thing as camel ants, but there
+			      are fire ants, and "fire" is "llama" in
+			      Spanish. So there you have it. </aside>
 			    </section>
 
 			  </section>
