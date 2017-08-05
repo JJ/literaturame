@@ -1,10 +1,30 @@
-section[data-background] h1,h2 { 
-       background-color:rgba(233,233,233,0.7);
+section[data-background] h1 { 
+       background-color:rgba(237,201,175,0.7);
        padding: 50px;
        margin: 20px;
        border-radius: 30px
 }
 
+section[data-background] h2 { 
+       background-color:rgba(238,201,175,0.7);
+       padding: 30px;
+       margin: 15px;
+       border-radius: 20px
+}
+
+section[data-background] h3 { 
+       background-color:rgba(240,201,175,0.7);
+       padding: 20px;
+       margin: 10px;
+       border-radius: 15px
+}
+
+section[data-background] blockquote { 
+       background-color:rgba(23,21,11,0.7);
+       padding: 20px;
+       margin: 10px;
+       border-radius: 15px
+}
 
 .pink { 
        background-color:rgba(255, 192, 203,0.7);
@@ -73,4 +93,11 @@ section[data-background] h1,h2 {
 .print-pdf .reveal.slide .slides > section, .print-pdf .reveal.slide .slides > section > section {
   min-height: 770px !important;
   position: relative !important;
+}
+
+.reveal .footer {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  font-size: 0.5em;
 }
