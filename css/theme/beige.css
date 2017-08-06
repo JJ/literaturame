@@ -3,7 +3,8 @@
  *
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Archivo|Lato|Roboto|Source+Sans+Pro');
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -57,7 +58,9 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 3.77em; }
+    font-family: 'Archivo', sans-serif;
+    font-size: 3.77em;
+}
 
 .reveal h2 {
   font-size: 2.11em; }
