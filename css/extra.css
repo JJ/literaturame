@@ -20,10 +20,12 @@ section[data-background] h3 {
 }
 
 section[data-background] blockquote { 
-       background-color:rgba(23,21,11,0.7);
-       padding: 20px;
-       margin: 10px;
-       border-radius: 15px
+    background-color:rgba(242,201,176,0.7);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px;
+    white-space: pre;
+    text-align: left;	       
 }
 
 .pink { 
