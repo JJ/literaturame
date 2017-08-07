@@ -16,3 +16,12 @@ js/reveal.min.js
 *~
 data/logs
 *.zip
+*.log
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.tex
+*.out
+**/auto
+**/rsconnect
