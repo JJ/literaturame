@@ -8,5 +8,5 @@ g = graph.edgelist(comala.matrix,directed=F)
 bet.comala.df = data.frame(betweenness(g))
 bet.comala.df$personajes = rownames(bet.comala.df)
 bet.comala.df <- bet.comala.df[bet.comala.df$betweenness.g.> 0, ]
-ggplot()+geom_point(data=bet.comala.df,aes(x=reorder(personajes,-betweenness.g.),y=betweenness.g.))+scale_y_log10()+theme_tufte()+ theme(axis.text.x = element_text(size=25,angle = 90, hjust = 1))
+ggplot(bet.comala.df,aes(x=reorder(personajes,-betweenness.g.),y=betweenness.g.))+geom_point(shape=23)+ scale_y_log10()+ylab('betweenness')+theme_tufte()+geom_text(aes(label=personajes,y=betweenness.g.),hjust=0, vjust=0, nudge_x = -0.2, nudge_y = 0.1, angle=-45,size=12)+theme(axis.title.x=element_blank(), axis.text.x=element_blank())
 
