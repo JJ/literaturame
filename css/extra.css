@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave');
+@import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave|Cinzel|Port+Lligat+Slab');
 
 section[data-background] h1 { 
        background-color:rgba(237,201,175,0.7);
@@ -15,19 +15,32 @@ section[data-background] h2 {
 }
 
 section[data-background] h3 { 
-       background-color:rgba(240,201,175,0.7);
-       padding: 20px;
-       margin: 10px;
-       border-radius: 15px
+    background-color:rgba(240,201,175,0.7);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px
 }
 
-section[data-background] blockquote { 
-    background-color:rgba(242,201,176,0.7);
+section[data-background] blockquote {
+    font-family: 'Port Lligat Slab', serif;
+    background-color: rgba(242,201,176,0.7);
     padding: 30px;
     margin: 30px;
     border-radius: 15px;
-    white-space: pre;
     text-align: left;	       
+}
+
+blockquote::before {
+    content: "\201C";
+    color: #222;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote.dialog {
+    white-space: pre;
 }
 
 .pink { 
@@ -108,7 +121,7 @@ section[data-background] blockquote {
 
 .reveal p.author {
     text-align: right;
-    background-color:rgb(243,202,177);
+    background-color:#EDC9AF;
     padding: 20px;
     margin: 10px;
     font-family: 'Sedgwick Ave', cursive;
