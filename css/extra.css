@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave');
+
 section[data-background] h1 { 
        background-color:rgba(237,201,175,0.7);
        padding: 50px;
@@ -21,8 +23,8 @@ section[data-background] h3 {
 
 section[data-background] blockquote { 
     background-color:rgba(242,201,176,0.7);
-    padding: 20px;
-    margin: 10px;
+    padding: 30px;
+    margin: 30px;
     border-radius: 15px;
     white-space: pre;
     text-align: left;	       
@@ -102,4 +104,12 @@ section[data-background] blockquote {
   bottom: 1em;
   left: 1em;
   font-size: 0.5em;
+}
+
+.reveal p.author {
+    text-align: right;
+    background-color:rgb(243,202,177);
+    padding: 20px;
+    margin: 10px;
+    font-family: 'Sedgwick Ave', cursive;
 }
