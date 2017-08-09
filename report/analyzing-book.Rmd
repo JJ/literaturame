@@ -1,7 +1,7 @@
 ---
 title: 'Self-organized criticality in fiction: the case of #Slash, a novel'
 author: "J. J. Merelo"
-date: "September 4th, 2016"
+date: "August 9th, 2017"
 output: pdf_document
 bibliography: biblio.bib
 abstract: |
@@ -74,7 +74,7 @@ gg.changes <- gg.words+geom_line(aes(x=Commit,y=Delta,group=1))+scale_y_log10()
 gg.changes
 ```
 
-The top graph corresponds to lines, bottom one to words. A certain *rhythm* can be observed in both. Probably it will be a bit more visible if we do a order 10 and then an order 20 smoothing, averaging over that number of changes.
+The top graph corresponds to lines, bottom one to words; we will keep this order throughout all the figures in the paper. A certain *rhythm* can be observed in both. Probably it will be a bit more visible if we do a order 10 and then an order 20 smoothing, averaging over that number of changes.
 
 ```{r smoothie, echo=FALSE, warning=FALSE}
 gg.lines+geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()
@@ -131,13 +131,45 @@ autoplot(spectrum(lines$Lines.changed, plot=FALSE) )
 autoplot(spectrum(words$Delta, plot=FALSE) )
 ```
 
-The `1/frequency` power spectrum appears with a certain clarity in the top graph, and with less clarity in the graph below. This indicates a *pink noise* in the sequence of changes, which would be the third feature in the critical state, a critical state that, since it has not been designed, was reached via repository mediated self-organization. 
+The `1/frequency` power spectrum appears with a certain clarity in the
+top graph, which uses lines to measure changes in the repository, and
+with less clarity in the graph below, which uses words. This indicates
+a *pink noise* in the sequence of changes, which would be the third
+feature in the critical state, a critical state that, since it has not
+been designed from the top down, was reached via repository mediated self-organization.  
 
 ##Conclusions {#conc}
 
-As far as we have been able to find, this is the first paper that establishes the presence of a self-organized critical state in a work of literary fiction. This conclusion has been reached via the analysis of word and line changes in written sessions registered in a source-control system, namely, GitHub. The analysis proves that in both scales the essential features of self-organized criticality, namely, self-similarity, long-distance autocorrelations and pink noise, are present. Besides, fit models are quite similar in both scales, although in some cases coefficients differ from models fit to other sorts of projects. 
+As far as we have been able to find, this is the first paper that
+establishes the presence of a self-organized critical state in a work
+of literary fiction. This conclusion has been reached via the analysis
+of word and line changes in written sessions registered in a
+source-control system, namely, GitHub. The analysis proves that in
+both scales the essential features of self-organized criticality,
+namely, self-similarity, long-distance autocorrelations and pink
+noise, are present. Besides, fit models are quite similar in both
+scales, although in some cases coefficients differ from models fit to
+other sorts of projects.
 
-The fact that self-organization happens despite the absence of collaboration implies that in fact, the *agents* of the stigmergy project are not individual persons, but probably something at a lower level that we could call *ideas* or *functionalities*. Besides, having data on writing sessions might be used either to authenticate the author or, in generative literature, to create models that are based more on the writing process than on its final state, and are thus much more realistic. As far as we know, this has not been done so far either. 
+It is interesting to see that different representations of the novel
+yield different results; while using lines you get all three features
+of self-organized criticality, that is not the case if you use
+words. The reason for that might be that counting words only
+represents the aggregate result and is a worse representation of
+evolution, which includes insertions and deletions; this is much
+better represented if we use line editions for that. In general, using
+a representation of editions, rather than raw size, seems to be a
+better way to model self-organized criticality in text repositories.
+
+The fact that self-organization happens despite the absence of
+collaboration implies that in fact, the *agents* of the stigmergy
+project are not individual persons, but probably something at a lower
+level that we could call *ideas* or *functionalities*. Besides, having
+data on writing sessions might be used either to authenticate the
+author or, in generative literature, to create models that are based
+more on the writing process than on its final state, and are thus much
+more realistic. As far as we know, this has not been done so far
+either.  
 
 All data for this paper, as well as the scripts used to extract them, are hosted <http://github.com/JJ/literaturame> with a free license. Future lines of work will include a more extensive comparison of different types of repositories with different kinds of works and some conclusions on the model, as well as implications for software and literature metrics. 
 
