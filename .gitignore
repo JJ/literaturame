@@ -34,6 +34,9 @@ stats/*.png
 *.bbl
 *.aux
 *.gz
+*.dvi
+
 
 **/figure
 **/rsconnect
+*.tgz
