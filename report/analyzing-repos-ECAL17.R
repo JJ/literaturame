@@ -51,19 +51,6 @@ for (i in 1:length(summary$file) ) {
     lines[[i]]$SMA20 <- SMA(lines[[i]]$Lines.changed,n=20)
 }
 
-## ----commits, cache=FALSE,echo=FALSE-------------------------------------
-kable.summary <- summary # Row names are useful
-row.names(kable.summary) <- NULL
-kable.summary$file <- NULL
-kable( kable.summary,"latex",digits=2 )
-
-## ----smoothie,message=FALSE,echo=FALSE,warning=FALSE,fig.height=7,fig.subcap=summary$Name,out.width='.115\\linewidth'----
-for (i in 1:length(lines) ) {
-    lines[[i]]$x = as.numeric(row.names(lines[[i]]))
-    print(ggplot(lines[[i]]) +geom_line(aes(x=x,y=SMA10,color='SMA10'))+geom_line(aes(x=x,y=SMA20,color='SMA20'))+scale_y_log10()+ theme_tufte() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()))
-
-}
-
 ## ----linecount,message=FALSE, fig.subcap=summary$Name, echo=FALSE,warning=FALSE,fig.height=4,out.width='.245\\linewidth'----
 sizes.fit.df <- data.frame(Name = character(),
                            Coefficient = double(),
@@ -77,11 +64,11 @@ for (i in 1:length(lines) ) {
                           data.frame( Name = repo[[1]][1],
                                      Intercept = summary(sizes.fit)$coefficients[1],
                                      Coefficient = summary(sizes.fit)$coefficients[2] ))
-    print(ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url))
+    ggplot(lines.count, aes(x=Lines.changed, y=count))+geom_point()+scale_x_log10()+scale_y_log10()+stat_smooth() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url)
+    lines[[i]]$repo = gsub("/","_",trimws(repo[[1]][1]))
+    ggsave(paste0("figure/ecal2017-linecount-",lines[[i]]$repo,".png"),device='png')
 }
 
-## ----sizes, cache=FALSE,echo=FALSE---------------------------------------
-kable( sizes.fit.df,"latex" )
 
 ## ----powerlaw,message=FALSE, fig.subcap=summary$Name,echo=FALSE,warning=FALSE,fig.height=4,out.width='.115\\linewidth'----
 zipf.fit.df <- data.frame(Name = character(),
@@ -89,7 +76,8 @@ zipf.fit.df <- data.frame(Name = character(),
                           Intercept = double())
 for (i in 1:length(lines) ) {
     sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
-    print(ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10())
+    ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
+    ggsave(paste0("figure/ecal2017-powerlaw-",lines[[i]]$repo,".png"))
     sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
@@ -99,12 +87,10 @@ for (i in 1:length(lines) ) {
                                     Coefficient = summary(zipf.fit)$coefficients[2] ))
 }
 
-## ----zipf, cache=FALSE,echo=FALSE----------------------------------------
-kable( zipf.fit.df,"latex" )
-
 ## ----autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.115\\linewidth'----
 for (i in 1:length(lines) ) {
-    print(autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) ))
+    autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) )
+    ggsave(paste0("figure/ecal2017-auto-",lines[[i]]$repo,".png"))
 }
 
 ## ----spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.245\\linewidth'----
@@ -113,7 +99,8 @@ spec.fit.df <- data.frame(Name = character(),
                           p = double())
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
-    print(autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url) )
+    autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url)
+    ggsave(paste0("figure/ecal2017-pinknoise-",lines[[i]]$repo,".png"))
     spec.fit <- lm(log(this.spectrum$spec) ~ log(this.spectrum$freq**2))
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     f <- summary(spec.fit)$fstatistic
@@ -125,6 +112,5 @@ for (i in 1:length(lines) ) {
                                     Coefficient = summary(spec.fit)$coefficients[2] ))
 }
 
-## ----spec.tab, cache=FALSE,echo=FALSE------------------------------------
-kable( spec.fit.df,"latex" )
+
 
