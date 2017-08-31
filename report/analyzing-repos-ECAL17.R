@@ -77,7 +77,7 @@ zipf.fit.df <- data.frame(Name = character(),
 for (i in 1:length(lines) ) {
     sorted.lines <- data.frame(x=1:length(lines[[i]]$Lines.changed),Lines.changed=as.numeric(lines[[i]][order(-lines[[i]]$Lines.changed),]$Lines.changed))
     ggplot()+geom_point(data=sorted.lines,aes(x=x,y=Lines.changed))+scale_y_log10()
-    ggsave(paste0("figure/ecal2017-powerlaw-",lines[[i]]$repo,".png"))
+    ggsave(paste0("figure/ecal2017-powerlaw-",lines[[i]]$repo,".png"),device='png')
     sorted.lines.no0 <- sorted.lines[sorted.lines$Lines.changed>0,]
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     zipf.fit <- lm(log(sorted.lines.no0$Lines.changed) ~ sorted.lines.no0$x)
@@ -90,7 +90,7 @@ for (i in 1:length(lines) ) {
 ## ----autocorrelation,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.115\\linewidth'----
 for (i in 1:length(lines) ) {
     autoplot(pacf(lines[[i]]$Lines.changed, plot=FALSE) )
-    ggsave(paste0("figure/ecal2017-auto-",lines[[i]]$repo,".png"))
+    ggsave(paste0("figure/ecal2017-auto-",lines[[i]]$repo,".png"),device='png')
 }
 
 ## ----spectrum,message=FALSE, cache=FALSE,echo=FALSE,fig.height=4,fig.subcap=summary$Name,out.width='.245\\linewidth'----
@@ -100,7 +100,7 @@ spec.fit.df <- data.frame(Name = character(),
 for (i in 1:length(lines) ) {
     this.spectrum <- spectrum(lines[[i]]$Lines.changed, plot=FALSE)
     autoplot( this.spectrum ) + scale_x_log10() + theme(legend.position="none",axis.title.x=element_blank(),axis.title.y=element_blank()) + ggtitle(lines[[i]]$url)
-    ggsave(paste0("figure/ecal2017-pinknoise-",lines[[i]]$repo,".png"))
+    ggsave(paste0("figure/ecal2017-pinknoise-",lines[[i]]$repo,".png"),device='png')
     spec.fit <- lm(log(this.spectrum$spec) ~ log(this.spectrum$freq**2))
     repo <- strsplit(paste(summary[[1]][i],""),"_")
     f <- summary(spec.fit)$fstatistic
