@@ -25,3 +25,4 @@ data/logs
 *.out
 **/auto
 **/rsconnect
+*.tgz
