@@ -26,3 +26,6 @@ data/logs
 **/auto
 **/rsconnect
 *.tgz
+
+*/.R*
+report/*.html
