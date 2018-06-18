@@ -1,12 +1,12 @@
 ---
 title: 'Self-organized criticality in fiction: the case of #Slash, a novel'
 author: "J. J. Merelo"
-date: "August 9th, 2017"
+date: "Jun 18th, 2018"
 output: pdf_document
-bibliography: biblio.bib
+bibliography: slash.bib
 abstract: |
    In this paper we will examine if a novel written in the same way as a software project, using a source-control system and continuous integration and delivery, is in a self-organized critical state, which can be measured by the existence of a scale-free structure, long-distance correlations and pink noise when analyzing the size of changes and its time series. 
-   Our intention is to prove that it is probably in the nature of the media or the use of a software repository the cause of self-organization, without needing to have actual interaction between different writers. This lowers the threshold for the existence of self-organization, and, at the same time, gives a completely new measure of the performance in a creative process, writing: the existence or not of self-organization.
+   Our intention is to prove that self-organization is probably caused by the nature of the media or the use of a software repository; it cannot be, then, a property of the social network of authors, which does not exist, but of the writing process and substrate itself. Excluding the need of a social network lowers the threshold for the existence of self-organization, and, at the same time, gives a completely new measure of performance in a creative process, writing: the existence or not of self-organization.
 ---
 
 ```{r setup, include=FALSE}
@@ -15,13 +15,13 @@ library("ggfortify")
 library(dplyr)
 library(TTR)
 #use 
-file <- '/home/jmerelo/Code/literaturame/data/books/lines_HashSlash_texto_HashSlash_md.csv'
+file <- '../data/books/lines_HashSlash_texto_HashSlash_md.csv'
 # for testing here
 lines <- read.csv(file) # File should be established from an R script
 lines$SMA5 <- SMA(lines$Lines.changed,n=5)
 lines$SMA10 <- SMA(lines$Lines.changed,n=10)
 lines$SMA20 <- SMA(lines$Lines.changed,n=20)
-deltas <- read.csv('/home/jmerelo/Code/literaturame/data/books/words-hashslash.csv') # File should be established from an R script
+deltas <- read.csv('../data/books/words-hashslash.csv') # File should be established from an R script
 words <- deltas[-1,]
 words$Delta <- abs(words$Delta)
 words$SMA5 <- SMA(words$Delta,n=5)
