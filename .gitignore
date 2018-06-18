@@ -40,3 +40,4 @@ stats/*.png
 **/figure
 **/rsconnect
 *.tgz
+css/theme/beige.css
