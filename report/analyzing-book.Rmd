@@ -2,11 +2,21 @@
 title: 'Self-organized criticality in fiction: the case of #Slash, a novel'
 author: "J. J. Merelo"
 date: "Jun 18th, 2018"
-output: pdf_document
+output:
+  html_document: default
+  pdf_document: default
 bibliography: slash.bib
-abstract: |
-   In this paper we will examine if a novel written in the same way as a software project, using a source-control system and continuous integration and delivery, is in a self-organized critical state, which can be measured by the existence of a scale-free structure, long-distance correlations and pink noise when analyzing the size of changes and its time series. 
-   Our intention is to prove that self-organization is probably caused by the nature of the media or the use of a software repository; it cannot be, then, a property of the social network of authors, which does not exist, but of the writing process and substrate itself. Excluding the need of a social network lowers the threshold for the existence of self-organization, and, at the same time, gives a completely new measure of performance in a creative process, writing: the existence or not of self-organization.
+abstract: "In this paper we will examine if a novel written in the same way as a software
+  project, using a source-control system and continuous integration and delivery,
+  is in a self-organized critical state, which can be measured by the existence of
+  a scale-free structure, long-distance correlations and pink noise when analyzing
+  the size of changes and its time series. \nOur intention is to prove that self-organization
+  is probably caused by the nature of the media or the use of a software repository;
+  it cannot be, then, a property of the social network of authors, which does not
+  exist, but of the writing process and substrate itself. Excluding the need of a
+  social network lowers the threshold for the existence of self-organization, and,
+  at the same time, gives a completely new measure of performance in a creative process,
+  writing: the existence or not of self-organization.\n"
 ---
 
 ```{r setup, include=FALSE}
