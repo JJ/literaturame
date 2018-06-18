@@ -48,6 +48,7 @@
 }
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 %\SweaveOpts{concordance=TRUE}
 % is it possible using relative-paths instead of absolute paths to set the file names?
 <<setup, cache=FALSE,echo=FALSE,warning=FALSE>>=
