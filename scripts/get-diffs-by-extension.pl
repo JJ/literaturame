@@ -76,6 +76,7 @@ for my $commit ( reverse @revs ) {
 }
 
 my ($last_dir_name)  = ($dir =~ m{/([^/]+)/?$} );
+$last_dir_name = $last_dir_name || $dir;
 my $flat_file_name = "$depth-$extensions";
 
 write_file("lines_$last_dir_name"."_$flat_file_name.csv", join("\n", @data));
