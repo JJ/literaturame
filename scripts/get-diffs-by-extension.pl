@@ -12,9 +12,9 @@ First, install needed modules
 
 Then run it. If there is a git repo in C</home/thatsme/repo>
 
-    ./get-diff-by-extension.pl "pl pm" /home/thatsme/repo
+    ./get-diff-by-extension.pl "pl pm" /home/thatsme/repo 3
 
-The quotes are important so that it is not expanded by bash.
+The quotes are important so that it is not expanded by bash; the last number indicates the depth to which directories are explored.
 
 =head1 SEE ALSO
 
