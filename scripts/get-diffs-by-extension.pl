@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-get-diffs.pl - Quantify diffs in a software repository
+get-diffs-by-extension.pl - Quantify diffs in a software repository by extensions
 
 =head1 SYNOPSIS
 
