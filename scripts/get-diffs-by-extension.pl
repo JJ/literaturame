@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-get-diffs.pl - Quantify diffs in a software repository
+get-diffs-by-extension.pl - Quantify diffs in a software repository by extensions
 
 =head1 SYNOPSIS
 
@@ -12,9 +12,9 @@ First, install needed modules
 
 Then run it. If there is a git repo in C</home/thatsme/repo>
 
-    ./get-diff-by-extension.pl "pl pm" /home/thatsme/repo
+    ./get-diff-by-extension.pl "pl pm" /home/thatsme/repo 3
 
-The quotes are important so that it is not expanded by bash.
+The quotes are important so that it is not expanded by bash; the last number indicates the depth to which directories are explored.
 
 =head1 SEE ALSO
 
@@ -76,6 +76,7 @@ for my $commit ( reverse @revs ) {
 }
 
 my ($last_dir_name)  = ($dir =~ m{/([^/]+)/?$} );
+$last_dir_name = $last_dir_name || $dir;
 my $flat_file_name = "$depth-$extensions";
 
 write_file("lines_$last_dir_name"."_$flat_file_name.csv", join("\n", @data));
