@@ -12,7 +12,7 @@ First, install needed modules
 
 Then run it. If there is a git repo in C</home/thatsme/repo>
 
-    ./get-diff.pl "*.pl */*.pm */*/*.pm" /home/thatsme/repo
+    ./get-diffs.pl "*.pl */*.pm */*/*.pm" /home/thatsme/repo
 
 The quotes are important so that it is not expanded by bash.
 
